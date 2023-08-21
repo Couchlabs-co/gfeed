@@ -4,17 +4,6 @@ import axios from "axios";
 import { XMLParser } from "fast-xml-parser";
 import { Table } from "sst/node/table";
 
-// type FeedItem = {
-//   id: string;
-//   title: string;
-//   link: string;
-//   pubDate: number;
-//   author: string;
-//   guid: string;
-//   description: string;
-//   category: string[];
-// };
-
 const dynamoDb = new DynamoDB({
   region: "ap-southeast-2",
 });
@@ -34,7 +23,7 @@ const formatItem = async (item: any, publisher: string) => {
 };
 
 export async function main(event: SQSEvent) {
-  const itemTableName = Table.items.tableName;
+  const itemTableName = Table.item.tableName;
   const records: any[] = event.Records;
   const { feedUrl } = JSON.parse(records[0].body);
   const response = await axios.get(feedUrl);

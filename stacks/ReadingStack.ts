@@ -19,7 +19,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" },
   });
 
-  const ItemsTable = new Table(stack, "items", {
+  const ItemsTable = new Table(stack, "item", {
     fields: {
       id: "string",
       title: "string",
