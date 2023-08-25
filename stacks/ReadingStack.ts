@@ -1,7 +1,7 @@
-import { Cron, StackContext, Table, Queue, Function } from "sst/constructs";
+import { Cron, StackContext, Table, Queue, Function, Api, SvelteKitSite } from "sst/constructs";
 
 export function ReadingFunctionsStack({ stack }: StackContext) {
-  const feedQueue = new Queue(stack, "Queue", {
+  const FeedQueue = new Queue(stack, "Queue", {
     consumer: "packages/functions/src/feedHandler.main",
     cdk: {
       queue: {
@@ -21,7 +21,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
 
   const ItemsTable = new Table(stack, "item", {
     fields: {
-      id: "string",
+      publishedDate: "string",
       title: "string",
       author: "string",
       link: "string",
@@ -30,17 +30,27 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
       guid: "string",
       description: "string",
     },
-    primaryIndex: { partitionKey: "id", sortKey: "pubDate" },
+    primaryIndex: { partitionKey: "publishedDate", sortKey: "pubDate" },
     globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "pubDate" } },
   });
 
-  new Cron(stack, "Cron", {
-    schedule: "rate(1 minute)",
+  const FeedCron = new Cron(stack, "FeedCron", {
+    schedule: "rate(1 day)",
     job: "packages/functions/src/feedPublisher.main",
-  }).bind([FeedTable, feedQueue]);
+  }).bind([FeedTable, FeedQueue]);
 
-  new Function(stack, "FeedHandler", {
+  const FeedHandler = new Function(stack, "FeedHandler", {
     handler: "packages/functions/src/feedHandler.main",
-    bind: [ItemsTable, feedQueue],
+    bind: [ItemsTable, FeedQueue],
   });
+
+  FeedQueue.bind([ItemsTable]);
+
+  return {
+    ItemsTable,
+    FeedTable,
+    FeedQueue,
+    FeedCron,
+    FeedHandler,
+  };
 }
