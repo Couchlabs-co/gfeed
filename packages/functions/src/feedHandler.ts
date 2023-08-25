@@ -1,8 +1,7 @@
 import { SQSEvent } from "aws-lambda";
 import { AttributeValue, DynamoDB, PutItemCommand } from "@aws-sdk/client-dynamodb";
-import axios from "axios";
-import { XMLParser } from "fast-xml-parser";
 import { Table } from "sst/node/table";
+import fetchRSSFeed from "./utils/fetchRssFeed";
 
 const dynamoDb = new DynamoDB({
   region: "ap-southeast-2",
@@ -10,14 +9,15 @@ const dynamoDb = new DynamoDB({
 
 const formatItem = async (item: any, publisher: string) => {
   const feedItem: Record<any, AttributeValue> = {
-    id: { S: `${item.title}-${item.link}` },
-    title: { S: item.title },
-    link: { S: item.link },
+    publishedDate: { S: new Date(item.pubDate).toISOString().split("T")[0] },
+    title: { S: encodeURI(item.title) },
+    link: { S: encodeURI(item.link) },
     pubDate: { N: new Date(item.pubDate).getTime().toString() },
     author: { S: item["dc:creator"] },
-    guid: { S: item.guid },
-    description: { S: item.description },
-    category: { S: item.category.join(",") },
+    guid: { S: encodeURI(item.guid) },
+    description: { S: encodeURI(item.description) },
+    category: { S: item.category?.join(",") ?? "" },
+    publisher: { S: publisher },
   };
   return feedItem;
 };
@@ -25,14 +25,11 @@ const formatItem = async (item: any, publisher: string) => {
 export async function main(event: SQSEvent) {
   const itemTableName = Table.item.tableName;
   const records: any[] = event.Records;
-  const { feedUrl } = JSON.parse(records[0].body);
-  const response = await axios.get(feedUrl);
+  const { publisher, feedUrl } = JSON.parse(records[0].body);
 
-  const parser = new XMLParser();
-  let jObj = parser.parse(response.data);
-  const rssItems = jObj.rss.channel.item;
+  const rssItems = await fetchRSSFeed(publisher, feedUrl);
   for (const item of rssItems) {
-    const feedItem = await formatItem(item, jObj.rss.channel.title);
+    const feedItem = await formatItem(item, publisher);
     const putParams = new PutItemCommand({
       TableName: itemTableName,
       Item: { ...feedItem },

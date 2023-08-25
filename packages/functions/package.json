@@ -9,13 +9,14 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.119",
     "@types/node": "^20.5.1",
-    "aws-sdk": "^2.1440.0",
+    "@types/node-fetch": "^2.6.4",
     "sst": "^2.24.8",
     "vitest": "^0.34.2"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.395.0",
     "axios": "^1.4.0",
-    "fast-xml-parser": "^4.2.7"
+    "fast-xml-parser": "^4.2.7",
+    "node-fetch": "^3.3.2"
   }
 }

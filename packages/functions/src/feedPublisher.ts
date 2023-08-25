@@ -23,7 +23,6 @@ export async function main() {
       body: JSON.stringify({ status: "no items" }),
     };
   }
-  console.log("Hi!", result.Items);
   for (const feed of result.Items) {
     const params = {
       MessageBody: JSON.stringify(feed),
