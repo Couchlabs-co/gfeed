@@ -35,7 +35,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
   });
 
   const FeedCron = new Cron(stack, "FeedCron", {
-    schedule: "rate(1 day)",
+    schedule: "cron(0 12 * * ? *)",
     job: "packages/functions/src/feedPublisher.main",
   }).bind([FeedTable, FeedQueue]);
 
