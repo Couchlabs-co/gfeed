@@ -1,20 +1,14 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 
-	import { onMount } from 'svelte';
-	import { PUBLIC_API_URL } from '$env/static/public';
+	/** @type {import('./$types').PageData} */
+	export let data;
 
-	let posts = [];
-
-	onMount(async () => {
-		fetch(PUBLIC_API_URL)
-			.then((res) => res.json())
-			.then((res) => (posts = res));
-	});
+	const { Count, Items } = data;
 </script>
 
-{#if posts.length}
-	{#each posts as post}
+{#if Items?.length}
+	{#each Items as post}
 		<a
 			href="/"
 			class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -36,5 +30,7 @@
 		</a>
 	{/each}
 {:else}
-	Loading...
+	<div>
+		<div class="placeholder" />
+	</div>
 {/if}
