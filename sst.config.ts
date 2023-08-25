@@ -20,8 +20,5 @@ export default {
     if (app.stage !== "prod") {
       app.setDefaultRemovalPolicy("destroy");
     }
-    if (app.stage !== "prod") {
-      app.setDefaultRemovalPolicy("destroy");
-    }
   },
 } satisfies SSTConfig;

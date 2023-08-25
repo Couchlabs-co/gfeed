@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.395.0",
+    "@aws-sdk/client-sqs": "^3.398.0",
     "axios": "^1.4.0",
     "fast-xml-parser": "^4.2.7",
     "node-fetch": "^3.3.2"

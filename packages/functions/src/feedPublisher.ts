@@ -1,22 +1,20 @@
-import { DynamoDB, SQS } from "aws-sdk";
+import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
+import { dbClient } from "./utils/dbClient";
+import { ScanCommand } from "@aws-sdk/client-dynamodb";
 import { Table } from "sst/node/table";
 import { Queue } from "sst/node/queue";
 
-const dynamoDb = new DynamoDB.DocumentClient({
-  region: "ap-southeast-2",
-});
-
-const sqs = new SQS({
+const sqs = new SQSClient({
   region: "ap-southeast-2",
 });
 
 export async function main() {
-  const scanInput = {
+  const scanCommand = new ScanCommand({
     TableName: Table.Feed.tableName,
     ProjectionExpression: "publisher, feedUrl",
-  };
+  });
 
-  const result = await dynamoDb.scan(scanInput).promise();
+  const result = await dbClient.send(scanCommand);
   if (!result.Items) {
     return {
       statusCode: 200,
@@ -24,11 +22,12 @@ export async function main() {
     };
   }
   for (const feed of result.Items) {
+    const msgBody = { feedUrl: feed.feedUrl.S, publisher: feed.publisher.S };
     const params = {
-      MessageBody: JSON.stringify(feed),
+      MessageBody: JSON.stringify(msgBody),
       QueueUrl: Queue.Queue.queueUrl,
     };
-    await sqs.sendMessage(params).promise();
+    await sqs.send(new SendMessageCommand(params));
     console.log("Sent message to queue", params);
   }
   return {
