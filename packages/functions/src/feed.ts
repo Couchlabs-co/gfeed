@@ -5,28 +5,36 @@ import { Table } from "sst/node/table";
 
 export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
-  const dt = new Date().toISOString().split("T")[0];
-  console.log("evt time: ", dt);
-  const command: QueryCommand = new QueryCommand({
-    TableName: Table.item.tableName,
-    KeyConditionExpression: "publishedDate = :publishedDate",
-    ExpressionAttributeValues: {
-      ":publishedDate": { S: dt },
-    },
-    ConsistentRead: true,
-  });
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
+  const keys = [yesterday.toISOString().split("T")[0], today.toISOString().split("T")[0]];
 
-  const { Count, Items } = await dbClient.send(command);
-  if (!Items) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ Count: 0, Items: [] }),
-    };
-  }
+  const result = {
+    Count: 0,
+    Items: <any>[],
+  };
 
-  const feedItems = [];
+  await Promise.all(
+    keys.map(async (key) => {
+      const command: QueryCommand = new QueryCommand({
+        TableName: Table.item.tableName,
+        KeyConditionExpression: "publishedDate = :publishedDate",
+        ExpressionAttributeValues: {
+          ":publishedDate": { S: key },
+        },
+        ConsistentRead: true,
+      });
+      let { Count, Items } = await dbClient.send(command);
+      result.Count += Count ?? 0;
+      console.log("Items: ", Items?.length);
+      result.Items = result.Items.concat(Items);
+    })
+  );
 
-  for (const item of Items) {
+  const feedItems = <any>[];
+
+  for (const item of result.Items) {
     feedItems.push({
       publishedDate: item.publishedDate.S,
       title: item.title.S && decodeURI(item.title.S),
@@ -42,6 +50,6 @@ export const handler = ApiHandler(async (evt) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ Count, Items: feedItems }),
+    body: JSON.stringify({ Count: result.Count, Items: feedItems }),
   };
 });
