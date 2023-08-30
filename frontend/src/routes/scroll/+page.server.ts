@@ -6,8 +6,15 @@ export async function load() {
 
 	const res = await result.json();
 
+	function htmlDecode(input: string): string {
+        const textArea = document.createElement("textarea");
+        textArea.innerHTML = input;
+        return textArea.value;
+    }
+
 	for (const item of res.Items) {
 		item.pubDate = DateTime.fromMillis(Number(item.pubDate)).toLocaleString(DateTime.DATE_MED);
+		item.title = htmlDecode(item.title);
 	}
 
 	return res;
