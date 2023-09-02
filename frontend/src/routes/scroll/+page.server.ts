@@ -1,20 +1,15 @@
-import { Api } from 'sst/node/api';
 import { DateTime } from 'luxon';
+
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
-	const result = await fetch(Api.feedAPI.url);
+	const { VITE_API_URL } = import.meta.env;
+	const result = await fetch(`${VITE_API_URL}/feed`);
 
 	const res = await result.json();
 
-	function htmlDecode(input: string): string {
-        const textArea = document.createElement("textarea");
-        textArea.innerHTML = input;
-        return textArea.value;
-    }
-
 	for (const item of res.Items) {
 		item.pubDate = DateTime.fromMillis(Number(item.pubDate)).toLocaleString(DateTime.DATE_MED);
-		item.title = htmlDecode(item.title);
+		// item.title = item.title;
 	}
 
 	return res;
