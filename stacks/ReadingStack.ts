@@ -10,6 +10,36 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     },
   });
 
+  const UserTable = new Table(stack, "User", {
+    fields: {
+      id: "string",
+      firstName: "string",
+      lastName: "string",
+      email: "string",
+      channel: "string",
+    },
+    primaryIndex: { partitionKey: "email" },
+    globalIndexes: { channelIndex: { partitionKey: "channel" } },
+  });
+
+  const UsersInterestTables = new Table(stack, "UsersInterest", {
+    fields: {
+      id: "string",
+      userId: "string",
+      interest: "string",
+    },
+    primaryIndex: { partitionKey: "userId" },
+    globalIndexes: { interestIndex: { partitionKey: "interest" } },
+  });
+
+  const BookmarkTable = new Table(stack, "Bookmark", {
+    fields: {
+      userId: "string",
+      postId: "string",
+    },
+    primaryIndex: { partitionKey: "userId" },
+  });
+
   const FeedTable = new Table(stack, "Feed", {
     fields: {
       id: "string",
@@ -52,5 +82,8 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     FeedQueue,
     FeedCron,
     FeedHandler,
+    UserTable,
+    UsersInterestTables,
+    BookmarkTable
   };
 }
