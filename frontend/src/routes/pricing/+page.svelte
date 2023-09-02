@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center">
 	<div class="text-center border border-base-content card w-96 bg-base-100 shadow-xl m-64">
-		<div class="card-body items-center text-center">
+		<div class="card-body items-center text-center h-80">
 			<h2 class="card-title justify-center">Basic Package</h2>
 			<p>Subscribe and help keep the lights on</p>
 			<div>

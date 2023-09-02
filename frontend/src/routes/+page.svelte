@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="hero min-h-screen bg-gradient-to-b from-blue-500 to-silver-500">
+	<div class="hero min-h-screen bg-slate-100">
 		<div class="hero-content text-center">
 			<div class="max-w-full">
 				<h1 class="text-5xl font-bold mb-5">Why Choose Us</h1>

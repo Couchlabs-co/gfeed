@@ -4,6 +4,10 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
-<Header />
-<slot />
-<Footer />
+<div class="container mx-auto">
+	<Header />
+	<div class="flex flex-col w-full m-0">
+		<slot />
+	</div>
+	<Footer />
+</div>
