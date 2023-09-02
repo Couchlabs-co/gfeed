@@ -3,10 +3,12 @@ import { ReadingFunctionsStack } from "./stacks/ReadingStack";
 import { FrontendStack } from "./stacks/FrontendStack";
 
 export default {
-  config(_input) {
+  config(input) {
     return {
       name: "reading-corner",
       region: "ap-southeast-2",
+      stage: input.stage,
+      profile: input.stage,
     };
   },
   stacks(app) {
