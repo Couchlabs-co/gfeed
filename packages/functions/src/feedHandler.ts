@@ -12,7 +12,6 @@ export async function main(event: SQSEvent) {
     const { publisher, feedUrl } = JSON.parse(records[0].body);
 
     const rssItems = await fetchRSSFeed(publisher, feedUrl);
-    console.log("rssItems: ", publisher, rssItems);
     for (const item of rssItems) {
       const feedItem = await formatItem(item, publisher);
       const putParams = new PutItemCommand({

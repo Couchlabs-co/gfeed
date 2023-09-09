@@ -10,12 +10,14 @@
     "@types/aws-lambda": "^8.10.119",
     "@types/node": "^20.5.1",
     "@types/node-fetch": "^2.6.4",
+    "@types/uuid": "^9.0.3",
     "sst": "^2.24.8"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.395.0",
     "@aws-sdk/client-sqs": "^3.398.0",
     "fast-xml-parser": "^4.2.7",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "uuid": "^9.0.0"
   }
 }
