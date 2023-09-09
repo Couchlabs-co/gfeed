@@ -5,6 +5,8 @@ import type { Handle } from '@sveltejs/kit';
 import { redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 
+const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET } = import.meta.env;
+
 async function authorization({ event, resolve }) {
   // Protect any routes under /authenticated
   const pathName = event.url.pathname;
@@ -25,10 +27,10 @@ const config: SvelteKitAuthConfig = {
     Auth0Provider({
       id: 'auth0',
       name: 'Auth0',
-      clientId: 'Nxjg0lVSumIu6prwLwuGTUpSzFbJIp3X',
-      clientSecret: 'ysESMzNsZxFNb_baHwzo2eZLD8ZRW7d2Z7kRiGO0kAp3Q5SR_o0xU9IzDal_3A5v',
-      issuer: 'https://readingcorner.au.auth0.com/',  // <- remember to add trailing `/` 
-      wellKnown: 'https://readingcorner.au.auth0.com/.well-known/openid-configuration'
+      clientId: VITE_AUTH0_CLIENT_ID,
+      clientSecret: VITE_CLIENT_SECRET,
+      issuer: `https://${VITE_AUTH0_DOMAIN}/`,  // <- remember to add trailing `/` 
+      wellKnown: `https://${VITE_AUTH0_DOMAIN}/.well-known/openid-configuration`
     }) as Provider
   ],
   secret: '-any-random-string-',

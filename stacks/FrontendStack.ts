@@ -16,6 +16,10 @@ export function FrontendStack({ stack }: StackContext) {
     value: process.env.AUTH0_AUDIENCE ?? '',
   });
 
+  const ClientSecret = new Config.Parameter(stack, "AUTH0_CLIENT_SECRET", {
+    value: process.env.AUTH0_CLIENT_SECRET ?? '',
+  });
+
   const FeedAPI = new Api(stack, "feedAPI", {
     defaults: {
       function: {
@@ -41,6 +45,7 @@ export function FrontendStack({ stack }: StackContext) {
       VITE_API_URL: FeedAPI.url,
       VITE_AUTH0_DOMAIN: Auth0Domain.value,
       VITE_AUTH0_CLIENT_ID: Auth0ClientId.value,
+      VITE_CLIENT_SECRET: ClientSecret.value,
     },
     bind: [FeedAPI, Auth0Domain, Auth0ClientId],
   });
