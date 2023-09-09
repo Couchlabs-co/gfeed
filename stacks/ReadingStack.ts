@@ -1,11 +1,12 @@
-import { Cron, StackContext, Table, Queue, Function, Api, SvelteKitSite } from "sst/constructs";
+import { Cron, StackContext, Table, Queue, Function } from "sst/constructs";
 
 export function ReadingFunctionsStack({ stack }: StackContext) {
+  
   const FeedQueue = new Queue(stack, "Queue", {
     consumer: "packages/functions/src/feedHandler.main",
     cdk: {
       queue: {
-        queueName: "FeedQueue",
+        queueName: `FeedQueue-${stack.stage}`,
       },
     },
   });
@@ -27,9 +28,15 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
       id: "string",
       userId: "string",
       interest: "string",
+      type: "string",
+      action: "string",
     },
-    primaryIndex: { partitionKey: "userId" },
-    globalIndexes: { interestIndex: { partitionKey: "interest" } },
+    primaryIndex: { partitionKey: "userId", sortKey: "interest" },
+    globalIndexes: { 
+      interestIndex: { partitionKey: "interest" }, 
+      typeIndex: { partitionKey: "type" }, 
+      actionIndex: { partitionKey: "action" } 
+    },
   });
 
   const BookmarkTable = new Table(stack, "Bookmark", {
@@ -51,6 +58,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
 
   const ItemsTable = new Table(stack, "item", {
     fields: {
+      id: "string",
       publishedDate: "string",
       title: "string",
       author: "string",
@@ -61,7 +69,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
       description: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "pubDate" },
-    globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "pubDate" } },
+    globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "pubDate" }, titleIndex: { partitionKey: "title" } },
   });
 
   const FeedCron = new Cron(stack, "FeedCron", {
