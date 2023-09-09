@@ -8,7 +8,6 @@ export default {
       name: "reading-corner",
       region: "ap-southeast-2",
       stage: input.stage,
-      profile: input.stage,
     };
   },
   stacks(app) {
