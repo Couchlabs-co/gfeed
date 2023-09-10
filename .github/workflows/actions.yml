@@ -1,5 +1,5 @@
 name: reading-corner-web
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ReadingCorner Web
 
 on:
   push:
