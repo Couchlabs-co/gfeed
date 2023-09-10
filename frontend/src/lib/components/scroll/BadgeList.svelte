@@ -3,7 +3,7 @@
 </script>
 
 {#if category}
-    <div class="badge badge-primary">
+    <span class="badge badge-neutral badge-outline m-1">
         {category}
-    </div>
+    </span>
 {/if}
