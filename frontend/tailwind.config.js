@@ -8,7 +8,21 @@ export default {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ["light", "dark", "cupcake"],
+    themes: [
+      {
+        mytheme: {
+          "primary": "#b8ffb2",
+          "secondary": "#57b709",
+          "accent": "#0a876e",
+          "neutral": "#242230",
+          "base-100": "#e3e6f2",
+          "info": "#3858f5",
+          "success": "#71e0c0",
+          "warning": "#b96704",
+          "error": "#fa4d47",
+        },
+      },
+    ],
     darkTheme: "dark", // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components
