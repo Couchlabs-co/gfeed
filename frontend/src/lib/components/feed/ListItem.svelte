@@ -2,7 +2,7 @@
     import Badges from "./BadgeList.svelte";
     import SocialButtons from "./SocialButtons.svelte";
 
-    export let actionToast: any;
+    // export let actionToast: any;
 
     export let Item = {
         title: "Title",
@@ -26,21 +26,19 @@
             }),
         });
         const data = await res.json();
-        $:actionToast = data;
-        console.log('response............', JSON.stringify(data), actionToast);
     }
 
 </script>
 
 <div class="flex flex-col gap-x-2 rounded-md border border-black m-2">
     <div class="flex flex-col flex-wrap justify-between p-3 leading-normal">
-        {#if actionToast && actionToast.msg == "Success"}
+        <!-- {#if actionToast && actionToast.msg == "Success"}
         <div class="toast toast-top toast-center">
             <div class="alert alert-success">
               <span>Noted.</span>
             </div>
           </div>
-        {/if}
+        {/if} -->
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">
             {Item.title}
         </h5>
@@ -55,7 +53,7 @@
             </p>
         </div>
         {#if Item.category}
-            <div class="flex flex-1 flex-row space-x-1 m-1">
+            <div class="flex flex-wrap flex-row space-x-1 m-1">
                 {#each Item.category.split(",") as cat}
                     <Badges category={cat} />
                 {/each}

@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { signIn, signOut } from '@auth/sveltekit/client';
 	import { page } from "$app/stores";
-</script>	
-<!-- <div class="container mx-auto"> -->
+
+	const navLinks = [
+		{ name: 'Feed', href: '/rcfeed' },
+		{ name: 'About', href: '/about' },
+		{ name: 'Pricing', href: '/pricing' },
+		{ name: 'Profile', href: '/profile' },
+	];
+
+</script>
+
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center">
@@ -39,32 +47,20 @@
 			<ul
 				class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
 			>
+			{#each navLinks as link}
 				<li>
 					<a
-						href="/scroll"
+						href={link.href}
 						class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-						aria-current="page">Scroll</a
+						aria-current="page">{link.name}</a
 					>
 				</li>
-				<li>
-					<a
-						href="/"
-						class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-						>About</a
-					>
-				</li>
-				<li>
-					<a
-						href="/pricing"
-						class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-						>Pricing</a
-					>
-				</li>
-				{#if $page.data.session}
-    				{#if $page.data.session.user?.name}
+			{/each}
+				{#if Object.keys($page.data.session || {}).length}
+    				{#if $page.data.session?.user?.name}
 						<li>
 							<button type="button" on:click={() => signOut({
-								callbackUrl: 'http://localhost:5173',
+								callbackUrl: $page.url.origin,
 							})} class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
 								Log Out
 							</button>
@@ -74,26 +70,18 @@
 					<li>
 						<button type="button" on:click={() => signIn(
 							'auth0', {
-							redirect: false,
-							callbackUrl: $page.url,
+								redirect: false,
+								callbackUrl: $page.url.pathname,
 							},
 							{
-							scope: 'api openid profile email'
+								scope: 'api openid profile email offline_access'
 							}
 						)} class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
 							Log In
 						</button>
 					</li>
 				{/if}
-				<li>
-					<a
-						href="/profile"
-						class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-						>Profile</a
-					>
-				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
-<!-- </div> -->

@@ -5,7 +5,7 @@
 			<p>Subscribe and help keep the lights on</p>
 			<div>
 				<span class="text-3xl">$</span>
-				<span class="text-5xl font-bold">20</span>
+				<span class="text-5xl font-bold">5</span>
 				<span class="text-2xl text-gray-500">/mo</span>
 			</div>
 			<div class="card-actions justify-center">

@@ -27,7 +27,6 @@ export const handler = ApiHandler(async (evt) => {
       });
       let { Count, Items } = await dbClient.send(command);
       result.Count += Count ?? 0;
-      console.log("Items: ", Items?.length);
       result.Items = result.Items.concat(Items);
     })
   );
