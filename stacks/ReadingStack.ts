@@ -73,7 +73,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
   });
 
   const FeedCron = new Cron(stack, "FeedCron", {
-    schedule: "cron(0 12 * * ? *)",
+    schedule: "cron(0 */6 * * ? *)",
     job: "packages/functions/src/feedPublisher.main",
   }).bind([FeedTable, FeedQueue]);
 
