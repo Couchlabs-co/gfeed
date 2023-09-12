@@ -11,6 +11,7 @@
         publisher: "Publisher",
         description: "Description",
         category: "Cat1, Cat2",
+        link: "",
     };
 
     async function userAction(title: string, action: string, type: string) {
@@ -40,7 +41,7 @@
           </div>
         {/if} -->
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">
-            {Item.title}
+            <a href={Item.link} class="link link-hover" target="_blank">{Item.title}</a>
         </h5>
         <div class="flex-1 min-w-0">
             <p
