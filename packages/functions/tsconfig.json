@@ -6,6 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@cron-job/core/*": ["../core/src/*"]
-    }
+    },
+    "resolveJsonModule": true,
   }
 }

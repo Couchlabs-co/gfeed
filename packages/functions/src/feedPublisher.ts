@@ -10,7 +10,7 @@ const sqs = new SQSClient({
 
 export async function main() {
   const scanCommand = new ScanCommand({
-    TableName: Table.Feed.tableName,
+    TableName: Table.feed.tableName,
     ProjectionExpression: "publisher, feedUrl",
   });
 

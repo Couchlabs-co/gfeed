@@ -1,7 +1,7 @@
 import { AttributeValue } from "@aws-sdk/client-dynamodb";
 import * as uuid from "uuid";
 
-export const formatItem = (item: any, publisher: string) => {
+export const formatItem = (item: any, publisher: string): Record<any, AttributeValue> => {
   let categories = "";
   if (item.category && item.category.length > 1 && typeof item.category !== "string") {
     categories = item.category.join(",");

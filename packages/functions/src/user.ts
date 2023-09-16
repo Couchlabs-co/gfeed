@@ -3,7 +3,7 @@ import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import * as uuid from "uuid";
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
+import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 interface UserAction {
   title: string;
@@ -24,7 +24,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    const userInterestsTable = Table.UsersInterest.tableName;
+    const userInterestsTable = Table.interests.tableName;
     const command: PutItemCommand = new PutItemCommand({
       TableName: userInterestsTable,
       Item: {

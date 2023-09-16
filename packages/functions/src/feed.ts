@@ -18,7 +18,7 @@ export const handler = ApiHandler(async (evt) => {
   await Promise.all(
     keys.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
-        TableName: Table.item.tableName,
+        TableName: Table.article.tableName,
         KeyConditionExpression: "publishedDate = :publishedDate",
         ExpressionAttributeValues: {
           ":publishedDate": { S: key },
