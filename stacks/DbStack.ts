@@ -1,21 +1,11 @@
-import { Cron, StackContext, Table, Queue, Function } from "sst/constructs";
+import { StackContext, Table } from "sst/constructs";
 
-export function ReadingFunctionsStack({ stack }: StackContext) {
-  
-  const FeedQueue = new Queue(stack, "Queue", {
-    consumer: "packages/functions/src/feedHandler.main",
-    cdk: {
-      queue: {
-        queueName: `FeedQueue-${stack.stage}`,
-      },
-    },
-  });
+export function DbStack({ stack }: StackContext) {
 
-  const UserTable = new Table(stack, "User", {
+  const UserTable = new Table(stack, "user", {
     fields: {
       id: "string",
-      firstName: "string",
-      lastName: "string",
+      name: "string",
       email: "string",
       channel: "string",
     },
@@ -23,7 +13,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     globalIndexes: { channelIndex: { partitionKey: "channel" } },
   });
 
-  const UsersInterestTables = new Table(stack, "UsersInterest", {
+  const UsersInterestTable = new Table(stack, "interests", {
     fields: {
       id: "string",
       userId: "string",
@@ -39,7 +29,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     },
   });
 
-  const BookmarkTable = new Table(stack, "Bookmark", {
+  const BookmarkTable = new Table(stack, "bookmark", {
     fields: {
       userId: "string",
       postId: "string",
@@ -47,7 +37,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "userId" },
   });
 
-  const FeedTable = new Table(stack, "Feed", {
+  const FeedTable = new Table(stack, "feed", {
     fields: {
       id: "string",
       publisher: "string",
@@ -56,7 +46,7 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" },
   });
 
-  const ItemsTable = new Table(stack, "item", {
+  const ArticleTable = new Table(stack, "article", {
     fields: {
       id: "string",
       publishedDate: "string",
@@ -72,26 +62,11 @@ export function ReadingFunctionsStack({ stack }: StackContext) {
     globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "pubDate" }, titleIndex: { partitionKey: "title" } },
   });
 
-  const FeedCron = new Cron(stack, "FeedCron", {
-    schedule: "cron(0 */6 * * ? *)",
-    job: "packages/functions/src/feedPublisher.main",
-  }).bind([FeedTable, FeedQueue]);
-
-  const FeedHandler = new Function(stack, "FeedHandler", {
-    handler: "packages/functions/src/feedHandler.main",
-    bind: [ItemsTable, FeedQueue],
-  });
-
-  FeedQueue.bind([ItemsTable]);
-
   return {
-    ItemsTable,
+    ArticleTable,
     FeedTable,
-    FeedQueue,
-    FeedCron,
-    FeedHandler,
     UserTable,
-    UsersInterestTables,
+    UsersInterestTable,
     BookmarkTable
   };
 }

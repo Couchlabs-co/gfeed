@@ -1,9 +1,11 @@
 import { SSTConfig } from "sst";
-import { ReadingFunctionsStack } from "./stacks/ReadingStack";
-import { FrontendStack } from "./stacks/FrontendStack";
+import { ApiStack } from "./stacks/ApiStack";
+import { DbStack } from "./stacks/DbStack";
+import { WebStack } from "./stacks/WebStack";
+import { FunctionStack } from "./stacks/FunctionStack";
 
 export default {
-  config(input) {
+  config  (input) {
     return {
       name: "reading-corner",
       region: "ap-southeast-2",
@@ -12,11 +14,17 @@ export default {
   },
   stacks(app) {
     app
-      .stack(ReadingFunctionsStack, {
-        stackName: `${app.stage}-reading-functions`,
+      .stack(DbStack, {
+        stackName: `${app.stage}-db`,
       })
-      .stack(FrontendStack, {
-        stackName: `${app.stage}-frontend`,
+      .stack(ApiStack, {
+        stackName: `${app.stage}-api`,
+      })
+      .stack(FunctionStack, {
+        stackName: `${app.stage}-functions`,
+      })
+      .stack(WebStack, {
+        stackName: `${app.stage}-web`,
       });
     if (app.stage !== "prod") {
       app.setDefaultRemovalPolicy("destroy");
