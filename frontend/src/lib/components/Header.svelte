@@ -4,11 +4,17 @@
 	import ProfilePic from '../components/ProfileHeader.svelte';
 
 	const navLinks = [
-		{ name: 'Feed', href: '/rcfeed' },
-		{ name: 'About', href: '/about' },
-		{ name: 'Pricing', href: '/pricing' },
-		{ name: 'Profile', href: '/profile' },
+		{ name: 'Feed', href: 'rcfeed' },
+		{ name: 'About', href: 'about' },
+		{ name: 'Pricing', href: 'pricing' },
+		{ name: 'Profile', href: 'profile' },
 	];
+
+	const SignOut = () => {
+		signOut({
+			callbackUrl: `${$page.url.origin}`,
+		});
+	};
 
 </script>
 
@@ -26,18 +32,16 @@
 			{#each navLinks as link}
 				<li>
 					<a
-						href={link.href}
+						href='{link.href}'
+						on:focus={() => console.log('focus')}
 						class="text-sm font-semibold leading-6 text-gray-900"
-						aria-current="page">{link.name}</a
-					>
+						aria-current="page">{link.name}</a>
 				</li>
 			{/each}
 			{#if Object.keys($page.data.session || {}).length}
-				{#if $page.data.session?.user?.name}
+				{#if $page.data.session?.user}
 					<li>
-						<button type="button" on:click={() => signOut({
-							callbackUrl: $page.url.origin,
-						})} class="text-sm font-semibold leading-6 text-gray-900">
+						<button type="button" on:click={SignOut} class="text-sm font-semibold leading-6 text-gray-900">
 							Log Out
 						</button>
 					</li>
@@ -47,7 +51,7 @@
 					<button type="button" on:click={() => signIn(
 						'auth0', {
 							redirect: false,
-							callbackUrl: $page.url.pathname,
+							callbackUrl: `${$page.url.origin}`,
 						},
 						{
 							scope: 'api openid profile email offline_access'
