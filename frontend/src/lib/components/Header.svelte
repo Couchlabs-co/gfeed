@@ -35,7 +35,8 @@
 						href='{link.href}'
 						on:focus={() => console.log('focus')}
 						class="text-sm font-semibold leading-6 text-gray-900"
-						aria-current="page">{link.name}</a>
+						aria-current="page"
+						data-sveltekit-preload-data="off">{link.name}</a>
 				</li>
 			{/each}
 			{#if Object.keys($page.data.session || {}).length}
