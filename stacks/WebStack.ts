@@ -21,6 +21,7 @@ export function WebStack({ stack }: StackContext) {
   });
 
   const Site = new SvelteKitSite(stack, "site", {
+    // customDomain: "jasdeep.me",
     runtime: "nodejs18.x",
     path: "./frontend",
     buildCommand: "pnpm run build",

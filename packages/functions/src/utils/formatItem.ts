@@ -4,7 +4,7 @@ import * as uuid from "uuid";
 export const formatItem = (item: any, publisher: string): Record<any, AttributeValue> => {
   let categories = "";
   if (item.category && item.category.length > 1 && typeof item.category !== "string") {
-    categories = item.category.join(",");
+    categories = item.category.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat).join(',') ;
   } else if (item.category && typeof item.category === "string") {
     categories = item.category;
   }
