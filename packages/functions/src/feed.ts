@@ -42,7 +42,7 @@ export const handler = ApiHandler(async (evt) => {
       author: item.author.S,
       description: item.description.S && decodeURI(item.description.S),
       guid: item.guid.S && decodeURI(item.guid.S),
-      publisher: item.publisher.S,
+      publisher: item.publisher?.S,
       category: item.category?.S ?? "",
     });
   }
