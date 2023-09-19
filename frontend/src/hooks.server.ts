@@ -24,7 +24,6 @@ async function authorization({ event, resolve }): Promise<any> {
 }
 
 const handleAuth = (async (...args) => {
-	// const [{ event }] = args;
 	return SvelteKitAuth({
     trustHost: true,
     providers: [
@@ -51,22 +50,24 @@ const handleAuth = (async (...args) => {
       }) as Provider
     ],
     secret: '-any-random-string-',
-    debug: true,
+    debug: false,
     session: {
-      maxAge: 1800 // 30 mins
+      maxAge: 1800,// 30 mins 
     },
     callbacks: {
-      async jwt({account, token, user, profile}) {
+      async jwt({account, token, profile, user, session}) {
+        console.log('jwt', account, profile, user, session);
         if (user) {
           token.user = user;
         }
         return token;
       },
-      async session({session, token, user}) {
+      async session({session, token}) {
         if(token.user) {
           session.user = token.user;
         }
-        return session;
+        console.log('session', session);
+			  return session;
       }
     }
   })(...args);
