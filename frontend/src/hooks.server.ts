@@ -55,8 +55,7 @@ const handleAuth = (async (...args) => {
       maxAge: 1800,// 30 mins 
     },
     callbacks: {
-      async jwt({account, token, profile, user, session}) {
-        console.log('jwt', account, profile, user, session);
+      async jwt({token, user}) {
         if (user) {
           token.user = user;
         }
@@ -76,6 +75,7 @@ const handleAuth = (async (...args) => {
 export const handleError: HandleServerError = async ({ error, event }) => {
   const errorId = crypto.randomUUID();
   // example integration with https://sentry.io/
+  console.log('error', error);
 
   return {
       message: 'Whoops!',
