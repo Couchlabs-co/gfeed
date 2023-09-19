@@ -16,7 +16,29 @@ export async function main(event: SQSEvent) {
       const feedItem = await formatItem(item, publisher);
       const putParams = new UpdateItemCommand({
         TableName: tableName,
-        Key: feedItem,
+        Key: {
+          publishedDate: feedItem.publishedDate,
+          guid: feedItem.guid,
+        },
+        UpdateExpression: "set #title = :title, #link = :link, #author = :author, #category = :category, #pubDate = :pubDate, #description = :description, #publisher = :publisher",
+        ExpressionAttributeNames: {
+          "#title": "title",
+          "#link": "link",
+          "#author": "author",
+          "#category": "category",
+          "#pubDate": "pubDate",
+          "#description": "description",
+          "#publisher": "publisher",
+        },
+        ExpressionAttributeValues: {
+          ":title": feedItem.title,
+          ":link": feedItem.link,
+          ":author": feedItem.author,
+          ":category": feedItem.category,
+          ":pubDate": feedItem.pubDate,
+          ":description": feedItem.description,
+          ":publisher": feedItem.publisher,
+        },
         ReturnValues: "ALL_NEW",
       });
       await dbClient.send(putParams);

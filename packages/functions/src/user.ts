@@ -49,5 +49,4 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     };
   }
 
-  
 });

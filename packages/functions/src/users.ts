@@ -25,10 +25,24 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       email: { S: user.email },
       channel: { S: channel },
     };
-    const command = new PutItemCommand({
+    const command = new UpdateItemCommand({
       TableName: userTable,
-      Item: userRecord,
-      ReturnValues: "ALL_OLD",
+      Key: {
+        email: { S: user.email },
+      },
+      UpdateExpression: "set #id = :id, #name = :name, #email = :email, #channel = :channel",
+      ExpressionAttributeNames: {
+        "#id": "id",
+        "#name": "name",
+        "#email": "email",
+        "#channel": "channel",
+      },
+      ExpressionAttributeValues: {
+        ":name": user.name, 
+        ":email": user.email,
+        ":channel": channel,
+      },
+      ReturnValues: "ALL_NEW",
     });
 
     const res = await dbClient.send(command);
