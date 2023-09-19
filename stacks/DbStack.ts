@@ -25,7 +25,8 @@ export function DbStack({ stack }: StackContext) {
     globalIndexes: { 
       interestIndex: { partitionKey: "interest" }, 
       typeIndex: { partitionKey: "type" }, 
-      actionIndex: { partitionKey: "action" } 
+      actionIndex: { partitionKey: "action" },
+      userIndex: { partitionKey: "userId" },
     },
   });
 
@@ -57,9 +58,10 @@ export function DbStack({ stack }: StackContext) {
       pubDate: "number",
       guid: "string",
       description: "string",
+      publisher: "string",
     },
-    primaryIndex: { partitionKey: "publishedDate", sortKey: "pubDate" },
-    globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "pubDate" }, titleIndex: { partitionKey: "title" } },
+    primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
+    globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "guid" }, titleIndex: { partitionKey: "title" }, publisherIndex: { partitionKey: "publisher" } },
   });
 
   return {
