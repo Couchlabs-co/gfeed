@@ -12,12 +12,12 @@ describe("feedHandler", () => {
         return {
             ok: true,
             text: () => {
-                const xmlFile = fs.readFileSync('./mocks/wiredRSS.xml', 'utf8');
+                const xmlFile = fs.readFileSync('./__mocks__/overreacted.xml', 'utf8');
                 return new Promise((resolve, reject) => {
                     resolve(xmlFile);
                 });
             }
-        }
+        };
     });
 
     beforeEach(() => {
@@ -28,8 +28,17 @@ describe("feedHandler", () => {
         vi.restoreAllMocks()
     })
 
-    it("parse wired xml feed", async () => {
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Wired', feedUrl: 'https://www.wired.com/feed/rss' });
+    // it("parse wired xml feed", async () => {
+    //     sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Wired', feedUrl: 'https://www.wired.com/feed/rss' });
+    //     mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+    //     const event = sqsEvent as SQSEvent;
+    //     const response = await main(event);
+    //     console.log('response', response);
+    //     expect(response).toBeTruthy();
+    // });
+
+    it("parse overreacted xml feed", async () => {
+        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Overreacted', feedUrl: 'https://overreacted.io/rss.xml' });
         mockDynamoDBClient.on(UpdateItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
