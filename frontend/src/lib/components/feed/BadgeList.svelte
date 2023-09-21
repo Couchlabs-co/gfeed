@@ -1,9 +1,9 @@
 <script lang="ts">
-    export let category = '';
+    export let keyword = '';
 </script>
 
-{#if category}
+{#if keyword}
     <span class="badge badge-neutral badge-outline m-1">
-        {category}
+        {keyword}
     </span>
 {/if}

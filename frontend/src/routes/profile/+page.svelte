@@ -21,7 +21,6 @@
 	  
 				<p>
 				 <span class="text-2xl font-bold text-gray-900">{$page.data.session?.user?.name}</span>
-				 <span class="text-2xl font-bold text-gray-900">{$page.data.session?.user?.id}</span>
 				</p>
 				<ul class="menu w-56 rounded-box mt-4">
 					<li>

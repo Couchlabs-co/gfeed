@@ -65,7 +65,6 @@ const handleAuth = (async (...args) => {
         if(token.user) {
           session.user = token.user;
         }
-        console.log('session', session);
 			  return session;
       }
     }

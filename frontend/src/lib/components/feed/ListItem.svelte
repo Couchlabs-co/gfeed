@@ -1,6 +1,6 @@
 <script lang="ts">
     import Badges from "./BadgeList.svelte";
-    import SocialButtons from "./SocialButtons.svelte";
+    // import SocialButtons from "./SocialButtons.svelte";
 
     // export let actionToast: any;
 
@@ -9,8 +9,8 @@
         author: "Author",
         pubDate: "Pub Date",
         publisher: "Publisher",
-        description: "Description",
-        category: "Cat1, Cat2",
+        content: "Content",
+        keywords: "Cat1, Cat2",
         link: "",
     };
 
@@ -44,19 +44,17 @@
             <a href={Item.link} class="link link-hover" target="_blank">{Item.title}</a>
         </h5>
         <div class="flex-1 min-w-0">
-            <p
-                class="text-md font-medium text-gray-600 truncate hover:text-gray-400"
-            >
-            {Item.publisher} - {Item.author} on {Item.pubDate}
-            </p>
+            <span class="text-md font-medium text-gray-600 truncate hover:text-amber-800">
+                <h3>{Item.author}</h3> - {Item.publisher} on {Item.pubDate}
+            </span>
             <p class="mb-3 font-normal text-black line-clamp-2">
-                {@html Item.description}
+                {@html Item.content}
             </p>
         </div>
-        {#if Item.category}
+        {#if Item.keywords}
             <div class="flex flex-wrap flex-row space-x-1 m-1">
-                {#each Item.category.split(",") as cat}
-                    <Badges category={cat} />
+                {#each Item.keywords.split(",") as keyword}
+                    <Badges keyword={keyword} />
                 {/each}
             </div>
         {/if}
