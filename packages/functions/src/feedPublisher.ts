@@ -11,7 +11,11 @@ const sqs = new SQSClient({
 export async function main() {
   const scanCommand = new ScanCommand({
     TableName: Table.feed.tableName,
-    ProjectionExpression: "publisher, feedUrl",
+    ProjectionExpression: "publisher, feedUrl, feedType",
+    FilterExpression: "feedStatus = :status",
+    ExpressionAttributeValues: {
+      ":status": { S: "active" },
+    },
   });
 
   const result = await dbClient.send(scanCommand);
