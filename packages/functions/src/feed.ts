@@ -40,10 +40,10 @@ export const handler = ApiHandler(async (evt) => {
       link: item.link.S && decodeURI(item.link.S),
       pubDate: item.pubDate.N,
       author: item.author.S,
-      description: item.description.S && decodeURI(item.description.S),
+      content: item.content.S && decodeURI(item.content.S),
       guid: item.guid.S && decodeURI(item.guid.S),
       publisher: item.publisher?.S,
-      category: item.category?.S ?? "",
+      keywords: item.keywords?.S ?? "",
     });
   }
 

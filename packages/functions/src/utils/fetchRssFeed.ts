@@ -1,17 +1,12 @@
-import { XMLParser } from "fast-xml-parser";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
+import Parser from 'rss-parser';
+
 
 const fetchStandardXMLRSSFeed = async (feedUrl: string) => {
   try {
-    const response = await fetch(feedUrl);
-    if (!response.ok) {
-      throw new Error("Failed to fetch RSS feed");
-    }
-    const parser = new XMLParser();
-    const xmlDocument = await response.text();
-    let jObj = parser.parse(xmlDocument);
-    const rssItems = jObj.rss.channel.item;
-    return rssItems;
+    let parser = new Parser();
+    const feed = await parser.parseURL(feedUrl);
+    return feed.items;
   } catch (error) {
     console.error("Error fetching RSS feed:", error);
     return [];

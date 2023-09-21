@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>TechCrunch</title>
+	<atom:link href="https://techcrunch.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://techcrunch.com/</link>
+	<description>Startup and Technology News</description>
+	<lastBuildDate>Thu, 21 Sep 2023 12:03:10 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+
+<image>
+	<url>https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png?w=32</url>
+	<title>TechCrunch</title>
+	<link>https://techcrunch.com/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Harness launches Gitness, an open-source GitHub competitor</title>
+		<link>https://techcrunch.com/2023/09/21/oh-gitness-harness-launches-gitness-an-open-source-github-competitor/</link>
+		
+		<dc:creator><![CDATA[Frederic Lardinois]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 13:00:37 +0000</pubDate>
+				<category><![CDATA[Enterprise]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[GitOps]]></category>
+		<category><![CDATA[Harness]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603981</guid>
+
+					<description><![CDATA[Since its launch in 2017, Harness, the software delivery platform founded by AppDynamics co-founder and CEO Jyoti Bansal, expanded from being continuous code deployment to covering continuous integration, feature flags, cloud cost management, security testing orchestration, chaos engineering and more. But even though it focused heavily on GitOps, it never offered its own Git repositories. [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Mesh, which helps people manage their digital assets, raises $22M</title>
+		<link>https://techcrunch.com/2023/09/21/mesh-which-helps-people-manage-their-digital-assets-raises-22m/</link>
+		
+		<dc:creator><![CDATA[Kyle Wiggers]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 13:00:30 +0000</pubDate>
+				<category><![CDATA[Apps]]></category>
+		<category><![CDATA[Crypto]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[App]]></category>
+		<category><![CDATA[crypto]]></category>
+		<category><![CDATA[digital assets]]></category>
+		<category><![CDATA[mesh]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[tc disrupt]]></category>
+		<category><![CDATA[TC Disrupt 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<category><![CDATA[Wallet]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603612</guid>
+
+					<description><![CDATA[Mesh (formerly Front Finance), a startup developing a service to help customers transfer and manage digital assets like crypto, has raised $22 million in a Series A funding round led by Money Forward with participation from Galaxy, Samsung Next, Streamlined  Ventures, SNR.VC, Hike VC, Heitner Group, Valon Capital, Florida Funders, Altair Capital, Network VC and [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>True Anomaly lands $17.4M contract from U.S. Space Force for space domain awareness tech</title>
+		<link>https://techcrunch.com/2023/09/21/true-anomaly-lands-17-4m-contract-from-u-s-space-force-for-space-domain-awareness-tech/</link>
+		
+		<dc:creator><![CDATA[Aria Alamalhodaei]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 13:00:12 +0000</pubDate>
+				<category><![CDATA[Space]]></category>
+		<category><![CDATA[True Anomaly]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2600740</guid>
+
+					<description><![CDATA[True Anomaly has landed a $17.4 million contract from the U.S. Space Force Space Systems Command to help the warfighter make critical decisions in the space domain. The startup, which was founded less than two years ago, is tasked with developing a suite of space domain awareness (SDA) capabilities for the Space Force. The 48-month-long [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>7 global investors discuss African tech post-Kauffman Fellows’ first summit on the continent</title>
+		<link>https://techcrunch.com/2023/09/21/7-global-investors-discuss-african-tech-post-kauffman-fellows-first-summit-on-the-continent/</link>
+		
+		<dc:creator><![CDATA[Tage Kene-Okafor]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 12:03:10 +0000</pubDate>
+				<category><![CDATA[Venture]]></category>
+		<category><![CDATA[africa]]></category>
+		<category><![CDATA[kauffman fellows]]></category>
+		<category><![CDATA[meg whitman]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603223</guid>
+
+					<description><![CDATA[In 2020, Kauffman Fellows (KF), a prominent venture education program renowned for its extensive and well-established network of VCs, made a concerted effort to enhance the diversity within its board. The program, a well-established resource for startup founders and the venture capital sector, expressed the importance of using this strategy to sustain diversity growth within [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Poland opens privacy probe of ChatGPT following GDPR complaint</title>
+		<link>https://techcrunch.com/2023/09/21/poland-chatgpt-gdpr-complaint-probe/</link>
+		
+		<dc:creator><![CDATA[Natasha Lomas]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 11:26:57 +0000</pubDate>
+				<category><![CDATA[AI]]></category>
+		<category><![CDATA[Privacy]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2604041</guid>
+
+					<description><![CDATA[OpenAI is facing another investigation into whether its generative AI chatbot, ChatGPT, complies with European Union privacy laws. Last month a complaint was filed against ChatGPT and OpenAI in Poland, accusing the company of a string of breaches of the EU&#8217;s General Data Protection Regulation (GDPR). Yesterday the Polish authority took the unusual step of [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Khosla-backed HealthifyMe introduces AI-powered image recognition for Indian food</title>
+		<link>https://techcrunch.com/2023/09/21/khosla-backed-healthifyme-introduces-ai-powered-image-recognition-for-indian-food/</link>
+		
+		<dc:creator><![CDATA[Ivan Mehta]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 10:00:12 +0000</pubDate>
+				<category><![CDATA[AI]]></category>
+		<category><![CDATA[Apps]]></category>
+		<category><![CDATA[calorie counter]]></category>
+		<category><![CDATA[food]]></category>
+		<category><![CDATA[HealthifyMe]]></category>
+		<category><![CDATA[image recognition]]></category>
+		<category><![CDATA[india]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2604012</guid>
+
+					<description><![CDATA[Indian health and wellness startup HealthifyMe has introduced an AI-powered feature that automatically recognizes Indian food from images for calorie intake logging, allowing users to track their meal intake more efficiently. Tracking Indian foods through images is challenging given there is a vast variety of cuisines. Also, a number of people eat on a plate [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Waabi and Uber Freight partner to accelerate autonomous trucking</title>
+		<link>https://techcrunch.com/2023/09/21/waabi-and-uber-freight-partner-to-accelerate-autonomous-trucking/</link>
+		
+		<dc:creator><![CDATA[Rebecca Bellan]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 09:00:03 +0000</pubDate>
+				<category><![CDATA[Transportation]]></category>
+		<category><![CDATA[autonomous trucking]]></category>
+		<category><![CDATA[uber freight]]></category>
+		<category><![CDATA[Waabi]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603996</guid>
+
+					<description><![CDATA[Autonomous trucking startup Waabi is committing billions of miles of driverless capacity to the Uber Freight network as part of a 10-year strategic partnership between the two companies. Starting this week, Waabi&#8217;s test fleet will begin commercial pilots with shippers on the Uber Freight network to haul goods between Dallas and Houston. Ultimately, Waabi will [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Here are the 6 finalists of Startup Battlefield at Disrupt 2023</title>
+		<link>https://techcrunch.com/2023/09/20/here-are-the-6-finalists-of-startup-battlefield-at-disrupt-2023/</link>
+		
+		<dc:creator><![CDATA[Neesha A. Tambe]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 02:00:39 +0000</pubDate>
+				<category><![CDATA[Startups]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603883</guid>
+
+					<description><![CDATA[During the last two days, 20 startups pitched their companies as part of TechCrunch Startup Battlefield at Disrupt 2023. These 20 companies were selected as the best of the Startup Battlefield 200 and competed for a chance to take home the Startup Battlefield Cup and $100,000. Expert judges asked the hard questions after the onstage [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Libra’s co-creator had geopolitical motivations to build the digital currency</title>
+		<link>https://techcrunch.com/2023/09/20/libra-facebook-crypto-political-motivations/</link>
+		
+		<dc:creator><![CDATA[Anna Heim]]></dc:creator>
+		<pubDate>Thu, 21 Sep 2023 00:55:22 +0000</pubDate>
+				<category><![CDATA[Crypto]]></category>
+		<category><![CDATA[Diem]]></category>
+		<category><![CDATA[EC Cryptocurrency]]></category>
+		<category><![CDATA[Facebook]]></category>
+		<category><![CDATA[Libra]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603970</guid>
+
+					<description><![CDATA[Concerns while building Libra weren't limited to China, though.]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Auctoria uses generative AI to create video game models</title>
+		<link>https://techcrunch.com/2023/09/20/auctoria-uses-generative-ai-to-create-video-game-models/</link>
+		
+		<dc:creator><![CDATA[Kyle Wiggers]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 23:45:20 +0000</pubDate>
+				<category><![CDATA[AI]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[Auctoria]]></category>
+		<category><![CDATA[Battlefield]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[Generative AI]]></category>
+		<category><![CDATA[models]]></category>
+		<category><![CDATA[SB200 2023]]></category>
+		<category><![CDATA[startup]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[Startup Battlefield 200]]></category>
+		<category><![CDATA[TC Disrupt 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<category><![CDATA[video games]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2601670</guid>
+
+					<description><![CDATA[Several years ago, Aleksander Caban, the co-founder of Carbon Studio, a Polish VR game developer, observed a major problem in modern game design. He had to create rocks, hills, paths and other basic elements of video game environments manually, which often turned out to be a time-consuming &#8212; and laborious &#8212; process. So Caban decided [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Cruise CEO says winter version of Origin AV is two years away</title>
+		<link>https://techcrunch.com/2023/09/20/cruise-ceo-says-winter-version-of-origin-av-is-two-years-away/</link>
+		
+		<dc:creator><![CDATA[Rebecca Bellan]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 23:21:51 +0000</pubDate>
+				<category><![CDATA[Transportation]]></category>
+		<category><![CDATA[cruise]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[Kyle Vogt]]></category>
+		<category><![CDATA[robotaxi]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603850</guid>
+
+					<description><![CDATA[Cruise is planning to build a winterized version of the Origin, the company&#8217;s autonomous vehicle model that is purpose-built without a steering wheel or pedals. &#8220;A couple of years from now, we&#8217;ll have a new version of our vehicles coming out that is adapted for cold weather,&#8221; said Cruise CEO Kyle Vogt onstage at TechCrunch [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>GitHub CEO: Despite AI gains, demand for software developers will still outweigh supply</title>
+		<link>https://techcrunch.com/2023/09/20/github-ceo-despite-ai-gains-demand-for-software-developers-will-still-outweigh-supply/</link>
+		
+		<dc:creator><![CDATA[Paul Sawers]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 22:54:55 +0000</pubDate>
+				<category><![CDATA[AI]]></category>
+		<category><![CDATA[Enterprise]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[GitHub]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<category><![CDATA[Thomas Dohmke]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603576</guid>
+
+					<description><![CDATA[GitHub CEO Thomas Dohmke says that while AI and software development are inextricably linked, this won't be the death knell for human coders.]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>PureSpace prevents spoiled produce by removing ripening gas</title>
+		<link>https://techcrunch.com/2023/09/20/purespace-prevents-spoiled-produce-by-removing-ripening-gas/</link>
+		
+		<dc:creator><![CDATA[Harri Weber]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 22:13:41 +0000</pubDate>
+				<category><![CDATA[Climate]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[AgTech]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2601306</guid>
+
+					<description><![CDATA[The UN estimates that about one-third of all food produced goes to waste before it even gets the chance to decompose in your fridge. That abysmal stat explains one key reason why leading VCs and celebrities have poured cash into companies that aim to prevent supply-chain food loss. There&#8217;s Apeel, which makes a protective coating [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Betweened wants to teach kids how to use social media, not shut them out of it</title>
+		<link>https://techcrunch.com/2023/09/20/betweened-disrupt-2023-startup-battlefield-200-social-media/</link>
+		
+		<dc:creator><![CDATA[Morgan Sung]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 21:26:21 +0000</pubDate>
+				<category><![CDATA[Social]]></category>
+		<category><![CDATA[Battlefield]]></category>
+		<category><![CDATA[Betweened]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[Startup Battlefield 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2601507</guid>
+
+					<description><![CDATA[Keeping kids off social media is idealistic at best, and giving them access to it opens a Pandora’s box of privacy concerns.]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>MakersHub deciphers accounts payable data so construction companies don’t have to</title>
+		<link>https://techcrunch.com/2023/09/20/makershub-accounts-payable-data-construction-battlefield/</link>
+		
+		<dc:creator><![CDATA[Christine Hall]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 21:15:58 +0000</pubDate>
+				<category><![CDATA[Enterprise]]></category>
+		<category><![CDATA[Fintech]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[Battlefield]]></category>
+		<category><![CDATA[construction tech]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[MakersHub]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[Startup Battlefield 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2600871</guid>
+
+					<description><![CDATA[MakersHub's WiseVision technology extracts and contextualizes all data on bills and receipts, including every line item and data field.]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>JB Straubel talks Tesla, Redwood Materials and keeping a startup mentality at any scale</title>
+		<link>https://techcrunch.com/2023/09/20/j-b-straubel-talks-tesla-redwood-materials-and-keeping-a-startup-mentality-at-any-scale/</link>
+		
+		<dc:creator><![CDATA[Aria Alamalhodaei]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 21:13:58 +0000</pubDate>
+				<category><![CDATA[Hardware]]></category>
+		<category><![CDATA[Disrupt 2023]]></category>
+		<category><![CDATA[JB Straubel]]></category>
+		<category><![CDATA[Redwood Materials]]></category>
+		<category><![CDATA[TC Disrupt 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<category><![CDATA[Tesla]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603811</guid>
+
+					<description><![CDATA[JB Straubel has worn many hats in his career: co-founder of Tesla, Tesla board member, and more recently, founder and CEO of battery materials and recycling startup Redwood Materials. But in his heart, he’s a engineer, he said during a fireside interview at TechCrunch Disrupt. “I think of myself first and foremost as an engineer. [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Agtech leaders dish on untapped and overlooked opportunities for founders</title>
+		<link>https://techcrunch.com/2023/09/20/agtech-leaders-dish-on-untapped-and-overlooked-opportunities-for-founders/</link>
+		
+		<dc:creator><![CDATA[Harri Weber]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 21:04:28 +0000</pubDate>
+				<category><![CDATA[Climate]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[AgTech]]></category>
+		<category><![CDATA[climate]]></category>
+		<category><![CDATA[sustainability]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2602651</guid>
+
+					<description><![CDATA[Lab-grown meat is buzzy for a reason. The ick factor is palpable, and the benefits of scaling alternatives to factory farming are enormous. Yet, plenty of other crucial corners of agriculture often go overlooked — at least as far as headlines are concerned. At TechCrunch Disrupt 2023, we asked two leading investors and one founder [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Agri-Trak is helping farms replace pen and paper with digital tools to track labor and production</title>
+		<link>https://techcrunch.com/2023/09/20/agri-trak-is-helping-farms-replace-pen-and-paper-with-digital-tools-to-track-labor-and-production/</link>
+		
+		<dc:creator><![CDATA[Aisha Malik]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 21:00:16 +0000</pubDate>
+				<category><![CDATA[Startups]]></category>
+		<category><![CDATA[Agri-Trak]]></category>
+		<category><![CDATA[AgTech]]></category>
+		<category><![CDATA[Battlefield]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[Mucker Capital]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[Startup Battlefield 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2600862</guid>
+
+					<description><![CDATA[Meet Agri-Trak, a software-as-a-service (SaaS) platform designed to help farms digitize, track and analyze their labor and production. The Pultneyville, New York-based startup presented today at TechCrunch Disrupt Startup Battlefield to detail how its labor tracking and H2-A compliance software is helping farms replace pen and paper with easy-to-use digital tools. The platform features a [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Why is Y Combinator so defensive lately?</title>
+		<link>https://techcrunch.com/2023/09/20/why-is-y-combinator-so-defensive-lately/</link>
+		
+		<dc:creator><![CDATA[Mary Ann Azevedo]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 20:58:32 +0000</pubDate>
+				<category><![CDATA[Startups]]></category>
+		<category><![CDATA[Venture]]></category>
+		<category><![CDATA[accelerators]]></category>
+		<category><![CDATA[ali partovi]]></category>
+		<category><![CDATA[garry tan]]></category>
+		<category><![CDATA[neo]]></category>
+		<category><![CDATA[Y Combinator]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2603730</guid>
+
+					<description><![CDATA[Y Combinator has been on the defensive as of late. This past weekend, leaders from the popular accelerator were vocal on X (formerly known as Twitter) in their reaction to a comment made by the CEO of another accelerator at an event. Ali Partovi, who founded Neo in 2017, was the keynote speaker at HackMIT [&#8230;]]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>AppFactor drags legacy enterprise apps to the cloud through automation</title>
+		<link>https://techcrunch.com/2023/09/20/appfactor-drags-legacy-enterprise-apps-to-the-cloud-through-automation/</link>
+		
+		<dc:creator><![CDATA[Paul Sawers]]></dc:creator>
+		<pubDate>Wed, 20 Sep 2023 20:47:51 +0000</pubDate>
+				<category><![CDATA[AI]]></category>
+		<category><![CDATA[Enterprise]]></category>
+		<category><![CDATA[Startups]]></category>
+		<category><![CDATA[AppFactor]]></category>
+		<category><![CDATA[Battlefield]]></category>
+		<category><![CDATA[Disrupt]]></category>
+		<category><![CDATA[Startup Battlefield]]></category>
+		<category><![CDATA[Startup Battlefield 2023]]></category>
+		<category><![CDATA[TechCrunch Disrupt 2023]]></category>
+		<guid isPermaLink="false">https://techcrunch.com/?p=2594822</guid>
+
+					<description><![CDATA[Technical debt is often the unsung villain of the enterprise, crippling companies seeking to modernize as they realize just how much &#8220;legacy&#8221; lives in their stack. And as with most kinds of debt, there is usually interest to pay, too. This is something that fledgling U.K. startup AppFactor is setting out to solve, with a [&#8230;]]]></description>
+		
+		
+		
+			</item>
+	</channel>
+</rss>

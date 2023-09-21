@@ -20,23 +20,23 @@ export async function main(event: SQSEvent) {
           publishedDate: feedItem.publishedDate,
           guid: feedItem.guid,
         },
-        UpdateExpression: "set #title = :title, #link = :link, #author = :author, #category = :category, #pubDate = :pubDate, #description = :description, #publisher = :publisher",
+        UpdateExpression: "set #title = :title, #link = :link, #author = :author, #keywords = :keywords, #pubDate = :pubDate, #content = :content, #publisher = :publisher",
         ExpressionAttributeNames: {
           "#title": "title",
           "#link": "link",
           "#author": "author",
-          "#category": "category",
+          "#keywords": "keywords",
           "#pubDate": "pubDate",
-          "#description": "description",
+          "#content": "content",
           "#publisher": "publisher",
         },
         ExpressionAttributeValues: {
           ":title": feedItem.title,
           ":link": feedItem.link,
           ":author": feedItem.author,
-          ":category": feedItem.category,
+          ":keywords": feedItem.keywords,
           ":pubDate": feedItem.pubDate,
-          ":description": feedItem.description,
+          ":content": feedItem.content,
           ":publisher": feedItem.publisher,
         },
         ReturnValues: "ALL_NEW",
@@ -44,7 +44,7 @@ export async function main(event: SQSEvent) {
       await dbClient.send(putParams);
     }
 
-    console.log(`Message processed: "${records[0].body}"`);
+    console.log(`Message processed: "${records.length}"`);
 
     return {
       statusCode: 200,

@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="https://martinfowler.com/feed.atom" rel="self"/>
+  <link href="https://martinfowler.com"/>
+  <id>https://martinfowler.com/feed.atom</id>
+  <title>Martin Fowler</title>
+  <subtitle>Master feed of news and updates from martinfowler.com</subtitle>
+  <author>
+    <name>Martin Fowler</name>
+    <email>martin@martinfowler.com</email>
+    <uri>https://martinfowler.com</uri>
+  </author>
+  <updated>2023-09-19T08:57:00+01:00</updated>
+<entry>
+    <title>How is GenAI different from other code generators?</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#memo-07"/>
+    <updated>2023-09-19T08:57:00+01:00</updated>
+    <id>tag:martinfowler.com,2023-09-19:How-is-GenAI-different-from-other-code-generators-</id>
+    <content type="html">
+&lt;p&gt;How is code generation with GenAI different from more "traditional" code
+     generators? The newest memo in  &lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler's&lt;/b&gt;
+     explorations of GenAI talks about &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-07'&gt;abstraction
+     levels&lt;/a&gt; in software engineering, and on which levels GenAI sits in the
+     translation of our thoughts into zeros and ones.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-07'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Technology Strategy for Emerging Technologies and Markets</title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html#RespondingToTheEverChangingFuture"/>
+    <updated>2023-08-24T09:44:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-24:Technology-Strategy-for-Emerging-Technologies-and-Markets</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#RespondingToTheEverChangingFuture'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;b class = 'author'&gt;Sarah Taraporewalla&lt;/b&gt; completes her study of building a
+     technology strategy that's integrated with strategic business interests.
+     This final strategic direction considers &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#RespondingToTheEverChangingFuture'&gt;the ever-changing future&lt;/a&gt;,
+     suggesting lines of inquiry to consider the impact of new
+     technologies, market trends, and broader social-political changes. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#RespondingToTheEverChangingFuture'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Demo Front-End: A front-end application to test and explore an API</title>
+    <link href="https://martinfowler.com/articles/demo-front-end.html"/>
+    <updated>2023-08-23T10:37:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-23:Demo-Front-End--A-front-end-application-to-test-and-explore-an-API</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/demo-front-end.html'&gt;&lt;img src = 'https://martinfowler.com/articles/demo-front-end/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Many software teams create services exposed as APIs, designed to be
+     consumed by other software and thus without any user-interface. Such
+     services are hard to demonstrate, as they effectively just dump pages of
+     JSON. A &lt;a href = 'https://martinfowler.com/articles/demo-front-end.html'&gt;demo front-end&lt;/a&gt; is a simple user-interface just used to
+     manipulate such an API. &lt;b class = 'author'&gt;Matteo Vaccari&lt;/b&gt; describes how and
+     why to build one - showing its usefulness both in explaining the
+     API's capabilities to stakeholders and to help client developers explore
+     how to interact with the API.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/demo-front-end.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Strategic Directions supporting the people</title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html#SupportingThePeople"/>
+    <updated>2023-08-22T11:22:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-22:Strategic-Directions-supporting-the-people</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#SupportingThePeople'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Having a robust digital talent strategy is a competitive advantage in
+     today&amp;#x2019;s fiercely competitive market. This enables businesses to have the
+     right talent and have the right competencies to meet current and future
+     demand to meet business goals or to stay on track for digital
+     transformation aspirations. &lt;b class = 'author'&gt;Sarah Taraporewalla&lt;/b&gt; continues
+     her article on how to create an integrated business and technology strategy
+     by looking at questions raised by &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#SupportingThePeople'&gt;two strategic directions that
+     support people&lt;/a&gt;: culture and internal systems.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#SupportingThePeople'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Bottlenecks of Scaleups #05: Resilience and Observability</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/05-resilience-and-observability.html"/>
+    <updated>2023-08-22T10:21:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-22:Bottlenecks-of-Scaleups--05--Resilience-and-Observability</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/05-resilience-and-observability.html'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-resilience-observability.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is a new article in the bottlenecks of scaleups series, looking at
+     resilience and observability. Startups tend to only address resilience when
+     their systems are already down, often taking a very reactive approach. For
+     a scaleup, &lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/05-resilience-and-observability.html'&gt;excessive system downtime represents a significant
+     bottleneck&lt;/a&gt; to the organization, both from the effort expended on
+     restoring function and also from the impact of customer dissatisfaction.
+     &lt;b class = 'author'&gt;Punit Lad&lt;/b&gt; and &lt;b class = 'author'&gt;Carl Nygard&lt;/b&gt; explain that to
+     move past this, resilience needs to be built into the business objectives,
+     which will influence the architecture, design, product management, and even
+     governance of business systems. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/05-resilience-and-observability.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>TDD with GitHub Copilot</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#memo-06"/>
+    <updated>2023-08-17T14:44:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-17:TDD-with-GitHub-Copilot</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;p&gt;At Thoughtworks, we are strong practitioners of &lt;a href = '/bliki/TestDrivenDevelopment.html'&gt;Test Driven Development&lt;/a&gt; (TDD).
+     Naturally this leads to the question of how generative AI can help with
+     this technique. &lt;b class = 'author'&gt;Paul Sobocinski&lt;/b&gt; writes a brief memo
+     explaining how some of our teams have used &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-06'&gt;TDD with GitHub
+     Copilot&lt;/a&gt;. As ever, co-pilot can't be relied on to fly the plane, but
+     can suggest some useful ideas for the red and green steps. It isn't
+     very helpful for the all-important refactoring step.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-06'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Final parts of the cost bottleneck of scaleups</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReviewAndGovernTechnologyPortfolio"/>
+    <updated>2023-08-17T00:00:00+00:00</updated>
+    <id>tag:martinfowler.com,2023-08-17:Final-parts-of-the-cost-bottleneck-of-scaleups</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReviewAndGovernTechnologyPortfolio'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-cost.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;b class = 'author'&gt;Sofia Tania &lt;/b&gt; and &lt;b class = 'author'&gt; Stefania
+       Stefansdottir&lt;/b&gt; complete their examination of how to &lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReviewAndGovernTechnologyPortfolio'&gt;overcome the
+       bottleneck that costs impose on a scaleup&lt;/a&gt;. In this final installment,
+       they look at how to review and govern the technology portfolio,
+       optimize rates, and provide a general view of cost efficiency initiatives
+       during the life-cycle of a scaleup.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReviewAndGovernTechnologyPortfolio'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Strategic directions: minimizing risk and being data driven </title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html#risk"/>
+    <updated>2023-08-16T15:49:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-16:Strategic-directions--minimizing-risk-and-being-data-driven-</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#risk'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Time for &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#risk'&gt;two more strategic directions&lt;/a&gt; from &lt;b class = 'author'&gt;Sarah
+     Taraporewalla&lt;/b&gt;. These look at the questions that need to be investigated when
+     reducing cost, minimizing operation risk, and enabling data-driven decision
+     making.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#risk'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Bottlenecks of Scaleups Webinar: Sep 7 2023</title>
+    <link href="https://www.thoughtworks.com/about-us/events/webinars/scaling-bottlenecks--technology-mistakes-every-growing-startup-m"/>
+    <updated>2023-08-15T14:35:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-15:Bottlenecks-of-Scaleups-Webinar--Sep-7-2023</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://www.thoughtworks.com/about-us/events/webinars/scaling-bottlenecks--technology-mistakes-every-growing-startup-m'&gt;&lt;img src = 'https://martinfowler.com/snips/2023-scaleup-webinar.jpg' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Join Tim Cochran and Rickey Zachary on &lt;b&gt;Thursday, September 7th 1-2pm EST&lt;/b&gt;
+     for a &lt;a href = 'https://www.thoughtworks.com/about-us/events/webinars/scaling-bottlenecks--technology-mistakes-every-growing-startup-m'&gt;webinar on Bottlenecks of
+     Scaleups:&lt;/a&gt; Technology mistakes every growing startup makes. They researched
+     Thoughtwork's portfolio to analyze why companies struggle to scale,
+     spanning across Technology, People, and Product. Covering areas such as
+     experimentation culture, overcomplicated architectures, onboarding,
+     developer productivity, product and engineering collaboration, and cost
+     efficiency.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://www.thoughtworks.com/about-us/events/webinars/scaling-bottlenecks--technology-mistakes-every-growing-startup-m'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Strategic directions to build a strong foundation</title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html#BuildingAStrongFoundation"/>
+    <updated>2023-08-15T10:16:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-15:Strategic-directions-to-build-a-strong-foundation</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#BuildingAStrongFoundation'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Any business that wants to grow needs to be built on strong and stable
+     foundations. While these strategic directions are often familiar to
+     technical folks it's important that the improvements to engineering align
+     with the themes that resonate with the rest of the organization.
+     &lt;b class = 'author'&gt;Sarah Taraporewalla&lt;/b&gt; illustrates how this appears with &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#BuildingAStrongFoundation'&gt;two
+     strategic directions&lt;/a&gt; that consider improvements in efficiency and quality.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#BuildingAStrongFoundation'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Actions to sustain cost control for scaleups</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#SustainPhase"/>
+    <updated>2023-08-15T10:15:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-15:Actions-to-sustain-cost-control-for-scaleups</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#SustainPhase'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-cost.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;When scaling up, getting costs under control is vital to stabilizing
+       financial health. But as a weight-loss expert might say, the key to
+       long-term health is to do things that promote a sustainable lifestyle.
+       &lt;b class = 'author'&gt;Sofia Tania &lt;/b&gt; and &lt;b class = 'author'&gt; Stefania
+       Stefansdottir&lt;/b&gt; now move on to begin to &lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#SustainPhase'&gt;describe these
+       initiatives&lt;/a&gt;: federated accountability, visibility, and nudges
+       towards better financial discipline.
+       &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#SustainPhase'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>We will miss Stefan Tilkov</title>
+    <link href="https://martinfowler.com/articles/202308-stefan-tilkov.html"/>
+    <updated>2023-08-14T14:58:00-04:00</updated>
+    <id>https://martinfowler.com/articles/202308-stefan-tilkov.html</id>
+    <author>
+      <name>Martin Fowler</name>
+      <email>martin@martinfowler.com</email>
+      <uri>https://martinfowler.com</uri>
+    </author>
+    <content type="html">&lt;p&gt;We are saddened today to learn of the &lt;a href="https://www.innoq.com/en/news/2023/08/stefan-tilkov-english/"&gt;passing of Stefan Tilkov&lt;/a&gt;. Weâ€™ve met Stefan several times at workshops and conferences and always enjoyed his good company and insightful views. He advocated many of the things that we and our colleagues support - and as well as skillfully explaining these ideas, he also backed them up with concrete experience from his work. We shall really miss his wise contributions online, and regret that we wonâ€™t get the chance to chat with him again. We offer our condolences to his family, friends, and colleagues at INNOQ.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Birgitta Boeckeler&lt;/li&gt;
+  &lt;li&gt;Erik DÃ¶rnenburg&lt;/li&gt;
+  &lt;li&gt;Dave Farley&lt;/li&gt;
+  &lt;li&gt;Neal Ford&lt;/li&gt;
+  &lt;li&gt;Martin Fowler&lt;/li&gt;
+  &lt;li&gt;James Lewis&lt;/li&gt;
+  &lt;li&gt;Sam Newman&lt;/li&gt;
+  &lt;li&gt;Rebecca Parsons&lt;/li&gt;
+  &lt;li&gt;Daniel Terhorst-North&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+
+<entry>
+    <title>First stage of reducing costs for a scaleup</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReducePhase"/>
+    <updated>2023-08-10T11:17:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-10:First-stage-of-reducing-costs-for-a-scaleup</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReducePhase'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-cost.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;When scaleups need to start working on cost efficiency, our experience
+       is that they need to form a cost optimization team to work on the
+       immediate steps that are needed. &lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReducePhase'&gt;In this installment&lt;/a&gt;&amp;#xA0;&lt;b class = 'author'&gt;Sofia and
+       Stefania&lt;/b&gt; describe how to understand the primary cost drivers,
+       together with the levers to get them under control. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#ReducePhase'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Tech strategy for new customer segments and inorganic growth</title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html#expand-segments"/>
+    <updated>2023-08-10T10:12:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-10:Tech-strategy-for-new-customer-segments-and-inorganic-growth</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#expand-segments'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;b class = 'author'&gt;Sarah Taraporewalla&lt;/b&gt; moves on to the remaining two
+     strategic directions that are part of &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#expand-segments'&gt;growing the business&lt;/a&gt;.
+     Expanding into new customer segments can introduce new operational
+     processes or channels. Inorganic growth (eg acquisitions and mergers) needs
+     an understanding of the drivers of increased value and the long term
+     expectation (eg merge or keep separate and divest) for the business unit. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html#expand-segments'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Coding assistants do not replace pair programming</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#memo-05"/>
+    <updated>2023-08-10T09:31:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-10:Coding-assistants-do-not-replace-pair-programming</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;p&gt;In her 5th memo about exploring GenAI for software development,
+      &lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler&lt;/b&gt; answers the frequently asked question if
+      coding assistants are &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-05'&gt;making the practice of Pair Programming
+      obsolete&lt;/a&gt;. Spoiler alert: They don't.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#memo-05'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Creating an integrated business and technology strategy</title>
+    <link href="https://martinfowler.com/articles/creating-integrated-tech-strategy.html"/>
+    <updated>2023-08-08T16:05:00+05:30</updated>
+    <id>tag:martinfowler.com,2023-08-08:Creating-an-integrated-business-and-technology-strategy</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html'&gt;&lt;img src = 'https://martinfowler.com/articles/creating-integrated-tech-strategy/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;My colleague &lt;b class = 'author'&gt;Sarah Taraporewalla&lt;/b&gt; describes an approach
+     to building technology strategy that challenges the convention. It starts
+     by identifying the overall strategic directions that the organization is
+     considering, and using common aspects of these directions to indicate the
+     investigations needed for the organization to understand the technology
+     implications raised by that strategic change. &lt;a href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html'&gt;This first
+     installment&lt;/a&gt; looks at two of these directions: expanding the business
+     by creating complementary products, and expanding the business into new
+     markets and regions. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/creating-integrated-tech-strategy.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Exploring Gen AI: how can in-line assistance get in the way?</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---how-can-it-get-in-the-way?"/>
+    <updated>2023-08-03T11:37:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-03:Exploring-Gen-AI--how-can-in-line-assistance-get-in-the-way-</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;p&gt;While coding assistants like Copilot can improve speed and flow, they
+      can also disrupt it. &lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler&lt;/b&gt; looks at two ways
+      in which &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---how-can-it-get-in-the-way?'&gt;they can get in the way&lt;/a&gt;: amplifying bad or outdated
+      practices, and review fatigue.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---how-can-it-get-in-the-way?'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>A case study of getting out of the costs bottleneck</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#exit"/>
+    <updated>2023-08-01T10:19:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-01:A-case-study-of-getting-out-of-the-costs-bottleneck</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#exit'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-cost.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;b class = 'author'&gt;Sofia and Stefania&lt;/b&gt; begin their examination of how to
+     get out of the bottleneck of surging cloud costs by relating a case study
+     from a recent client - illustrating how the cost control can be separated
+     into reduce and sustain phases.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html#exit'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Exploring Gen AI: When is in-line assistance useful?</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---when-is-it-more-useful?"/>
+    <updated>2023-08-01T09:51:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-08-01:Exploring-Gen-AI--When-is-in-line-assistance-useful-</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;p&gt;The most widely used form of coding assistance in Thoughtworks at the
+      moment is in-line code generation in the IDE, where an IDE extension
+      generates suggestions for the developer as they are typing.
+      &lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler&lt;/b&gt; looks at &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---when-is-it-more-useful?'&gt;the factors that
+      impact&lt;/a&gt; the usefulness of these suggestions, indicating where they
+      lead to safe waters, and the rocks that we need to look out for.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#in-line-assistance---when-is-it-more-useful?'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Bottlenecks of Scaleups #04: Cost Efficiency</title>
+    <link href="https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html"/>
+    <updated>2023-07-31T09:30:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-07-31:Bottlenecks-of-Scaleups--04--Cost-Efficiency</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html'&gt;&lt;img src = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/card-cost.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;As startups begin to grow rapidly, they often find that early decisions
+     that helped them find a product/market fit lead to excessive costs once
+     traffic increases. These costs can threaten a scaleup's ability to grow.
+     &lt;b class = 'author'&gt;Sofia Tania and Stefania Stefansdottir&lt;/b&gt; have worked with
+     many scaleups in this predicament and &lt;a href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html'&gt;share their approach&lt;/a&gt; to understanding
+     and reducing these costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/bottlenecks-of-scaleups/04-costs.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Exploring Gen AI - Three versions of a median</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#median---a-tale-in-three-functions"/>
+    <updated>2023-07-27T10:34:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-07-27:Exploring-Gen-AI---Three-versions-of-a-median</id>
+    <category term="skip-home-page"/>
+    <content type="html">
+&lt;p&gt;&lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler&lt;/b&gt; continues her explorations in using
+      LLMs, this time by asking GitHub Copilot to &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#median---a-tale-in-three-functions'&gt;write a median
+      function&lt;/a&gt;. It gave her three suggestions to choose from. The
+      experience shows you still have to know what you're doing when asking LLMs
+      to write code, since the LLM's programming skills are often rather flawed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#median---a-tale-in-three-functions'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Exploring Gen AI - The toolchain</title>
+    <link href="https://martinfowler.com/articles/exploring-gen-ai.html#the-toolchain"/>
+    <updated>2023-07-26T10:52:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-07-26:Exploring-Gen-AI---The-toolchain</id>
+    <content type="html">
+&lt;p&gt;My colleague &lt;b class = 'author'&gt;Birgitta B&amp;#xF6;ckeler&lt;/b&gt; has long been one of our senior
+      technology leaders in Germany. She's now moved into a new role coordinating
+      our work with Generative AI and its effect of software delivery practices.
+      She's decided to publish her exploration in a series of memos. The first
+      memo looks at the &lt;a href = 'https://martinfowler.com/articles/exploring-gen-ai.html#the-toolchain'&gt;current toolchain for LLMs&lt;/a&gt;, categorizing them by what
+      tasks they help with, how we interact with the LLM, and where they come from.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/exploring-gen-ai.html#the-toolchain'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Bliki: TeamTopologies</title>
+    <link href="https://martinfowler.com/bliki/TeamTopologies.html"/>
+    <updated>2023-07-25T09:25:00-04:00</updated>
+    <id>https://martinfowler.com/bliki/TeamTopologies.html</id>
+    <category term="bliki"/>
+    <content type="html">
+&lt;div class="book-sidebar no-text"&gt;&lt;span class="img-link"&gt;&lt;a href="https://www.amazon.com/gp/product/1942788819/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1942788819&amp;amp;linkCode=as2&amp;amp;tag=martinfowlerc-20"&gt;&lt;img class="cover" src="https://martinfowler.com/bliki/images/team-topologies/book.jpg"&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;p&gt;Any large software effort, such as the software estate for a large
+    company, requires a lot of people - and whenever you have a lot of people
+    you have to figure out how to divide them into effective teams. Forming
+    &lt;a href="/bliki/BusinessCapabilityCentric.html"&gt;Business Capability Centric&lt;/a&gt; teams helps software efforts to
+    be responsive to customersâ€™ needs, but the range of skills required often
+    overwhelms such teams. &lt;a href="https://www.amazon.com/gp/product/1942788819/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1942788819&amp;amp;linkCode=as2&amp;amp;tag=martinfowlerc-20"&gt;Team Topologies&lt;/a&gt; is a model
+    for describing the organization of software development teams,
+    developed by Matthew Skelton and Manuel Pais. It defines four forms
+    of teams and three modes of team
+    interactions. The model encourages healthy interactions that allow 
+    business-capability centric teams to flourish in their task of providing a
+    steady flow of valuable software.&lt;/p&gt;
+
+&lt;p&gt;The primary kind of team in this framework is the &lt;b&gt;stream-aligned
+    team&lt;/b&gt;, a &lt;a href="/bliki/BusinessCapabilityCentric.html"&gt;Business Capability Centric&lt;/a&gt; team that is
+    responsible for software for a single business capability. These are
+    long-running teams, thinking of their efforts as providing a &lt;a href="/articles/products-over-projects.html"&gt;software
+    product&lt;/a&gt; to enhance the business capability.&lt;/p&gt;
+
+&lt;p&gt;Each stream-aligned team is full-stack and full-lifecycle: responsible for
+    front-end, back-end, database,
+    business analysis, feature prioritization,
+    UX, testing, deployment, monitoring - the
+    whole enchilada of software development.
+    They are &lt;a href="/bliki/OutcomeOriented.html"&gt;Outcome Oriented&lt;/a&gt;, focused on business outcomes rather than &lt;a href="/bliki/ActivityOriented.html"&gt;Activity Oriented&lt;/a&gt; teams focused on a function such as business
+    analysis, testing, or databases.
+    But they also shouldn't be too
+    large, ideally each one is a &lt;a href="/bliki/TwoPizzaTeam.html"&gt;Two Pizza Team&lt;/a&gt;. A large
+    organization will have many such teams, and while they have different
+    business capabilities to support, they have common needs such as data
+    storage, network communications, and observability.&lt;/p&gt;
+
+&lt;p&gt;A small team like this calls for ways to reduce their cognitive load, so they
+    can concentrate on supporting the business needs, not on (for example) data
+    storage issues. An important part of doing this is to build on a platform
+    that takes care of these non-focal concerns. For many teams a platform can
+    be a widely available third party platform, such as Ruby on Rails for a
+    database-backed web application. But for many products there is no
+    single off-the-shelf platform to use, a team is going to have to find and
+    integrate several platforms. In a larger organization they will have to
+    access a range of internal services and follow corporate standards.&lt;/p&gt;
+
+&lt;p&gt;This problem can be addressed by building an internal platform for the
+    organization. Such a platform can do that integration of third-party
+    services, near-complete platforms, and internal services. Team Topologies
+    classifies the team that builds this (unimaginatively-but-wisely) as a &lt;b&gt;platform
+    team&lt;/b&gt;.&lt;/p&gt;
+
+&lt;p&gt;Smaller organizations can work with a single platform team, which
+    produces a thin layer over an externally provided set of products. Larger
+    platforms, however, require more people than can be fed with two-pizzas.
+    The authors are thus moving to describe a &lt;b&gt;platform grouping&lt;/b&gt;
+    of many platform teams.&lt;/p&gt;
+
+&lt;p&gt;An important characteristic of a platform is that it's designed to be used
+    in a mostly self-service fashion. The stream-aligned teams are still
+    responsible for the operation of their product, and direct their use of the
+    platform without expecting an elaborate collaboration with the platform team.
+    In the Team Topologies framework, this interaction mode is referred to as
+    &lt;b&gt;X-as-a-Service mode&lt;/b&gt;, with the platform acting as a service to the
+    stream-aligned teams.&lt;/p&gt;
+
+&lt;p&gt;Platform teams, however, need to build their services as products
+    themselves, with a deep understanding of their customer's needs. This often
+    requires that they use a different interaction mode, one of &lt;b&gt;collaboration
+    mode&lt;/b&gt;, while they build that service. Collaboration mode is a more
+    intensive partnership form of interaction, and should be seen as a temporary
+    approach until the platform is mature enough to move to x-as-a service
+    mode.&lt;/p&gt;
+
+&lt;p&gt;So far, the model doesn't represent anything particularly inventive.
+    Breaking organizations down between business-aligned and technology support
+    teams is an approach as old as enterprise software. In recent years, plenty
+    of writers have expressed the importance of making these business capability
+    teams be responsible for the full-stack and the full-lifecycle. For me, the
+    bright insight of Team Topologies is focusing on the problem that having
+    business-aligned teams that are full-stack and full-lifecycle means that
+    they are often faced with an excessive cognitive load, which works against
+    the desire for small, responsive teams. The key benefit of a
+    platform is that it &lt;i&gt;reduces this cognitive load&lt;/i&gt;.&lt;/p&gt;
+
+&lt;div class="soundbyte" style="padding-left: 5em; font-style: italic"&gt;
+&lt;p&gt;A crucial insight of Team Topologies is that the primary benefit of a
+    platform is to reduce the cognitive load on stream-aligned
+    teams&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This insight has profound implications. For a start it alters how
+    platform teams should think about the platform. Reducing client teams'
+    cognitive load leads to different design decisions and product roadmap to
+    platforms intended primarily for standardization or cost-reduction. 
+    Beyond the platform this insight leads Team Topologies to develop their model
+    further by identifying two more kinds of team.&lt;/p&gt;
+
+&lt;p&gt;Some capabilities require specialists who can put considerable time and
+    energy into mastering a topic important to many stream-aligned teams. A
+    security specialist may spend more time studying security issues and
+    interacting with the broader security community than would be possible as a
+    member of a stream-aligned team. Such people congregate in &lt;b&gt;enabling
+    teams&lt;/b&gt;, whose role is to grow relevant skills inside other teams
+    so that those teams can remain independent and better own and evolve their
+    services.
+    To achieve this enabling teams primarily use the third and final interaction
+    mode in Team Topologies. &lt;b&gt;Facilitating mode&lt;/b&gt;
+    involves a coaching role, where the enabling team isn't there to write and
+    ensure conformance to standards, but instead to educate and coach their colleagues so
+    that the stream-aligned teams become more autonomous.&lt;/p&gt;
+
+&lt;p&gt;Stream-aligned teams are responsible for the whole stream of value for their
+    customers, but occasionally we find aspects of a stream-aligned team's work
+    that is sufficiently demanding that it needs a dedicated group to focus on
+    it, leading to the fourth and final type of team:
+    &lt;b&gt;complicated-subsystem team&lt;/b&gt;. The goal of a complicated-subsystem
+    team is to reduce the cognitive load of the stream-aligned teams that use
+    that complicated subsystem. That's a worthwhile division even if there's
+    only one client team for that subsystem. Mostly complicated-subsystem teams strive to interact
+    with their clients using x-as-a service mode, but will need to
+    use collaboration mode for short periods.&lt;/p&gt;
+
+&lt;div class="figure "&gt;&lt;img src="https://martinfowler.com/bliki/images/team-topologies/diagram.png"&gt;
+&lt;p class="photoCaption"&gt;
+      Team Topologies includes a set of graphical symbols to illustrate teams
+      and their relationships. These shown here are from the &lt;a href="https://github.com/TeamTopologies/Team-Shape-Templates"&gt;current standards&lt;/a&gt;, which differ from those used in
+      the book. A &lt;a href="https://teamtopologies.com/key-concepts-content/team-interaction-modeling-with-team-topologies"&gt;recent article&lt;/a&gt; elaborates on
+      how to use these diagrams.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Team Topologies is designed explicitly recognizing the influence of
+    &lt;a href="/bliki/ConwaysLaw.html"&gt;Conways Law&lt;/a&gt;. The team organization that it encourages
+    takes into account the interplay between human and software organization.
+    Advocates of Team Topologies intend its team structure to shape the future
+    development of the software architecture into responsive and decoupled
+    components aligned to business needs.&lt;/p&gt;
+
+&lt;p&gt;George Box neatly quipped: "all models are wrong, some are useful". Thus
+    Team Topologies is wrong: complex organizations cannot be
+    simply broken down into just four kinds of teams and three kinds of
+    interactions. But constraints like this are what makes a model useful. Team
+    Topologies is a tool that impels people to evolve their organization into a more effective
+    way of operating, one that allows stream-aligned teams to maximize their
+    flow by lightening their cognitive load.
+
+
+    
+    &lt;/p&gt;
+
+&lt;div class="acknowledgements"&gt;
+&lt;h2&gt;Acknowledgements&lt;/h2&gt;
+
+&lt;p&gt;Andrew Thal, Andy Birds, Chris Ford, Deepak
+      Paramasivam, Heiko Gerin, Kief Morris, Matteo
+      Vaccari, Matthew Foster, Pavlo Kerestey, Peter Gillard-Moss, Prashanth Ramakrishnan, and Sandeep Jagtap discussed drafts of this post on our internal mailing
+      list, providing valuable feedback.&lt;/p&gt;
+
+&lt;p&gt;Matthew Skelton and Manuel Pais kindly provided detailed comments on this post,
+      including sharing some of their recent thinking since the book.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="furtherReading"&gt;
+&lt;h2&gt;Further Reading&lt;/h2&gt;
+
+&lt;p&gt;The best treatment of the Team Topologies framework is &lt;a href="https://www.amazon.com/gp/product/1942788819/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=1942788819&amp;amp;linkCode=as2&amp;amp;tag=martinfowlerc-20"&gt;the book&lt;/a&gt; of the same name, published in 2019. The authors
+      also maintain the &lt;a href="https://teamtopologies.com"&gt;Team Topologies&lt;/a&gt; website
+      and provide education and training services. Their recent article on &lt;a href="https://teamtopologies.com/key-concepts-content/team-interaction-modeling-with-team-topologies"&gt;team interaction modeling&lt;/a&gt; is a good intro to
+      how the Team Topologies (meta-)model can be used to build and evolve a
+      model of an organization. &lt;span class="foot-ref"&gt;&lt;a href="#footnote-meta"&gt;[1]&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Much of Team Topologies is based on the notion of Cognitive Load. The
+      authors &lt;a href="https://techbeacon.com/app-dev-testing/forget-monoliths-vs-microservices-cognitive-load-what-matters"&gt;explored cognitive load&lt;/a&gt; in Tech Beacon. Jo Pearce expanded on how
+      cognitive load may &lt;a href="https://12devsofxmas.co.uk/2015/12/day-3-managing-cognitive-load-for-team-learning/"&gt;apply to software
+      development&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The model in Team Topologies resonates well with much of the thinking
+      on software team organization that I've published on this site. You can
+      find this collected together at the &lt;a href="/tags/team%20organization.html"&gt;team
+      organization tag&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="footnote-list"&gt;
+&lt;h2&gt;Notes&lt;/h2&gt;
+
+&lt;div class="footnote-list-item" id="footnote-meta"&gt;
+&lt;p&gt;&lt;span class="num"&gt;1: &lt;/span&gt;
+    To be more strict in my modeling lingo, I would say that Team Topologies
+    usually acts as a &lt;b&gt;meta-model&lt;/b&gt;. If I use Team Topologies to build
+    a model of an airline's software development organization, then that model
+    shows the teams in the airline classified according to Team Topologies's
+    terminology. I would then say that that the Team Topologies model is a
+    meta-model to my airline model.
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+
+<entry>
+    <title>Bliki: TwoPizzaTeam</title>
+    <link href="https://martinfowler.com/bliki/TwoPizzaTeam.html"/>
+    <updated>2023-07-25T09:22:00-04:00</updated>
+    <id>https://martinfowler.com/bliki/TwoPizzaTeam.html</id>
+    <category term="bliki"/>
+    <content type="html">
+&lt;p&gt;A two-pizza team is a small team
+  that fully supports software for a particular business capability. The term
+  became popular as it used to describe how Amazon organized their software staff.&lt;/p&gt;
+
+&lt;p&gt;The name suggests the most obvious aspect of such teams, their size. The
+  name comes from the principle that the team should no larger than can be fed
+  with two pizzas. (Although we are talking about American Pizzas here, which
+  seemed alarmingly huge when I first encountered them over here.) Keeping a
+  team small keeps it cohesive, forming tight working relationships. Typically I
+  hear this means such teams are about 5-8 people, although my experience
+  suggests that the upper limit is somewhere about 15.&lt;/p&gt;
+
+&lt;p&gt;Although the name focuses solely on the size, just as important is the
+  team's focus. A two-pizza team should have all the capabilities it needs to
+  delivery valuable software to its users, with minimal hand-offs and
+  dependencies on other teams. They can figure out what their customer needs,
+  and quickly translate that into working software, able to experiment and
+  evolve that software as their customer's needs change.&lt;/p&gt;
+
+&lt;p&gt;Two-pizza teams are &lt;a href="/bliki/OutcomeOriented.html"&gt;Outcome Oriented&lt;/a&gt; rather than
+  &lt;a href="/bliki/ActivityOriented.html"&gt;Activity Oriented&lt;/a&gt;. They don't organize along lines of skills
+  (databases, testing, operations), instead they take on all the responsibilities
+  required to support their customers. This minimizes inter-team hand-offs in the
+  flow of features to their customers, allowing them to reduce the cycle-time
+  (the time required to turn an idea for a feature into code running in
+  production). This outcome-orientation also means they deploy code into
+  production and monitor its use there, famously responsible for any production
+  outages (often meaning they on the hook for off-hours support) - a principle
+  known as "you build it, you run it".&lt;/p&gt;
+
+&lt;p&gt;Focusing on a customer need like this means teams are long-lived, &lt;a href="/bliki/BusinessCapabilityCentric.html"&gt;Business Capability Centric&lt;/a&gt; teams that support their business
+  capability as long as that capability is active. Unlike project-oriented teams -
+  that disband when the software is "done" - they think of themselves as
+  enabling and enhancing a &lt;a href="/articles/products-over-projects.html"&gt;long-lived
+  product&lt;/a&gt;. This aspect often leads to them being referred to as &lt;b&gt;product
+  teams&lt;/b&gt;.&lt;/p&gt;
+
+&lt;p&gt;The wide scope of skills and responsibilities that a two-pizza team needs
+  to support its product means that although such teams can be the primary
+  approach to team organization, they need support from a well-constructed
+  software platform. For small organizations, this can be a commercial platform,
+  such as a modern cloud offering. Larger organizations will create their own
+  internal platforms to make it easier for their two-pizza teams to collaborate
+  without creating difficult hand-offs. &lt;a href="/bliki/TeamTopologies.html"&gt;Team Topologies&lt;/a&gt;
+  provides a good way to think about the different kinds of teams and
+  interactions required to support two-pizza teams (Team Topologies calls them
+  &lt;b&gt;stream-aligned teams&lt;/b&gt;).&lt;/p&gt;
+
+&lt;p&gt;For business-capability centric teams to be effective, they will need to
+  make use of each others' capabilities. Teams will thus need to provide their
+  capabilities to their peers, often though thoughtfully designed APIs. This
+  responsibility for such teams to provide services to their peers is often
+  overlooked, if it doesn't happen it will lead to sclerotic information
+  silos.&lt;/p&gt;
+
+&lt;p&gt;Organizing people around business capabilities like this has a profound
+  interaction with the way the software for an organization is structured - due
+  to the effect of &lt;a href="/bliki/ConwaysLaw.html"&gt;Conways Law&lt;/a&gt;. Software components built by
+  two-pizza teams need well-controlled interactions with their peers, with clear
+  APIs between them. This thinking led to the development of &lt;a href="/microservices/"&gt;microservices&lt;/a&gt;, but that's not the only approach -
+  well-structured components within a monolithic run-time is often a better
+  path.&lt;/p&gt;
+</content>
+  </entry>
+
+<entry>
+    <title>How platform teams get stuff done</title>
+    <link href="https://martinfowler.com/articles/platform-teams-stuff-done.html"/>
+    <updated>2023-07-19T10:21:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-07-19:How-platform-teams-get-stuff-done</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/platform-teams-stuff-done.html'&gt;&lt;img src = 'https://martinfowler.com/articles/platform-teams-stuff-done/meta-image.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Platform teams have a unique reliance on other teams to ensure adoption
+     of their platform - getting code changes into other teams' codebase is
+     critical to their success. &lt;b class = 'author'&gt;Pete Hodgson&lt;/b&gt; structures how
+     &lt;a href = 'https://martinfowler.com/articles/platform-teams-stuff-done.html'&gt;platform teams collaborate&lt;/a&gt; into phases
+     of migration, consumption, and evolution. He describes what's different in
+     each of these phases, the operating models to adopt, and which cross-team
+     collaboration patterns work best.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/platform-teams-stuff-done.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Decentralizing the Practice of Architecture at Xapo Bank</title>
+    <link href="https://martinfowler.com/articles/xapo-architecture-experience.html"/>
+    <updated>2023-07-18T11:46:00+00:00</updated>
+    <id>tag:martinfowler.com,2023-07-18:Decentralizing-the-Practice-of-Architecture-at-Xapo-Bank</id>
+    <content type="html">
+&lt;p&gt;It's common to see a centralized architecture function that sets
+     standards and oversees development projects. Such teams often suffer from
+     being far removed from the issues of implementation with long
+     feedback loops that slow down the flow of work. To counter these problems,
+     many organizations have explored a decentralized approach to yield
+     alignment between teams without these problems. One such organization is
+     Xapo bank, &lt;a href = 'https://martinfowler.com/articles/xapo-architecture-experience.html'&gt;which did this&lt;/a&gt; using ideas taken from Domain-Driven Design, Team
+     Topologies, and the Architectural Advice Process.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/xapo-architecture-experience.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Building Boba AI: Some lessons and patterns learnt in building an             LLM-powered generative application</title>
+    <link href="https://martinfowler.com/articles/building-boba.html"/>
+    <updated>2023-06-29T10:10:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-06-29:Building-Boba-AI--Some-lessons-and-patterns-learnt-in-building-an-------------LLM-powered-generative-application</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/building-boba.html'&gt;&lt;img src = 'https://martinfowler.com/articles/building-boba/thumbnail.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;While it's fascinating to work directly with a Large Language Model,
+     such as ChatGPT, it takes some skill and practice to learn how to prompt it
+     effectively. My colleague &lt;b class = 'author'&gt;Farooq Ali&lt;/b&gt; has been working on a co-pilot tool,
+     Boba AI, for using an LLM to help generate ideas for product strategy. From
+     this experience he as &lt;a href = 'https://martinfowler.com/articles/building-boba.html'&gt;proposed eight patterns&lt;/a&gt; which he judges
+     will be generally useful for building these kinds of AI co-pilot applications.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/building-boba.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Linking Modular Architecture to Development Teams</title>
+    <link href="https://martinfowler.com/articles/linking-modular-arch.html"/>
+    <updated>2023-06-13T09:29:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-06-13:Linking-Modular-Architecture-to-Development-Teams</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/linking-modular-arch.html'&gt;&lt;img src = 'https://martinfowler.com/articles/linking-modular-arch/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Mobile applications often deliver features rapidly at first, but slow as
+     a codebase builds up. These common software problems are exacerbated by the
+     need to prioritize different features in different markets. &lt;b class = 'author'&gt;Matthew
+     Foster&lt;/b&gt; describes an example of this from his work with clients,
+     and how using Domain-Driven Design and Team Topologies helped &lt;a href = 'https://martinfowler.com/articles/linking-modular-arch.html'&gt;create a
+     modular architecture&lt;/a&gt; that substantially reduced the time needed to deliver
+     new features. &lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/linking-modular-arch.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Privacy Enhancing Technologies: An Introduction for Technologists</title>
+    <link href="https://martinfowler.com/articles/intro-pet.html"/>
+    <updated>2023-05-30T10:32:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-05-30:Privacy-Enhancing-Technologies--An-Introduction-for-Technologists</id>
+    <content type="html">
+&lt;p&gt;Making data open and available to all helps us all understand our world
+     and are thus better informed to shape the policies to run it. But such openness
+     does come with problems - one in particular is the invasion of people's
+     privacy. Detailed census information about household income helps debate
+     and planning for local government, but can reveal personal information that
+     citizens reasonably prefer to keep private. &lt;a href = 'https://martinfowler.com/articles/intro-pet.html'&gt;Privacy Enhancing Technologies&lt;/a&gt;
+     are tools that can finesse this problem. My colleague &lt;b class = 'author'&gt;Katharine Jarmul&lt;/b&gt; is a
+     data scientist who is also an activist for personal privacy. Here she
+     introduces three of these tools that are usable now: Differential Privacy,
+     Distributed &amp;amp; Federated Analysis &amp;amp; Learning, and Encrypted Computation.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/intro-pet.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+<entry>
+    <title>Dependency Composition</title>
+    <link href="https://martinfowler.com/articles/dependency-composition.html"/>
+    <updated>2023-05-23T13:56:00-04:00</updated>
+    <id>tag:martinfowler.com,2023-05-23:Dependency-Composition</id>
+    <content type="html">
+&lt;div class = 'img-link'&gt;&lt;a href = 'https://martinfowler.com/articles/dependency-composition.html'&gt;&lt;img src = 'https://martinfowler.com/articles/dependency-composition/card.png' width = ''&gt;&lt;/img&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;Developers commonly ask "what framework should we use for dependency
+     injection". &lt;b class = 'author'&gt;Daniel Somerfield&lt;/b&gt; explains why this is the wrong question,
+     instead we should focus how to have clearly separated modules with a simple
+     composition mechanism between them. &lt;a href = 'https://martinfowler.com/articles/dependency-composition.html'&gt;He illustrates&lt;/a&gt; how he approaches this
+     in TypeScript, with a minimalist "function-first" approach, on a simple
+     example application separating application logic from persistence.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class = 'more' href = 'https://martinfowler.com/articles/dependency-composition.html'&gt;moreâ€¦&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+
+</feed>
