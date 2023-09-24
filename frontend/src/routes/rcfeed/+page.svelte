@@ -3,7 +3,10 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
-	const { Count, Items } = data;
+	const { res, session } = data;
+	const { Count, Items } = res;
+
+	const user_id = session.user?.id.split('|')[1];
 
 </script>
 
@@ -12,7 +15,7 @@
 		<p class="text-center">No articles found.</p>
 	{:else}
 		{#each Items as Item}
-			<ListItem Item ={Item} />
+			<ListItem Item ={Item} userId={user_id}/>
 		{/each}
 	{/if}
 </div>

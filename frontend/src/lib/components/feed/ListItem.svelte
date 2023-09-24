@@ -3,6 +3,7 @@
     // import SocialButtons from "./SocialButtons.svelte";
 
     // export let actionToast: any;
+    export let userId: string;
 
     export let Item = {
         title: "Title",
@@ -23,15 +24,17 @@
             body: JSON.stringify({
                 title,
                 action,
-                type
+                type,
+                userId,
             }),
         });
         const data = await res.json();
+        console.log(data);
     }
 
 </script>
 
-<div class="flex flex-col gap-x-2 rounded-md border border-black m-2">
+<div class="flex flex-col gap-x-2 border-b-2 border-grey-500 m-2">
     <div class="flex flex-col flex-wrap justify-between p-3 leading-normal">
         <!-- {#if actionToast && actionToast.msg == "Success"}
         <div class="toast toast-top toast-center">
@@ -43,10 +46,16 @@
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">
             <a href={Item.link} class="link link-hover" target="_blank">{Item.title}</a>
         </h5>
-        <div class="flex-1 min-w-0">
-            <span class="text-md font-medium text-gray-600 truncate hover:text-amber-800">
-                <h3>{Item.author}</h3> - {Item.publisher} on {Item.pubDate}
-            </span>
+        <div class="flex items-start">
+            <!-- <span class="text-md font-medium text-gray-600 truncate hover:text-amber-800"> -->
+            <h3 class="font-medium italic w-auto mr-2">{Item.author}</h3>
+            <p class="">at {Item.publisher} on {Item.pubDate}</p>
+            <!-- </span> -->
+            <!-- <p class="mb-3 font-normal text-black line-clamp-2">
+                {@html Item.content}
+            </p> -->
+        </div>
+        <div class="flex-1">
             <p class="mb-3 font-normal text-black line-clamp-2">
                 {@html Item.content}
             </p>
