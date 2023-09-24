@@ -65,7 +65,7 @@ const handleAuth = (async (...args) => {
         if(token.user) {
           session.user = token.user;
         }
-			  return session;
+			  return {...session, user: {...session.user, id: session.user?.id.split('|')[1]}};
       }
     }
   })(...args);

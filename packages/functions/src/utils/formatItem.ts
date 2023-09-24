@@ -45,7 +45,7 @@ export const formatItem = (item: any, publisher: string): Record<any, AttributeV
     link: { S: encodeURI(item.link) },
     pubDate: { N: new Date(pubDate).getTime().toString() },
     author: { S: author },
-    guid: { S: encodeURI(item.guid ?? "") },
+    guid: { S: encodeURI(item.guid ?? "null") },
     keywords: { S: keywords ?? "" },
     publisher: { S: publisher },
     content: { S: encodeURI(item.contentSnippet ?? "") },

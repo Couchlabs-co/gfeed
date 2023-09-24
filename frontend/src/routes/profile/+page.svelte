@@ -4,7 +4,6 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data: PageData;
-	console.log(data);
 
 </script>
 <div class="flex mt-4 rounded bg-gray-200 items-center justify-center gap-2 overflow-x-hidden">
@@ -48,13 +47,13 @@
 			<div class="card w-96 bg-neutral text-neutral-content">
 				<div class="card-body items-center text-center">
 				  <h2 class="card-title">You follow you interests</h2>
-				  {#if !data.interests.length || data.interests?.likes.length === 0}
+				  {#if !data.interestsByAction?.like || data.interestsByAction?.like?.length === 0}
 				  	<p>You have not selected any interests yet.</p>
 				  {:else}
 					<ul>
-						{#each data.interests.likes as like}
-							<li>{like}</li>
-						{/each}
+						{#if data.interestsByAction}
+							<li>you have {data.interestsByAction.like.length} likes</li>
+						{/if}
 					</ul>
 				  {/if}
 				</div>
@@ -63,13 +62,13 @@
 			<div class="card w-96 bg-neutral text-neutral-content">
 				<div class="card-body items-center text-center">
 				  <h2 class="card-title">Not for me</h2>
-				  {#if !data.interests.length || data.interests?.dislikes.length === 0}
+				  {#if !data.interestsByAction?.dislike || data.interestsByAction?.dislike?.length === 0}
 				  	<p>You have not disliked anything yet.</p>
 				  {:else}
 					<ul>
-						{#each data.interests.dislikes as dislike}
-							<li>{dislike}</li>
-						{/each}
+						{#if data.interestsByAction.dislike}
+							<li>you have {data.interestsByAction.dislike.length} likes</li>
+						{/if}
 					</ul>
 				  {/if}
 				</div>
