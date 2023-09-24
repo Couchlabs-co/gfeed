@@ -9,12 +9,12 @@ interface UserAction {
   title: string;
   type: string;
   action: string;
+  userId: string;
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
   const body: UserAction = JSON.parse(evt.body ?? '');
-
 
   if(!body || !body.title) {
     return {
@@ -29,7 +29,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       TableName: userInterestsTable,
       Item: {
         id: { S: uuid.v4() },
-        userId: { S: "1" },
+        userId: { S: body?.userId },
         interest: { S: body?.title },
         type: { S: body?.type },
         action: { S: body?.action },
