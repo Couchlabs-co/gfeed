@@ -51,9 +51,6 @@
             <h3 class="font-medium italic w-auto mr-2">{Item.author}</h3>
             <p class="">at {Item.publisher} on {Item.pubDate}</p>
             <!-- </span> -->
-            <!-- <p class="mb-3 font-normal text-black line-clamp-2">
-                {@html Item.content}
-            </p> -->
         </div>
         <div class="flex-1">
             <p class="mb-3 font-normal text-black line-clamp-2">
