@@ -66,11 +66,11 @@
         {/if}
             <div class="flex flex-1 flex-row space-x-2 m-2">
                 <button class="btn btn-xs bg-transparent border border-black" type="button" on:click={() => userAction
-        (Item.title, "like", "post")}>
+        (Item.title, "likes", "post")}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" {...$$props}><path fill="currentColor" fill-rule="evenodd" d="M3.172 5.172a4 4 0 0 1 5.656 0L10 6.343l1.172-1.171a4 4 0 1 1 5.656 5.656L10 17.657l-6.828-6.829a4 4 0 0 1 0-5.656Z" clip-rule="evenodd"/></svg>
                 </button>
                 <button class="btn btn-xs bg-transparent border border-black" type="button" on:click={() => userAction
-        (Item.title, "dislike", "post")}>
+        (Item.title, "dislikes", "post")}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" {...$$props}><path fill="currentColor" d="m473.7 73.8l-2.4-2.5c-46-47-118-51.7-169.6-14.8L336 159.9l-96 64l48 128l-144-144l96-64l-28.6-86.5C159.7 19.6 87 24 40.7 71.4l-2.4 2.4C-10.4 123.6-12.5 202.9 31 256l212.1 218.6c7.1 7.3 18.6 7.3 25.7 0L481 255.9c43.5-53 41.4-132.3-7.3-182.1z"/></svg>
                 </button>
                 <button class="btn btn-xs bg-transparent border border-black" type="button" on:click={() => userAction
