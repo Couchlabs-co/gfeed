@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alice GG</title>
+    <description>Alice Girard Guittard, Software Engineer and Co-Founder at &lt;a href='https://tsukumogami.software\'&gt;Tsukumogami Software&lt;/a&gt;, passionate about Software, DevOps and Information Security.
+</description>
+    <link>https://www.alicegg.tech//</link>
+    <atom:link href="https://www.alicegg.tech//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 24 Aug 2023 12:51:37 +0000</pubDate>
+    <lastBuildDate>Thu, 24 Aug 2023 12:51:37 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Atlas: Declarative schemas for SQL databases</title>
+        <description>&lt;p&gt;Database migrations are often one of the most dreaded parts of working with SQL databases.
+In many cases, teams end up keeping a bunch of timestamped &lt;code class=&quot;highlighter-rouge&quot;&gt;.sql&lt;/code&gt; files and automatically running them in order.
+While this work, it doesn’t scale well: the more developers you have working on your schema, the more you increase the risk of conflicts.
+Atlas solves this problem by offering you to define your SQL schemas in a declarative manner, without requiring you to use a specific ORM.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-08-24-atlas-sql/atlas.jpg&quot; alt=&quot;A map and glasses&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Image by &lt;a href=&quot;https://pixabay.com/users/dariuszsankowski-1441456/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=1052011&quot;&gt;Dariusz Sankowski&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;imperative-vs-declarative&quot;&gt;Imperative vs Declarative&lt;/h1&gt;
+
+&lt;p&gt;The traditional way of managing database schemas is through imperative changes.
+It consists of describing the steps required to achieve the state you want.
+This is consistent with the tools given to us by SQL: once you have created a table with &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE&lt;/code&gt;, you’re not supposed to re-use &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE&lt;/code&gt; but to append changes with &lt;code class=&quot;highlighter-rouge&quot;&gt;ALTER TABLE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Declarative programming works by describing the state you expect and letting your tools figure out how to get there.
+This is similar to what can be found in languages like Prolog or LISP, or tools like &lt;a href=&quot;https://alicegg.tech/2022/10/10/terraform-helm&quot;&gt;terraform&lt;/a&gt;.
+Declarative solutions are a great match for infrastructure problems
+because they allow you to keep track of the expected state of your systems,
+and let you use git for versioning and merging changes.
+This removes toil from the ops team while increasing visibility on the system’s state.&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-started-with-atlas&quot;&gt;Getting started with Atlas&lt;/h1&gt;
+
+&lt;p&gt;To create a table with Atlas, you just have to write a &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE&lt;/code&gt; SQL statement.
+Like the following, which I will write in a &lt;code class=&quot;highlighter-rouge&quot;&gt;schema.sql&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`users`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`id`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`name`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`password`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;88&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`id`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To run this in my database, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas schema apply&lt;/code&gt;,
+which takes the URL of your database using &lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt;,
+the file path using &lt;code class=&quot;highlighter-rouge&quot;&gt;--to&lt;/code&gt;, and the address of a test database (for linting) using &lt;code class=&quot;highlighter-rouge&quot;&gt;--dev-url&lt;/code&gt; (you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;docker://&lt;/code&gt; to have Atlas launch an ephemeral docker container).&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;atlas schema apply &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mysql://root:pass@localhost:3306/db&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;--to&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;file://schema.sql&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;--dev-url&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;docker://mysql/8/db
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if you want to modify the table you created,
+you can modify the &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE&lt;/code&gt; statement in &lt;code class=&quot;highlighter-rouge&quot;&gt;schema.sql&lt;/code&gt;.
+For example, I turn the &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; columns into &lt;code class=&quot;highlighter-rouge&quot;&gt;NOT NULL&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`users`&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`id`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`name`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;`password`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;88&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`id`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Rerunning the same &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas schema apply&lt;/code&gt; command will modify the database appropriately.
+In the output, we can see that Atlas generated the following SQL statement to achieve that:&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`users`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;MODIFY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`name`&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;using-hcl&quot;&gt;Using HCL&lt;/h2&gt;
+
+&lt;p&gt;Atlas also allows you to use HCL to define schemas.
+You might already be familiar with HCL if you have been using Terraform, but if not, the main benefit is that it is easy to read and modify for both humans and computers.
+This is interesting if you ever need your CI to interact with your database schemas.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; table from the previous example would look like this in HCL:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;table &lt;span class=&quot;s2&quot;&gt;&quot;users&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  schema &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; schema.db
+  column &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    null &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false
+    type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; int
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  column &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    null &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false
+    type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; varchar&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  column &lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    null &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false
+    type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; char&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;88&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  primary_key &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    columns &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;column.id]
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As a bonus, HCL doesn’t require a database for linting,
+so if you choose to use this, you can skip the &lt;code class=&quot;highlighter-rouge&quot;&gt;--dev-url&lt;/code&gt; parameter when applying.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-08-24-atlas-sql/pipe.jpg&quot; alt=&quot;Pipes&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+	  Image by &lt;a href=&quot;https://pixabay.com/users/652234-652234/?utm_source=link-attribution&amp;amp;utm_medium=referral&amp;amp;utm_campaign=image&amp;amp;utm_content=2178884&quot;&gt;Michael Gaida&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;migrating-an-existing-system&quot;&gt;Migrating an existing system&lt;/h1&gt;
+
+&lt;p&gt;With an already running database, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas schema inspect&lt;/code&gt; to generate the schema files.
+It also requires a &lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt; parameter for the database URL and &lt;code class=&quot;highlighter-rouge&quot;&gt;--format&lt;/code&gt; for the output format (SQL/HCL/JSON).&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;atlas schema inspect &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mysql://root:pass@localhost:3306/db&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{{ sql . }}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are already using an imperative migration system, and do not want to throw it away right now,
+you can also use Atlas to generate migration files.
+This is done using the &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas migrate diff [migration_name]&lt;/code&gt; command,
+which takes a &lt;code class=&quot;highlighter-rouge&quot;&gt;--dir&lt;/code&gt; parameter for the migration folder,
+a &lt;code class=&quot;highlighter-rouge&quot;&gt;--to&lt;/code&gt; parameter for the schema file,
+and a &lt;code class=&quot;highlighter-rouge&quot;&gt;--dev-url&lt;/code&gt; parameter like the apply command.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;atlas migrate diff my_migration &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--dir&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;file://migrations&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--to&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;file://schema.sql&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--dev-url&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;docker://mysql/8/test&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas migrate apply&lt;/code&gt; to run the migrations:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;atlas migrate apply &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mysql://root:pass@localhost:3306/db&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--dir&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;file://migrations&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;integrating-atlas-to-your-go-codebase&quot;&gt;Integrating Atlas to your Go codebase&lt;/h1&gt;
+
+&lt;p&gt;After using Atlas for a bit, you might need to write a wrapper for it or want to use it as part of your custom infrastructure tooling.
+This is made simple with their Go SDK.
+The packages &lt;code class=&quot;highlighter-rouge&quot;&gt;ariga.io/atlas-go-sdk/atlasexec&lt;/code&gt; will expose all the high-level functions that you can use for that.&lt;/p&gt;
+
+&lt;p&gt;The example below behaves like &lt;code class=&quot;highlighter-rouge&quot;&gt;atlas schema apply&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atlasexec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;atlas&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fatalf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;failed to initialize client: %v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atlasexec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SchemaApplyParams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mysql://root:pass@localhost:3306/db&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;To&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;file://schema.hcl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SchemaApply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fatalf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failed to apply schema: %v&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Applied %d changes (%d pending)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Changes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Applied&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Changes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pending&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 24 Aug 2023 07:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/08/24/atlas-sql.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/08/24/atlas-sql.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>5 kubectl plugins to make your life easier</title>
+        <description>&lt;p&gt;I have been using Kubernetes for five years, but only very recently started using plugins to enhance my kubectl commands.
+I will show you five plugins that help me avoid repetitive tasks, make cluster administration simpler, and incident response less stressful.
+All the plugins presented in this article are installable using &lt;a href=&quot;https://krew.sigs.k8s.io/plugins/&quot;&gt;Krew&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 08 Aug 2023 07:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/08/08/k8s-plugins.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/08/08/k8s-plugins.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Is technical analysis just stock market astrology?</title>
+        <description>&lt;p&gt;Technical analysis is a part of finance that studies price moves to guide investment decisions.
+A lot of investors seem skeptical of the use of past price data, which leads to technical analysis often being perceived as similar to astrology.
+In this article, I will try to see if it can provide an edge to long-term investors and if it beats reading the horoscope.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-07-25-technical-analysis/screen.jpg&quot; alt=&quot;A screen showing multiple stock prices&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Photo by &lt;a href=&quot;https://unsplash.com/@chrisliverani?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Chris Liverani&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;moving-average-crossover&quot;&gt;Moving Average Crossover&lt;/h1&gt;
+
+&lt;p&gt;There are hundreds of different technical analysis strategies and indicators out there.
+For this article, I decided to pick what seemed to be one of the simplest: SMA crossovers.&lt;/p&gt;
+
+&lt;p&gt;Simple Moving Averages (SMA) are, as the name suggests, just an average of past closing prices.
+The SMA Crossover strategy uses two moving averages, a “fast” one (50 days) and a “slow” one (200 days), and compares them to decide on buying or selling an asset.
+If the fast SMA is above the slow one, we should buy and hold the stock, and if this condition inverts, we should sell.
+It is a heuristic around &lt;a href=&quot;https://en.wikipedia.org/wiki/Momentum_(finance)&quot;&gt;momentum&lt;/a&gt;, which is the idea that if an asset price starts rising, we can jump on the bandwagon and hope it will continue its trajectory.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-07-25-technical-analysis/sma_illu.jpg&quot; alt=&quot;The strategy would have for example indicated to buy and hold between June 2009 and June 2010&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I have backtested an SMA crossover strategy on the &lt;a href=&quot;https://www.ssga.com/us/en/intermediary/etfs/funds/spdr-sp-500-etf-trust-spy&quot;&gt;SPY ETF&lt;/a&gt;, one of the most traded passive investment funds in the world.
+My backtest makes the following assumptions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;we do not pay any transaction fees&lt;/li&gt;
+  &lt;li&gt;we will obtain exactly the close price when buying or selling&lt;/li&gt;
+  &lt;li&gt;dividends received while holding stocks are immediately reinvested&lt;/li&gt;
+  &lt;li&gt;cash yields no interests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-07-25-technical-analysis/sma.jpg&quot; alt=&quot;The result of both backtests, showing similar performance for the SMA and buy and hold strategies&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;While someone who would have bought 10.000$ of SPY in July 1998 and continuously held the stock would have ended up with 52.030$ in June 2023 (6.78% annualized),
+an investor using the SMA crossover strategy would have made ended up with 49.127$. (6.54%).
+Even without accounting for transaction costs, the SMA crossover strategy doesn’t provide a significant over-performance to simply buying and holding over a long period.&lt;/p&gt;
+
+&lt;p&gt;Does this mean that this strategy is completely useless?&lt;/p&gt;
+
+&lt;p&gt;Actually no, a closer look at the data will show that the SMA crossover strategy allows investors to avoid extended drawdowns, like the 2008 crisis.
+This significantly reduces the risk taken by investors: the yearly standard deviation of the SMA crossover strategy is only 13%, against 19% for the buy and hold strategy.
+Since returns didn’t decrease as much as risk, this leads to high risk-adjusted returns, as measured by the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sharpe_ratio&quot;&gt;Sharpe ratio&lt;/a&gt;: 0.43 for passive investing vs 0.53 for SMA crossovers.&lt;/p&gt;
+
+&lt;h1 id=&quot;but-what-about-astrology&quot;&gt;But what about astrology?&lt;/h1&gt;
+
+&lt;p&gt;Of course, the subject of this article wasn’t to compare technical analysis to buy and hold, but to astrology.
+I was surprised to learn that &lt;a href=&quot;https://en.wikipedia.org/wiki/Financial_astrology&quot;&gt;financial astrology&lt;/a&gt; was actually a thing and that there were also a lot of astrology-related strategies out there.
+I decided to implement a strategy based on &lt;a href=&quot;https://www.oreilly.com/library/view/timing-solutions-for/9781118339206/xhtml/sec64.html&quot;&gt;lunar cycles&lt;/a&gt; since it was one of the clearest about when to buy and when to sell.&lt;/p&gt;
+
+&lt;p&gt;The strategy goes as follows: we purchase SPY on a new moon, and re-sell it on the next full moon.
+And repeat that every lunar month.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-07-25-technical-analysis/moon.jpg&quot; alt=&quot;The result of both backtests, showing the moon phases strategy failing to make any money&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Clearly, it fails at beating SMA crossovers.
+Or at doing basically anything, an investor using the moon phase strategy starting with 10.000$ would end up with only 11.110$ and a Sharpe ratio of only 0.09.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;Similarly to &lt;a href=&quot;https://alicegg.tech/2023/03/09/shannon-demon.html&quot;&gt;diversification&lt;/a&gt;, simple technical analysis strategies can be used to minimize investment risk, without necessarily reducing profits by the same amount.
+There’s however no guarantee that a strategy that worked in the past will continue working in the future.
+It is also likely that there exist smarter momentum indicators than moving averages, but you’ll have to do your own backtests for those.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Jul 2023 07:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/07/25/technical-analysis.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/07/25/technical-analysis.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Introducing Mikochi: a minimalist remote file browser</title>
+        <description>&lt;p&gt;Like many people working in DevOps, I have taken the bad habit to keep playing with servers and containers in my free time.
+One of the things I have running is a Media Server, which I use to access my collection of movies and shows (that I evidently own and ripped myself).
+To make my life easier with this, I have built a web application that allows me to browse, manage, and stream/download files.
+It is called &lt;a href=&quot;https://github.com/zer0tonin/Mikochi&quot;&gt;Mikochi&lt;/a&gt; and received its first stable release last week.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-06-09-mikochi/screenshot.jpg&quot; alt=&quot;The mikochi UI&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;problem-statement&quot;&gt;Problem statement&lt;/h1&gt;
+
+&lt;p&gt;My media server was initially running &lt;a href=&quot;https://jellyfin.org/&quot;&gt;Jellyfin&lt;/a&gt;.
+It is a pretty nice piece of software that probably fits the need of many people.
+Sadly for me, it focuses a lot on areas I didn’t care about (metadata, transcoding, etc) while being lackluster on classic file management.&lt;/p&gt;
+
+&lt;p&gt;The features I need is to have basic FTP-like management from a browser.
+This means it needs to list the content of folders and allow navigation between them
+while allowing to download, rename, delete, and upload files.&lt;/p&gt;
+
+&lt;p&gt;In addition to that, I also wanted a search function that could lead me to any file/directory in the server.&lt;/p&gt;
+
+&lt;p&gt;Since it’s replacing a media server, the last requirement was streaming.
+I do not use streaming in the browser much (since it doesn’t always support fancy codecs like &lt;a href=&quot;https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding&quot;&gt;HEVC&lt;/a&gt;),
+so I just needed to be able to read it from a media player like VLC or MPV, which is easier.&lt;/p&gt;
+
+&lt;h1 id=&quot;frontend&quot;&gt;Frontend&lt;/h1&gt;
+
+&lt;p&gt;One of my aims in this project was to get back into frontend development since I didn’t touch a line of JavaScript in a while.
+For this project, I decided to use &lt;a href=&quot;https://preactjs.com/&quot;&gt;Preact&lt;/a&gt;, a React alternative weighing only 3kb.&lt;/p&gt;
+
+&lt;p&gt;Preact was a great surprise. I expected a framework that small to be too good to be true, but it works well.
+I didn’t experience any trouble learning it since it is almost the same API as React and didn’t encounter any performance issues or unexplainable crashes.
+I will definitely try to use it again for future projects.&lt;/p&gt;
+
+&lt;p&gt;The complete JS bundle size ends up being ~36kb, barely more than the &lt;a href=&quot;https://css.gg/&quot;&gt;icon pack&lt;/a&gt; that I use.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-06-09-mikochi/mikochi.jpg&quot; alt=&quot;Two small anime characters surrounded by grass&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		The &lt;a href=&quot;https://anilist.co/character/120769/Mikochi&quot;&gt;character&lt;/a&gt; who gave this software its name
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;backend&quot;&gt;Backend&lt;/h1&gt;
+
+&lt;p&gt;The backend was made using Go, which has been one of my main languages for the past 5 years.
+I used the &lt;a href=&quot;https://gin-gonic.com/&quot;&gt;Gin&lt;/a&gt; framework to handle the regular HTTP boilerplate, which worked admirably.&lt;/p&gt;
+
+&lt;p&gt;The only pain point I had was re-implementing JWT authentication.
+I had decided to not use a library for that because I felt that, it might not handle an edge case well:
+I need tokens passed in GET params for streaming requests,
+since VLC isn’t going to write a &lt;code class=&quot;highlighter-rouge&quot;&gt;Authorization&lt;/code&gt; header.
+It’s not particularly complex but it is a lot of code.&lt;/p&gt;
+
+&lt;p&gt;I had the good surprise that streaming files “just works” in a &lt;a href=&quot;https://github.com/zer0tonin/Mikochi/blob/91c91c83227d7a78c16cc9a7e361078073cd42fe/backend/browser/handlers.go#L17&quot;&gt;single line of code&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pathInDataDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;video width=&quot;100%&quot; controls=&quot;&quot;&gt;
+  &lt;source src=&quot;/assets/2023-06-09-mikochi/stream.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;h1 id=&quot;running-it&quot;&gt;Running it&lt;/h1&gt;
+
+&lt;p&gt;If you’re interested in trying out Mikochi, it can be launched with just a &lt;a href=&quot;https://hub.docker.com/r/zer0tonin/mikochi&quot;&gt;Docker image&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8080:8080 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;PWD&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/data:/data &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DATA_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/data&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;USERNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;alicegg &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;horsebatterysomething zer0tonin/mikochi:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Compiled binaries are also available on &lt;a href=&quot;https://github.com/zer0tonin/Mikochi/releases&quot;&gt;GitHub&lt;/a&gt;.
+And for those who love fighting with Ingresses and PersistentVolumeClaims, there’s a &lt;a href=&quot;https://artifacthub.io/packages/helm/zer0tonin/mikochi&quot;&gt;helm chart&lt;/a&gt; available.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Jun 2023 07:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/06/09/mikochi.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/06/09/mikochi.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Specialization considered harmful</title>
+        <description>&lt;p&gt;It is sometimes recommended that software engineers should learn “depth-first”, and seek to specialize early in their careers.
+I think his advice is misguided.
+In my opinion, having a wide range of knowledge is in many cases more important than being extremely good at a very specialized task.
+I will use this article to make the case for avoiding specialization as a software engineer.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-04-03-specialization/tools.jpg&quot; alt=&quot;A set of tools&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Photo by &lt;a href=&quot;https://unsplash.com/@neonbrand?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Kenny Eliason&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;its-not-just-about-practice-hours&quot;&gt;It’s not just about practice hours&lt;/h1&gt;
+
+&lt;p&gt;A common misconception when learning a new skill is that,
+since it might take 10,000 hours to master it,
+the best thing to do is to start practicing as early as possible and with as much focus as possible.
+Reality is however not as simple.&lt;/p&gt;
+
+&lt;p&gt;It may be true that just putting in a lot of focused practice hours will lead to amazing results in problems that are very constrained in scope (like chess).
+However, for subjects that have a very broad, and frequently evolving set of problems,
+experience working on very diverse subjects will often perform better than intense specialization.&lt;/p&gt;
+
+&lt;p&gt;One of the reasons behind that is that many problems that are at first sight unrelated will have similar patterns.
+Being exposed to a wide variety of problems allows you to see a lot of potential patterns between problems.&lt;/p&gt;
+
+&lt;p&gt;This is why history has many records of people achieving breakthroughs in many fields.
+For example, &lt;a href=&quot;https://en.wikipedia.org/wiki/Benoit_Mandelbrot&quot;&gt;Benoit Mandelbrot&lt;/a&gt; first noticed the concept of fractal by studying probability distributions in financial markets,
+he managed to find an application of the concept to many patterns that appear in nature,
+such as &lt;a href=&quot;https://en.wikipedia.org/wiki/How_Long_Is_the_Coast_of_Britain&quot;&gt;coastlines&lt;/a&gt;, clouds, and blood vessels.&lt;/p&gt;
+
+&lt;h1 id=&quot;tech-changes-fast&quot;&gt;Tech changes, fast&lt;/h1&gt;
+
+&lt;p&gt;Many people underestimate how fast the world of software engineering can change.
+Some extremely popular concepts like “DevOps” were pretty much not a thing 10 years ago.
+20 years ago, I doubt anyone would have known what differentiated a “frontend developer” from a “backend developer”.
+Even if you zoom on very specific technologies, things are changing every year:
+React code written in 2023 doesn’t have much in common with React code written in 2015.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-04-03-specialization/retro.jpg&quot; alt=&quot;A retro-looking computer&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Photo by &lt;a href=&quot;https://unsplash.com/@lorenzoherrera?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Lorenzo Herrera&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Being a generalist, allows you to adapt much faster to change, it can be seen as a way of “learning to learn”.
+Once you have been exposed to many problems and solutions, picking up new tools and adapting to changes in the field becomes easier and easier.&lt;/p&gt;
+
+&lt;h1 id=&quot;theres-more-to-software-engineering-than-code&quot;&gt;There’s more to software engineering than code&lt;/h1&gt;
+
+&lt;p&gt;Most importantly, learning the ins and out of a programming language and tech stack is not what brings value.
+Software engineering is the art of using computers to solve problems.
+Those problems are generally not about computers, but involve businesses and people.
+In my experience, this is a point that is easy to miss when over-focusing on the depth of a specific technology.&lt;/p&gt;
+
+&lt;p&gt;This is also where a lot of people who make a career change and transition late into the tech industry have an edge.
+They can compensate for their late start by being more aware of the reality of business and the needs of organizations.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 03 Apr 2023 07:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/04/03/specialization.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/04/03/specialization.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Why diversification matters for long-term investors? Meet Shannon's Demon</title>
+        <description>&lt;p&gt;Any introduction to finance will mention that diversification is extremely important.
+Intuitively, it is easy to understand that diversification reduces risks.
+If I own stocks in two companies, and one of them goes bankrupt, I lose less than if I had invested all my money in it.
+However, what appears less intuitive is that diversification itself will increase investment portfolio returns.
+This phenomenon is known as Shannon’s Demon,
+from the name of its inventor &lt;a href=&quot;https://en.wikipedia.org/wiki/Claude_Shannon&quot;&gt;Claude Shannon&lt;/a&gt;,
+also famous for his work on &lt;a href=&quot;https://alicegg.tech/2019/09/13/one-time-pad.html&quot;&gt;cryptography&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-09-shannon-demon/coin_tree.jpg&quot; alt=&quot;A tree planted in coins&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Photo by &lt;a href=&quot;https://unsplash.com/@micheile?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;micheile dot com&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Let’s take the following scenario:
+I am an investor who can purchase two assets with completely random and unpredictable returns.
+My crystal ball is broken, so I cannot know in advance which of the two assets will perform better.
+They can be modeled by a &lt;a href=&quot;https://en.wikipedia.org/wiki/random_walk&quot;&gt;random walk&lt;/a&gt;.
+Any change to my investment portfolio will cost a 1% transaction fee.&lt;/p&gt;
+
+&lt;p&gt;I can use the following two strategies:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;put 100% of my money in one of the two assets and hope it performs well&lt;/li&gt;
+  &lt;li&gt;put 50% of my money in each asset and rebalance the portfolio every 6 months to keep each position at 50%&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-09-shannon-demon/2random.png&quot; alt=&quot;A graph showing the value of two random assets and the value of the balanced portfolio containing both, which goes higher than both&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		A cherry-picked example of the return of two random assets and a balanced portfolio (in red)
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I made a Monte-Carlo experiment that simulates the above scenario 100,000 times over 20 years (5040 trading days).
+After inspecting the final returns, I observed the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;in nearly 100% of outcomes, the balanced portfolio beats investing everything in the worst-performing asset&lt;/li&gt;
+  &lt;li&gt;in 70% of outcomes, the balanced portfolio also beats investing everything in the best-performing asset&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;explanation&quot;&gt;Explanation&lt;/h1&gt;
+
+&lt;p&gt;The second observation might be surprising, but can be easily explained.
+The trick is that regular rebalancing will create a mechanical way to “buy low and sell high”.&lt;/p&gt;
+
+&lt;p&gt;Let’s illustrate it step by step:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;at the start, I own 500 of asset X, for a value of 10$ each, and 500 of Y for the same value&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;500&lt;/td&gt;
+      &lt;td&gt;5,000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;500&lt;/td&gt;
+      &lt;td&gt;5,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;after 6 months, my position in X experienced explosive growth and now trades at 50$, while Y is stable at 10$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;50$&lt;/td&gt;
+      &lt;td&gt;1000&lt;/td&gt;
+      &lt;td&gt;25,000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;500&lt;/td&gt;
+      &lt;td&gt;5,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I rebalance the portfolio, and now own 15,000$ in X and 15,000$ in Y&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;50$&lt;/td&gt;
+      &lt;td&gt;300&lt;/td&gt;
+      &lt;td&gt;15,000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;1,500&lt;/td&gt;
+      &lt;td&gt;15,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;6 months later, X performed poorly and is back at 10$, while Y is now worth 20$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;300&lt;/td&gt;
+      &lt;td&gt;3,000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;20$&lt;/td&gt;
+      &lt;td&gt;1,500&lt;/td&gt;
+      &lt;td&gt;30,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I rebalance, and now own 16,500$ in X and 16,500$ in Y&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Price&lt;/th&gt;
+      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;10$&lt;/td&gt;
+      &lt;td&gt;1,650&lt;/td&gt;
+      &lt;td&gt;16,500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;20$&lt;/td&gt;
+      &lt;td&gt;825&lt;/td&gt;
+      &lt;td&gt;16,500&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Over the last scenario, my portfolio gained 23,000$.
+If I had invested everything into Y, I would have gained only 10,000$.
+And if I had bough and held X over the same time, I would not have made any profit.&lt;/p&gt;
+
+&lt;h1 id=&quot;caveat-1-correlated-assets&quot;&gt;Caveat 1: correlated assets&lt;/h1&gt;
+
+&lt;p&gt;One important thing to consider is that this only work with assets that are not positively correlated.
+A positive correlation means that both assets will move up at the same time, and down at the same time.
+In this situation, the balanced portfolio will still perform better than the worst of the two assets, but will most of the time underperform the best-performing asset.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-09-shannon-demon/2correlated.png&quot; alt=&quot;A graph showing two asset prices moving simultaneously and the balanced portfolio resulting of it. The balanced portfolio values stays between the two assets prices.&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		The return of two positively correlated assets and a balanced portfolio (in red) containing both
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In practice, many asset returns are very correlated with each other.
+For example, in the stock market, we can observe periods where the large majority of stocks tend to move up (bull markets) or down (bear markets).
+This makes the creation of a diversified stock portfolio more complicated than just randomly picking multiple stocks to purchase.
+This is also why it is often advised to diversify across multiple asset classes (ie, stocks, bonds, commodities, and cash).&lt;/p&gt;
+
+&lt;p&gt;A common way to make use of Shannon’s Demon is to use an asset with a stable price (ie. a money market fund) alongside a volatile one.
+A portfolio with 50% cash and 50% in a volatile asset will not only cut the risk in half but sometimes outperform being 100% in a single volatile asset.
+Simulating 10000 random walks over 20 years, in 91% of cases, the balanced portfolio beats investing everything in the random walk.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-09-shannon-demon/stable.png&quot; alt=&quot;A graph showing a stable asset price and a volatile one and the balanced portfolio resulting of it.&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		A simulation of a stable and a volatile asset and the resulting balanced portfolio
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;An alternative use of Shannon’s Demon is to profit from negatively correlated positions.
+This can be done by taking two positively correlated assets and being long on one, and short on the other.
+This strategy is called &lt;a href=&quot;https://en.wikipedia.org/wiki/Pairs_trade&quot;&gt;pair trading&lt;/a&gt;, and it is not something you should try at home.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-09-shannon-demon/pairs.png&quot; alt=&quot;A graph showing two assets moving in opposite ways and the balanced portfolio of both. The balanced portfolio ends up significantly higher.&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		An example of two negatively correlated assets and the resulting portfolio
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;caveat-2-real-life-is-not-as-simple&quot;&gt;Caveat 2: real-life is not as simple&lt;/h1&gt;
+
+&lt;p&gt;Obviously, there’s more to portfolio management than just diversification and rebalancing.
+First, the 50/50 repartition I used in this article is rarely optimal.
+The common calculation used for optimal position sizing is the &lt;a href=&quot;https://en.wikipedia.org/wiki/Kelly_criterion&quot;&gt;Kelly criterion&lt;/a&gt;, which would need an entire article dedicated to it to cover it properly.&lt;/p&gt;
+
+&lt;p&gt;In previous examples, I used a fixed 6 months period between rebalances.
+I chose this period for completely arbitrary reasons.
+An optimized rebalancing strategy would need to take into account asset variances, investment time-frames, and transaction costs to determine the rebalancing intervals.&lt;/p&gt;
+
+&lt;p&gt;Lastly, while simulations using random walks are a useful mathematical tool, they might not reflect real market conditions.
+A portfolio composed of assets that are likely to depreciate over time is unlikely to be profitable, no matter how diversified it is.
+This is why asset purchases should be carefully researched, eventually with the help of a professional financial advisor (not me).&lt;/p&gt;
+</description>
+        <pubDate>Thu, 09 Mar 2023 09:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/03/09/shannon-demon.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/03/09/shannon-demon.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Learning Dutch online in 2023</title>
+        <description>&lt;p&gt;Back in 2020, I left France to live in the Netherlands.
+Since then, I have spent some time learning the language and reached an intermediate (B1-B2) level.
+While learning Dutch is not a hard requirement to live and work in the country, it does make day-to-day life a bit more convenient.
+There are plenty of resources out there to learn languages, so here’s my pick of tools that are worth spending your time on.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/windmill.jpg&quot; alt=&quot;A dutch windmill&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+	    Photo by &lt;a href=&quot;https://unsplash.com/es/@ashuba?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Artem Shuba&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;duolingo&quot;&gt;Duolingo&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.duolingo.com&quot;&gt;Duolingo&lt;/a&gt; is probably the most famous language-learning app around.
+Despite its popularity, many people in the language learning community will dismiss it as just a toy.
+It is, in my opinion, actually great for beginners.
+One of the main benefits of it is that it focuses on complete sentences, and will drill the sentence structure of your target language in your head.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/duolingo.jpg&quot; alt=&quot;A Duolingo translation exercise&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;However, once you have acquired a basic idea of your target language’s grammar the application loses any usefulness.
+Duolingo is sadly extremely slow at introducing new vocabulary, and going across the whole course is unnecessarily time-consuming.
+Which I guess is a consequence of its subscription business model.
+The gamification makes it addictive enough that I reached a 300 days learning streak, but I would honestly not recommend using it for more than six months.&lt;/p&gt;
+
+&lt;h1 id=&quot;anki&quot;&gt;Anki&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://apps.ankiweb.net/&quot;&gt;Anki&lt;/a&gt; is a very often recommended option in language learning communities.
+It is a spaced repetition app, that will show you flashcards and ask you if you know the correct translation.
+Unlike Duolingo, Anki is essentially focused on vocabulary.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/anki.jpg&quot; alt=&quot;The Anki mac interface&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;It is free and open-source software, so the application gives you a lot of customization options, which lets you introduce new words at the rhhythm you want.
+A few Dutch decks are &lt;a href=&quot;https://www.ankipedia.com/en/learn-dutch-anki/&quot;&gt;available online&lt;/a&gt;, but many Anki users prefer creating their own decks with words they encounter in target language content.&lt;/p&gt;
+
+&lt;p&gt;Anki didn’t stick with me, I think the issue was the lack of variety in exercises.
+Doing the same thing to every flashcard turned the activity into a chore (instead of the addictive game that Duolingo was).&lt;/p&gt;
+
+&lt;h1 id=&quot;memrise&quot;&gt;Memrise&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.memrise.com/&quot;&gt;Memrise&lt;/a&gt; is my personal favorite.
+Like Anki, it is a spaced repetition app, which focuses on memorizing vocabulary.
+But it is much more enjoyable than Anki because it alternates between different exercise variations.
+Adding to that, their repetition algorithm seems smarter, making for a more enjoyable and efficient learning experience.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/memrise.jpg&quot; alt=&quot;The memrise interface&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;It contains seven official courses, for a total of more than 2000 words.
+Which is largely enough content to start engaging with native content.
+Additional content is provided by the community.&lt;/p&gt;
+
+&lt;p&gt;Just like Duolingo, some features are locked behind a subscription.&lt;/p&gt;
+
+&lt;h1 id=&quot;italki&quot;&gt;Italki&lt;/h1&gt;
+
+&lt;p&gt;Unlike the previous apps, &lt;a href=&quot;https://www.italki.com&quot;&gt;Italki&lt;/a&gt; is not focused on providing exercises but on matching students with language teachers.
+Some could say it is the “Uber” of language learning, providing cheap and personalized courses.
+It is a pretty good way of getting into some conversation practice, which is especially useful if you are not in the country.
+The experience will vary from teacher to teacher, but I had a great time using it.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/italki.jpg&quot; alt=&quot;The italki teacher selection&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;native-content&quot;&gt;Native content&lt;/h1&gt;
+
+&lt;p&gt;Of course, apps and courses are a great help when learning a language, but exposure to native content is what will help the most in the journey toward fluency.
+In the beginning, I found &lt;a href=&quot;https://jeugdjournaal.nl/&quot;&gt;NOS Jeugdjournaal&lt;/a&gt; to be very helpful.
+It is the kid’s version of the NOS newspaper and comes with shorter articles, simpler vocabulary, and less depressing news.
+Most articles are accompanied by video clips which also helps build your listening, and their daily “Ochtendjournaal” can be easily fit into a routine.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-03-02-learning-dutch/jeugdjournaal.jpg&quot; alt=&quot;The NOS Jeugdjournaal home page&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For more advanced learners, there are quite a few Dutch TV shows and movies around.
+Amongst my personal favorites are the &lt;a href=&quot;https://www.imdb.com/title/tt14859224/&quot;&gt;Dirty Lines&lt;/a&gt; show, which is about two brothers creating the first dutch phone-sex line,
+and the movie &lt;a href=&quot;https://www.imdb.com/title/tt8639136/?ref_=nv_sr_srsg_0&quot;&gt;De Oost&lt;/a&gt;, which covers the story of a dutch soldier in the Indonesian War of Independence.
+You can find a list of Dutch movies on &lt;a href=&quot;https://www.imdb.com/list/ls000561802/&quot;&gt;IMDB&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Mar 2023 09:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/03/02/learning-dutch.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/03/02/learning-dutch.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>How much can you really get out of a 4$ VPS?</title>
+        <description>&lt;p&gt;When starting a new project, evaluating the budget needed for cloud hosting can be a tricky question.
+On one side, you will hear horror stories of people waking up to an unexpected 100k$ bill from their provider.
+But on the other hand, you will see providers advertising costs sometimes as low as 4$ per month for a virtual machine.
+In this article, I will perform load testing on one of those 4$ VPS (from an unnamed provider) to figure out if the promise of running your production on such a low budget is realistic.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-02-06-4dollar-vps/unicorn.jpg&quot; alt=&quot;A unicorn toy in front of small stack of coins&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+	    Photo by &lt;a href=&quot;https://unsplash.com/@anniespratt?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Annie Spratt&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;the-test-application&quot;&gt;The test application&lt;/h1&gt;
+
+&lt;p&gt;For this test, I designed a simple CRUD application in Go.
+It mimics a blogging application and lets user create posts, lists the latest posts, and display a single post.
+In other words, it has the following three routes:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a &lt;code class=&quot;highlighter-rouge&quot;&gt;GET /&lt;/code&gt; route that renders an HTML template and shows the title of the 10 latest posts&lt;/li&gt;
+  &lt;li&gt;a &lt;code class=&quot;highlighter-rouge&quot;&gt;GET /&amp;lt;post_id&amp;gt;&lt;/code&gt; route that renders an HTML template and shows the title and body of the selected post&lt;/li&gt;
+  &lt;li&gt;a &lt;code class=&quot;highlighter-rouge&quot;&gt;POST /&lt;/code&gt; route that accepts a JSON with the post title and body, timestamps it, stores it in the database and redirects to &lt;code class=&quot;highlighter-rouge&quot;&gt;GET /&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the database, I chose to use MongoDB.
+I picked it because it is simple to set up, popular, and claims of being &lt;a href=&quot;https://www.youtube.com/watch?v=b2F-DItXtZs&quot;&gt;web scale&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The application was developed without making any particular performance optimizations.
+The only database-specific optimization I created was to create an index on the post timestamps, which allows listing the latest posts decently fast.&lt;/p&gt;
+
+&lt;p&gt;Both the application and MongoDB were deployed using Docker with docker-compose.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-load-test&quot;&gt;The load test&lt;/h1&gt;
+
+&lt;p&gt;I used &lt;a href=&quot;https://k6.io/&quot;&gt;K6&lt;/a&gt; to perform a load test.
+K6 is a software that will generate “virtual users” who continuously run test scenarios defined using javascript.&lt;/p&gt;
+
+&lt;p&gt;I defined two scenarios:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;10% of users would be creating posts&lt;/li&gt;
+  &lt;li&gt;90% of users display the latest 10 posts, and then open one of those posts (picked at random).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The test would progressively ramp up until we reach 50 virtual users and then come back down, for a total test duration of 1min30s.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-02-06-4dollar-vps/k6.jpg&quot; alt=&quot;k6 output showing 94091 succesful tests&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Launching the test from my local computer, k6 managed to succesfully run more than 94k request, with an average duration of 21ms per request, and a 95 percentile duration of 33ms.
+While this test didn’t reach the point where the server would be failing, a closer look at the data already gives more insights.
+I exported k6 metrics to a CSV, and used pandas to analyze the data.
+Plotting the request durations against the number of requests per second we can observe that the duration starts spiking when k6 sends around 1300 requests/seconds.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-02-06-4dollar-vps/analysis.png&quot; alt=&quot;The request duration and request rate graph&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;During the tests, we can identify a potential bottleneck.
+The CPU load increases with the number of virtual users, and quickly reaches 100%.
+This is shown in the htop screenshot below, with both mongo and the application itself requesting most of the available CPU.
+In contrast, both RAM and disk throughput seemed to be steadily lower than the system capabilities.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-02-06-4dollar-vps/htop.jpg&quot; alt=&quot;Htop showing 100% CPU usage&quot; width=&quot;100%&quot; /&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;conclusion-and-limitations&quot;&gt;Conclusion and limitations&lt;/h1&gt;
+
+&lt;p&gt;This test shows that, as long as you don’t plan on building the next Twitter, a very cheap VPS might be fine for the start of a project.
+However, this result might seriously differ from real life applications because those contain complex business logic requiring more resources than a simple CRUD application.
+Adding to that, more networking overhead is bound to happen when clients connect from different IPs and use TLS, which I did not do in the above test.&lt;/p&gt;
+
+&lt;p&gt;The best way to determine the hosting budget for a real application would be to test it until failure using a distributed k6 setup.
+This can be done using the &lt;a href=&quot;https://github.com/grafana/k6-operator&quot;&gt;k6 operator for kubernetes&lt;/a&gt; or the (somewhat expensive) &lt;a href=&quot;https://k6.io/cloud/&quot;&gt;k6 cloud&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can find the source code for the application, k6 scenarios and analysis script used in this article on my &lt;a href=&quot;https://github.com/zer0tonin/crud_benchmark&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Feb 2023 09:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/02/06/4dollar-vps.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/02/06/4dollar-vps.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Does ChatGPT dream about cryptographic cats?</title>
+        <description>&lt;p&gt;Back in 2017, the tech world seemed to be constantly talking about a single subject: Blockchains.
+Two years ago, Vitalik Buterin revolutionized the nascent field by creating Ethereum.
+Ethereum was at the time a cryptographic protocol that would allow people to make distributed computations, without having to blindly trust the entire network.
+It was built on Bitcoin’s concept of blockchain: a distributed, unalterable public ledger of transactions secured through enormous amounts of computing power.
+But it was not just an alternative currency like Bitcoin.
+Ethereum was able to run any sort of computation, and could not only be used as a ledger for ETH, but as a database for distributed applications.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-01-31-chatgpt/cat.jpg&quot; alt=&quot;A cat stepping on a paper sheet with ideogram-looking symbols&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		A &quot;cryptographic cat&quot; generated by Midjourney
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This technological breakthrough led to a lot of promises being made at the time:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.technologyreview.com/2017/10/16/148584/how-blockchain-could-give-us-a-smarter-energy-grid/&quot;&gt;it would help us build smarter energy grids&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.investopedia.com/news/how-blockchain-technology-can-prevent-voter-fraud/&quot;&gt;it would prevent voter fraud and pave the way to direct democracy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.media.mit.edu/articles/who-will-build-the-health-care-blockchain/&quot;&gt;it would simplify medical records&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2998093&quot;&gt;it was the “Driver of the Fourth Industrial Revolution”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.weforum.org/press/2017/06/blockchain-the-next-generation-of-the-internet/&quot;&gt;it was the “Next Generation of the Internet”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sadly, Ethereum had a few issues.
+First, it was extremely slow.
+Unlike traditional distributed systems, its fault-tolerant nature required every node to run every computation.
+This also made the system costly, as node owners were to be compensated with a “gas fee” for running computations.
+And in addition to that, a public read-only ledger is by definition a privacy nightmare, and would not fare well with laws like the GDPR or HIPAA.
+Everybody wanted a secure, decentralized internet, but nobody wanted a slow, costly, and overly-public internet.&lt;/p&gt;
+
+&lt;p&gt;While Ethereum has improved on many of its past technical issues, almost none of the wild promises made in 2017 have been fulfilled.
+However, Ethereum has been for the past few years one of the wildest avenues for financial speculators.
+Not only people can speculate on the price of ETH, but also on derivative tokens.
+After a wave of ICOs (the crypto equivalent of a penny stock entering the market), speculators decided to stop pretending to bet on anything that made sense and started trading jpeg files.
+The “CryptoKitties” application soon became the biggest hit on the Ethereum network.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2023-01-31-chatgpt/cryptokitty.jpg&quot; alt=&quot;Just an ugly drawing of a cat&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		A cryptokitty (I didn't pay for it)
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In 2023, everyone in the tech world is talking about Generative AI.
+Last year saw the release of multiple image generation models such as DALL-E 2, Stable Diffusion, and MidJourney.
+Also notably, OpenAI decided to tease the upcoming GPT-4 text generation model, by repackaging its GPT-3 model in the form of a chatbot: ChatGPT.&lt;/p&gt;
+
+&lt;p&gt;Just like Ethereum, those are truly impressive technological breakthroughs.
+In less than a decade, image generation models went from being able to create vaguely psychedelic patterns (DeepDream) to completely generating paintings in the style of any popular artist.
+In the same way, text generation models are now good enough, they could easily be mistaken for a human.
+Thankfully, ChatGPT kindly discloses it’s an AI language model when asked.&lt;/p&gt;
+
+&lt;p&gt;This progress in AI also comes with its set of crazy promises:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.livemint.com/opinion/columns/will-chatgpt-replace-google-asour-go-to-web-search-platform-11671733523981.html&quot;&gt;generative language models could replace search engines&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nypost.com/2023/01/25/chat-gpt-could-make-these-jobs-obsolete/&quot;&gt;AI could replace educators, financial analysts, software engineers, journalists, and graphic designers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reuters.com/legal/transactional/will-chatgpt-make-lawyers-obsolete-hint-be-afraid-2022-12-09/&quot;&gt;AI could give legal advice and potentially replace lawyers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://siliconangle.com/2023/01/27/singularity-least-singular-new-tech-bubble-finally/&quot;&gt;we have finally reached the “singularity”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This optimism seems to forget a few limitations of this technology, which I did ask ChatGPT itself to tell us about:&lt;/p&gt;
+&lt;figure&gt;
+    &lt;blockquote&gt;
+	&lt;ol&gt;
+	    &lt;li&gt;
+Lack of understanding: Generative models may generate outputs that lack context, meaning or coherence.
+	    &lt;/li&gt;
+	    &lt;li&gt;
+Computational costs: Training generative models can be computationally expensive and require large amounts of data and computing power.
+	    &lt;/li&gt;
+	    &lt;li&gt;
+Bias in data: If the training data is biased, the model may generate outputs that reflect this bias.
+	    &lt;/li&gt;
+	    &lt;li&gt;
+Mode collapse: Models may generate limited outputs and fail to cover the diversity of the data.
+	    &lt;/li&gt;
+	    &lt;li&gt;
+Overfitting: Generative models may memorize the training data and fail to generalize to new data.
+	    &lt;/li&gt;
+	    &lt;li&gt;
+Explainability: Generative models are often complex and difficult to understand or explain, making it challenging to assess their decision-making processes.
+	    &lt;/li&gt;
+	&lt;/ol&gt;
+    &lt;/blockquote&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;But just like Ethereum, it looks like ChatGPT is already attracting financial speculators.
+Last week, BuzzFeed, an usually pretty un-noticeable penny stock, rose by more than 300% on the simple news that the company would make use of generative AI.
+As the quote goes, “History never repeats itself, but it does often rhyme”.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 31 Jan 2023 09:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2023/01/31/chatgpt.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2023/01/31/chatgpt.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Plaid Layoffs and beyond</title>
+        <description>&lt;p&gt;Last week, &lt;a href=&quot;https://plaid.com/team-update/&quot;&gt;Plaid announced&lt;/a&gt; laying off 20% of its workforce (260 people).
+Today I signed my termination agreement, which makes this week my last week as part of Plaid’s infrastructure team.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src=&quot;/assets/2022-12-13-plaid-layoffs/contract.jpg&quot; alt=&quot;An unsigned contract&quot; width=&quot;100%&quot; /&gt;
+	&lt;figcaption&gt;
+		Photo by &lt;a href=&quot;https://unsplash.com/fr/@kellysikkema?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Kelly Sikkema&lt;/a&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h1&gt;
+
+&lt;p&gt;While being laid off and having to leave a very talented team is never a happy moment,
+I have decided to use the time ahead of me as an opportunity to focus on personal growth and figure out were I want my career to go next.
+I will not be seeking new full-time employment immediately.&lt;/p&gt;
+
+&lt;p&gt;First, I want to get back into actually building things by myself.
+My programming skills and technology knowledge has immensely increased since I left college.
+Since then, I have not had the time and energy to get into serious side projects.
+I intend to use the next few months to fix that, although I am not sure exactly what form my new projects will take.&lt;/p&gt;
+
+&lt;p&gt;Second, I need some time to explore infrastructure tooling outside of kubernetes.
+I enjoy working with kubernetes, but I am also starting to suspect that we are close to the peak of the hype cycle.
+If that’s the case, having a career focused on k8s might become as attractive as being an Enterprise JavaBeans expert.
+To avoid that, I intend to seek out “what’s new” in the infrastructure space and explore new technologies.&lt;/p&gt;
+
+&lt;p&gt;While I’m talking about diversifying my skill portfolio, I also intend to explore subjects that are way outside of my comfort zone, mainly regarding communication.
+I think effective communication is an essential skill to anyone working in tech, which is currently my weak point.
+To fix that, I will try to inform myself about writing and visual communication techniques.
+I intend to practice by writing and talking more about what I do.
+And while I’m at it, I might try to finish learning dutch.&lt;/p&gt;
+
+&lt;p&gt;So with all that, expect more activity on this blog in the next few months.
+I will do my best to talk about the projects I’m creating, the technologies I’m trying and everything I discover along the way.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 13 Dec 2022 08:00:00 +0000</pubDate>
+        <link>https://www.alicegg.tech//2022/12/13/plaid-layoffs.html</link>
+        <guid isPermaLink="true">https://www.alicegg.tech//2022/12/13/plaid-layoffs.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sam Newman</title>
+  <subtitle>Writing about technology, and perhaps board games</subtitle>
+  <id>http://samnewman.io/blog</id>
+  <link href="http://samnewman.io/blog"/>
+  <link href="http://samnewman.io/blog/feed.xml" rel="self"/>
+  <updated>2023-02-08T15:57:00+00:00</updated>
+  <author>
+    <name>Sam Newman</name>
+  </author>
+  <entry>
+    <title>Don't Call It A Platform</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2023/02/08/dont-call-it-a-platform/"/>
+    <id>http://samnewman.io/blog/2023/02/08/dont-call-it-a-platform/</id>
+    <published>2023-02-08T15:57:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;p&gt;This year (2023) is the year of platform engineering. Don’t believe me? Here is the esteemed (and it has to be said lovely) Charles Humble totally accurately quoting the ravings of some madman on twitter:&lt;/p&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;“This is going to be year of platform engineering.” &lt;a href="https://twitter.com/samnewman?ref_src=twsrc%5Etfw"&gt;@samnewman&lt;/a&gt;, &lt;a href="https://twitter.com/hashtag/WTFIsCloudNative?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#WTFIsCloudNative&lt;/a&gt;&lt;/p&gt;&amp;mdash; Charles Humble (@charleshumble@mastodon.social) (@charleshumble) &lt;a href="https://twitter.com/charleshumble/status/1621152793150226432?ref_src=twsrc%5Etfw"&gt;February 2, 2023&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;!-- &lt;a href="/img/blog/2023/charles_quote.png"&gt;(A screenshot of the tweet to guard against the day when Twitter goes boom)&lt;/a&gt; --&gt;
+
+&lt;p&gt;See? The industry is all ablaze about the idea. I mean, even &lt;a href="[Gartner%20IT%20Infrastructure,%20Operations%20&amp;amp;%20Cloud%20Strategies%20Conference%202022%20London:%20Day%201%20Highlights](https://www.gartner.com/en/newsroom/press-releases/2022-11-21-gartner-it-infrastructure-operations-and-cloud-strategies-conference-2022-london-day-1-highlights)"&gt;Gartner&lt;/a&gt; has come to the party, so it must be a thing, right? If Gartner says something, it &lt;em&gt;must&lt;/em&gt; be true. I fully expect we'll see the announcement of PlatformCon 2023 to be held at the Moscone Center, with "Con" taking on many, many, meanings.&lt;/p&gt;
+
+&lt;p&gt;But, let’s pump the brakes for a bit. I fear that we’ve come too far from the original intention of a developer platform. We’re in danger of being drowned under an orgy of vendor-driven mis-direction, which will allow existing IT structures to carry on as if nothing ever happened as they can slap a new label on old practices.&lt;/p&gt;
+
+&lt;figure class="diagram"&gt;
+&lt;a class="attribution" href="https://landscape.cncf.io/?zoom=60"&gt;&lt;img src="/img/blog/2023/clound_native_zoom.png" alt="The top of the CNCF landscape, showing that there are 1,179 projects from companies which have recieved $66.8 billion in funding" /&gt;&lt;/a&gt;
+&lt;figcaption&gt;The CNCF Landscape displays the funding various companies they feature have received.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;A cynic might argue that the (as of time of writing)  $66.8 BILLION raised to fund the Cambrian explosion of products around Kubernetes means that a lot of VCs are looking for their payday. And I suspect that much like the early days of attempts to monetise Agile, DevOps and the API Economy, the pickings have been slim. But a new term they can get behind, leaving aside the confusing term “Cloud Native”? Count them in! Marketing suddenly got a whole lot simpler.&lt;/p&gt;
+
+&lt;h3 id="the-kubernetes-awakens"&gt;The Kubernetes Awakens&lt;/h3&gt;
+
+&lt;figure class="diagram"&gt;
+&lt;a class="attribution" href="https://landscape.cncf.io/?zoom=60"&gt;&lt;img src="/img/blog/2023/cncf_landscape.png" alt="The top of the CNCF landscape, showing that there are 1,179 projects from companies which have recieved $66.8 billion in funding, with a large number of projectst showed below (just a subset of the overall total)" /&gt;&lt;/a&gt;
+&lt;figcaption&gt;Are we not entertained?&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The reality is, Kubernetes is everywhere, and just like every successful fungus continues to spread (I kid, I kid!).&lt;/p&gt;
+
+&lt;p&gt;Let’s get some things out of the way. Kubernetes, vanilla Kubernetes, not whatever horrific private cloud your company has cobbled together, is not in any way shape or form developer friendly. To be fair, that’s not what it was created to be. But fundamentally, the out of the box experience is fine for infrastructure automation nerds like me, but friendly for the bulk of developers? Hell no.&lt;/p&gt;
+
+&lt;p&gt;Kubernetes, again vanilla Kubernetes, not that complex expensive disappointment your CIO purchased, also doesn’t do much. At its heart, its main job is to help schedule containers. It was successful for a number of reasons. Firstly, because it has a pretty good API allowing for extensibility. Secondly, because it was competing against solutions that were by turns too expensive (PCF), confusingly complex (Mesos), or suffering an identity crisis (like Docker Swarm - I can only assume the marketing geniuses at Docker ended up in charge of &lt;a href="https://www.wired.com/story/google-meet-duo-video-chat-app-merger/"&gt;naming stuff at Google&lt;/a&gt;). Thirdly, and most importantly, because a bunch of people got scared by AWS and thought backing the project might stop Amazon becoming the dominant cloud platform for deploying software. On that front, it's been a huge success, right? Right?&lt;/p&gt;
+
+&lt;p&gt;Kubernetes was extensible, and allowed an ecosystem to grow around it. It’s easy to use the CNCF landscape as a source of snark (and as you can see, I do) - but it’s a sign of success. It’s also a sign of a bewildering array of options available to anyone considering building a solution on top.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;span class="credit"&gt;Picture &lt;a class="attribution" href="https://flickr.com/photos/x1brett/3612849469/"&gt;source&lt;/a&gt;, &lt;a class="licence" href="https://creativecommons.org/licenses/by/2.0/"&gt;licence&lt;/a&gt;&lt;/span&gt;
+&lt;img src="/img/blog/2023/house_of_cards.jpg" alt="On a table, sitting on top of a tablecloth, is a large tower made out of playing cards. A man to the left is placing another card on top of the tower. To the right, a dog has the tablecloth in their teeth and is starting to pull" /&gt;
+&lt;figcaption&gt;What could possibly go wrong?&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I think I finally started to understand how crazy everything had got after watching this great talk from V Körbes. After watching this engaging talk, I needed a lie down. The bewildering array of options to solve the same problems can take an expert like V to navigate, was a concern to me back in 2019 when this talk was from. Since then, can anyone say it's got better?&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/b1RsNXGLuUk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;So, now we have a towering edifice, created out of software which is well meaning and apparently simple in isolation, that ends up as a rube Goldberg machine of operational overhead, latency blackholes, and ever increasing budgets. The VCs are rubbing their hands, the rest of us are staring into the abyss - but this time, it's got an API.&lt;/p&gt;
+
+&lt;h3 id="the-past-experience"&gt;The past experience&lt;/h3&gt;
+
+&lt;p&gt;I was far from the only person worried about the complexity of the Kubernetes ecosystem in the pre-pandemic times, in fact rather than just bitching about it down at the pub, a number of folks actually started talking about it more to try and share better ways of thinking about this space. Developer experience, typically shortened to DevEx or DX, became a hot topic for a while.&lt;/p&gt;
+
+&lt;p&gt;Although I do a lot of general vendor bashing (hey, my company has two people - I consider vendor bashing to be very much punching up!), a lot of the talk about DevEx was coming from the vendor space. People building technical developer-focused products, wanting to understand how to make their tooling easy to use and sharing tips with the wider industry.&lt;/p&gt;
+
+&lt;p&gt;Daniel Bryant from DataWire in particular was talking about these ideas back then, his talk in 2019 giving a great overview of the challenges we have to deal with.&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/44e_H-BURR0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Remember 2019? Simpler times. Very much pre-pandemic, and back when we thought “jeez, the whole Kubernetes ecosystem is a bit much, isn’t it?”. Here we are in 2023, and how is that going for us?&lt;/p&gt;
+
+&lt;h3 id="enter-the-platform"&gt;Enter The Platform&lt;/h3&gt;
+
+&lt;p&gt;2023 is here. Developer Experience is dead, long live The Platform.&lt;/p&gt;
+
+&lt;p&gt;So now, we’ve arrived at The Platform. Note the capital ’T’ and ‘P’. This is it. The time has come. We brought all this stuff, now we have to make it work together.&lt;/p&gt;
+
+&lt;p&gt;The reality is, much of the effort around platform engineering is NOT about empowering developers, it’s about hiding the towering pile of crap we’ve assembled and now have to hide from the people we apparently got it for in the first place. It’s like buying a bunch of presents for a child, then having to hide them because they’re too dangerous for them to use, and in reality you really got them for yourself. Did your kid &lt;em&gt;really&lt;/em&gt; need that compound hunting bow?&lt;/p&gt;
+
+&lt;p&gt;It’s not about the experience. It’s not about enablement. It’s about serving the idol of technology, doubling down on our sunk cost. The Platform Above All Others. It should be here to serve, but instead it ends up bending those who use it to their will.&lt;/p&gt;
+
+&lt;h3 id="topologically-topical"&gt;Topologically Topical&lt;/h3&gt;
+
+&lt;p&gt;Into this morass, wades Manuel Pais and Matthew Skelton, who outline a vision for modern software delivery organisations in their book &lt;a href="https://teamtopologies.com/book"&gt;Team Topologies&lt;/a&gt;. In it, they describe long-lived stream aligned (outcome-oriented) teams who work with high degrees of autonomy. Empowered to get things done, and get software out of the door and into the hands of their customers as quickly as possible.&lt;/p&gt;
+
+&lt;div class="half right last"&gt;
+&lt;a href="https://teamtopologies.com/book"&gt;&lt;img src="/img/blog/2023/TeamTop_cover_RGB_flat_stroke.jpg" alt="The front cover of the Team Topologies book, written by Manuel Pais and Matthew Skelton, with a foreword by Ruth Malan" /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To support this mission, these poly-skilled teams need help. Other types of teams - enablement teams in Team Topologies speak - exist to help these teams get things done.  Functions like security, architecture, design, go from being gatekeepers to enablers - their job is to provide support to get things done.&lt;/p&gt;
+
+&lt;p&gt;In the book, the authors also make it clear that these teams need enablement in terms of the developer tooling they need too, hence the need for some sort of platform. The book positions a Platform Team as being somehow different to an enablement team, but personally I see the platform team as just another type of enablement team. The mission of the platform team, should you choose to accept it, is about enabling these stream aligned teams to get things done.&lt;/p&gt;
+
+&lt;p&gt;Above all though, as great as the content is in the book (and I highly recommend it to anyone in a leadership role in software development), I do wish they hadn’t codified the concept of the platform team. Naming is important - it pushes a direction - "we exist to build a platform". But read the words of the book, and that’s not really the role they should play.&lt;/p&gt;
+
+&lt;p&gt;The book goes on to outline a vision for the ideal platform. It should be developed like a consumer-facing product. Think about customer needs. Most controversially of all, they make an argument that the platform should be optional..&lt;/p&gt;
+
+&lt;p&gt;Making the platform optional is very challenging for some people. It cost so much, we need to justify the cost. So people have to use it! Otherwise we wasted time and money. And as Matthew and Manuel point out, when something becomes mandatory, interesting thing happens, When you make people use the platform, you stop caring about making it easy to use, &lt;em&gt;because they don’t have a choice&lt;/em&gt;. You aren't incentivised to improve the user experience to attract people to the platform, as they have to be there anyway.&lt;/p&gt;
+
+&lt;p&gt;Matthew, Manuel, and myself are far from the only people banging the drum for developing an internal developer platform like a consumer-driven product. Another ex-colleague of mine, Evan Bottcher, put forward a compelling vision for what a developer platform should be back in 2018 &lt;a href="https://martinfowler.com/articles/talk-about-platforms.html"&gt;What I Talk About When I Talk About Platforms&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote cite="https://martinfowler.com/articles/talk-about-platforms.html"&gt;
+&lt;p&gt;“A *digital platform* is a foundation of self-service APIs, tools, services, knowledge and support which are arranged as a compelling internal product. Autonomous delivery teams can make use of the platform to deliver product features at a higher pace, with reduced co-ordination.”&lt;/p&gt;
+
+&lt;p&gt; - &lt;a href="https://martinfowler.com/articles/talk-about-platforms.html" title="What I Talk About When I Talk About Platforms"&gt;Evan Bottcher&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;But those of us with no products to sell don’t have the marketing budgets of those who do. Remember that $66.8 billion raised by companies on the CNCF landscape? That money doesn’t just go into building the stuff. Pushing back against the weight of money in this space with this blog post is a bit like trying to stop a tornado with a kazoo. It’s not very effective, but at least I enjoy the funny sounds it makes.&lt;/p&gt;
+
+&lt;p&gt;The vision for The Platform has gone from being a vision for a better experience for developers, where the platform exists to serve developers, and has instead come to serve the Kult Of Kubernetes, and it's worshipers.&lt;/p&gt;
+
+&lt;h3 id="whats-in-a-name"&gt;What's In A Name?&lt;/h3&gt;
+
+&lt;p&gt;Whenever you come across a team which is named after a specific tool or technology, you have a potential problem. The API Gateway Team. The Enterprise Service Bus Team. And yes, The Platform Team.&lt;/p&gt;
+
+&lt;p&gt;The problems occur on two fronts. Firstly, for "technical" single-issue teams like this, they become the bottleneck, the silo. They end up owning key technical infrastructure, in much the same way as a dragon hordes its gold. Making changes to these pieces of key infrastructure to suit the needs of the developers that use them can often be like getting Gollum to share the ring, if Gollum used Jira.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;span class="credit"&gt;Picture &lt;a class="attribution" href="https://www.flickr.com/photos/gageskidmore/7584125246/i"&gt;source&lt;/a&gt;, &lt;a class="licence" href="https://creativecommons.org/licenses/by/2.0/"&gt;licence&lt;/a&gt;&lt;/span&gt;
+&lt;img src="/img/blog/2023/gollum-edit.jpg" alt="Gollum from lord of the rings with the Kubernetes logo overlaid" /&gt;
+&lt;figcaption&gt;My Precious, etc.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;There is a more subtle concern with single-issue teams like this though. It speaks to confused motivations, a lack of focus. Their job becomes about managing the tool. Are they ever going to be in a position to think about alternatives? To realise a better way to solve the problems at hand? These are teams where they have only one tool, one hammer - and all problems better be a nail. Or else.&lt;/p&gt;
+
+&lt;p&gt;An old colleague of mine succinctly differentiated the two world views at play. Sriram Narayan described &lt;a href="https://martinfowler.com/bliki/ActivityOriented.html"&gt;ActivityOriented&lt;/a&gt; teams as  those driven to carry out a certain activity:&lt;/p&gt;
+
+&lt;blockquote cite="https://martinfowler.com/bliki/ActivityOriented.html"&gt;
+“... activity-oriented teams are prone to optimize for their own activity and not for the bigger picture of delivering useful software. This is a consequence of what they are held responsible for and how they are measured. It is common for a team of only developers to only be measured by their velocity. If they are only tasked with delivering scope, they will not think about whether it is going to solve the problems it was meant to.“
+
+- &lt;a href="https://martinfowler.com/bliki/ActivityOriented.html"&gt;Sriram Narayan&lt;/a&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sriram suggests instead that the solution to this is to instead think in terms of &lt;a href="https://martinfowler.com/bliki/OutcomeOriented.html"&gt;OutcomeOriented&lt;/a&gt; teams, where teams are focused on delivering an outcome, rather than slavishly locked into a certain implementation detail.&lt;/p&gt;
+
+&lt;p&gt;We want our Platform Team to be about outcomes - but we are hamstringing them from the beginning by calling the Platform Team in the first place, and worse could follow by codifying "Platform Engineering" as a thing.&lt;/p&gt;
+
+&lt;p&gt;Naming things is important. For a team inside an organisation, it can change how you are viewed, and what people expect you to be able to offer. For people in the team itself, it's one of the simpler ways you can help set direction - rightly or wrong.&lt;/p&gt;
+
+&lt;p&gt;It's for these reasons that I argue we should name the team after the outcomes we wanted them to achieve, rather than in terms of a technical solution they might want to use. Quite aside from the fact that you might need more than one platform (so Platform Team has to become Platforms Team?), often the best way to improve the experience of developers may have nothing to do with a platform in the first place. Better names might be “Delivery Support” or even better “Delivery Enablement”.&lt;/p&gt;
+
+&lt;p&gt;A platform &lt;em&gt;might&lt;/em&gt; be the best way to reduce the cognitive burden on developers and allow them to get more done, but at best it is a means to an end. But we need to encourage people in charge of this function to be able to think more broadly. Matthew Skelton:&lt;/p&gt;
+
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;What if the most important part of &amp;quot;platform engineering&amp;quot; is maintaining a high quality wiki with proven, empathic patterns for Stream-aligned teams to follow? 📄 &lt;a href="https://twitter.com/hashtag/platformengineering?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#platformengineering&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/DevOps?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#DevOps&lt;/a&gt;&lt;/p&gt;&amp;mdash; Matthew Skelton #BLM 💙🌻 (@matthewpskelton) &lt;a href="https://twitter.com/matthewpskelton/status/1581191123300913152?ref_src=twsrc%5Etfw"&gt;October 15, 2022&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;If you're a team who cares about empowering developers, you'll think about offering training, doing outreach, embedding yourself in delivery teams to help them use the tools and also get feedback on if the solutions you are offering are appropriate. All of those things seem like they'd be the responsibility of the Delivery Enablement team, don't they? The Platform Team though? Sorry, I've got a Kubernetes cluster to polish.&lt;/p&gt;
+
+&lt;p&gt;Just as with DevOps (It's The Culture, Stupid!) we're in danger of missing the point all over again.&lt;/p&gt;
+
+&lt;h3 id="so-what"&gt;So What?&lt;/h3&gt;
+
+&lt;p&gt;When writing the 2nd edition of Building Microservices, I revisited the concept of habitability - a concept which I visit in the context of developer platforms &lt;a href="/talks/pump-it-up/"&gt;in a talk last year&lt;/a&gt;.&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/lDSMDJXmOps" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Habitability, in the broadest sense, describes how nice (or not) the experience is for the people who have to live in a system. From a building, to a codebase, to the ecosystem of developer tools we deliver for our workforce. In the talk, and in my most recent book, I make the argument that we ignore habitability at our peril. Those of us in a place to shape the lived experiences of our colleagues have a duty of care to ensure that we take their needs to heart.&lt;/p&gt;
+
+&lt;p&gt;Delivering a habitable experience requires empathy for the people that will live and work there. Having a clear focus, and vision, for the people who are responsible for this is much more important than any particular technology.&lt;/p&gt;
+
+&lt;p&gt;And so, I come back once again, to the name. If we want to have a hope of coming out the other side with a better lived experience for our delivery teams, I urge you to consider making at least one small change inside your own organisation.&lt;/p&gt;
+
+&lt;p&gt;No more platform team. Kubernetes, containers, the cloud, the platform - it’s all means to an end. Down with The Platform, up with Developer Enablement.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Magpie Talkshow Episode 23 - Jay Kreps</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2017/10/24/magpie-talkshow-episode-23-jay-kreps/"/>
+    <id>http://samnewman.io/blog/2017/10/24/magpie-talkshow-episode-23-jay-kreps/</id>
+    <published>2017-10-24T10:18:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;p&gt;So, after far too long a hiatus, we’re back on the Magpie Talkshow for a one-off episode where I interview &lt;a href="http://kafka.apache.org"&gt;Kafka&lt;/a&gt; creator and &lt;a href="https://www.confluent.io"&gt;Confluent&lt;/a&gt; CEO, &lt;a href="https://twitter.com/jaykreps"&gt;Jay Kreps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’ve been doing a small amount of work with Confluent recently, and through this I got the chance to meet Jay, and I thought he’d make a great guest for the show. So in this episode we’re going to learn about Jay’s own journey in the tech industry, as well as diving into the mindset behind Kafka and where you might want to use it.&lt;/p&gt;
+
+&lt;p&gt;There are a couple of firsts in this episode. Firstly, it was recorded remotely via video conferencing - I think the audio quality is pretty good, largely thanks to the use of &lt;a href="https://zencastr.com"&gt;zencaster&lt;/a&gt;. I did however have to do more editing than usual but I’m pretty happy with how it turned out. Secondly We’re also going to be sharing a video of our chat over on confluent's website, and I’ll update this post with a link once it’s available.&lt;/p&gt;
+
+&lt;p&gt;I do have to apologise for the sporadic nature of the episodes I’m putting out but as is often the case, life get’s in the way. In between our last episode and this one I setup my own company, and left Australia for London, where I am currently based. I still plan to publish the occasional episode from time to time, so please do stay subscribed to the feed. Hopefully if things settle down a bit I may get back to a more regular posting schedule!&lt;/p&gt;
+
+&lt;p&gt;Jay and I talked about a number of things on the podcast, but the main one I wanted to highlight is &lt;a href="http://samnewman.io/blog/2016/03/11/magpie-talkshow-episode-15-ben-stopford/"&gt;previous guest&lt;/a&gt; Ben Stopford’s really interesting &lt;a href="https://www.confluent.io/blog/author/ben/"&gt;posts&lt;/a&gt; on using Kafka for sharing data between microservices. There are some fascinating ideas there which I think can solve problems many of us face when creating finer-grained distributed systems.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I hope you enjoy the show!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Magpie Talkshow Episode 22 - Adrian Cockcroft</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2016/10/08/magpie-talkshow-episode-22-adrian-cockcroft/"/>
+    <id>http://samnewman.io/blog/2016/10/08/magpie-talkshow-episode-22-adrian-cockcroft/</id>
+    <published>2016-10-08T10:18:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="https://twitter.com/adrianco"&gt;Adrian Cockcroft&lt;/a&gt; has been a great supporter of my work around microservices, and I was really grateful he was able to find the time to catch up with me at Yow 2015 late last year.&lt;/p&gt;
+
+&lt;p&gt;Few people have done as much to help share the power of the cloud in recent years as Adrian, but he certainly has a career that predates the explosion of Amazon Web Services. In episode 22 of the Magpie Talkshow, he shares is journey so far in the IT industry, from physics to venture capital firm Battery Ventures, with stops at Sun, EBay and Netflix in-between.&lt;/p&gt;
+
+&lt;p&gt;We also find time to talk about the future of memory, security &amp;amp; compliance, how awesome &lt;a href="https://en.wikipedia.org/wiki/Rational_Purify"&gt;Rational Purify&lt;/a&gt; is (and how it built Netflix), bad puns, and flying spaghetti monster simulators.&lt;/p&gt;
+
+&lt;p&gt;In the episode, Adrian mentions Spigo, the aforementioned spaghetti simulator, which is available &lt;a href="https://github.com/adrianco/spigo"&gt;over at github&lt;/a&gt;. You can also find his talk from YOW! 2015 below.&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/iMJymSrKqF4" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Magpie Talkshow Episode 21 - Kamal Oudrhiri, NASA Special Part 2</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2016/09/19/magpie-talkshow-episode-21-kamal-oudrhiri-nasa-special-part-2/"/>
+    <id>http://samnewman.io/blog/2016/09/19/magpie-talkshow-episode-21-kamal-oudrhiri-nasa-special-part-2/</id>
+    <published>2016-09-19T01:52:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;p&gt;In the last episode of the podcast, I shared the first of the two part NASA special, when &lt;a href="/blog/2016/09/08/magpie-talkshow-episode-20-anita-sengputa-nasa-special/"&gt;I chatted to Dr Anita Sengupta&lt;/a&gt; about her involvement with the recent Curiosity Mars lander. This time, I'm chatting to her colleague &lt;a href="https://twitter.com/koudrhiri"&gt;Dr. Kamal Oudrhiri&lt;/a&gt;, who led the Radio Science team for the same lander.&lt;/p&gt;
+
+&lt;p&gt;In our interview, Kamal shares his journey into space sciences, from being inspired as a boy by pictures of voyager, what led him to pick NASA over ESA, and also what drove him to setup his non-profit &lt;a href="http://www.groveofhope.org/about/"&gt;Grove Of Hope&lt;/a&gt;. Focusing on encouraging students to embrace STEAM (Science, Technology, Engineering, Arts and Mathematics), the Grove Of Hope was established in 2004 and it's clear from chatting to Kamal that he hopes to inspire the next generation in the same way that he was inspired all those years ago.&lt;/p&gt;
+
+&lt;p&gt;Along the way we also find time to discuss why an off-the-shelf quadcopter might not be a bad place to start for exploring mars, the relatively poor success of Martian missions in general, and what NASA might have planned in the coming years for further landers.&lt;/p&gt;
+
+&lt;p&gt;Just as with software releases, rocket launches often get pushed back too. The Insight mission that Kamal discusses during the interview which was due to launch in 2016 has been &lt;a href="http://insight.jpl.nasa.gov/newsdisplay.cfm?Subsite_News_ID=38537"&gt;pushed back to 2018&lt;/a&gt;, while at present at least the &lt;a href="http://mars.nasa.gov/mars2020/"&gt;ambitious Mars 2020 lander appears to be on track&lt;/a&gt;, although the drone may no longer feature!&lt;/p&gt;
+
+&lt;p&gt;Since we recorded this interview, Kamal and Anita have both been working on the new Cold Atom Laboratory, which is due to be installed on the International Space Station in 2017. This brief video gives a very good overview of the project:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/kcBnW8BW9uQ" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;And here is Anita and Kamal's keynote from YOW 2015:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/YvMQfqLdeWw" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Magpie Talkshow Episode 20 - Anita Sengupta NASA Special!</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2016/09/08/magpie-talkshow-episode-20-anita-sengputa-nasa-special/"/>
+    <id>http://samnewman.io/blog/2016/09/08/magpie-talkshow-episode-20-anita-sengputa-nasa-special/</id>
+    <published>2016-09-08T04:46:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;p&gt;One of the nice things that the &lt;a href="http://yowconference.com.au"&gt;YOW conference&lt;/a&gt; has done over recent years is strive to bring in interesting keynotes, often from quite left-field areas (at least for a software technology conference!). Last year the organisers outdid themselves when they managed to secure the services of Dr Anita Sengupta and Dr Kamal Oudrhiri who worked on the recent Mars Curiosity Lander for NASA. I was lucky enough to grab both of them just after they spoke in Sydney, and in this episode you'll hear the first of a two part NASA special. That's right, I got to speak to real life rocket scientists! Although as Anita reliably informs me in today's episode, the correct term is 'propulsion engineer' (I don't think "It's not propulsion engineering!" quite has the same ring about it though…).&lt;/p&gt;
+
+&lt;p&gt;Anita the Lead Engineer on the hypersonic parachute system used to slow the lander down on it's Martian decent, and as she outlines in this episode this brought with it a whole host of challenges that hadn't really been faced before. We also find time to talk about science fiction, and how you might be able to get involved in this and future NASA missions!&lt;/p&gt;
+
+&lt;p&gt;If you want to know more about Anita and the work she is currently doing, you can follow her on Twitter &lt;a href="https://twitter.com/doctor_astro"&gt;@doctor_astro&lt;/a&gt; (kudos for the Twitter handle by the way!), or follow her &lt;a href="https://www.facebook.com/DrAnitaSengupta"&gt;over on facebook&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This video from NASA gives a great overview of some of the challenges involved in the lander as a whole, including the amazing parachute:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/pzqdoXwLBT8" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Since I interviewed both Anita and Kamal, they have both been working on the new Cold Atom Laboratory, which is due to be installed on the International Space Station in 2017. This brief video gives a very good overview of the project:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/kcBnW8BW9uQ" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;And here is the video of Anita and Kamal's talk at last year's YOW 2015:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/YvMQfqLdeWw" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In the next episode, we'll hear from Anita's colleague Kamal Oudrhiri. This will be in two weeks' time - I've been struggling to find a regular rhythm for these podcasts and want to find a sustainable pace. Doing them once a week really hasn't worked out, so I'm hoping once every two weeks will be more manageable.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>New Online Training</title>
+    <link rel="alternate" href="http://samnewman.io/blog/2016/09/04/new-online-training/"/>
+    <id>http://samnewman.io/blog/2016/09/04/new-online-training/</id>
+    <published>2016-09-04T05:12:00+00:00</published>
+    <updated>2023-02-14T13:02:46+00:00</updated>
+    <author>
+      <name>Sam Newman</name>
+    </author>
+    <content type="html">&lt;figure&gt;
+&lt;span class="credit"&gt;Picture &lt;a class="attribution" href="https://www.flickr.com/photos/archesnps/9565405646/"&gt;source&lt;/a&gt;, &lt;a class="licence" href="https://creativecommons.org/publicdomain/mark/1.0/"&gt;licence&lt;/a&gt;&lt;/span&gt;
+&lt;img src="/talks/img/monoliths.jpg" /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I've been very fortunate to have been in demand of late, for conference talks, tutorials, and other things. The problem is trying to satisfy the many requests I get. Being based in Australia means that travel is a significant time sink for me, increasing the impact on my time, sometimes my health, not to mention the planet! Given that I also have a day job, and other projects I am working on, I have to think very carefully about each and every conference or workshop that I'm invited to, and I probably end up having to turn down two or even three times as many things as I actually say yes to.&lt;/p&gt;
+
+&lt;p&gt;Given these constraints, I've been thinking about different ways I can help share my ideas with people without having to be there in person. This blog is part of it, as of course has been my &lt;a href="/books/building_microservices/"&gt;recent book&lt;/a&gt;. But I've also been experimenting with my &lt;a href="/podcast"&gt;podcast&lt;/a&gt;, and last year did my first series of video for &lt;a href="http://shop.oreilly.com/product/0636920043935.do"&gt;O'Reilly&lt;/a&gt;. That video course was an trial really - I wanted to see how well received it was before committing to do more. The work required in pulling that sort of material together isn't trivial, although I do plan to do more next year.&lt;/p&gt;
+
+&lt;p&gt;One aspect of pre-recorded video training is the inability to have a conversation with the people who are watching. This is a key part of my workshops - I frequently change or adapt what I present based on the direction the conversation is going, and like the input from the attendees themselves. Pre-recorded video eliminates this side of things. This is partly why I was very interested when O'Reilly approached me about trying to do some live, online training.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;a href="http://www.oreilly.com/live-training/from-monolith-to-microservices.html"&gt;&lt;img src="/img/oreilly-monoliths.png" /&gt;&lt;/a&gt;
+&lt;figcaption&gt;From Monolith to Microservices, an online training course&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The first course I will be presenting will be &lt;a href="/talks/monolith-to-microservices/"&gt;Monoliths To Microservices&lt;/a&gt;. Split over two half-days, I will be covering a bunch of material targeted at the challenges of organisations who are looking to move towards a microservice-based architecture.&lt;/p&gt;
+
+&lt;p&gt;The idea that I can create a live training environment without having to get on a plane is pretty appealing. If successful it should mean I can do many more of these for a wider audience than before, at the same time as keeping the costs down for attendees too (these online courses are &lt;em&gt;much&lt;/em&gt; cheaper for attendees than my normal workshops).&lt;/p&gt;
+
+&lt;p&gt;If you're interested in what the course covers, I have &lt;a href="/talks/monolith-to-microservices/"&gt;more details available&lt;/a&gt;. Alternatively, if you want to sign up for the course, you can do so directly over at &lt;a href="http://www.oreilly.com/live-training/from-monolith-to-microservices.html"&gt;O'Reilly&lt;/a&gt;. You can also get a &lt;a href="http://shop.oreilly.com/product/0636920043935.do"&gt;free sample&lt;/a&gt; of my existing microservice video training too.&lt;/p&gt;
+</content>
+  </entry>
+</feed>
