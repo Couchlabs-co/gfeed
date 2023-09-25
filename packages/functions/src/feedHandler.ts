@@ -6,10 +6,11 @@ import fetchRSSFeed from "./utils/fetchRssFeed";
 import { formatItem } from "./utils/formatItem";
 
 export async function main(event: SQSEvent) {
+  const tableName = Table.article.tableName;
+  const records: any[] = event.Records;
+  const { publisher, feedUrl } = JSON.parse(records[0].body);
   try {
-    const tableName = Table.article.tableName;
-    const records: any[] = event.Records;
-    const { publisher, feedUrl } = JSON.parse(records[0].body);
+    console.log(`starting to process feed: ${publisher} with url: ${feedUrl}`);
 
     const rssItems = await fetchRSSFeed(publisher, feedUrl);
     for (const item of rssItems) {
@@ -44,13 +45,13 @@ export async function main(event: SQSEvent) {
       await dbClient.send(putParams);
     }
 
-    console.log(`Message processed: "${records.length}"`);
+    console.log(`Message processed: "${publisher}"`);
 
     return {
       statusCode: 200,
       body: JSON.stringify({ status: "successful" }),
     };
   } catch (err) {
-    console.log("err........", err);
+    console.log("err........", feedUrl, err);
   }
 }

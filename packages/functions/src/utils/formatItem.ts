@@ -14,6 +14,7 @@ interface RssItem {
 
 export const formatItem = (item: any, publisher: string): Record<any, AttributeValue> => {
   let keywords, author, pubDate = "";
+
   if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
     keywords = Array.from(new Set(item.categories.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
       .map((cat: string) => cat.toLowerCase()))).join(',');
@@ -21,20 +22,28 @@ export const formatItem = (item: any, publisher: string): Record<any, AttributeV
     keywords = item.categories.toLowerCase();
   }
 
+  pubDate = item.pubDate ? new Date(item.pubDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
+
   switch(publisher) {
     case "Overreacted":
       author = "Dan Abramov";
       keywords = "React, JavaScript, Web Development, software development, programming";
-      pubDate = item.pubDate ? new Date(item.pubDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
       break;
     case "Martin Fowler":
       author = "Martin Fowler";
       keywords = "software development, programming";
-      pubDate = item.pubDate ? new Date(item.pubDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
       break;
+    case "Alice GG":
+      author = "Alice Girard Guittard";
+      break;
+    case "Sam Newman":
+      author = "Sam Newman";
+      break;
+    case "A List Apart":
+      pubDate = item["dc:date"];
+
     default:
       author = item["dc:creator"];
-      pubDate = item.isoDate ? new Date(item.isoDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
   }
 
 
