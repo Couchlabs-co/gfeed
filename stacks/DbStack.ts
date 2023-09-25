@@ -1,4 +1,4 @@
-import { StackContext, Table } from "sst/constructs";
+import { Script, StackContext, Table } from "sst/constructs";
 
 export function DbStack({ stack }: StackContext) {
 
@@ -65,6 +65,15 @@ export function DbStack({ stack }: StackContext) {
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
     globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "guid" }, titleIndex: { partitionKey: "title" }, publisherIndex: { partitionKey: "publisher" } },
+  });
+
+  new Script(stack, "Script", {
+    defaults: {
+      function: {
+        bind: [FeedTable],
+      },
+    },
+    onCreate: "packages/functions/src/seed.handler",
   });
 
   return {
