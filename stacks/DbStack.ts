@@ -45,6 +45,7 @@ export function DbStack({ stack }: StackContext) {
       feedUrl: "string",
       feedType: "string",
       feedStatus: "string",
+      publisherUrl: "string",
     },
     primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" },
   });
