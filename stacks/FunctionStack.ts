@@ -22,6 +22,7 @@ export function FunctionStack({ stack }: StackContext) {
   const FeedHandler = new Function(stack, "FeedHandler", {
     handler: "packages/functions/src/feedHandler.main",
     bind: [ArticleTable, FeedQueue],
+    logRetention: "three_days",
   });
 
   FeedQueue.bind([ArticleTable]);

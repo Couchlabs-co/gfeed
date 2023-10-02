@@ -2,6 +2,28 @@ import { StackContext, use, SvelteKitSite, Config } from "sst/constructs";
 import { ApiStack } from "./ApiStack";
 
 export function WebStack({ stack }: StackContext) {
+  // const appDomain = switch(app.stage) {
+  //   case "prod":
+  //     return {
+  //       domainName: "www.jasdeep.me",
+  //       hostedZone: "jasdeep.me"
+  //     }
+  //     case "uat":
+  //       return {
+  //         domainName: "uat.jasdeep.me",
+  //         hostedZone: "jasdeep.me"
+  //       }
+  //     case "dev":
+  //       return {
+  //         domainName: "dev.jasdeep.me",
+  //         hostedZone: "jasdeep.me"
+  //       }
+  //     default:
+  //       return {
+  //         domainName: "dev.jasdeep.me",
+  //         hostedZone: "jasdeep.me"
+  //       }
+  // };
   const { ReadingCornerAPI } = use(ApiStack);
 
   const Auth0Domain = new Config.Parameter(stack, "AUTH0_DOMAIN", {
@@ -21,7 +43,10 @@ export function WebStack({ stack }: StackContext) {
   });
 
   const Site = new SvelteKitSite(stack, "site", {
-    // customDomain: "jasdeep.me",
+    customDomain: {
+      domainName: "www.jasdeep.me",
+      hostedZone: "jasdeep.me",
+    },
     runtime: "nodejs18.x",
     path: "./frontend",
     buildCommand: "pnpm run build",
