@@ -11,7 +11,6 @@
 	const user_id = session.user?.id.split('|')[1];
 
 	if(feed.count){
-		console.log('feed: ', feed.Count);
 		$readingListStore.articles = feed.Items;
 		readingFeed = feed.Items;
 	}
@@ -32,9 +31,12 @@
 			<h2 class="notFoundText">No articles found.</h2>
 		</div>
 	{/if}
-	{#if !feed.Count}
-		<span class="loading loading-infinity loading-lg"></span>
-	{:else}
+	{#if !feed}
+		<div class="w-10/12 m-auto">
+			<span class="loading loading-infinity loading-lg" />
+		</div>
+	{/if}
+	{#if feed.Count > 0}
 		<div class="flex flex-col w-10/12">
 			{#each readingFeed as Item}
 				<ListItem Item ={Item} userId={user_id}/>
@@ -42,16 +44,14 @@
 		</div>
 		<div class="sidePanel">
 			<h2 class="sidePanelHeading">Filters</h2>
-			<!-- <div class="flex flex-col"> -->
 				<div class="flex flex-row m-4">
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
 						<option disabled selected>Publishers</option>
-							{#each publishers.Items as publisher}
-								<option>{publisher.publisher}</option>
-							{/each}
+						{#each publishers.Items as publisher}
+							<option>{publisher.publisher}</option>
+						{/each}
 					</select>
 				</div>
-			<!-- </div> -->
 		</div>
 	{/if}
 </div>
