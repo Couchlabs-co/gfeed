@@ -17,9 +17,10 @@
 
 	const filterFeed = (e: any) => {
 		const publisher = e.target.value;
-		console.log('publisher: ', publisher);
 		if(publisher !== 'Publishers'){
 			readingFeed = feed.Items.filter((item: any) => item.publisher === publisher);
+		} else {
+			readingFeed = feed.Items;
 		}
 	}
 
@@ -38,15 +39,21 @@
 	{/if}
 	{#if feed.Count > 0}
 		<div class="flex flex-col w-10/12">
-			{#each readingFeed as Item}
-				<ListItem Item ={Item} userId={user_id}/>
-			{/each}
+			{#if readingFeed.length === 0}
+				<div class="w-10/12 m-auto">
+					<h2 class="notFoundText">No new articles published in last 7 days</h2>
+				</div>
+			{:else}
+				{#each readingFeed as Item}
+					<ListItem Item ={Item} userId={user_id}/>
+				{/each}
+			{/if}
 		</div>
 		<div class="sidePanel">
 			<h2 class="sidePanelHeading">Filters</h2>
 				<div class="flex flex-row m-4">
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
-						<option disabled selected>Publishers</option>
+						<option selected>Publishers</option>
 						{#each publishers.Items as publisher}
 							<option>{publisher.publisher}</option>
 						{/each}
