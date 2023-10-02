@@ -97,14 +97,13 @@ export const handleError: HandleServerError = async ({ error, event }) => {
 const handleUser = (async ({event, resolve}) => {
   try{
     const session: RCSession = await event.locals.getSession();
-    const { user } = session;
-    if (user?.login_count === 1) {
+    if (session && session.user.login_count === 1) {
       const result = await fetch(`${VITE_API_URL}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({user}),
+        body: JSON.stringify({user: session.user}),
       });
   
       await result.json();
