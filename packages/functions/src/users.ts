@@ -39,7 +39,6 @@ const createUser = async (id: string, name: string, email: string, channel: stri
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
 
-  console.log("evt.body: ", evt.body);
   const {user} = JSON.parse(evt.body ?? '');
 
   if(!user || !user.email) {

@@ -5,10 +5,11 @@ import { Table } from "sst/node/table";
 
 export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
-  const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(today.getDate() - 1);
-  const keys = [yesterday.toISOString().split("T")[0], today.toISOString().split("T")[0]];
+  const keys = [];
+  for(let i = 0; i < 7; i++) {
+    const dt = new Date();
+    keys.push(new Date(dt.setDate(dt.getDate() - i)).toISOString().split("T")[0]);
+  }
 
   const result = {
     Count: 0,
