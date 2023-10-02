@@ -2,13 +2,13 @@ import { StackContext, use, Api } from "sst/constructs";
 import { DbStack } from "./DbStack";
 
 export function ApiStack({ stack, app }: StackContext) {
-  const { ArticleTable, UserTable, UsersInterestTable, BookmarkTable, FeedTable } = use(DbStack);
+  const { ArticleTable, UserTable, UsersInterestTable, BookmarkTable, PublisherTable } = use(DbStack);
 
   const ReadingCornerAPI = new Api(stack, "ReadingCornerAPI", {
     // customDomain: app.stage === "prod" ? "api.jasdeep.me" : `api-${app.stage}.jasdeep.me`,
     defaults: {
       function: {
-        bind: [ArticleTable, UserTable, UsersInterestTable, BookmarkTable, FeedTable],
+        bind: [ArticleTable, UserTable, UsersInterestTable, BookmarkTable, PublisherTable],
       },
     },
     accessLog:

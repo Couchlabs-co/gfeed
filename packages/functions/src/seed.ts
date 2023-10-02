@@ -1,31 +1,35 @@
 import { dbClient } from "./utils/dbClient";
-import { PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { Table } from "sst/node/table";
 
-const feeds = [
+const publishers = [
     {
-      "publisher": "Overreacted",
+      "name": "Overreacted",
+      "publisherUrl": "https://overreacted.io/",
       "feedUrl": "https://overreacted.io/rss.xml",
       "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "A List Apart",
+      "name": "A List Apart",
+      "publisherUrl": "https://alistapart.com/",
       "feedUrl": "https://alistapart.com/main/feed/",
       "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "Alice GG",
+      "name": "Alice GG",
+      "publisherUrl": "https://alicegg.tech/",
       "feedUrl": "https://alicegg.tech/feed.xml",
       "feedStatus": "active",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "VentureBeat",
+      "name": "VentureBeat",
+      "publisherUrl": "https://venturebeat.com/",
       "feedUrl": "http://feeds.feedburner.com/venturebeat/SZYF",
       "feedStatus": "active",
       "feedType": "xml",
@@ -33,7 +37,8 @@ const feeds = [
       "logo": "https://venturebeat.com/wp-content/themes/vb-news/img/favicon.ico" //https://venturebeat.com/wp-content/themes/vb-news/brand/img/logos/VB_Extended_Logo_40H.png
     },
     {
-      "publisher": "Joel on Software",
+      "name": "Joel on Software",
+      "publisherUrl": "https://www.joelonsoftware.com/",
       "feedUrl": "https://www.joelonsoftware.com/feed/",
       "feedStatus": "active",
       "feedType": "xml",
@@ -41,21 +46,24 @@ const feeds = [
       "logo": "https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=32%2C32&#038;ssl=1"
     },
     {
-      "publisher": "Sam Newman",
+      "name": "Sam Newman",
+      "publisherUrl": "https://samnewman.io/",
       "feedUrl": "https://samnewman.io/blog/feed.xml",
       "feedStatus": "active",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "Mozilla Hacks",
+      "name": "Mozilla Hacks",
+      "publisherUrl": "https://hacks.mozilla.org/",
       "feedUrl": "https://hacks.mozilla.org/feed/",
       "feedStatus": "active",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "HACKERNOON",
+      "name": "HACKERNOON",
+      "publisherUrl": "https://hackernoon.com/",
       "feedUrl": "https://hackernoon.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -63,7 +71,8 @@ const feeds = [
       "logo": "https://hackernoon.com/favicon.ico"
     },
     {
-      "publisher": "TechCrunch",
+      "name": "TechCrunch",
+      "publisherUrl": "https://www.techcrunch.com/",
       "feedUrl": "https://www.techcrunch.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -71,20 +80,24 @@ const feeds = [
       "logo": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png?w=32"
     },
     {
-      "publisher": "Martin Fowler",
+      "name": "Martin Fowler",
+      "publisherUrl": "https://martinfowler.com/",
       "feedUrl": "https://martinfowler.com/feed.atom",
       "feedStatus": "active",
-      "feedType": "atom"
+      "feedType": "atom",
+      "primaryTags": "Tech",
     },
     {
-      "publisher": "DAN NORTH",
+      "name": "DAN NORTH",
+      "publisherUrl": "https://dannorth.net/",
       "feedUrl": "https://dannorth.net/blog/index.xml",
       "feedStatus": "active",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "Coding Horror",
+      "name": "Coding Horror",
+      "publisherUrl": "https://blog.codinghorror.com/",
       "feedUrl": "https://blog.codinghorror.com/rss/",
       "feedStatus": "active",
       "feedType": "xml",
@@ -92,7 +105,8 @@ const feeds = [
       "logo": "https://blog.codinghorror.com/favicon.png"
     },
     {
-      "publisher": "Jacob Singh",
+      "name": "Jacob Singh",
+      "publisherUrl": "https://jacobsingh.name/",
       "feedUrl": "https://jacobsingh.name/rss/",
       "feedStatus": "active",
       "feedType": "xml",
@@ -100,7 +114,8 @@ const feeds = [
       "logo": "https://jacobsingh.name/favicon.png"
     },
     {
-      "publisher": "Game Developer",
+      "name": "Game Developer",
+      "publisherUrl": "https://www.gamedeveloper.com/",
       "feedUrl": "https://www.gamedeveloper.com/rss.xml",
       "feedStatus": "active",
       "feedType": "xml",
@@ -108,7 +123,8 @@ const feeds = [
       "logo": "https://www.gamedeveloper.com/images/GD_official_logo.png"
     },
     {
-      "publisher": "the HUSTLE",
+      "name": "the HUSTLE",
+      "publisherUrl": "https://thehustle.co/",
       "feedUrl": "https://thehustle.co/feed/",
       "feedStatus": "active",
       "feedType": "xml",
@@ -116,14 +132,16 @@ const feeds = [
       "logo": "https://thehustle.co/wp-content/uploads/2022/04/cropped-favicon-32x32.png"
     },
     {
-      "publisher": "Software Engineering Tidbits",
+      "name": "Software Engineering Tidbits",
+      "publisherUrl": "https://www.softwareengineeringtidbits.com/",
       "feedUrl": "https://www.softwareengineeringtidbits.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
     {
-      "publisher": "The Pragmatic Engineer",
+      "name": "The Pragmatic Engineer",
+      "publisherUrl": "https://blog.pragmaticengineer.com/",
       "feedUrl": "https://newsletter.pragmaticengineer.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -131,7 +149,8 @@ const feeds = [
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5ecbf7ac-260b-423b-8493-26783bf01f06_600x600.png"
     },
     {
-      "publisher": "Musings Of A Caring Techie",
+      "name": "Musings Of A Caring Techie",
+      "publisherUrl": "https://www.thecaringtechie.com/",
       "feedUrl": "https://www.thecaringtechie.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -139,7 +158,8 @@ const feeds = [
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5b345b-fff0-4b91-a3d6-9e394fda0510_1280x1280.png"
     },
     {
-      "publisher": "Dev Interrupted",
+      "name": "Dev Interrupted",
+      "publisherUrl": "https://devinterrupted.com/",
       "feedUrl": "https://devinterrupted.substack.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -147,7 +167,8 @@ const feeds = [
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feff814ba-ca84-4452-a48d-789e87a955bd_750x750.png"
     },
     {
-      "publisher": "The Developing Dev",
+      "name": "The Developing Dev",
+      "publisherUrl": "https://www.developing.dev/",
       "feedUrl": "https://www.developing.dev/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -155,7 +176,8 @@ const feeds = [
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb980aa1-65a4-4e90-aacb-fc07a563b5f7_500x500.png"
     },
     {
-      "publisher": "Frontend Engineering",
+      "name": "Frontend Engineering",
+      "publisherUrl": "https://frontendengineering.substack.com/",
       "feedUrl": "https://frontendengineering.substack.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
@@ -166,14 +188,17 @@ const feeds = [
 
 export async function handler() {
 
-    for (const feed of feeds) {
+    for (const publisher of publishers) {
         const seedCommand = new PutItemCommand({
-            TableName: Table.feed.tableName,
+            TableName: Table.publisher.tableName,
             Item: {
-                publisher: { S: feed.publisher },
-                feedUrl: { S: feed.feedUrl },
-                feedType: { S: feed.feedType },
-                feedStatus: { S: feed.feedStatus },
+                name: { S: publisher.name },
+                feedUrl: { S: publisher.feedUrl },
+                feedType: { S: publisher.feedType },
+                feedStatus: { S: publisher.feedStatus },
+                publisherUrl: { S: publisher.publisherUrl ?? "" },
+                logo: { S: publisher.logo ?? "" },
+                primaryTags: { S: publisher.primaryTags ?? "" },
             },
         })
         await dbClient.send(seedCommand);

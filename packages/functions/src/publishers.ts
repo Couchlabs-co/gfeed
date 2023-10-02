@@ -7,7 +7,7 @@ export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
   
   const scanCommand: ScanCommand = new ScanCommand({
-    TableName: Table.feed.tableName,
+    TableName: Table.publisher.tableName,
     FilterExpression: "feedStatus = :feedStatus",
     ExpressionAttributeValues: {
         ":feedStatus": { S: 'active' },
@@ -21,9 +21,11 @@ export const handler = ApiHandler(async (evt) => {
   if(Items && Items.length){
       for (const item of Items) {
         publishers.push({
-            publisher: item.publisher.S,
+            name: item.name.S,
             feedUrl: item.feedUrl.S,
             feedType: item.feedType.S,
+            logo: item.logo?.S,
+            primaryTags: item.primaryTags.S,
         });
       }
   } else {

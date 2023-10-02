@@ -38,10 +38,10 @@ export function DbStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "userId" },
   });
 
-  const FeedTable = new Table(stack, "feed", {
+  const PublisherTable = new Table(stack, "publisher", {
     fields: {
       id: "string",
-      publisher: "string",
+      name: "string",
       feedUrl: "string",
       feedType: "string",
       feedStatus: "string",
@@ -49,7 +49,7 @@ export function DbStack({ stack }: StackContext) {
       logo: "string",
       primaryTags: "string",
     },
-    primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" }
+    primaryIndex: { partitionKey: "name", sortKey: "feedUrl" }
   });
 
   const ArticleTable = new Table(stack, "article", {
@@ -73,7 +73,7 @@ export function DbStack({ stack }: StackContext) {
   new Script(stack, "Script", {
     defaults: {
       function: {
-        bind: [FeedTable],
+        bind: [PublisherTable],
       },
     },
     onCreate: "packages/functions/src/seed.handler",
@@ -81,7 +81,7 @@ export function DbStack({ stack }: StackContext) {
 
   return {
     ArticleTable,
-    FeedTable,
+    PublisherTable,
     UserTable,
     UsersInterestTable,
     BookmarkTable

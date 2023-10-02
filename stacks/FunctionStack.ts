@@ -3,7 +3,7 @@ import { DbStack } from "./DbStack";
 
 export function FunctionStack({ stack }: StackContext) {
 
-  const { ArticleTable, FeedTable } = use(DbStack);
+  const { ArticleTable, PublisherTable } = use(DbStack);
   
   const FeedQueue = new Queue(stack, "Queue", {
     consumer: "packages/functions/src/feedHandler.main",
@@ -17,7 +17,7 @@ export function FunctionStack({ stack }: StackContext) {
   const FeedCron = new Cron(stack, "FeedCron", {
     schedule: "cron(0 */6 * * ? *)",
     job: "packages/functions/src/feedPublisher.main",
-  }).bind([FeedTable, FeedQueue]);
+  }).bind([PublisherTable, FeedQueue]);
 
   const FeedHandler = new Function(stack, "FeedHandler", {
     handler: "packages/functions/src/feedHandler.main",

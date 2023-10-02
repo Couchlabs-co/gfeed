@@ -10,7 +10,7 @@ const sqs = new SQSClient({
 
 export async function main() {
   const scanCommand = new ScanCommand({
-    TableName: Table.feed.tableName,
+    TableName: Table.publisher.tableName,
     ProjectionExpression: "publisher, feedUrl, feedType",
     FilterExpression: "feedStatus = :status",
     ExpressionAttributeValues: {
@@ -25,8 +25,8 @@ export async function main() {
       body: JSON.stringify({ status: "no items" }),
     };
   }
-  for (const feed of result.Items) {
-    const msgBody = { feedUrl: feed.feedUrl.S, publisher: feed.publisher.S };
+  for (const publisher of result.Items) {
+    const msgBody = { feedUrl: publisher.feedUrl.S, publisher: publisher.name.S };
     const params = {
       MessageBody: JSON.stringify(msgBody),
       QueueUrl: Queue.Queue.queueUrl,

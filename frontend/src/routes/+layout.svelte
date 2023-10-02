@@ -6,7 +6,7 @@
 
 <div class="container mx-auto w-9/12">
 	<Header />
-	<div class="flex flex-col w-full m-0">
+	<div class="flex flex-col w-full m-2 h-full">
 		<slot />
 	</div>
 	<Footer />

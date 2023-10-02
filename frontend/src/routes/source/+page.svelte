@@ -10,7 +10,7 @@
         Some of the sources we crawl to make sure you have latest content
     </h3>
     <div class="h-max w-9/12 items-center place-content-center m-auto">
-        <table class="table table-pin-rows">
+        <table class="table table-pin-rows w-auto">
         <thead>
           <tr>
             <th>Publishers</th>
@@ -19,8 +19,8 @@
         <tbody>
             {#each Items as item}
                 <tr>
-                    <td>{item.publisher}</td>
-                    <td><img src={item.logo} alt={item.publisher} /></td>
+                    <td><img src={item.logo} alt={item.name} width="32" height="32"/></td>
+                    <td>{item.name}</td>
                 </tr>
             {/each}
         </tbody>
