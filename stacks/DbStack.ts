@@ -46,8 +46,10 @@ export function DbStack({ stack }: StackContext) {
       feedType: "string",
       feedStatus: "string",
       publisherUrl: "string",
+      logo: "string",
+      primaryTags: "string",
     },
-    primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" },
+    primaryIndex: { partitionKey: "publisher", sortKey: "feedUrl" }
   });
 
   const ArticleTable = new Table(stack, "article", {
@@ -62,6 +64,7 @@ export function DbStack({ stack }: StackContext) {
       guid: "string",
       content: "string",
       publisher: "string",
+      articleImage: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
     globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "guid" }, titleIndex: { partitionKey: "title" }, publisherIndex: { partitionKey: "publisher" } },
