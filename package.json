@@ -7,11 +7,12 @@
     "deploy": "sst deploy",
     "remove": "sst remove",
     "console": "sst console",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "update": "sst update"
   },
   "devDependencies": {
-    "sst": "^2.24.12",
-    "aws-cdk-lib": "2.91.0",
+    "sst": "2.26.6",
+    "aws-cdk-lib": "2.95.1",
     "constructs": "10.2.69",
     "typescript": "^5.1.6",
     "@tsconfig/node16": "^16.1.1"
