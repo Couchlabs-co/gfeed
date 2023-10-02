@@ -46,20 +46,20 @@ jobs:
   DeployApp:
     runs-on: ubuntu-latest
     needs: checkout-and-install
-    if: github.ref == 'refs/heads/main'
+    if: needs.checkout-and-install.result == 'success' && github.ref == 'refs/heads/main' && startsWith(github.event.ref, 'refs/tags/v')
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::724538604969:role/Github
           aws-region: ap-southeast-2
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: latest
-          run_install: false
       - name: Deploy app
         run: |
           pnpm sst deploy --stage uat
