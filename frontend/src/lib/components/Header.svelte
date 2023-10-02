@@ -6,7 +6,6 @@
 	const navLinks = [
 		{ name: 'Today', href: 'rcfeed' },
 		{ name: 'Sources', href: 'source'},
-		{ name: 'Pricing', href: 'pricing' },
 		{ name: 'Profile', href: 'profile' },
 	];
 
