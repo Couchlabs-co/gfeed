@@ -1,9 +1,9 @@
 <script lang="ts">
-    export let keyword = '';
+    export let keyword: string; 
 </script>
 
 {#if keyword}
-    <span class="badge badge-neutral badge-outline m-1">
+    <div class="badge badge-primary m-1 p-3">
         {keyword}
-    </span>
+    </div>
 {/if}

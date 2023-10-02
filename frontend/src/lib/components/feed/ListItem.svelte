@@ -1,6 +1,5 @@
 <script lang="ts">
     import Badges from "./BadgeList.svelte";
-    // import SocialButtons from "./SocialButtons.svelte";
 
     // export let actionToast: any;
     export let userId: string;
@@ -34,7 +33,7 @@
 
 </script>
 
-<div class="flex flex-col gap-x-2 border-b-2 border-grey-500 m-2">
+<div class="w-11/12 flex flex-col gap-x-2 border-b-2 border-black m-2">
     <div class="flex flex-col flex-wrap justify-between p-3 leading-normal">
         <!-- {#if actionToast && actionToast.msg == "Success"}
         <div class="toast toast-top toast-center">
@@ -43,13 +42,12 @@
             </div>
           </div>
         {/if} -->
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">
+        <h1 class="mb-2 text-xl font-bold tracking-tight">
             <a href={Item.link} class="link link-hover" target="_blank">{Item.title}</a>
-        </h5>
+        </h1>
         <div class="flex items-start">
             <!-- <span class="text-md font-medium text-gray-600 truncate hover:text-amber-800"> -->
-            <h3 class="font-medium italic w-auto mr-2">{Item.author}</h3>
-            <p class="">at {Item.publisher} on {Item.pubDate}</p>
+            <h2 class="font-medium w-auto mr-2">{Item.author}, {Item.publisher} on {Item.pubDate}</h2>
             <!-- </span> -->
         </div>
         <div class="flex-1">

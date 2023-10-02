@@ -3,14 +3,13 @@ import type { PageServerLoad } from "./$types";
 
 
 /** @type {import('./$types').PageServerLoad} */
-export const load: PageServerLoad = async (event) => {
-	const session = await event.locals.getSession();
 
-	const { VITE_API_URL } = import.meta.env;
+const { VITE_API_URL } = import.meta.env;
+const fetchFeed = async () => {
 	if(!VITE_API_URL){
 		return {error: 'VITE_API_URL is not set'}
 	}
-	const result = await fetch(`${VITE_API_URL ?? 'https://r5rh81q6pe.execute-api.ap-southeast-2.amazonaws.com'}/feed`);
+	const result = await fetch(`${VITE_API_URL}/feed`);
 
 	const res = await result.json();
 
@@ -18,5 +17,32 @@ export const load: PageServerLoad = async (event) => {
 		item.pubDate = DateTime.fromMillis(Number(item.pubDate)).toLocaleString(DateTime.DATE_MED);
 	}
 
-	return {res, session};
+	res.Items.sort((a: any, b:any) => {
+		if (a.pubDate > b.pubDate) {
+			return -1;
+		}
+		if (a.pubDate < b.pubDate) {
+			return 1;
+		}
+		return 0;
+	});
+
+	return res;
+}
+
+const fetchPublishers = async () => {
+	if(!VITE_API_URL){
+		return {error: 'VITE_API_URL is not set'}
+	}
+	const result = await fetch(`${VITE_API_URL}/publishers`);
+
+	const res = await result.json();
+
+	return res;
+}
+
+export const load: PageServerLoad = async (event) => {
+	const session = await event.locals.getSession();	
+
+	return {session, feed: await fetchFeed(), publishers: await fetchPublishers()};
 }

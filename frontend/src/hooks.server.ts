@@ -8,6 +8,18 @@ import type { Session } from '@auth/core/types';
 
 const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL } = import.meta.env;
 
+interface RCSession extends Session{
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    image: string;
+    emailVerified: boolean;
+    token: string;
+    login_count: number;
+  }
+}
+
 async function authorization({ event, resolve }): Promise<any> {
   // Protect any routes under /authenticated
   const pathName = event.url.pathname;
@@ -84,18 +96,18 @@ export const handleError: HandleServerError = async ({ error, event }) => {
 
 const handleUser = (async ({event, resolve}) => {
   try{
-    const session: Session | null = await event.locals.getSession();
-    if (session?.user?.login_count === 1) {
+    const session: RCSession = await event.locals.getSession();
+    const { user } = session;
+    if (user?.login_count === 1) {
       const result = await fetch(`${VITE_API_URL}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({user: session.user}),
+        body: JSON.stringify({user}),
       });
   
-      const data = await result.json();
-      console.log('data', data);
+      await result.json();
     }
   } catch (err) {
     console.log('err----------- ', err);

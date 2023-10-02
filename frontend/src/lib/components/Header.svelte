@@ -18,12 +18,12 @@
 
 </script>
 
-<div class="navbar bg-white">
+<div class="navbar mb-2 border-b-2 border-gray-400">
 	<div class="navbar-start">
 		<a href="/" class="btn btn-ghost normal-case text-xl">
-			<img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree"><path d="M21 12h-8"/><path d="M21 6H8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/></svg>
 			<span class="self-center text-2xl font-semibold whitespace-nowrap">
-				Reading Corner
+				Read List
 			</span>
 		</a>
 	</div>
