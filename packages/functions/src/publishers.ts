@@ -33,7 +33,6 @@ export const handler = ApiHandler(async (evt) => {
     };
   }
 
-
   return {
     statusCode: 200,
     body: JSON.stringify({ Count, Items: publishers }),
