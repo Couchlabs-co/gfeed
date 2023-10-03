@@ -3,7 +3,7 @@ import type { PageServerLoad } from "./$types";
 
 /** @type {import('./$types').PageServerLoad} */
 export const load: PageServerLoad = async (event) => {
-	// const session = await event.locals.getSession();
+	const session = await event.locals.getSession();
 
 	const { VITE_API_URL } = import.meta.env;
 	if(!VITE_API_URL){
@@ -13,5 +13,5 @@ export const load: PageServerLoad = async (event) => {
 
 	const data = await result.json();
 
-	return { data };
+	return { session, data };
 }
