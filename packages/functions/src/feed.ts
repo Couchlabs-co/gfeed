@@ -36,6 +36,7 @@ export const handler = ApiHandler(async (evt) => {
 
   for (const item of result.Items) {
     feedItems.push({
+      id: item.id.S,
       publishedDate: item.publishedDate.S,
       title: item.title.S && decodeURI(item.title.S),
       link: item.link.S && decodeURI(item.link.S),
