@@ -1,6 +1,7 @@
 import { dbClient } from "./utils/dbClient";
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { Table } from "sst/node/table";
+import { v4 } from "uuid";
 
 const publishers = [
     {
@@ -91,7 +92,7 @@ const publishers = [
       "name": "DAN NORTH",
       "publisherUrl": "https://dannorth.net/",
       "feedUrl": "https://dannorth.net/blog/index.xml",
-      "feedStatus": "active",
+      "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTags": "Tech"
     },
@@ -183,6 +184,14 @@ const publishers = [
       "feedType": "xml",
       "primaryTags": "Tech",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae9cb9cd-5e76-4b86-9942-7ac5aa9891ea_256x256.png"
+    },
+    {
+      "name": "Financnial Times",
+      "publisherUrl": "https://www.ft.com/",
+      "feedUrl": "https://www.ft.com/rss/home",
+      "feedStatus": "inactive",
+      "feedType": "xml",
+      "primaryTags": "Business News",
     }
   ];
 
@@ -192,7 +201,8 @@ export async function handler() {
         const seedCommand = new PutItemCommand({
             TableName: Table.publisher.tableName,
             Item: {
-                name: { S: publisher.name },
+                id: { S: v4() },
+                publisherName: { S: publisher.name },
                 feedUrl: { S: publisher.feedUrl },
                 feedType: { S: publisher.feedType },
                 feedStatus: { S: publisher.feedStatus },
