@@ -5,6 +5,7 @@
     export let userId: string;
 
     export let Item = {
+        id: "Id",
         title: "Title",
         author: "Author",
         pubDate: "Pub Date",

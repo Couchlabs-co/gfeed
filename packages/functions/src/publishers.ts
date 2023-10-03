@@ -21,7 +21,8 @@ export const handler = ApiHandler(async (evt) => {
   if(Items && Items.length){
       for (const item of Items) {
         publishers.push({
-            name: item.name.S,
+            publisherId: item.id.S,
+            name: item.publisherName.S,
             feedUrl: item.feedUrl.S,
             feedType: item.feedType.S,
             logo: item.logo?.S,

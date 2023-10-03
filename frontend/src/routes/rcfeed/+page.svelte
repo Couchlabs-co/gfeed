@@ -8,7 +8,7 @@
 
 	let readingFeed: any = feed.Items;
 
-	const user_id = session.user?.id.split('|')[1];
+	const user_id = session.user.id.indexOf('|') > 0 ? session.user?.id.split('|')[1] : session.user?.id;
 
 	if(feed.count){
 		$readingListStore.articles = feed.Items;
@@ -55,7 +55,7 @@
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
 						<option selected>Publishers</option>
 						{#each publishers.Items as publisher}
-							<option>{publisher.publisher}</option>
+							<option>{publisher.name}</option>
 						{/each}
 					</select>
 				</div>
