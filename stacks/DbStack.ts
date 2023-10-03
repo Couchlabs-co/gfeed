@@ -41,7 +41,7 @@ export function DbStack({ stack }: StackContext) {
   const PublisherTable = new Table(stack, "publisher", {
     fields: {
       id: "string",
-      name: "string",
+      publisherName: "string",
       feedUrl: "string",
       feedType: "string",
       feedStatus: "string",
@@ -49,7 +49,7 @@ export function DbStack({ stack }: StackContext) {
       logo: "string",
       primaryTags: "string",
     },
-    primaryIndex: { partitionKey: "name", sortKey: "feedUrl" }
+    primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" }
   });
 
   const ArticleTable = new Table(stack, "article", {
@@ -64,10 +64,16 @@ export function DbStack({ stack }: StackContext) {
       guid: "string",
       content: "string",
       publisher: "string",
+      publisherId: "string",
       articleImage: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
-    globalIndexes: { authorIndex: { partitionKey: "author", sortKey: "guid" }, titleIndex: { partitionKey: "title" }, publisherIndex: { partitionKey: "publisher" } },
+    globalIndexes: { 
+      authorIndex: { partitionKey: "author", sortKey: "guid" }, 
+      titleIndex: { partitionKey: "title" }, 
+      publisherIndex: { partitionKey: "publisher" },
+      publisherIdIndex: { partitionKey: "publisherId" },
+    },
   });
 
   new Script(stack, "Script", {
