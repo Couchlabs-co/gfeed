@@ -12,7 +12,7 @@ interface RssItem {
   content?: string; 
 }
 
-export const formatItem = (item: any, publisher: string): Record<any, AttributeValue> => {
+export const formatItem = (item: any, publisher: string, tags: string): Record<any, AttributeValue> => {
   let keywords, author, pubDate = "";
 
   if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
@@ -55,7 +55,7 @@ export const formatItem = (item: any, publisher: string): Record<any, AttributeV
     pubDate: { N: new Date(pubDate).getTime().toString() },
     author: { S: author },
     guid: { S: encodeURI(item.guid ?? "null") },
-    keywords: { S: keywords ?? "" },
+    keywords: { S: keywords ?? tags },
     publisher: { S: publisher },
     content: { S: encodeURI(item.contentSnippet ?? "") },
   };

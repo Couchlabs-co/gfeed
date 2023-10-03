@@ -11,7 +11,7 @@ const sqs = new SQSClient({
 export async function main() {
   const scanCommand = new ScanCommand({
     TableName: Table.publisher.tableName,
-    ProjectionExpression: "publisher, feedUrl, feedType",
+    ProjectionExpression: "id, publisherName, feedUrl, feedType, publisherUrl, logo, primaryTags",
     FilterExpression: "feedStatus = :status",
     ExpressionAttributeValues: {
       ":status": { S: "active" },
@@ -26,7 +26,12 @@ export async function main() {
     };
   }
   for (const publisher of result.Items) {
-    const msgBody = { feedUrl: publisher.feedUrl.S, publisher: publisher.name.S };
+    const msgBody = { 
+      id: publisher.id,
+      feedUrl: publisher.feedUrl.S,
+      publisher: publisher.publisherName.S,
+      tags: publisher.primaryTags.S,
+    };
     const params = {
       MessageBody: JSON.stringify(msgBody),
       QueueUrl: Queue.Queue.queueUrl,
