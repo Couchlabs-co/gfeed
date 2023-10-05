@@ -1,3 +1,8 @@
+<script lang="ts">
+	import { signIn } from "@auth/sveltekit/client";
+	import { page } from "$app/stores";
+</script>
+
 <section class="bg-white dark:bg-gray-900">
 	<div class="hero min-h-screen bg-base-100">
 		<div class="hero-content text-center">
@@ -10,7 +15,17 @@
 					Our innovative platform combines the power of RSS feed aggregation with advanced
 					recommendation algorithms, ensuring you never miss out on articles that matter to you.
 				</p>
-				<a href="#!" class="btn btn-primary">Get Started</a>
+				<button type="button" class="btn btn-primary" on:click={() => signIn(
+					'auth0', {
+						redirect: false,
+						callbackUrl: `${$page.url.origin}`,
+					},
+					{
+						scope: 'api openid profile email offline_access'
+					}
+				)}>
+					Get Started
+				</button>
 			</div>
 		</div>
 	</div>
