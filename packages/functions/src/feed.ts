@@ -49,6 +49,10 @@ export const handler = ApiHandler(async (evt) => {
     });
   }
 
+  feedItems.sort((a: any, b:any) => {
+    return b.pubDate - a.pubDate;
+  });
+
   return {
     statusCode: 200,
     body: JSON.stringify({ Count: result.Count, Items: feedItems }),
