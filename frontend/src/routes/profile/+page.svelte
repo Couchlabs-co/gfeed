@@ -6,75 +6,189 @@
 	export let data: PageData;
 
 </script>
-<div class="flex mt-4 rounded bg-gray-200 items-center justify-center gap-2 overflow-x-hidden">
-	<section>
-		<div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
-		  <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-stretch">
-			<div class="grid p-6 bg-gray-100 rounded place-content-center sm:p-8">
-			  <div class="max-w-md mx-auto text-center lg:text-left">
-				<div class="avatar">
-					<div class="w-48 rounded-full">
-					  <img src={$page.data.session?.user?.image} alt={$page.data.session?.user?.name} />
-					</div>
-				</div>
-	  
-				<p>
-				 <span class="text-2xl font-bold text-gray-900">{$page.data.session?.user?.name}</span>
-				</p>
-				<ul class="menu w-56 rounded-box mt-4">
-					<li>
-					  <a href="/profile">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-					  	Settings
-					  </a>
-					</li>
-					<li>
-					  <a href="/profile">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-						Link 2
-					  </a>
-					</li>
-					<li>
-					  <a href="/profile">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-						Item 3
-					  </a>
-					</li>
-				  </ul>
-			  </div>
-			</div>
 
-			<div class="card w-96 bg-neutral text-neutral-content">
-				<div class="card-body items-center text-center">
-				  <h2 class="card-title">You follow you interests</h2>
-				  {#if !data.interestsByAction?.likes || data.interestsByAction?.likes?.length === 0}
-				  	<p>You have not selected any interests yet.</p>
-				  {:else}
-					<ul>
-						{#if data.interestsByAction}
-							<li>you have {data.interestsByAction.likes.length} likes</li>
-						{/if}
-					</ul>
-				  {/if}
-				</div>
-			</div>
+<!-- component -->
+<!-- <style>
+    :root {
+        --main-color: #4a76a8;
+    }
 
-			<div class="card w-96 bg-neutral text-neutral-content">
-				<div class="card-body items-center text-center">
-				  <h2 class="card-title">Not for me</h2>
-				  {#if !data.interestsByAction?.dislikes|| data.interestsByAction?.dislikes?.length === 0}
-				  	<p>You have not disliked anything yet.</p>
-				  {:else}
-					<ul>
-						{#if data.interestsByAction.dislikes}
-							<li>you have {data.interestsByAction.dislikes.length} likes</li>
-						{/if}
-					</ul>
-				  {/if}
-				</div>
-			</div>
-	  
-		  </div>
-		</div>
-	</section>
+    .bg-main-color {
+        background-color: var(--main-color);
+    }
+
+    .text-main-color {
+        color: var(--main-color);
+    }
+
+    .border-main-color {
+        border-color: var(--main-color);
+    }
+</style> -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+
+
+
+<div class="max-h-screen">
+    <div class="container mx-auto my-5 p-5">
+        <div class="md:flex no-wrap md:-mx-2 ">
+            <!-- Left Side -->
+            <div class="w-full md:w-3/12 md:mx-2">
+                <!-- Profile Card -->
+                <div class="bg-white p-3 ">
+                    <div class="image overflow-hidden">
+                        <img class="h-auto w-full mx-auto"
+                            src={$page.data.session?.user?.image}
+                            alt={$page.data.session?.user?.name} />
+                    </div>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{$page.data.session?.user?.name}</h1>
+                    <ul
+                        class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                        <li class="flex items-center py-3">
+                            <span>Status</span>
+                            <span class="ml-auto"><span
+                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                        </li>
+                        <li class="flex items-center py-3">
+                            <span>Member since</span>
+                            <span class="ml-auto">Nov 07, 2016</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of profile card -->
+                <div class="my-4"></div>
+            </div>
+            <!-- Right Side -->
+            <div class="w-full md:w-9/12 mx-2 h-64">
+                <!-- Profile tab -->
+                <!-- About Section -->
+                <!-- <div class="bg-white p-3 shadow-sm rounded-sm">
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                        <span class="text-green-500">
+                            <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                        </span>
+                        <span class="tracking-wide">About</span>
+                    </div>
+                    <div class="text-gray-700">
+                        <div class="grid md:grid-cols-2 text-sm">
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">First Name</div>
+                                <div class="px-4 py-2">Jane</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Last Name</div>
+                                <div class="px-4 py-2">Doe</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Gender</div>
+                                <div class="px-4 py-2">Female</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Contact No.</div>
+                                <div class="px-4 py-2">+11 998001001</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Current Address</div>
+                                <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Permanant Address</div>
+                                <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Email.</div>
+                                <div class="px-4 py-2">
+                                    <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="px-4 py-2 font-semibold">Birthday</div>
+                                <div class="px-4 py-2">Feb 06, 1998</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                End of about section -->
+
+                <!-- <div class="my-4"></div> -->
+
+                <!-- Experience and education -->
+                <div class="p-3 shadow-sm rounded-sm">
+
+                    <div class="grid grid-cols-2">
+                        <div>
+                            <div class="stats shadow">
+  
+								<div class="stat">
+								  <div class="stat-figure text-primary">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+								  </div>
+								  <div class="stat-title">Total Likes</div>
+								  <div class="stat-value text-primary">
+                                    {#if !data.interestsByAction?.likes || data.interestsByAction?.likes?.length === 0}
+                                        0
+                                    {:else}
+                                        {data.interestsByAction.likes.length}
+                                    {/if}
+                                  </div>
+								</div>
+								
+								<div class="stat">
+								  <div class="stat-figure text-secondary">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+								  </div>
+								  <div class="stat-title">Total Views</div>
+								  <div class="stat-value text-secondary">4</div>
+								</div>
+								
+								<div class="stat">
+								  <div class="stat-figure text-secondary">
+									<div class="avatar online">
+									  <div class="w-16 rounded-full">
+										<img alt="" src="" />
+									  </div>
+									</div>
+								  </div>
+								  <div class="stat-value">86%</div>
+								  <div class="stat-title">Tasks done</div>
+								  <div class="stat-desc text-secondary">31 tasks remaining</div>
+								</div>
+								
+							  </div>
+                        </div>
+                        
+                    </div>
+                    <!-- End of Experience and education grid -->
+                </div>
+                <!-- End of profile tab -->
+                <div class="my-4"></div>
+                <div class="p-3 shadow-sm rounded-sm">
+                    Publishers you read
+                </div>
+
+                <div class="my-4"></div>
+                <div class="p-3 shadow-sm rounded-sm">
+                    Authors you read
+                </div>
+
+                <div class="my-4"></div>
+                <div class="p-3 shadow-sm rounded-sm">
+                    Subscription
+                </div>
+
+                <div class="my-4"></div>
+                <div class="p-3 shadow-sm rounded-sm">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Delete Profile
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
