@@ -5,11 +5,21 @@
 	export let data;
     
     const { session } = data;
-
+    let likeIndex = -1;
+    let dislikeIndex = -1;
 
     const { Items } = data.data;
 
-    async function userAction(title: string, action: string, type: string) {
+    async function userAction(e: any, title: string, action: string, type: string, index: number) {
+
+        if (action === "likes") {
+            likeIndex = index;
+            dislikeIndex = -1;
+        } else {
+            dislikeIndex = index;
+            likeIndex = -1;
+        }
+
         const res = await fetch("/api/engage", {
             method: "POST",
             headers: {
@@ -39,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-            {#each Items as item}
+            {#each Items as item,  i (i)}
                 <tr>
                     <td class="w-60">
                         {#if item.logo}
@@ -55,13 +65,13 @@
 
                     <td class="w-96"><span class="text-xl font-semibold">{item.name}</span></td>
                     <td class="w-20">
-                        <button class="btn btn-square btn-outline" on:click={() => userAction(item.name, "likes", "publisher")}>
-                            <Star />
+                        <button class={i === likeIndex ? "btn btn-square btn-outline bg-success": "btn btn-square btn-outline"} on:click={(e) => userAction(e, item.name, "likes", "publisher", i)}>
+                            <Star color={i === likeIndex ? "white": "black"} />
                         </button>
                     </td>
                     <td class="w-20">
-                        <button class="btn btn-square btn-outline" on:click={() => userAction(item.name, "dislikes", "publisher")}>
-                            <StarOff />
+                        <button class={i === dislikeIndex ? "btn btn-square btn-outline bg-danger": "btn btn-square btn-outline"} on:click={(e) => userAction(e, item.name, "dislikes", "publisher", i)}>
+                            <StarOff color={i === dislikeIndex ? "white": "black"}/>
                         </button>
                     </td>
                 </tr>
