@@ -47,12 +47,12 @@
 			<div class="card w-96 bg-neutral text-neutral-content">
 				<div class="card-body items-center text-center">
 				  <h2 class="card-title">You follow you interests</h2>
-				  {#if !data.interestsByAction?.like || data.interestsByAction?.like?.length === 0}
+				  {#if !data.interestsByAction?.likes || data.interestsByAction?.likes?.length === 0}
 				  	<p>You have not selected any interests yet.</p>
 				  {:else}
 					<ul>
 						{#if data.interestsByAction}
-							<li>you have {data.interestsByAction.like.length} likes</li>
+							<li>you have {data.interestsByAction.likes.length} likes</li>
 						{/if}
 					</ul>
 				  {/if}
@@ -62,12 +62,12 @@
 			<div class="card w-96 bg-neutral text-neutral-content">
 				<div class="card-body items-center text-center">
 				  <h2 class="card-title">Not for me</h2>
-				  {#if !data.interestsByAction?.dislike || data.interestsByAction?.dislike?.length === 0}
+				  {#if !data.interestsByAction?.dislikes|| data.interestsByAction?.dislikes?.length === 0}
 				  	<p>You have not disliked anything yet.</p>
 				  {:else}
 					<ul>
-						{#if data.interestsByAction.dislike}
-							<li>you have {data.interestsByAction.dislike.length} likes</li>
+						{#if data.interestsByAction.dislikes}
+							<li>you have {data.interestsByAction.dislikes.length} likes</li>
 						{/if}
 					</ul>
 				  {/if}
