@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'frontend/**'
+  workflow_dispatch: {}
     
 concurrency: merge-${{ github.ref }}
     
