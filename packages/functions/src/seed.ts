@@ -186,7 +186,7 @@ const publishers = [
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae9cb9cd-5e76-4b86-9942-7ac5aa9891ea_256x256.png"
     },
     {
-      "name": "Financnial Times",
+      "name": "Financial Times",
       "publisherUrl": "https://www.ft.com/",
       "feedUrl": "https://www.ft.com/rss/home",
       "feedStatus": "inactive",

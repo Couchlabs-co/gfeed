@@ -4,7 +4,7 @@
 	import ProfilePic from '../components/ProfileHeader.svelte';
 
 	const navLinks = [
-		{ name: 'Today', href: 'rcfeed' },
+		{ name: 'Feed', href: 'rcfeed' },
 		{ name: 'Sources', href: 'source'},
 		{ name: 'Profile', href: 'profile' },
 	];

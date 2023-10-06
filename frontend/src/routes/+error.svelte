@@ -4,7 +4,7 @@
   
   <!-- <h1>This is Error page {$page.status}: {$page.error?.message}</h1> -->
   <!-- This is an example component -->
-<div class="h-screen w-screen bg-gray-100 flex items-center">
+<div class="h-screen bg-gray-100 flex items-center">
 	<div class="container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700">
    		<div class="max-w-md">
       		<div class="text-5xl font-dark font-bold">{$page.status}</div>
