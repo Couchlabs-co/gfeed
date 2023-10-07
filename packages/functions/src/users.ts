@@ -5,29 +5,35 @@ import { Table } from "sst/node/table";
 // import * as uuid from "uuid";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
-const createUser = async (id: string, name: string, email: string, channel: string) => {
+const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
   const userTable = Table.user.tableName;
     const userRecord: Record<string, AttributeValue> = {
       id: { S: id },
       name: { S: name },
       email: { S: email },
       channel: { S: channel },
+      pic: { S: pic },
+      createdAt: { S: new Date().toISOString() },
     };
     const command = new UpdateItemCommand({
       TableName: userTable,
       Key: {
         email: { S: email },
       },
-      UpdateExpression: "set #id = :id, #name = :name, #channel = :channel",
+      UpdateExpression: "set #id = :id, #name = :name, #channel = :channel, #pic = :pic, #createdAt = :createdAt",
       ExpressionAttributeNames: {
         "#id": "id",
         "#name": "name",
         "#channel": "channel",
+        "#pic": "pic",
+        "#createdAt": "createdAt",
       },
       ExpressionAttributeValues: {
         ":id": userRecord.id,
         ":name": userRecord.name, 
         ":channel": userRecord.channel,
+        ":pic": userRecord.pic,
+        ":createdAt": userRecord.createdAt,
       },
       ReturnValues: "ALL_NEW",
     });
@@ -50,7 +56,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
   try {
     if(user.id){
-      const res = await createUser(user.id, user.name, user.email, "google");
+      const res = await createUser(user.id, user.name, user.email, "google", user.image);
       return {
         statusCode: 201,
         body: JSON.stringify({"message": "Success", "user": res})
@@ -58,7 +64,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     }
 
     const [channel, authId] = user.authId.split('|');
-    const res = await createUser(authId, user.name, user.email, channel);
+    const res = await createUser(authId, user.name, user.email, channel, user.image);
 
     return {
       statusCode: 201,
