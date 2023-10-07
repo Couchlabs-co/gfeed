@@ -23,7 +23,7 @@ interface RCSession extends Session{
 async function authorization({ event, resolve }): Promise<any> {
   // Protect any routes under /authenticated
   const pathName = event.url.pathname;
-  const authenticatedPaths = ["/rcfeed", "/profile"];
+  const authenticatedPaths = ["/rcfeed", "/profile", "/source"];
   if (authenticatedPaths.includes(pathName)) {
     const session: Session | null = await event.locals.getSession();
     if (!session) {
