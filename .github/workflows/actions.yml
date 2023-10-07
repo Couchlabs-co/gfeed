@@ -10,7 +10,7 @@ env:
 on:
   - push
   - workflow_dispatch
-    
+  
 concurrency: merge-${{ github.ref }}
     
 permissions:
@@ -47,7 +47,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-  
+#&& github.ref == 'refs/heads/main' && startsWith(github.event.ref, 'refs/tags/v')
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
