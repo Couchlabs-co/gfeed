@@ -13,9 +13,8 @@ export async function load(event: ServerLoadEvent) {
 	const res = await result.json();
     const {message, data} = res;
     if(message === 'Success'){
-        return data;
+        return {...data, user: event.locals.user};
     }
-    console.log("message: ", res);
     
     return {};
 }

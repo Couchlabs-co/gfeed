@@ -106,7 +106,9 @@ const handleUser = (async ({event, resolve}) => {
         body: JSON.stringify({user: session.user}),
       });
   
-      await result.json();
+      const user = await result.json();
+      session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
+      event.locals.user = {...session.user };
     }
   } catch (err) {
     console.log('err----------- ', err);
