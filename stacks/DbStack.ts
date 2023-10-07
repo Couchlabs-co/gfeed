@@ -8,6 +8,8 @@ export function DbStack({ stack }: StackContext) {
       name: "string",
       email: "string",
       channel: "string",
+      pic: "string",
+      createdAt: "string",
     },
     primaryIndex: { partitionKey: "email" },
     globalIndexes: { channelIndex: { partitionKey: "channel" } },

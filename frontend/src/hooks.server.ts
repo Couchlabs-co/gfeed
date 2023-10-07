@@ -23,7 +23,7 @@ interface RCSession extends Session{
 async function authorization({ event, resolve }): Promise<any> {
   // Protect any routes under /authenticated
   const pathName = event.url.pathname;
-  const authenticatedPaths = ["/rcfeed", "/profile"];
+  const authenticatedPaths = ["/rcfeed", "/profile", "/source"];
   if (authenticatedPaths.includes(pathName)) {
     const session: Session | null = await event.locals.getSession();
     if (!session) {
@@ -106,7 +106,9 @@ const handleUser = (async ({event, resolve}) => {
         body: JSON.stringify({user: session.user}),
       });
   
-      await result.json();
+      const user = await result.json();
+      session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
+      event.locals.user = {...session.user };
     }
   } catch (err) {
     console.log('err----------- ', err);

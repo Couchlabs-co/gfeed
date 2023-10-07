@@ -1,9 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { PageData } from './$types';
+    import { DateTime } from 'luxon';
 
 	/** @type {import('./$types').PageData} */
 	export let data: PageData;
+
+    function formatDate(date: string) {
+        return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
+    }
 
 </script>
 
@@ -38,10 +42,10 @@
                 <div class="bg-white p-3 ">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto"
-                            src={$page.data.session?.user?.image}
-                            alt={$page.data.session?.user?.name} />
+                            src={data.user?.image}
+                            alt={data.user?.name} />
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{$page.data.session?.user?.name}</h1>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{data.user?.name}</h1>
                     <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
@@ -51,7 +55,7 @@
                         </li>
                         <li class="flex items-center py-3">
                             <span>Member since</span>
-                            <span class="ml-auto">Nov 07, 2016</span>
+                            <span class="ml-auto">{formatDate(data.user.createdAt)}</span>
                         </li>
                     </ul>
                 </div>
