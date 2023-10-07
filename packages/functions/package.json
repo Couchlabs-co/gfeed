@@ -12,7 +12,7 @@
     "@types/node-fetch": "^2.6.4",
     "@types/uuid": "^9.0.3",
     "aws-sdk-client-mock": "^3.0.0",
-    "sst": "2.26.6",
+    "sst": "2.26.9",
     "vitest": "^0.34.4"
   },
   "dependencies": {

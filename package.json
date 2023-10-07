@@ -6,6 +6,7 @@
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "sst remove",
+    "types": "sst types",
     "console": "sst console",
     "typecheck": "tsc --noEmit",
     "update": "sst update"
@@ -14,7 +15,7 @@
     "@tsconfig/node16": "^16.1.1",
     "aws-cdk-lib": "2.99.1",
     "constructs": "10.2.70",
-    "sst": "2.28.0",
+    "sst": "2.26.9",
     "typescript": "^5.2.2"
   },
   "type": "module"

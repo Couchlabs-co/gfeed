@@ -1,12 +1,16 @@
-name: read-list-web
-run-name: Read List Web
+name: read-list-app
+run-name: Read List
+
+env:
+  AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+  AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+  AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+  AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
 on:
-  push:
-    paths:
-      - 'frontend/**'
-  workflow_dispatch: {}
-    
+  - push
+  - workflow_dispatch
+  
 concurrency: merge-${{ github.ref }}
     
 permissions:
@@ -14,7 +18,7 @@ permissions:
   contents: read
 
 jobs:
-  checkout-and-install:
+  Build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -40,27 +44,24 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
               ${{ runner.os }}-pnpm-store-
-  
+
       - name: Install dependencies
         run: pnpm install
 #&& github.ref == 'refs/heads/main' && startsWith(github.event.ref, 'refs/tags/v')
-  DeployApp:
-    runs-on: ubuntu-latest
-    needs: checkout-and-install
-    if: needs.checkout-and-install.result == 'success'
-    steps:
-      - name: Git clone the repository
-        uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::724538604969:role/Github
           aws-region: ap-southeast-2
+
       - name: Deploy app
+        if: github.ref == 'refs/heads/main'
+        env:
+          AUTH0_DOMAIN: ${{ env.AUTH0_DOMAIN }}
+          AUTH0_CLIENT_ID: ${{ env.AUTH0_CLIENT_ID }}
+          AUTH0_AUDIENCE: ${{ env.AUTH0_AUDIENCE }}
+          AUTH0_CLIENT_SECRET: ${{ env.AUTH0_CLIENT_SECRET }}
         run: |
-          pnpm sst deploy --stage uat
+          pnpm types --stage uat
+          pnpm run deploy --stage uat
+      - run: echo "🍏 This job's status is ${{ job.status }}."
