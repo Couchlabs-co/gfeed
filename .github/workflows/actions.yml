@@ -1,11 +1,7 @@
 name: read-list-web
 run-name: Read List Web
 
-on:
-  push:
-    paths:
-      - 'frontend/**'
-  workflow_dispatch: {}
+on: [push, workflow_dispatch]
     
 concurrency: merge-${{ github.ref }}
     
@@ -63,6 +59,5 @@ jobs:
           aws-region: ap-southeast-2
       - name: Deploy app
         run: |
-          cd ${{ github.workspace }}
           npx sst deploy --stage uat
       - run: echo "🍏 This job's status is ${{ job.status }}."
