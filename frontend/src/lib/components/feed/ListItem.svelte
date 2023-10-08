@@ -44,7 +44,9 @@
           </div>
         {/if} -->
         <h1 class="mb-2 text-xl font-bold tracking-tight">
-            <a href={Item.link} class="link link-hover" target="_blank">{Item.title}</a>
+            <a href={Item.link} class="link link-hover" target="_blank" on:click={()=> userAction(Item.title, "viewed", "post")}>
+                {Item.title}
+            </a>
         </h1>
         <div class="flex items-start">
             <!-- <span class="text-md font-medium text-gray-600 truncate hover:text-amber-800"> -->
