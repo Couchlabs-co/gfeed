@@ -21,6 +21,7 @@ export function ApiStack({ stack, app }: StackContext) {
       "POST /user/action/bookmark": "packages/functions/src/user.handler",
       "POST /user/action/dislike": "packages/functions/src/user.handler",
       "GET /publishers": "packages/functions/src/publishers.handler",
+      "POST /search": "packages/functions/src/search.handler",
     },
   });
 
