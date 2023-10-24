@@ -50,6 +50,7 @@ export function DbStack({ stack }: StackContext) {
       publisherUrl: "string",
       logo: "string",
       primaryTags: "string",
+      frequency: "string",
     },
     primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" }
   });
