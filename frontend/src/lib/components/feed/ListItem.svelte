@@ -45,7 +45,7 @@
         {/if} -->
         <h1 class="mb-2 text-xl font-bold tracking-tight">
             <a href={Item.link} class="link link-hover" target="_blank" on:click={()=> userAction(Item.title, "viewed", "post")}>
-                {Item.title}
+                {@html Item.title}
             </a>
         </h1>
         <div class="flex items-start">
@@ -65,6 +65,7 @@
                 {/each}
             </div>
         {/if}
+        {#if userId != "0"}
             <div class="flex flex-1 flex-row space-x-2 m-2">
                 <button class="btn btn-xs bg-transparent border border-black" type="button" on:click={() => userAction
         (Item.title, "likes", "post")}>
@@ -80,7 +81,8 @@
                 </button>
                 
                 <!-- <SocialButtons /> -->
-        </div>
+            </div>
+        {/if}
     </div>
     
 </div>
