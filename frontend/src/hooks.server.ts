@@ -23,7 +23,7 @@ interface RCSession extends Session{
 async function authorization({ event, resolve }): Promise<any> {
   // Protect any routes under /authenticated
   const pathName = event.url.pathname;
-  const authenticatedPaths = ["/rcfeed", "/profile", "/source"];
+  const authenticatedPaths = ["/profile"];
   if (authenticatedPaths.includes(pathName)) {
     const session: Session | null = await event.locals.getSession();
     if (!session) {
@@ -36,6 +36,8 @@ async function authorization({ event, resolve }): Promise<any> {
 }
 
 const handleAuth = (async (...args) => {
+  const { event } = args[0];
+
 	return SvelteKitAuth({
     trustHost: true,
     providers: [
@@ -65,12 +67,14 @@ const handleAuth = (async (...args) => {
     debug: false,
     session: {
       maxAge: 1800,// 30 mins 
+      updateAge: 1800,// 30 mins
     },
     callbacks: {
       async jwt({token, user}) {
         if (user) {
           token.user = user;
         }
+        event.locals.user.token = token.toString();
         return token;
       },
       async session({session, token}) {
@@ -84,6 +88,7 @@ const handleAuth = (async (...args) => {
 }) satisfies Handle;
 
 export const handleError: HandleServerError = async ({ error, event }) => {
+  console.log('event: ', event);
   const errorId = crypto.randomUUID();
   // example integration with https://sentry.io/
   console.log('error', error);
