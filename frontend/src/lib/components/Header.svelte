@@ -2,6 +2,7 @@
 	import { signIn, signOut } from '@auth/sveltekit/client';
 	import { page } from "$app/stores";
 	import ProfilePic from '../components/ProfileHeader.svelte';
+	import SearchBox from '../components/Search/SearchBox.svelte';
 
 	const navLinks = [
 		{ name: 'Feed', href: 'rcfeed' },
@@ -38,34 +39,36 @@
 						data-sveltekit-preload-data="off">{link.name}</a>
 				</li>
 			{/each}
-			{#if Object.keys($page.data.session || {}).length}
-				{#if $page.data.session?.user}
-					<li>
-						<button type="button" on:click={SignOut} class="text-sm font-semibold leading-6 text-gray-900">
-							Log Out
-						</button>
-					</li>
-				{/if}
-			{:else}
-				<li>
-					<button type="button" on:click={() => signIn(
-						'auth0', {
-							redirect: false,
-							callbackUrl: `${$page.url.origin}`,
-						},
-						{
-							scope: 'api openid profile email offline_access'
-						}
-					)} class="text-sm font-semibold leading-6 text-gray-900">
-						Log In
-					</button>
-				</li>
-			{/if}
 		</ul>
-
 		<!-- </div> -->
 	</div>
 	<div class="navbar-end">
+		<SearchBox />
+		<ul class="menu menu-horizontal px-1">
+		{#if Object.keys($page.data.session || {}).length}
+			{#if $page.data.session?.user}
+				<li>
+					<button type="button" on:click={SignOut} class="text-sm font-semibold leading-6 text-gray-900">
+						Log Out
+					</button>
+				</li>
+			{/if}
+		{:else}
+			<li>
+				<button type="button" on:click={() => signIn(
+					'auth0', {
+						redirect: false,
+						callbackUrl: `${$page.url.origin}`,
+					},
+					{
+						scope: 'api openid profile email offline_access'
+					}
+				)} class="text-sm font-semibold leading-6 text-gray-900">
+					Log In
+				</button>
+			</li>
+		{/if}
+		</ul>
 		{#if $page.data.session?.user?.name}
 			<ProfilePic pic={$page.data.session?.user?.image ?? ''}/>
 		{/if}

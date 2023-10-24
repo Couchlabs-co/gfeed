@@ -8,7 +8,7 @@
 
 	let readingFeed: any = feed.Items;
 
-	const user_id = session.user.id.indexOf('|') > 0 ? session.user?.id.split('|')[1] : session.user?.id;
+	const user_id = session ? session.user.id.indexOf('|') > 0 ? session.user?.id.split('|')[1] : session.user?.id : 0;
 
 	if(feed.count){
 		$readingListStore.articles = feed.Items;
