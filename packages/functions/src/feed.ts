@@ -46,6 +46,7 @@ export const handler = ApiHandler(async (evt) => {
       guid: item.guid.S && decodeURI(item.guid.S),
       publisher: item.publisher?.S,
       keywords: item.keywords?.S ?? "",
+      image: item.img?.S ?? "",
     });
   }
 

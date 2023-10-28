@@ -22,7 +22,7 @@ export async function main(event: SQSEvent) {
           publishedDate: feedItem.publishedDate,
           guid: feedItem.guid,
         },
-        UpdateExpression: "set #id = :id, #title = :title, #link = :link, #author = :author, #keywords = :keywords, #pubDate = :pubDate, #content = :content, #publisher = :publisher, #publisherId = :publisherId",
+        UpdateExpression: "set #id = :id, #title = :title, #link = :link, #author = :author, #keywords = :keywords, #pubDate = :pubDate, #content = :content, #publisher = :publisher, #publisherId = :publisherId, #img = :img",
         ExpressionAttributeNames: {
           "#id": "id",
           "#title": "title",
@@ -33,6 +33,7 @@ export async function main(event: SQSEvent) {
           "#content": "content",
           "#publisher": "publisher",
           "#publisherId": "publisherId",
+          "#img": "img",
         },
         ExpressionAttributeValues: {
           ":id": { S: v4() },
@@ -44,6 +45,7 @@ export async function main(event: SQSEvent) {
           ":content": feedItem.content,
           ":publisher": feedItem.publisher,
           ":publisherId": publisherId,
+          ":img": feedItem.img ?? '',
         },
         ReturnValues: "ALL_NEW",
       });

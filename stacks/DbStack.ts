@@ -68,7 +68,7 @@ export function DbStack({ stack }: StackContext) {
       content: "string",
       publisher: "string",
       publisherId: "string",
-      articleImage: "string",
+      img: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
     globalIndexes: { 
