@@ -57,7 +57,6 @@ const handleAuth = (async (...args) => {
             email: profile.email,
             image: profile.picture,
             emailVerified: profile.email_verified,
-            token: profile.token,
             login_count: profile['https://readingcorner.com/count'],
           };
         }
@@ -71,10 +70,19 @@ const handleAuth = (async (...args) => {
     },
     callbacks: {
       async jwt({token, user}) {
+        // if(account){
+        //   const { getSession } = event.locals;
+        //   const session = await getSession();
+
+        //   console.log('account: ', account, session);
+        //   // session.accessToken = account.access_token;
+        //   // session.refreshToken = account.refresh_token;
+        //   // session.idToken = account.id_token;
+        //   // event.locals.user.token = account.access_token ?? '';
+        // }
         if (user) {
           token.user = user;
         }
-        event.locals.user.token = token.toString();
         return token;
       },
       async session({session, token}) {
