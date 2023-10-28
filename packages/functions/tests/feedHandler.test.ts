@@ -90,7 +90,7 @@ describe("feedHandler", () => {
         expect(response).toBeTruthy();
     });
 
-    it("parse moxilla hacks xml feed", async () => {
+    it("parse mozilla hacks xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/mozillaHacks.xml'), 'utf8');
         const options = {
             url: 'https://hacks.mozilla.org/feed/',
@@ -143,6 +143,51 @@ describe("feedHandler", () => {
         }
         mockFetch(options)
         sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Sam Newman', feedUrl: 'https://samnewman.io/blog/feed.xml' });
+        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        console.log('response', response);
+        expect(response).toBeTruthy();
+    });
+
+    it("parse hackernoon xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/hackernoon.xml'), 'utf8');
+        const options = {
+            url: 'https://hackernoon.com/feed',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'HACKERNOON', feedUrl: 'https://hackernoon.com/feed' });
+        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        console.log('response', response);
+        expect(response).toBeTruthy();
+    });
+
+    it("parse jacob singh xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/jacobsingh.xml'), 'utf8');
+        const options = {
+            url: 'https://jacobsingh.name/rss/',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Jacob Singh', feedUrl: 'https://jacobsingh.name/rss/' });
+        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        console.log('response', response);
+        expect(response).toBeTruthy();
+    });
+
+    it("parse dev intruppted xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/devinteruppted.xml'), 'utf8');
+        const options = {
+            url: 'https://devinterrupted.substack.com/feed',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'devintruppted', feedUrl: 'https://devinterrupted.substack.com/feed' });
         mockDynamoDBClient.on(UpdateItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
