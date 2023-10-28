@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { readingListStore } from '../../store';
-	import ListItem from '$lib/components/feed/ListItem.svelte';
+	import { readingListStore } from '../../store.js';
+	import ColumnList from '$lib/components/feed/ColumnList.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -44,9 +44,11 @@
 					<h2 class="notFoundText">No new articles published in last 7 days</h2>
 				</div>
 			{:else}
+			<div class="columns-3">
 				{#each readingFeed as Item}
-					<ListItem Item ={Item} userId={user_id}/>
+					<ColumnList Item ={Item} userId={user_id}/>
 				{/each}
+			</div>
 			{/if}
 		</div>
 		<div class="sidePanel">
