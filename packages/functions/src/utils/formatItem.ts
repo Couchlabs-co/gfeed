@@ -35,24 +35,24 @@ function getImage(item: any, publisher: string) {
     return getImageUrl(item.enclosure.url);
   }
 
-  if (item["content:encoded"] && item["content:encoded"].match(/src\s*=\s*"(.+?)"/g)) {
-    const match = item["content:encoded"].match(/src\s*=\s*"(.+?)"/g)[0];
-    return getImageUrl(match.slice(5));
+  if (item["content:encoded"] && item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
+    const match = item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 
-  if (item["content"] && item["content"].match(/src\s*=\s*'(.+?)'/g)) {
-    const match = item["content"].match(/src\s*=\s*'(.+?)'/g)[0];
-    return getImageUrl(match.slice(5));
+  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g)) {
+    const match = item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 
-  if (item["content"] && item["content"].match(/src\s*=\s*"(.+?)"/g)) {
-    const match = item["content"].match(/src\s*=\s*"(.+?)"/g)[0];
-    return getImageUrl(match.slice(5));
+  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
+    const match = item["content"].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 }
 
 export const formatItem = (item: any, publisher: string, tags: string): Record<any, AttributeValue> => {
-  let keywords, author, pubDate, img, imgsrc = "";
+  let keywords, author, pubDate, img = "";
 
   try {
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
@@ -63,7 +63,7 @@ export const formatItem = (item: any, publisher: string, tags: string): Record<a
     }
   
     pubDate = item.pubDate ? new Date(item.pubDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
-    img = getImage(item, publisher) ?? null;
+    img = getImage(item, publisher) ?? '';
   
     switch(publisher) {
       case "Overreacted":

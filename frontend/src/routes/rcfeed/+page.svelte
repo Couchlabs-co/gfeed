@@ -44,7 +44,7 @@
 					<h2 class="notFoundText">No new articles published in last 7 days</h2>
 				</div>
 			{:else}
-			<div class="columns-3">
+			<div class="columns-3 gap-2">
 				{#each readingFeed as Item}
 					<ColumnList Item ={Item} userId={user_id}/>
 				{/each}

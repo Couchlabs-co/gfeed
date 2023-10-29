@@ -10,11 +10,11 @@ export async function main(event: SQSEvent) {
   const tableName = Table.article.tableName;
   const records: any[] = event.Records;
   const { id: publisherId, publisher, feedUrl, tags } = JSON.parse(records[0].body);
-  try {
-    console.log(`starting to process feed: ${publisher} with url: ${feedUrl}`);
-
-    const rssItems = await fetchRSSFeed(publisher, feedUrl);
-    for (const item of rssItems) {
+  console.log(`starting to process feed: ${publisher} with url: ${feedUrl}`);
+  
+  const rssItems = await fetchRSSFeed(publisher, feedUrl);
+  for (const item of rssItems) {
+    try {
       const feedItem = await formatItem(item, publisher, tags);
       const putParams = new UpdateItemCommand({
         TableName: tableName,
@@ -50,15 +50,14 @@ export async function main(event: SQSEvent) {
         ReturnValues: "ALL_NEW",
       });
       await dbClient.send(putParams);
+    } catch (err) {
+      console.log("err........", publisher, feedUrl, err, item.title);
     }
-
-    console.log(`Message processed: "${publisher}"`);
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ status: "successful" }),
-    };
-  } catch (err) {
-    console.log("err........", publisher, feedUrl, err);
   }
+    
+  console.log(`Message processed: "${publisher}"`);
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ status: "successful" }),
+  };
 }
