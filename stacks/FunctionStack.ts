@@ -3,7 +3,7 @@ import { DbStack } from "./DbStack";
 
 export function FunctionStack({ stack }: StackContext) {
 
-  const { ArticleTable, PublisherTable } = use(DbStack);
+  const { PostTable, PublisherTable } = use(DbStack);
   
   const FeedQueue = new Queue(stack, "Queue", {
     consumer: "packages/functions/src/feedHandler.main",
@@ -21,11 +21,11 @@ export function FunctionStack({ stack }: StackContext) {
 
   const FeedHandler = new Function(stack, "FeedHandler", {
     handler: "packages/functions/src/feedHandler.main",
-    bind: [ArticleTable, FeedQueue],
+    bind: [PostTable, FeedQueue],
     logRetention: "three_days",
   });
 
-  FeedQueue.bind([ArticleTable]);
+  FeedQueue.bind([PostTable]);
 
   return {
     FeedQueue,

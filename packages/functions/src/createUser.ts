@@ -6,9 +6,10 @@ import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
+  const userId = id.split("|");
   const userTable = Table.user.tableName;
     const userRecord: Record<string, AttributeValue> = {
-      id: { S: id },
+      id: { S: userId.length > 1 ? userId[1] : userId[0] },
       name: { S: name },
       email: { S: email },
       channel: { S: channel },
