@@ -12,7 +12,7 @@ export function DbStack({ stack }: StackContext) {
       createdAt: "string",
     },
     primaryIndex: { partitionKey: "email" },
-    globalIndexes: { channelIndex: { partitionKey: "channel" } },
+    globalIndexes: { channelIndex: { partitionKey: "channel" }, idIndex: { partitionKey: "id" } },
   });
 
   const UsersInterestTable = new Table(stack, "interests", {
@@ -49,13 +49,13 @@ export function DbStack({ stack }: StackContext) {
       feedStatus: "string",
       publisherUrl: "string",
       logo: "string",
-      primaryTags: "string",
+      primaryTag: "string",
       frequency: "string",
     },
     primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" }
   });
 
-  const ArticleTable = new Table(stack, "article", {
+  const PostTable = new Table(stack, "posts", {
     fields: {
       id: "string",
       publishedDate: "string",
@@ -69,6 +69,7 @@ export function DbStack({ stack }: StackContext) {
       publisher: "string",
       publisherId: "string",
       img: "string",
+      primaryTag: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
     globalIndexes: { 
@@ -76,6 +77,7 @@ export function DbStack({ stack }: StackContext) {
       titleIndex: { partitionKey: "title" }, 
       publisherIndex: { partitionKey: "publisher" },
       publisherIdIndex: { partitionKey: "publisherId" },
+      tagIndex: { partitionKey: "primaryTag" },
     },
   });
 
@@ -89,7 +91,7 @@ export function DbStack({ stack }: StackContext) {
   });
 
   return {
-    ArticleTable,
+    PostTable,
     PublisherTable,
     UserTable,
     UsersInterestTable,
