@@ -26,7 +26,7 @@ export const handler = ApiHandler(async (evt) => {
             feedUrl: item.feedUrl.S,
             feedType: item.feedType.S,
             logo: item.logo?.S,
-            primaryTags: item.primaryTags.S,
+            tag: item.primaryTag.S,
         });
       }
   } else {
