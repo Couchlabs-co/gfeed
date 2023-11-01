@@ -10,7 +10,7 @@ const publishers = [
       "feedUrl": "https://overreacted.io/rss.xml",
       "feedStatus": "inactive",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -19,7 +19,7 @@ const publishers = [
       "feedUrl": "https://alistapart.com/main/feed/",
       "feedStatus": "inactive",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -28,7 +28,7 @@ const publishers = [
       "feedUrl": "https://alicegg.tech/feed.xml",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -37,7 +37,7 @@ const publishers = [
       "feedUrl": "http://feeds.feedburner.com/venturebeat/SZYF",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://venturebeat.com/wp-content/themes/vb-news/img/favicon.ico" //https://venturebeat.com/wp-content/themes/vb-news/brand/img/logos/VB_Extended_Logo_40H.png
     },
@@ -47,7 +47,7 @@ const publishers = [
       "feedUrl": "https://www.joelonsoftware.com/feed/",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=32%2C32&#038;ssl=1"
     },
@@ -57,7 +57,7 @@ const publishers = [
       "feedUrl": "https://samnewman.io/blog/feed.xml",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -66,7 +66,7 @@ const publishers = [
       "feedUrl": "https://hacks.mozilla.org/feed/",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -75,7 +75,7 @@ const publishers = [
       "feedUrl": "https://hackernoon.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://hackernoon.com/favicon.ico"
     },
@@ -85,7 +85,7 @@ const publishers = [
       "feedUrl": "https://www.techcrunch.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png?w=32"
     },
@@ -95,7 +95,7 @@ const publishers = [
       "feedUrl": "https://martinfowler.com/feed.atom",
       "feedStatus": "active",
       "feedType": "atom",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -104,7 +104,7 @@ const publishers = [
       "feedUrl": "https://dannorth.net/blog/index.xml",
       "feedStatus": "inactive",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -113,7 +113,7 @@ const publishers = [
       "feedUrl": "https://blog.codinghorror.com/rss/",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://blog.codinghorror.com/favicon.png"
     },
@@ -123,7 +123,7 @@ const publishers = [
       "feedUrl": "https://jacobsingh.name/rss/",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://jacobsingh.name/favicon.png"
     },
@@ -133,7 +133,7 @@ const publishers = [
       "feedUrl": "https://www.gamedeveloper.com/rss.xml",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://www.gamedeveloper.com/images/GD_official_logo.png"
     },
@@ -143,7 +143,7 @@ const publishers = [
       "feedUrl": "https://thehustle.co/feed/",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://thehustle.co/wp-content/uploads/2022/04/cropped-favicon-32x32.png"
     },
@@ -153,7 +153,7 @@ const publishers = [
       "feedUrl": "https://www.softwareengineeringtidbits.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours"
     },
     {
@@ -162,7 +162,7 @@ const publishers = [
       "feedUrl": "https://newsletter.pragmaticengineer.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5ecbf7ac-260b-423b-8493-26783bf01f06_600x600.png"
     },
@@ -172,7 +172,7 @@ const publishers = [
       "feedUrl": "https://www.thecaringtechie.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5b345b-fff0-4b91-a3d6-9e394fda0510_1280x1280.png"
     },
@@ -182,7 +182,7 @@ const publishers = [
       "feedUrl": "https://devinterrupted.substack.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feff814ba-ca84-4452-a48d-789e87a955bd_750x750.png"
     },
@@ -192,7 +192,7 @@ const publishers = [
       "feedUrl": "https://www.developing.dev/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffb980aa1-65a4-4e90-aacb-fc07a563b5f7_500x500.png"
     },
@@ -202,7 +202,7 @@ const publishers = [
       "feedUrl": "https://frontendengineering.substack.com/feed",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTags": "Tech",
+      "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fae9cb9cd-5e76-4b86-9942-7ac5aa9891ea_256x256.png"
     },
@@ -212,7 +212,7 @@ const publishers = [
       "feedUrl": "https://www.ft.com/rss/home",
       "feedStatus": "inactive",
       "feedType": "xml",
-      "primaryTags": "Business News",
+      "primaryTag": "Business News",
       "frequency": "6 hours"
     }
   ];
@@ -230,7 +230,7 @@ export async function handler() {
                 feedStatus: { S: publisher.feedStatus },
                 publisherUrl: { S: publisher.publisherUrl ?? "" },
                 logo: { S: publisher.logo ?? "" },
-                primaryTags: { S: publisher.primaryTags ?? "" },
+                primaryTag: { S: publisher.primaryTag ?? "" },
             },
         })
         await dbClient.send(seedCommand);
