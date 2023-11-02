@@ -51,7 +51,7 @@ function getImage(item: any, publisher: string) {
   }
 }
 
-export const formatItem = (item: any, publisher: string, tags: string): Record<any, AttributeValue> => {
+export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
   let keywords, author, pubDate, img = "";
 
   try {
@@ -104,7 +104,8 @@ export const formatItem = (item: any, publisher: string, tags: string): Record<a
     pubDate: { N: new Date(pubDate).getTime().toString() },
     author: { S: author },
     guid: { S: encodeURI(item.guid ?? "null") },
-    keywords: { S: keywords ?? tags },
+    keywords: { S: keywords ?? tag },
+    tag: { S: tag },
     publisher: { S: publisher },
     content: { S: encodeURI(item.contentSnippet ?? "") },
     img: { S: img ?? "" },
