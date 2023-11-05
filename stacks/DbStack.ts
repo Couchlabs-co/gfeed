@@ -15,19 +15,19 @@ export function DbStack({ stack }: StackContext) {
     globalIndexes: { channelIndex: { partitionKey: "channel" }, idIndex: { partitionKey: "id" } },
   });
 
-  const UsersInterestTable = new Table(stack, "interests", {
+  const UserActionsTable = new Table(stack, "userActions", {
     fields: {
       id: "string",
       userId: "string",
-      interest: "string",
-      type: "string",
-      action: "string",
+      userAction: "string", //like, dislike, follow, bookmark, read
+      content: "string", //tag, keyword, post title, author, publisher
+      contentType: "string", // tag, keyword, post, author, publisher
     },
-    primaryIndex: { partitionKey: "userId", sortKey: "interest" },
+    primaryIndex: { partitionKey: "userId", sortKey: "userAction" },
     globalIndexes: { 
-      interestIndex: { partitionKey: "interest" }, 
-      typeIndex: { partitionKey: "type" }, 
-      actionIndex: { partitionKey: "action" },
+      contentIndex: { partitionKey: "content" }, 
+      contentTypeIndex: { partitionKey: "contentType" }, 
+      userActionIndex: { partitionKey: "userAction" },
       userIndex: { partitionKey: "userId" },
     },
   });
@@ -36,6 +36,7 @@ export function DbStack({ stack }: StackContext) {
     fields: {
       userId: "string",
       postId: "string",
+      postTitle: "string",
     },
     primaryIndex: { partitionKey: "userId" },
   });
@@ -69,7 +70,7 @@ export function DbStack({ stack }: StackContext) {
       publisher: "string",
       publisherId: "string",
       img: "string",
-      primaryTag: "string",
+      tag: "string",
     },
     primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
     globalIndexes: { 
@@ -77,14 +78,22 @@ export function DbStack({ stack }: StackContext) {
       titleIndex: { partitionKey: "title" }, 
       publisherIndex: { partitionKey: "publisher" },
       publisherIdIndex: { partitionKey: "publisherId" },
-      tagIndex: { partitionKey: "primaryTag" },
+      tagIndex: { partitionKey: "tag" },
     },
   });
 
+  const InterestsTable = new Table(stack, "interests", {
+    fields: {
+      id: "string",
+      interestName: "string",
+    },
+    primaryIndex: { partitionKey: "interestName" },
+  });
+  
   new Script(stack, "Script", {
     defaults: {
       function: {
-        bind: [PublisherTable],
+        bind: [PublisherTable, InterestsTable],
       },
     },
     onCreate: "packages/functions/src/seed.handler",
@@ -94,7 +103,8 @@ export function DbStack({ stack }: StackContext) {
     PostTable,
     PublisherTable,
     UserTable,
-    UsersInterestTable,
+    UserActionsTable,
+    InterestsTable,
     BookmarkTable
   };
 }

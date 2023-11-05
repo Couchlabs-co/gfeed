@@ -8,7 +8,7 @@ import { APIGatewayProxyEventV2 } from "aws-lambda";
 interface UserAction {
   title: string;
   type: string;
-  action: string;
+  reaction: string;
   userId: string;
 }
 
@@ -24,15 +24,15 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    const userInterestsTable = Table.interests.tableName;
+    const userActionsTable = Table.userActions.tableName;
     const command: PutItemCommand = new PutItemCommand({
-      TableName: userInterestsTable,
+      TableName: userActionsTable,
       Item: {
         id: { S: uuid.v4() },
         userId: { S: body?.userId },
-        interest: { S: body?.title },
-        type: { S: body?.type },
-        action: { S: body?.action },
+        userAction: { S: body?.reaction },
+        content: { S: body?.title },
+        contentType: { S: body?.type },
       },
     });
     const res = await dbClient.send(command);

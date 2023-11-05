@@ -5,9 +5,9 @@ import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 interface Interest {
-  interest: string;
-  action: 'likes' | 'dislikes';
-  type: string;
+  content: string;
+  contentType: string;
+  userAction: 'likes' | 'dislikes';
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
@@ -22,46 +22,55 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    const userInterestsTable = Table.interests.tableName;
+    const UserActionsTable = Table.userActions.tableName;
+    
     const command: QueryCommand = new QueryCommand({
-      TableName: userInterestsTable,
+      TableName: UserActionsTable,
       KeyConditionExpression: "userId = :userId",
       ExpressionAttributeValues: {
         ":userId": { S: user_id },
       },
     });
+    
     const res: QueryCommandOutput = await dbClient.send(command);
     const interests: Array<Interest> =[];
+    
     if(res.Items){
       for(const item of res.Items){
         interests.push({
-          interest: item.interest.S,
-          action: item.action.S,
-          type: item.type.S
+          content: item.content.S as string,
+          userAction: item.userAction.S,
+          contentType: item.contentType.S as string,
         })
       }
-    }
-    const interestsByType = interests.reduce((acc, item) => {
-      const interestType: string = item.interest;
-      if(interestType !== undefined && !acc[interestType]) {
-        acc[interestType] = [];
-      }
-      acc[interestType].push(item)
-      return acc; 
-    }, {} as Interest);
+      
+      const interestsByType = interests.reduce((acc, item) => {
+        const interestType: string = item.contentType;
+        if(interestType !== undefined && !acc[interestType]) {
+          acc[interestType] = [];
+        }
+        acc[interestType].push(item);
+        return acc; 
+      }, {} as Interest);
 
-    const interestsByAction = interests.reduce((acc, item) => {
-      const interestAction = item.action;
-      if(!acc[interestAction]) {
-        acc[interestAction] = [];
-      }
-      acc[interestAction].push(item)
-      return acc; 
-    }, {});
+      const interestsByAction = interests.reduce((acc, item) => {
+        const interestAction = item.userAction;
+        if(!acc[interestAction]) {
+          acc[interestAction] = [];
+        }
+        acc[interestAction].push(item)
+        return acc; 
+      }, {});
+
+      return {
+        statusCode: 201,
+        body: JSON.stringify({"message": "Success", "data": {interestsByType, interestsByAction}})
+      };
+    }
 
     return {
       statusCode: 201,
-      body: JSON.stringify({"message": "Success", "data": {interestsByType, interestsByAction}})
+      body: JSON.stringify({"message": "Success", "data": {interestsByType: [], interestsByAction: []}})
     };
     
   } catch (err) {
