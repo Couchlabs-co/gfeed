@@ -1,8 +1,7 @@
 import { SvelteKitAuth } from '@auth/sveltekit';
-import Auth0Provider from '@auth/core/providers/auth0';
 import type { Provider } from '@auth/core/providers';
 import type { Handle, HandleServerError } from '@sveltejs/kit';
-import { error } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 import type { Session } from '@auth/core/types';
 
@@ -27,7 +26,7 @@ async function authorization({ event, resolve }): Promise<any> {
   if (authenticatedPaths.includes(pathName)) {
     const session: Session | null = await event.locals.getSession();
     if (!session) {
-      throw error(401, "Please sign in to continue");
+      throw redirect(302, `/login?returnTo=${pathName}`);
     }
   }
 
@@ -36,20 +35,28 @@ async function authorization({ event, resolve }): Promise<any> {
 }
 
 const handleAuth = (async (...args) => {
-  const { event } = args[0];
+  // const { event } = args[0];
 
 	return SvelteKitAuth({
     trustHost: true,
     providers: [
-      Auth0Provider({
+      {
         id: 'auth0',
         name: 'Auth0',
+        type: 'oidc',
         clientId: VITE_AUTH0_CLIENT_ID,
         clientSecret: VITE_CLIENT_SECRET,
         issuer: `https://${VITE_AUTH0_DOMAIN}/`,  // <- remember to add trailing `/` 
         wellKnown: `https://${VITE_AUTH0_DOMAIN}/.well-known/openid-configuration`,
         token: `https://${VITE_AUTH0_DOMAIN}/oauth/token`,
         userinfo: `https://${VITE_AUTH0_DOMAIN}/userinfo`,
+        authorization: {
+          params: {
+            scope: "openid profile email offline_access",
+            audience: `https://api.readingcorner.com`,
+            
+          },
+        },
         profile(profile) {
           return {
             id: profile.sub,
@@ -60,7 +67,7 @@ const handleAuth = (async (...args) => {
             login_count: profile['https://readingcorner.com/count'],
           };
         }
-      }) as Provider
+      } as Provider,
     ],
     secret: '-any-random-string-',
     debug: false,
@@ -69,34 +76,32 @@ const handleAuth = (async (...args) => {
       updateAge: 1800,// 30 mins
     },
     callbacks: {
-      async jwt({token, user}) {
-        // if(account){
-        //   const { getSession } = event.locals;
-        //   const session = await getSession();
-
-        //   console.log('account: ', account, session);
-        //   // session.accessToken = account.access_token;
-        //   // session.refreshToken = account.refresh_token;
-        //   // session.idToken = account.id_token;
-        //   // event.locals.user.token = account.access_token ?? '';
-        // }
+      async jwt({token, user, account}) {
+        if(account){
+          token.accessToken = account.access_token;
+          token.refreshToken = account.refresh_token;
+          token.idToken = account.id_token;
+          // session.accessToken = account.access_token;
+          // session.refreshToken = account.refresh_token;
+          // session.idToken = account.id_token;
+          // event.locals.user.token = account.access_token ?? '';
+        }
         if (user) {
           token.user = user;
         }
         return token;
       },
-      async session({session, token}) {
-        if(token.user) {
-          session.user = token.user;
-        }
-			  return {...session, user: {...session.user, id: session.user?.id.split('|')[1]}};
+      async session({ session, token, user }) {
+        session.user = token.user;
+        // Send properties to the client, like an access_token from a provider.
+        session.access_token = token.accessToken
+        return session
       }
     }
   })(...args);
 }) satisfies Handle;
 
 export const handleError: HandleServerError = async ({ error, event }) => {
-  console.log('event: ', event);
   const errorId = crypto.randomUUID();
   // example integration with https://sentry.io/
   console.log('error', error);
