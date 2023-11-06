@@ -1,13 +1,13 @@
 import { json } from '@sveltejs/kit'
 
-export async function POST(event: any) {
+export async function POST(event) {
     const body = await event.request.json()
     const { VITE_API_URL } = import.meta.env;
     if(!VITE_API_URL){
         return json({error: 'VITE_API_URL is not set'})
     }
 
-    const res = await fetch(`${VITE_API_URL}/user/action`, {
+    const res = await fetch(`${VITE_API_URL}/users/action`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

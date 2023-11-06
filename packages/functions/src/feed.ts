@@ -1,25 +1,54 @@
-import { QueryCommand } from "@aws-sdk/client-dynamodb";
+import { QueryCommand, QueryCommandOutput } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
+import {jwtDecode} from "jwt-decode";
+import * as jose from 'jose';
 
-export const handler = ApiHandler(async (evt) => {
-  console.log("evt time: ", evt.requestContext.time);
-  const keys = [];
-  for(let i = 0; i < 7; i++) {
-    const dt = new Date();
-    keys.push(new Date(dt.setDate(dt.getDate() - i)).toISOString().split("T")[0]);
-  }
-
+async function GetFeed(dateKeys: string[]) {
   const result = {
     Count: 0,
     Items: <any>[],
   };
 
   await Promise.all(
-    keys.map(async (key) => {
+    dateKeys.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
-        TableName: Table.article.tableName,
+        TableName: Table.posts.tableName,
+        KeyConditionExpression: "publishedDate = :publishedDate",
+        ExpressionAttributeValues: {
+          ":publishedDate": { S: key },
+        },
+        ConsistentRead: true,
+      });
+      let { Count, Items } = await dbClient.send(command);
+      result.Count += Count ?? 0;
+      result.Items = result.Items.concat(Items);
+    })
+  );  
+
+  return result;
+}
+
+async function GetUserFeed(dateKeys: string[], userId: string) {
+  const result = {
+    Count: 0,
+    Items: <any>[],
+  };
+
+  const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
+    TableName: Table.userActions.tableName,
+    KeyConditionExpression: "userId = :userId",
+    ExpressionAttributeValues: {
+      ":userId": { S: userId },
+    },
+    ConsistentRead: true,
+  }));
+
+  await Promise.all(
+    dateKeys.map(async (key) => {
+      const command: QueryCommand = new QueryCommand({
+        TableName: Table.posts.tableName,
         KeyConditionExpression: "publishedDate = :publishedDate",
         ExpressionAttributeValues: {
           ":publishedDate": { S: key },
@@ -32,6 +61,54 @@ export const handler = ApiHandler(async (evt) => {
     })
   );
 
+  if(userInterests && userInterests.Items && userInterests.Items?.length !== 0) {
+    for(const interest of userInterests?.Items) {
+      result.Items.filter((item: any) => {
+        return item.tag.S === interest.contentType.S;
+      });
+    }
+  }
+
+  return result;
+}
+
+export const handler = ApiHandler(async (evt) => {
+  console.log("evt time: ", evt.requestContext.time);
+  const keyDates = getFeedDates();
+  
+  let result = {
+    Count: 0,
+    Items: <any>[],
+  };
+
+  if(evt.headers.authorization) {
+    const token = evt.headers.authorization?.split(" ")[1];
+    try {
+      const tokenHeader = await jwtDecode(token, { header: true });
+      const JWKS = jose.createRemoteJWKSet(new URL('https://readingcorner.au.auth0.com/.well-known/jwks.json'));
+
+      const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
+        issuer: 'https://readingcorner.au.auth0.com/',
+        audience: 'https://api.readingcorner.com',
+      })
+      if(tokenHeader.kid !== protectedHeader.kid) {
+        return {
+          statusCode: 401,
+          body: JSON.stringify({ error: "Unauthorized" }),
+        }
+      }
+      const sub = payload.sub ?? "";
+      const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
+
+      result = await GetUserFeed(keyDates, userId);
+      // result.Count = result.Items?.length;
+    }
+    catch(err) {
+      console.log("err: ", err);
+    }
+  } else {
+    result = await GetFeed(keyDates);
+  }
   const feedItems = <any>[];
 
   for (const item of result.Items) {
@@ -46,6 +123,7 @@ export const handler = ApiHandler(async (evt) => {
       guid: item.guid.S && decodeURI(item.guid.S),
       publisher: item.publisher?.S,
       keywords: item.keywords?.S ?? "",
+      tag: item.tag?.S ?? "",
       image: item.img?.S ?? "",
     });
   }
@@ -56,6 +134,15 @@ export const handler = ApiHandler(async (evt) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ Count: result.Count, Items: feedItems }),
+    body: JSON.stringify({ Count: feedItems.length, Items: feedItems }),
   };
 });
+function getFeedDates() {
+  const keys = [];
+  for (let i = 0; i < 7; i++) {
+    const dt = new Date();
+    keys.push(new Date(dt.setDate(dt.getDate() - i)).toISOString().split("T")[0]);
+  }
+  return keys;
+}
+

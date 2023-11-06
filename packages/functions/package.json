@@ -19,6 +19,8 @@
     "@aws-sdk/client-dynamodb": "^3.395.0",
     "@aws-sdk/client-sqs": "^3.398.0",
     "fast-xml-parser": "^4.2.7",
+    "jose": "^5.0.1",
+    "jwt-decode": "^4.0.0",
     "node-fetch": "^3.3.2",
     "rss-parser": "^3.13.0",
     "uuid": "^9.0.0"

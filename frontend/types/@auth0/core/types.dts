@@ -1,0 +1,10 @@
+import type { Session, DefaultSession } from '@auth/core/types';
+
+declare module '@auth/sveltekit/node_modules/@auth/core/types' {
+  
+  interface DefaultSession {
+    user?: {
+      access_token?: string;
+    } & DefaultSession['user'];
+  }
+}

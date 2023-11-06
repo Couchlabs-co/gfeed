@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Badges from "./BadgeList.svelte";
+    // import Badges from "./BadgeList.svelte";
     import {Newspaper} from "lucide-svelte";
 
 
@@ -14,11 +14,12 @@
         publisher: "Publisher",
         content: "Content",
         keywords: "Cat1, Cat2",
+        primaryTag: "tag1",
         link: "",
         image: "https://picsum.photos/200/300"
     };
 
-    async function userAction(title: string, action: string, type: string) {
+    async function userAction(title: string, reaction: string, type: string) {
         const res = await fetch("/api/engage", {
             method: "POST",
             headers: {
@@ -26,7 +27,7 @@
             },
             body: JSON.stringify({
                 title,
-                action,
+                reaction,
                 type,
                 userId,
             }),
