@@ -1,7 +1,7 @@
 <script lang="ts">
+    import { readingListStore } from '../../store';
     import { Star, StarOff } from 'lucide-svelte';
 
-    /** @type {import('./$types').PageData} */
 	export let data;
     
     const { session } = data;
@@ -9,10 +9,23 @@
     let dislikeIndex = -1;
 
     const { Items } = data.data;
+    $readingListStore.sources = Items.lenght? Items: [];
+    let page = 0;
+    let pageIndex = 0;
+    let pageSize = 10;
+    const totalPages = Math.ceil(Items.length / pageSize);
+    let visibileRows = Items.slice(pageIndex, pageIndex + pageSize);
 
-    async function userAction(e: any, title: string, action: string, type: string, index: number) {
+    async function changePage(index: number) {
+        let pageIndex = index;
+        const start = pageIndex * pageSize;
+        const end = start + pageSize;
+        visibileRows = Items.slice(start, end);
+    }
 
-        if (action === "likes") {
+    async function userAction(e: any, title: string, reaction: string, type: string, index: number) {
+
+        if (reaction === "likes") {
             likeIndex = index;
             dislikeIndex = -1;
         } else {
@@ -27,9 +40,9 @@
             },
             body: JSON.stringify({
                 title,
-                action,
+                reaction,
                 type,
-                userId: session.user.id,
+                userId: session?.user.id,
             }),
         });
         const data = await res.json();
@@ -49,7 +62,7 @@
           </tr>
         </thead>
         <tbody>
-            {#each Items as item,  i (i)}
+            {#each visibileRows as item,  i (i)}
                 <tr>
                     <td class="w-60">
                         {#if item.logo}
@@ -76,7 +89,16 @@
                     </td>
                 </tr>
             {/each}
+            <tr><td>&nbsp;</td></tr>
         </tbody>
         </table>
+        <div class="mx-2 grid grid-cols-2 content-center">
+            <div></div>
+            <div class="join">
+                {#each Array(totalPages) as _, i}
+                    <button class="join-item btn" on:click={()=>changePage(i)}>{i+1}</button>
+                {/each}
+            </div>
+        </div>
       </div>
 </div>
