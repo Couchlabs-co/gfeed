@@ -2,8 +2,12 @@
     import { DateTime } from 'luxon';
 
 	export let data;
-
-    console.log(JSON.stringify(data));
+    let activeTab = 1;
+    let tabs = [
+        'Interests',
+        'I like what I read',
+        'Read later'
+    ]
 
     function formatDate(date: string) {
         return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
@@ -101,9 +105,9 @@
                 <!-- End of profile tab -->
                 <div class="my-4"></div>
                 <div class="tabs">
-                    <button class="tab tab-lifted tab-active">Interests</button> 
-                    <button class="tab tab-lifted">I like what I read</button> 
-                    <button class="tab tab-lifted">Read later</button>
+                    {#each tabs as tab, i}
+                        <button class="tab tab-lifted" class:active={activeTab === i} on:click={()=> {activeTab = i}}>{tab}</button> 
+                    {/each}
                 </div>
                 <div class="p-3 shadow-sm rounded-sm">
                     What interests you
