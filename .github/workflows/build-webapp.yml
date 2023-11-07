@@ -49,11 +49,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::724538604969:role/Github
-          aws-region: ap-southeast-2
+      # - name: configure aws credentials
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     role-to-assume: arn:aws:iam::724538604969:role/Github
+      #     aws-region: ap-southeast-2
 
       - name: run tests
         env:
@@ -61,7 +61,7 @@ jobs:
         run: |
           cd frontend
           pnpm run test:coverage
-      - run: echo "🍏 This job's status is ${{ job.status }} for ${{ env.APP_ENV }}."
+      - run: echo "🍏 This job's status is ${{ job.status }} for $APP_ENV."
 
 #   Build-and-deploy:
 #     runs-on: ubuntu-latest
