@@ -20,6 +20,8 @@ permissions:
 jobs:
   test-front-end:
     uses: ./.github/workflows/build-webapp.yml
+    with:
+      APP_ENV: dev
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml

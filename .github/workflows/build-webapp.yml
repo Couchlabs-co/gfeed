@@ -8,9 +8,12 @@ env:
   AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
 on:
-  push:
-    paths:
-      - 'frontend/**'
+  workflow_call:
+    inputs:
+      APP_ENV:
+        type: string
+        description: "The environment to build and test for"
+        required: true
   
 concurrency: merge-${{ github.ref }}
     
@@ -55,10 +58,12 @@ jobs:
           aws-region: ap-southeast-2
 
       - name: run tests
+        env:
+          APP_ENV: ${{ inputs.APP_ENV }}
         run: |
           cd frontend
           pnpm run test:coverage
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "🍏 This job's status is ${{ job.status }} for ${{ env.APP_ENV }}."
 
 #   Build-and-deploy:
 #     runs-on: ubuntu-latest
