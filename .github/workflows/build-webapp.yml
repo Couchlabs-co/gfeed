@@ -22,6 +22,8 @@ permissions:
 jobs:
   test-front-end:
     runs-on: ubuntu-latest
+    env:
+      APP_ENV: ${{ inputs.APP_ENV }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -49,15 +51,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      # - name: configure aws credentials
-      #   uses: aws-actions/configure-aws-credentials@v2
-      #   with:
-      #     role-to-assume: arn:aws:iam::724538604969:role/Github
-      #     aws-region: ap-southeast-2
 
       - name: run tests
-        env:
-          APP_ENV: ${{ inputs.APP_ENV }}
         run: |
           cd frontend
           pnpm run test:coverage

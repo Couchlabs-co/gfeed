@@ -24,11 +24,17 @@ jobs:
       - name: Initiating job
         run: echo "🍏 Initiating Workflow"
 
-  test-front-end:
+  test-frontend:
     if: ${{ contains(github.event.head_commit.added, 'frontend/') || contains(github.event.head_commit.modified, 'frontend/') }}
     uses: ./.github/workflows/build-webapp.yml
     with:
       APP_ENV: dev
+  
+  deploy-frontend-staging:
+    needs: [test-frontend]
+    uses: ./.github/workflows/deploy-webapp.yml
+    with:
+      APP_ENV: staging
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml
