@@ -18,7 +18,14 @@ permissions:
   contents: read
 
 jobs:
+  running-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initiating job
+        run: echo "🍏 Initiating Workflow"
+        
   test-front-end:
+    if: ${{ github.event.head_commit.added | contains('frontend/') || github.event.head_commit.modified | contains('frontend/') }}
     uses: ./.github/workflows/build-webapp.yml
     with:
       APP_ENV: dev
