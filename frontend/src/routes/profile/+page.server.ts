@@ -7,10 +7,7 @@ const GetInterests = async () => {
 	}
 	const result = await fetch(`${VITE_API_URL}/interests`);
     const res = await result.json();
-    const {message, data} = res;
-    if(message === 'Success'){
-        return {interests: data};
-    }
+    return res;
 }
 
 const GetUserInterests = async (userId: string) => {
