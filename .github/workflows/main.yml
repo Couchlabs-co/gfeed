@@ -18,26 +18,37 @@ permissions:
   contents: read
 
 jobs:
-  running-job:
+  initiating:
     runs-on: ubuntu-latest
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend: ${{ steps.filter.outputs.backend }}
     steps:
-      - name: Initiating job
-        run: |
-          echo "🍏 Initiating Workflow"
-          echo "${{ contains(github.event.head_commit.added, 'frontend/') }}"
-          echo "${{ contains(github.event.head_commit.added, 'frontend/') || contains(github.event.head_commit.modified, 'frontend/') }}"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'packages/**'
+            frontend:
+              - 'frontend/**'
 
   test-frontend:
-    if: ${{ contains(github.event.head_commit.added, 'frontend/') || contains(github.event.head_commit.modified, 'frontend/') }}
+    needs: initiating
+    if: ${{ needs.initiating.outputs.frontend == 'true' }}
     uses: ./.github/workflows/build-webapp.yml
     with:
       APP_ENV: dev
   
-  deploy-frontend-staging:
-    needs: [test-frontend]
-    uses: ./.github/workflows/deploy-webapp.yml
-    with:
-      APP_ENV: staging
+  # deploy-frontend-staging:
+  #   needs: [test-frontend]
+  #   uses: ./.github/workflows/deploy-webapp.yml
+  #   with:
+  #     APP_ENV: staging
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml

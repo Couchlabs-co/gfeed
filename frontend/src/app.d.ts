@@ -12,7 +12,8 @@ declare global {
 				email: string,
 				image: string,
 				emailVerified: boolean,
-				login_count: number
+				login_count: number,
+				sub: string,
 			  },
 			  expires: string,
 		}
@@ -27,6 +28,7 @@ declare global {
 				token: string;
 				login_count: number;
 				createdAt: string;
+				channel: string;
 			}
 		}
 		// interface PageData {}
