@@ -8,9 +8,6 @@ env:
   AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
 on:
-  push:
-    paths:
-      - 'frontend/**'
   workflow_call:
     inputs:
       APP_ENV:

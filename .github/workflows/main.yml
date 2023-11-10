@@ -44,11 +44,11 @@ jobs:
     with:
       APP_ENV: dev
   
-  # deploy-frontend-staging:
-  #   needs: [test-frontend]
-  #   uses: ./.github/workflows/deploy-webapp.yml
-  #   with:
-  #     APP_ENV: staging
+  deploy-frontend-staging:
+    needs: test-frontend
+    uses: ./.github/workflows/deploy-webapp.yml
+    with:
+      APP_ENV: staging
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml

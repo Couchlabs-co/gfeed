@@ -21,27 +21,12 @@ permissions:
   contents: read
 
 jobs:
-  Deploy-Approval:
-    runs-on: ubuntu-latest
-    outputs:
-      result: ${{ steps.approval.outputs.result }}
-    steps:
-      - name: Approval
-        id: approval
-        run : echo "Approval"
-
   Build-and-deploy:
-    needs: Deploy-Approval
-    if: needs.Deploy-Approval.outputs.result == 'approved'
     runs-on: ubuntu-latest
     env:
       APP_ENV: ${{ inputs.APP_ENV }}
     steps:
-      - name: Approval
-        id: approval
-        run : echo "Approval"
-
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
