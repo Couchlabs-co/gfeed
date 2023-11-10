@@ -1,5 +1,11 @@
-name: read-list-web-app
-run-name: Read List Web App
+name: read-list-api
+run-name: Read List API
+
+env:
+  AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+  AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+  AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+  AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
 on:
   workflow_call:
@@ -48,8 +54,8 @@ jobs:
 
       - name: run tests
         run: |
-          cd frontend
-          pnpm run test:coverage
+          cd packages/functions
+          pnpm run test
       - run: echo "🍏 This job's status is ${{ job.status }} for $APP_ENV."
 
 #   Build-and-deploy:

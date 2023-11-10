@@ -1,11 +1,36 @@
 import { StackContext, use, Api } from "sst/constructs";
 import { DbStack } from "./DbStack";
+import { SsrDomainProps } from "sst/constructs/SsrSite";
 
 export function ApiStack({ stack, app }: StackContext) {
+  let customDomain: SsrDomainProps | undefined;  
+
+  switch(stack.stage) {
+    case "prod": {
+      customDomain = {
+        domainName: "api.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      };
+      break;
+    }
+    case "uat": {
+      customDomain = {
+        domainName: "uat.api.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      }
+      break;
+    }
+    default:
+      customDomain =  {
+        domainName: "dev.api.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      };
+  };
+  
   const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable } = use(DbStack);
 
   const ReadingCornerAPI = new Api(stack, "ReadingCornerAPI", {
-    // customDomain: app.stage === "prod" ? "api.jasdeep.me" : `api-${app.stage}.jasdeep.me`,
+    customDomain,
     defaults: {
       function: {
         bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable],
@@ -16,6 +41,7 @@ export function ApiStack({ stack, app }: StackContext) {
     routes: {
       "POST /feed": "packages/functions/src/feed.handler",
       "POST /users": "packages/functions/src/createUser.handler",
+      "GET /users/{userId}": "packages/functions/src/getUser.handler",
       "GET /users/{userId}/interests": "packages/functions/src/userInterests.handler",
       "POST /users/action": "packages/functions/src/userAction.handler",
       "POST /users/action/bookmark": "packages/functions/src/userAction.handler",

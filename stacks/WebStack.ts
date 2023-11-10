@@ -1,30 +1,33 @@
-import { StackContext, use, SvelteKitSite, Config } from "sst/constructs";
-import { ApiStack } from "./ApiStack";
+import { StackContext, SvelteKitSite, Config } from "sst/constructs";
+import { SsrDomainProps } from "sst/constructs/SsrSite";
 
-export function WebStack({ stack }: StackContext) {
-  // const appDomain = switch(app.stage) {
-  //   case "prod":
-  //     return {
-  //       domainName: "www.jasdeep.me",
-  //       hostedZone: "jasdeep.me"
-  //     }
-  //     case "uat":
-  //       return {
-  //         domainName: "uat.jasdeep.me",
-  //         hostedZone: "jasdeep.me"
-  //       }
-  //     case "dev":
-  //       return {
-  //         domainName: "dev.jasdeep.me",
-  //         hostedZone: "jasdeep.me"
-  //       }
-  //     default:
-  //       return {
-  //         domainName: "dev.jasdeep.me",
-  //         hostedZone: "jasdeep.me"
-  //       }
-  // };
-  const { ReadingCornerAPI } = use(ApiStack);
+export function WebStack({ stack, app }: StackContext) {
+
+  let customDomain: SsrDomainProps | undefined;
+  let apiUrl: string | undefined;
+
+  switch(stack.stage) {
+    case "prod": {
+      customDomain = {
+        domainName: "jasdeep.me",
+        domainAlias: "www.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      };
+      apiUrl = "api.jasdeep.me";
+      break;
+    }
+    case "uat": {
+      customDomain = {
+        domainName: "uat.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      }
+      apiUrl = "uat.api.jasdeep.me";
+      break;
+    }
+    default:
+      customDomain = undefined;
+      apiUrl = "dev.api.jasdeep.me";
+  };
 
   const Auth0Domain = new Config.Parameter(stack, "AUTH0_DOMAIN", {
     value: process.env.AUTH0_DOMAIN ?? '',
@@ -43,25 +46,21 @@ export function WebStack({ stack }: StackContext) {
   });
 
   const Site = new SvelteKitSite(stack, "site", {
-    customDomain: {
-      domainName: "www.jasdeep.me",
-      hostedZone: "jasdeep.me",
-    },
+    customDomain,
     runtime: "nodejs18.x",
     path: "./frontend",
     buildCommand: "pnpm run build",
     environment: {
       // Pass in the API endpoint to our app
-      VITE_API_URL: ReadingCornerAPI.url,
+      VITE_API_URL: apiUrl,
       VITE_AUTH0_DOMAIN: Auth0Domain.value,
       VITE_AUTH0_CLIENT_ID: Auth0ClientId.value,
       VITE_CLIENT_SECRET: ClientSecret.value,
     },
-    bind: [ReadingCornerAPI, Auth0Domain, Auth0ClientId],
+    bind: [Auth0Domain, Auth0ClientId],
   });
 
   stack.addOutputs({
-    // ApiUrl: ReadingCornerAPI.url,
     SiteUrl: Site.url,
   });
 }

@@ -12,7 +12,10 @@ export function DbStack({ stack }: StackContext) {
       createdAt: "string",
     },
     primaryIndex: { partitionKey: "email" },
-    globalIndexes: { channelIndex: { partitionKey: "channel" }, idIndex: { partitionKey: "id" } },
+    globalIndexes: { 
+      channelIndex: { partitionKey: "channel" }, 
+      idIndex: { partitionKey: "id" } 
+    },
   });
 
   const UserActionsTable = new Table(stack, "userActions", {
