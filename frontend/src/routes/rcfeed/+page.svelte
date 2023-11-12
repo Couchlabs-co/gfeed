@@ -39,18 +39,12 @@
 	{/if}
 	{#if feed.Count > 0}
 		<div class="flex flex-col w-10/12">
-			{#if readingFeed.length === 0}
-				<div class="w-10/12 m-auto">
-					<h2 class="notFoundText">No new articles published in last 7 days</h2>
-				</div>
-			{:else}
 			<div class="grid grid-cols-3 gap-4">
 				{#each readingFeed as Item}
 					<ColumnList Item ={Item} userId={user_id} key={Item.id}/>
 				{/each}
 
 			</div>
-			{/if}
 		</div>
 		<div class="sidePanel">
 			<h2 class="sidePanelHeading">Filters</h2>

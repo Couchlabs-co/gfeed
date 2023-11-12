@@ -9,7 +9,7 @@ env:
 
 on:
   - push
-  # - workflow_dispatch
+  - workflow_dispatch
   
 concurrency: merge-${{ github.ref }}
     
@@ -18,23 +18,75 @@ permissions:
   contents: read
 
 jobs:
-  running-job:
+  initiating:
     runs-on: ubuntu-latest
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      backend: ${{ steps.filter.outputs.backend }}
+      infraStack: ${{ steps.filter.outputs.infraStack }}
     steps:
-      - name: Initiating job
-        run: echo "🍏 Initiating Workflow"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'packages/**'
+            frontend:
+              - 'frontend/**'
+            infraStack:
+              - 'stacks/**'
 
+  deploy-stacks-staging:
+    needs: initiating
+    if: ${{ needs.initiating.outputs.infraStack == 'true' }}
+    uses: ./.github/workflows/deploy-stacks.yml
+    with:
+      APP_ENV: staging
+    secrets:
+      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+            
   test-frontend:
-    if: ${{ contains(github.event.head_commit.added, 'frontend/') || contains(github.event.head_commit.modified, 'frontend/') }}
+    needs: initiating
+    if: ${{ needs.initiating.outputs.frontend == 'true' }}
     uses: ./.github/workflows/build-webapp.yml
     with:
-      APP_ENV: dev
+      APP_ENV: staging
   
   deploy-frontend-staging:
-    needs: [test-frontend]
+    needs: test-frontend
     uses: ./.github/workflows/deploy-webapp.yml
     with:
       APP_ENV: staging
+    secrets:
+      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+
+  test-backend:
+    needs: initiating
+    if: ${{ needs.initiating.outputs.backend == 'true' }}
+    uses: ./.github/workflows/build-api.yml
+    with:
+      APP_ENV: staging
+  
+  deploy-backend-staging:
+    needs: test-backend
+    uses: ./.github/workflows/deploy-api.yml
+    with:
+      APP_ENV: staging
+    secrets:
+      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml

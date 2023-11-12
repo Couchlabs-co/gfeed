@@ -1,5 +1,5 @@
-name: deploy-read-list-web-app
-run-name: Deploy Read List Web App
+name: deploy-read-list-stack
+run-name: Deploy Read List Stack
 
 on:
   workflow_call:
@@ -69,5 +69,5 @@ jobs:
         run: |
           echo "$APP_ENV environment"
           pnpm types --stage ${{ inputs.APP_ENV }}
-          pnpm run deploy --stage ${{ inputs.APP_ENV }} --filter WebStack
+          pnpm run deploy --stage ${{ inputs.APP_ENV }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
