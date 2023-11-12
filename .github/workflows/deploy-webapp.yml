@@ -23,7 +23,7 @@ permissions:
   contents: read
 
 jobs:
-  Build-and-deploy:
+  Deploy-frontend:
     runs-on: ubuntu-latest
     env:
       APP_ENV: ${{ inputs.APP_ENV }}
