@@ -8,6 +8,9 @@ cd frontend
 # build the project
 pnpm run build
 
+# test the application
+pnpm run test:coverage
+
 # Start the application
 pnpm run start
 ```
