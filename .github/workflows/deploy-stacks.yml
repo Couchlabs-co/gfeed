@@ -2,12 +2,6 @@ name: deploy-read-list-stack
 run-name: Deploy Read List Stack
 
 on:
-  workflow_dispatch:
-    inputs:
-      APP_ENV:
-        description: "The environment to deploy for"
-        required: true
-        default: "dev"
   workflow_call:
     inputs:
       APP_ENV:

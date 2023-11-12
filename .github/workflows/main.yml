@@ -23,6 +23,7 @@ jobs:
     outputs:
       frontend: ${{ steps.filter.outputs.frontend }}
       backend: ${{ steps.filter.outputs.backend }}
+      infraStack: ${{ steps.filter.outputs.infraStack }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -36,9 +37,21 @@ jobs:
               - 'packages/**'
             frontend:
               - 'frontend/**'
-            stacks:
+            infraStack:
               - 'stacks/**'
 
+  deploy-stacks-staging:
+    needs: initiating
+    if: ${{ needs.initiating.outputs.infraStack == 'true' }}
+    uses: ./.github/workflows/deploy-stacks.yml
+    with:
+      APP_ENV: staging
+    secrets:
+      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+            
   test-frontend:
     needs: initiating
     if: ${{ needs.initiating.outputs.frontend == 'true' }}
@@ -67,18 +80,6 @@ jobs:
   deploy-backend-staging:
     needs: test-backend
     uses: ./.github/workflows/deploy-api.yml
-    with:
-      APP_ENV: staging
-    secrets:
-      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
-      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-
-  deploy-stacks-staging:
-    needs: initiating
-    if: ${{ needs.initiating.outputs.stacks == 'true' }}
-    uses: ./.github/workflows/deploy-stacks.yml
     with:
       APP_ENV: staging
     secrets:
