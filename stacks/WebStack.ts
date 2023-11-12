@@ -26,7 +26,7 @@ export function WebStack({ stack, app }: StackContext) {
     }
     default:
       customDomain = undefined;
-      apiUrl = "dev.api.jasdeep.me";
+      apiUrl = "https://dev.api.jasdeep.me";
   };
 
   const Auth0Domain = new Config.Parameter(stack, "AUTH0_DOMAIN", {

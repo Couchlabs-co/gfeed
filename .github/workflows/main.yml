@@ -36,6 +36,8 @@ jobs:
               - 'packages/**'
             frontend:
               - 'frontend/**'
+            stacks:
+              - 'stacks/**'
 
   test-frontend:
     needs: initiating
@@ -65,6 +67,18 @@ jobs:
   deploy-backend-staging:
     needs: test-backend
     uses: ./.github/workflows/deploy-api.yml
+    with:
+      APP_ENV: staging
+    secrets:
+      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+
+  deploy-stacks-staging:
+    needs: initiating
+    if: ${{ needs.initiating.outputs.stacks == 'true' }}
+    uses: ./.github/workflows/deploy-stacks.yml
     with:
       APP_ENV: staging
     secrets:
