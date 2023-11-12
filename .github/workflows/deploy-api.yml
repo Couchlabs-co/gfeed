@@ -69,5 +69,5 @@ jobs:
         run: |
           echo "$APP_ENV environment"
           pnpm types --stage ${{ inputs.APP_ENV }}
-          pnpm run deploy --stage ${{ inputs.APP_ENV }} --filter DBStack FunctionStack ApiStack
+          pnpm run deploy --stage ${{ inputs.APP_ENV }} --filter FunctionStack ApiStack DbStack
       - run: echo "🍏 This job's status is ${{ job.status }}."
