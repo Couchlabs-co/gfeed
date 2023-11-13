@@ -4,6 +4,15 @@ import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
+type User = {
+  id: string;
+  email: string;
+  name: string;
+  pic: string;
+  channel: string;
+  createdAt: string;
+};
+
 const getUser = async (id: string) => {
 //   const userId = id.split("|");
   const userTable = Table.user.tableName;
@@ -17,44 +26,29 @@ const getUser = async (id: string) => {
     ExpressionAttributeValues: {
       ":id": { S: id },
     },
-    // ProjectionExpression: "id, name, email, channel, pic, createdAt",
-});
+  });
+
+  const users: User[] = [];
     const res = await dbClient.send(userQuery);
-    return res;
-
-    // const userRecord: Record<string, AttributeValue> = {
-    //   id: { S: userId.length > 1 ? userId[1] : userId[0] },
-    //   name: { S: name },
-    //   email: { S: email },
-    //   channel: { S: channel },
-    //   pic: { S: pic },
-    //   createdAt: { S: new Date().toISOString() },
-    // };
-    // const command = new UpdateItemCommand({
-    //   TableName: userTable,
-    //   Key: {
-    //     email: { S: email },
-    //   },
-    //   UpdateExpression: "set #id = :id, #name = :name, #channel = :channel, #pic = :pic, #createdAt = :createdAt",
-    //   ExpressionAttributeNames: {
-    //     "#id": "id",
-    //     "#name": "name",
-    //     "#channel": "channel",
-    //     "#pic": "pic",
-    //     "#createdAt": "createdAt",
-    //   },
-    //   ExpressionAttributeValues: {
-    //     ":id": userRecord.id,
-    //     ":name": userRecord.name, 
-    //     ":channel": userRecord.channel,
-    //     ":pic": userRecord.pic,
-    //     ":createdAt": userRecord.createdAt,
-    //   },
-    //   ReturnValues: "ALL_NEW",
-    // });
-
-    // const res = await dbClient.send(command);
     // return res;
+    if(res.Count && res.Count > 0 && res.Items) {
+      for(const user of res.Items) {
+        const { id, email, name, pic, channel, createdAt } = user;
+        users.push({
+          id: id.S!,
+          email: email.S!,
+          name: name.S!,
+          pic: pic.S!,
+          channel: channel.S!,
+          createdAt: createdAt.S!,
+        })
+      }
+    }
+    return {
+      Count: res.Count,
+      users,
+    }
+
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
