@@ -20,6 +20,13 @@ export function ApiStack({ stack, app }: StackContext) {
       }
       break;
     }
+    case "staging": {
+      customDomain = {
+        domainName: "staging.api.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      }
+      break;
+    }
     default:
       customDomain =  {
         domainName: "dev.api.jasdeep.me",

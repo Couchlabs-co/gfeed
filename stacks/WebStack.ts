@@ -24,6 +24,14 @@ export function WebStack({ stack, app }: StackContext) {
       apiUrl = "uat.api.jasdeep.me";
       break;
     }
+    case "staging": {
+      customDomain = {
+        domainName: "staging.api.jasdeep.me",
+        hostedZone: "jasdeep.me"
+      }
+      apiUrl = "staging.api.jasdeep.me";
+      break;
+    }
     default:
       customDomain = undefined;
       apiUrl = "https://dev.api.jasdeep.me";
