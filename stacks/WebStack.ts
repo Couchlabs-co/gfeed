@@ -1,5 +1,6 @@
-import { StackContext, SvelteKitSite, Config } from "sst/constructs";
+import { StackContext, SvelteKitSite, Config, use } from "sst/constructs";
 import { SsrDomainProps } from "sst/constructs/SsrSite";
+import { ApiStack } from "./ApiStack";
 
 export function WebStack({ stack, app }: StackContext) {
 
@@ -32,9 +33,11 @@ export function WebStack({ stack, app }: StackContext) {
       apiUrl = "staging.api.jasdeep.me";
       break;
     }
-    default:
+    default: {
+      const {ReadingCornerAPI} = use(ApiStack);
+      apiUrl = ReadingCornerAPI.url;
       customDomain = undefined;
-      apiUrl = "https://dev.api.jasdeep.me";
+    }
   };
 
   const Auth0Domain = new Config.Parameter(stack, "AUTH0_DOMAIN", {

@@ -28,10 +28,7 @@ export function ApiStack({ stack, app }: StackContext) {
       break;
     }
     default:
-      customDomain =  {
-        domainName: "dev.api.jasdeep.me",
-        hostedZone: "jasdeep.me"
-      };
+      customDomain =  undefined;
   };
   
   const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable } = use(DbStack);
