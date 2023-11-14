@@ -26,12 +26,11 @@ export function DbStack({ stack }: StackContext) {
       content: "string", //tag, keyword, post title, author, publisher
       contentType: "string", // tag, keyword, post, author, publisher
     },
-    primaryIndex: { partitionKey: "userId", sortKey: "userAction" },
+    primaryIndex: { partitionKey: "userId", sortKey: "content" },
     globalIndexes: { 
       contentIndex: { partitionKey: "content" }, 
       contentTypeIndex: { partitionKey: "contentType" }, 
       userActionIndex: { partitionKey: "userAction" },
-      userIndex: { partitionKey: "userId" },
     },
   });
 
