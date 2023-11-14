@@ -10,7 +10,13 @@ env:
 on:
   push:
     branches:
-      - **
+      - '*'
+  workflow_dispatch:
+    inputs:
+      APP_ENV:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
 
 
 concurrency: merge-${{ github.ref }}
