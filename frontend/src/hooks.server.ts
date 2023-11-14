@@ -76,25 +76,34 @@ const handleAuth = (async (...args) => {
       updateAge: 1800,// 30 mins
     },
     callbacks: {
-      async jwt({token, user, account}) {
-        if(account){
-          token.accessToken = account.access_token;
+      async jwt({token, account, profile, session, user}) {
+        if (account?.access_token) {
+          token.access_token = account.access_token;
           token.refreshToken = account.refresh_token;
           token.idToken = account.id_token;
-          // session.accessToken = account.access_token;
-          // session.refreshToken = account.refresh_token;
-          // session.idToken = account.id_token;
-          // event.locals.user.token = account.access_token ?? '';
         }
-        if (user) {
-          token.user = user;
+        if(profile){
+          token.user = profile;
+        }
+        if(user && token.user){
+          token.user.login_count = user.login_count;
         }
         return token;
       },
-      async session({ session, token, user }) {
-        session.user = token.user;
+      async session({ session, token }) {
+        if(token){
+          session.user = {
+            ...session.user,
+            name: token.name,
+            email: token.email,
+            image: token.picture,
+            sub: token.sub,
+            id: token.sub?.split('|')[1],
+            login_count: token.user?.login_count,
+          };
+          session.access_token = token.accessToken
+        }
         // Send properties to the client, like an access_token from a provider.
-        session.access_token = token.accessToken
         return session
       }
     }
@@ -112,19 +121,43 @@ export const handleError: HandleServerError = async ({ error, event }) => {
   };
 };
 
+async function FetchUser(userId: string) {
+  const result = await fetch(`${VITE_API_URL}/users/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  const user = await result.json();
+  return user;
+}
+
+async function CreateUser({user}: Session) {
+  const result = await fetch(`${VITE_API_URL}/users`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({user}),
+  });
+
+  const newUser = await result.json();
+  return newUser;
+}
+
+/// type: import('@sveltejs/kit').Handle
 const handleUser = (async ({event, resolve}) => {
   try{
     const session: RCSession = await event.locals.getSession();
     if (session && session.user.login_count === 1) {
-      const result = await fetch(`${VITE_API_URL}/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({user: session.user}),
-      });
-  
-      const user = await result.json();
+      const user = await CreateUser(session);
+      session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
+      event.locals.user = {...session.user };
+    } else if(session) {
+      event.locals.user = {...session.user };
+      console.log('session.user', session.user);
+      const user = await FetchUser(session.user.id);
       session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
       event.locals.user = {...session.user };
     }
