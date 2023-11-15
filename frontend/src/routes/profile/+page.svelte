@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Ban, Check, Divide } from 'lucide-svelte';
-import { DateTime } from 'luxon';
+	import { Ban, Check } from 'lucide-svelte';
+    import { DateTime } from 'luxon';
 
 	export let data;
     let activeTab = 0;
@@ -64,10 +64,10 @@ import { DateTime } from 'luxon';
                 </div>
                 <div class="stat-title">Total Disliked</div>
                 <div class="stat-value text-secondary">
-                  {#if !data.userInterests.interestsByAction?.viewed || data.userInterests.interestsByAction?.viewed.length === 0}
+                  {#if !data.userInterests.interestsByAction?.dislikes || data.userInterests.interestsByAction?.dislikes.length === 0}
                       0
                   {:else}
-                      {data.userInterests.interestsByAction.viewed.length}
+                      {data.userInterests.interestsByAction.dislikes.length}
                   {/if}
                 </div>
               </div>
@@ -113,6 +113,56 @@ import { DateTime } from 'luxon';
                                         <button class="btn m-2"><Ban /> Not so much</button>
                                     </td>
                                 </tr>
+                                {/each}
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            {/if}
+            {#if activeTab === 1}
+                <div>
+                    <div class="p-3 shadow-sm rounded-sm">
+                        <h2>Worth Reading...</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-lg text-black">Articles</th>
+                                </tr>
+                                {#each data.userBookmarks.Items as later}
+                                    <tr>
+                                        <td class="text-base text-black">
+                                            <article>
+                                                <a href="/" class="link link-hover" target="_blank">
+                                                    {later.content}
+                                                </a>
+                                            </article>
+                                        </td>
+                                    </tr>
+                                {/each}
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            {/if}
+            {#if activeTab === 2}
+                <div>
+                    <div class="p-3 shadow-sm rounded-sm">
+                        <h2>Procastinate I say...</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-lg text-black">Articles</th>
+                                </tr>
+                                {#each data.userBookmarks.Items as later}
+                                    <tr>
+                                        <td class="text-base text-black">
+                                            <article>
+                                                <a href={later.contentLink} class="link link-hover" target="_blank">
+                                                    {later.content}
+                                                </a>
+                                            </article>
+                                        </td>
+                                    </tr>
                                 {/each}
                             </thead>
                         </table>
