@@ -217,6 +217,44 @@ const publishers = [
     }
   ];
 
+const interests = [
+    {
+      "name": "Tech",
+    },
+    {
+      "name": "Crypto",
+    },
+    {
+      "name": "Business",
+    },
+    {
+      "name": "Sports",
+    },
+    {
+      "name": "Politics",
+    },
+    {
+      "name": "Entertainment",
+    },
+    {
+      "name": "Health",
+    },
+    {
+      "name": "Science",
+    },
+    {
+      "name": "World",
+    },
+    {
+      "name": "Weather",
+    },
+    {
+      "name": "Food",
+    },
+    {
+      "name": "Travel",
+    }
+  ];
 export async function handler() {
 
     for (const publisher of publishers) {
@@ -234,6 +272,17 @@ export async function handler() {
             },
         })
         await dbClient.send(seedCommand);
+    }
+
+    for (const interest of interests) {
+      const seedCommand = new PutItemCommand({
+          TableName: Table.interests.tableName,
+          Item: {
+              id: { S: v4() },
+              interestName: { S: interest.name },
+          },
+      })
+      await dbClient.send(seedCommand);
     }
 
   return {
