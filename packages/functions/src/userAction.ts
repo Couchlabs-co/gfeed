@@ -6,8 +6,8 @@ import * as uuid from "uuid";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 interface UserAction {
-  title: string;
-  type: string;
+  content: string;
+  contentType: string;
   reaction: string;
   userId: string;
 }
@@ -16,7 +16,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
   const body: UserAction = JSON.parse(evt.body ?? '');
 
-  if(!body || !body.title) {
+  if(!body || !body.content) {
     return {
       statusCode: 400,
       body: JSON.stringify({"msg": "Bad Request"})
@@ -25,14 +25,16 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
   try {
     const userActionsTable = Table.userActions.tableName;
+    const { userId, content, contentType, reaction } = body;
     const command: PutItemCommand = new PutItemCommand({
       TableName: userActionsTable,
       Item: {
         id: { S: uuid.v4() },
-        userId: { S: body?.userId },
-        userAction: { S: body?.reaction },
-        content: { S: body?.title },
-        contentType: { S: body?.type },
+        sk: { N: `${Date.now()}`},
+        userId: { S: userId },
+        userAction: { S: reaction },
+        content: { S: content },
+        contentType: { S: contentType },
       },
     });
     const res = await dbClient.send(command);

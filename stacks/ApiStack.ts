@@ -48,11 +48,13 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /users/{userId}": "packages/functions/src/getUser.handler",
       "GET /users/{userId}/interests": "packages/functions/src/userInterests.handler",
       "POST /users/action": "packages/functions/src/userAction.handler",
-      "POST /users/action/bookmark": "packages/functions/src/userAction.handler",
       "POST /users/action/dislike": "packages/functions/src/userAction.handler",
       "GET /publishers": "packages/functions/src/publishers.handler",
       "GET /interests": "packages/functions/src/interests.handler",
       "POST /search": "packages/functions/src/search.handler",
+      "GET /posts/{postTitle}": "packages/functions/src/getPost.handler",
+      "POST /bookmarks": "packages/functions/src/saveBookmark.handler",
+      "GET /bookmarks/{userId}": "packages/functions/src/getBookmarks.handler",
     },
   });
 
