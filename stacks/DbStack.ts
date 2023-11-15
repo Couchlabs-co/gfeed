@@ -21,15 +21,17 @@ export function DbStack({ stack }: StackContext) {
   const UserActionsTable = new Table(stack, "userActions", {
     fields: {
       id: "string",
+      sk: "number",
       userId: "string",
       userAction: "string", //like, dislike, follow, bookmark, read
       content: "string", //tag, keyword, post title, author, publisher
       contentType: "string", // tag, keyword, post, author, publisher
+      contentId: "string",
     },
-    primaryIndex: { partitionKey: "userId", sortKey: "content" },
+    primaryIndex: { partitionKey: "userId", sortKey: "sk" },
     globalIndexes: { 
       contentIndex: { partitionKey: "content" }, 
-      contentTypeIndex: { partitionKey: "contentType" }, 
+      contentTypeIndex: { partitionKey: "contentType" },
       userActionIndex: { partitionKey: "userAction" },
     },
   });
@@ -37,10 +39,13 @@ export function DbStack({ stack }: StackContext) {
   const BookmarkTable = new Table(stack, "bookmark", {
     fields: {
       userId: "string",
-      postId: "string",
-      postTitle: "string",
+      sk: "number",
+      contentId: "string",
+      content: "string",
+      contentType: "string",
+      contentLink: "string",
     },
-    primaryIndex: { partitionKey: "userId" },
+    primaryIndex: { partitionKey: "userId", sortKey: "sk" },
   });
 
   const PublisherTable = new Table(stack, "publisher", {
