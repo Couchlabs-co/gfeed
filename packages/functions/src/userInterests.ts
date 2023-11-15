@@ -7,7 +7,7 @@ import { APIGatewayProxyEventV2 } from "aws-lambda";
 interface Interest {
   content: string;
   contentType: string;
-  userAction: 'likes' | 'dislikes';
+  userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark';
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
