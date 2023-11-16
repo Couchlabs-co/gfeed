@@ -1,5 +1,5 @@
-name: read-list-stack
-run-name: Read List
+name: read-list-webapp
+run-name: Read List Webapp
 
 env:
   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
@@ -11,6 +11,9 @@ on:
   push:
     branches:
       - '*'
+    paths-ignore:
+      - 'stacks/**'
+      - 'packages/**'
   workflow_dispatch:
     inputs:
       APP_ENV:
@@ -26,75 +29,43 @@ permissions:
   contents: read
 
 jobs:
-  initiating:
+  test-front-end:
     runs-on: ubuntu-latest
-    outputs:
-      frontend: ${{ steps.filter.outputs.frontend }}
-      backend: ${{ steps.filter.outputs.backend }}
-      infraStack: ${{ steps.filter.outputs.infraStack }}
+    env:
+        APP_ENV: ${{ inputs.APP_ENV }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - uses: dorny/paths-filter@v2
-        id: filter
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
         with:
-          filters: |
-            backend:
-              - 'packages/**'
-            frontend:
-              - 'frontend/**'
-            infraStack:
-              - 'stacks/**'
+            version: latest
+            run_install: false
+    
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+            echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-  deploy-stacks-staging:
-    needs: initiating
-    if: ${{ needs.initiating.outputs.infraStack == 'true' }}
-    uses: ./.github/workflows/deploy-stacks.yml
-    with:
-      APP_ENV: staging
-    secrets:
-      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
-      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-            
-  test-frontend:
-    needs: initiating
-    if: ${{ needs.initiating.outputs.frontend == 'true' }}
-    uses: ./.github/workflows/build-webapp.yml
-    with:
-      APP_ENV: staging
-  
-  deploy-frontend-staging:
-    needs: test-frontend
-    uses: ./.github/workflows/deploy-webapp.yml
-    with:
-      APP_ENV: staging
-    secrets:
-      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
-      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+            path: ${{ env.STORE_PATH }}
+            key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+            restore-keys: |
+                ${{ runner.os }}-pnpm-store-
 
-  test-backend:
-    needs: initiating
-    if: ${{ needs.initiating.outputs.backend == 'true' }}
-    uses: ./.github/workflows/build-api.yml
-    with:
-      APP_ENV: staging
-  
-  deploy-backend-staging:
-    needs: test-backend
-    uses: ./.github/workflows/deploy-api.yml
-    with:
-      APP_ENV: staging
-    secrets:
-      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
-      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: run tests
+        run: |
+            cd frontend
+            pnpm run test:coverage
+      - run: echo "🍏 This job's status is ${{ job.status }} for $APP_ENV."
 
   # deploy-front-end:
   #   uses: ./.github/workflows/deploy-webapp.yml
