@@ -8,16 +8,7 @@ env:
   AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
 
 on:
-  push:
-    branches:
-      - '*'
-  workflow_dispatch:
-    inputs:
-      APP_ENV:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'staging'
-
+  - push
 
 concurrency: merge-${{ github.ref }}
     
