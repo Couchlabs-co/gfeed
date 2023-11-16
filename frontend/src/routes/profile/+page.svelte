@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { userAction } from '$lib/userActions.js';
 	import { Ban, Check } from 'lucide-svelte';
     import { DateTime } from 'luxon';
 
@@ -153,12 +154,12 @@
                                 <tr>
                                     <th class="text-lg text-black">Articles</th>
                                 </tr>
-                                {#each data.userBookmarks.Items as later}
+                                {#each data.userBookmarks.Items as item}
                                     <tr>
                                         <td class="text-base text-black">
                                             <article>
-                                                <a href={later.contentLink} class="link link-hover" target="_blank">
-                                                    {later.content}
+                                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(data.user?.id, item.title, "viewed", "post", item.link, item.id)}>
+                                                    {item.content}
                                                 </a>
                                             </article>
                                         </td>

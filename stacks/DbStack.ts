@@ -27,6 +27,7 @@ export function DbStack({ stack }: StackContext) {
       content: "string", //tag, keyword, post title, author, publisher
       contentType: "string", // tag, keyword, post, author, publisher
       contentId: "string",
+      contentLink: "string",
     },
     primaryIndex: { partitionKey: "userId", sortKey: "sk" },
     globalIndexes: { 

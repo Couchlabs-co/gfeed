@@ -10,6 +10,8 @@ interface UserAction {
   contentType: string;
   reaction: string;
   userId: string;
+  contentLink: string;
+  contentId: string;
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
@@ -25,7 +27,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
   try {
     const userActionsTable = Table.userActions.tableName;
-    const { userId, content, contentType, reaction } = body;
+    const { userId, content, contentType, reaction, contentLink, contentId } = body;
     const command: PutItemCommand = new PutItemCommand({
       TableName: userActionsTable,
       Item: {
@@ -35,6 +37,8 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
         userAction: { S: reaction },
         content: { S: content },
         contentType: { S: contentType },
+        contentId: { S: contentId },
+        contentLink: { S: contentLink ?? null },
       },
     });
     const res = await dbClient.send(command);
