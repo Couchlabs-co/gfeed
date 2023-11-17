@@ -14,7 +14,7 @@ export function WebStack({ stack, app }: StackContext) {
         domainAlias: "www.jasdeep.me",
         hostedZone: "jasdeep.me"
       };
-      apiUrl = "api.jasdeep.me";
+      apiUrl = "https://api.jasdeep.me";
       break;
     }
     case "uat": {
@@ -22,7 +22,7 @@ export function WebStack({ stack, app }: StackContext) {
         domainName: "uat.jasdeep.me",
         hostedZone: "jasdeep.me"
       }
-      apiUrl = "uat.api.jasdeep.me";
+      apiUrl = "https://uat.api.jasdeep.me";
       break;
     }
     case "staging": {
@@ -30,7 +30,7 @@ export function WebStack({ stack, app }: StackContext) {
         domainName: "staging.jasdeep.me",
         hostedZone: "jasdeep.me"
       }
-      apiUrl = "staging.api.jasdeep.me";
+      apiUrl = "https://staging.api.jasdeep.me";
       break;
     }
     default: {

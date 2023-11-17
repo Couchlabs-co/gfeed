@@ -25,7 +25,6 @@ const GetUserBookmarks = async (userId: string) => {
 	const res = await result.json();
     const {message, bookmarks} = res;
     if(message === 'Success'){
-        console.log(JSON.stringify(bookmarks));
         return bookmarks;
     }
 };
