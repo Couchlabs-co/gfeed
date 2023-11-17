@@ -1,5 +1,6 @@
 import { AttributeValue } from "@aws-sdk/client-dynamodb";
 import * as uuid from "uuid";
+const he = require('he');
 
 interface RssItem {
   title: string;
@@ -36,17 +37,22 @@ function getImage(item: any, publisher: string) {
   }
 
   if (item["content:encoded"] && item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    const match = item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    const match = he.decode(item["content:encoded"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
     return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 
+  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g) && publisher === "Martin Fowler") {
+    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
+    return getImageUrl(match.slice(match.indexOf("https"),match.length-1));
+  }
+
   if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g)) {
-    const match = item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
+    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
     return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 
   if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    const match = item["content"].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
     return getImageUrl(match.slice(match.indexOf('src="')+5));
   }
 }
@@ -89,7 +95,6 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
         author = item["dc:creator"];
     }
   
-  
   }
   catch (error) {
     console.log('item', item.title, item.publisher);
@@ -103,7 +108,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
     link: { S: encodeURI(item.link) },
     pubDate: { N: new Date(pubDate).getTime().toString() },
     author: { S: author },
-    guid: { S: encodeURI(item.guid ?? "null") },
+    guid: { S: encodeURI(item.guid ?? item.id) },
     keywords: { S: keywords ?? tag },
     tag: { S: tag },
     publisher: { S: publisher },
