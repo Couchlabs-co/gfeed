@@ -76,7 +76,7 @@ const handleAuth = (async (...args) => {
       updateAge: 1800,// 30 mins
     },
     callbacks: {
-      async jwt({token, account, profile, session, user}) {
+      async jwt({token, account, profile, user}) {
         if (account?.access_token) {
           token.access_token = account.access_token;
           token.refreshToken = account.refresh_token;

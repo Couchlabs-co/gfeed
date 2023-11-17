@@ -105,6 +105,12 @@ export const handler = ApiHandler(async (evt) => {
     }
     catch(err) {
       console.log("err: ", err);
+      if((err as Error).name === 'JWTExpired') {
+        return {
+          statusCode: 401,
+          body: JSON.stringify({ error: "Unauthorized" }),
+        }
+      }
     }
   } else {
     result = await GetFeed(keyDates);
