@@ -27,7 +27,7 @@ export function WebStack({ stack, app }: StackContext) {
     }
     case "staging": {
       customDomain = {
-        domainName: "staging.api.jasdeep.me",
+        domainName: "staging.jasdeep.me",
         hostedZone: "jasdeep.me"
       }
       apiUrl = "staging.api.jasdeep.me";

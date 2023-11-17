@@ -8,7 +8,8 @@ const fetchStandardXMLRSSFeed = async (feedUrl: string) => {
         item: [
           ['media:thumbnail', 'mediaThumbnail'],
           ['media:content', 'mediaContent'],
-          ['enclosure', 'enclosure']
+          ['enclosure', 'enclosure'],
+          ['author', 'author', {keepArray: true}],
         ]  
       }
     });
