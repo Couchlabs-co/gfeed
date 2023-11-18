@@ -59,17 +59,17 @@ function getImage(item: any, publisher: string) {
 
 function getPublishedDate(item: any, publisher: string) {
   if (item.pubDate) {
-    const dt = item.pubDate as string;
+    const dt = new Date(item.pubDate).toISOString().split("T")[0];
     return dt.trim();
   }
 
   if (item["dc:date"]) {
-    const dt = item["dc:date"] as string;
+    const dt = new Date(item["dc:date"]).toISOString().split("T")[0];
     return dt.trim();
   }
 
   if (item["dc:created"]) {
-    const dt = item["dc:created"] as string;
+    const dt = new Date(item["dc:created"]).toISOString().split("T")[0];
     return dt.trim();
   }
  
@@ -102,17 +102,36 @@ function getAuthor(item: any, publisher: string) {
   }
 }
 
-export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
-  let keywords, img = "";
-  let pubDate: string|number;
-
-  try {
+function getCategories(item: any, publisher: string) {
+  let keywords = "";
+  switch(publisher) {
+    case "CoinDesk": {
+      return Array.from(new Set(item.categories.map((cat: any) => cat._))).join(',');
+    }
+    case "Overreacted":
+      keywords = "React, JavaScript, Web Development, software development, programming";
+      return keywords
+    case "Martin Fowler":
+      keywords = "software development, programming";
+      return keywords;
+   default: {
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
       keywords = Array.from(new Set(item.categories.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
         .map((cat: string) => cat.toLowerCase()))).join(',');
     } else if (item.categories && typeof item.categories === "string") {
       keywords = item.categories.toLowerCase();
     }
+    return keywords;
+   }
+  }
+}
+
+export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
+  let img = "";
+  let pubDate: string|number;
+
+  try {
+    const keywords = getCategories(item, publisher) as string;
 
     const publishedDate = getPublishedDate(item, publisher) as string;
   
@@ -120,14 +139,6 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
     img = getImage(item, publisher) ?? '';
   
     switch(publisher) {
-      case "Overreacted":
-        keywords = "React, JavaScript, Web Development, software development, programming";
-        break;
-      case "Martin Fowler":
-        keywords = "software development, programming";
-        break;
-      case "Alice GG":
-        break;
       case "A List Apart":
         if(!img){
           img = extractImageFromDescription(item.description);

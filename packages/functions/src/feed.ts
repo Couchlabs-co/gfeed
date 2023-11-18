@@ -4,6 +4,7 @@ import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import {jwtDecode} from "jwt-decode";
 import * as jose from 'jose';
+const he = require('he');
 
 async function GetFeed(dateKeys: string[]) {
   const result = {
@@ -121,12 +122,12 @@ export const handler = ApiHandler(async (evt) => {
     feedItems.push({
       id: item.id.S,
       publishedDate: item.publishedDate.S,
-      title: item.title.S && decodeURI(item.title.S),
-      link: item.link.S && decodeURI(item.link.S),
+      title: item.title.S && he.decode(item.title.S),
+      link: item.link.S && he.decode(item.link.S),
       pubDate: item.pubDate.N,
       author: item.author.S,
-      content: item.content.S && decodeURI(item.content.S),
-      guid: item.guid.S && decodeURI(item.guid.S),
+      content: item.content.S && he.decode(item.content.S),
+      guid: item.guid.S && he.decode(item.guid.S),
       publisher: item.publisher?.S,
       keywords: item.keywords?.S ?? "",
       tag: item.tag?.S ?? "",
