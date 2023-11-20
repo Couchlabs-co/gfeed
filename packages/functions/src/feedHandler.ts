@@ -10,7 +10,11 @@ export async function main(event: SQSEvent) {
   const tableName = Table.posts.tableName;
   const records: SQSRecord[] = event.Records;
   for(const record of records){
-    const { id: publisherId, publisher, feedUrl, tag } = JSON.parse(record.body);
+    const { id: publisherId, publisher, feedUrl, tag, feedType } = JSON.parse(record.body);
+    if(feedType === 'html') {
+      console.log(`skipping html feed: ${publisher} with url: ${feedUrl}`);
+      break;
+    }
     console.log(`starting to process feed: ${publisher} with url: ${feedUrl}`);
     const rssItems = await fetchRSSFeed(publisher, feedUrl);
     for (const item of rssItems) {

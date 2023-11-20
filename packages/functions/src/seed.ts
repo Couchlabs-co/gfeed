@@ -8,7 +8,7 @@ const publishers = [
       "name": "Overreacted",
       "publisherUrl": "https://overreacted.io/",
       "feedUrl": "https://overreacted.io/rss.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -17,7 +17,7 @@ const publishers = [
       "name": "A List Apart",
       "publisherUrl": "https://alistapart.com/",
       "feedUrl": "https://alistapart.com/main/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -45,7 +45,7 @@ const publishers = [
       "name": "Joel on Software",
       "publisherUrl": "https://www.joelonsoftware.com/",
       "feedUrl": "https://www.joelonsoftware.com/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -55,7 +55,7 @@ const publishers = [
       "name": "Sam Newman",
       "publisherUrl": "https://samnewman.io/",
       "feedUrl": "https://samnewman.io/blog/feed.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -64,7 +64,7 @@ const publishers = [
       "name": "Mozilla Hacks",
       "publisherUrl": "https://hacks.mozilla.org/",
       "feedUrl": "https://hacks.mozilla.org/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -73,7 +73,7 @@ const publishers = [
       "name": "HACKERNOON",
       "publisherUrl": "https://hackernoon.com/",
       "feedUrl": "https://hackernoon.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -83,7 +83,7 @@ const publishers = [
       "name": "TechCrunch",
       "publisherUrl": "https://www.techcrunch.com/",
       "feedUrl": "https://www.techcrunch.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -93,7 +93,7 @@ const publishers = [
       "name": "Martin Fowler",
       "publisherUrl": "https://martinfowler.com/",
       "feedUrl": "https://martinfowler.com/feed.atom",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "atom",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -102,7 +102,7 @@ const publishers = [
       "name": "DAN NORTH",
       "publisherUrl": "https://dannorth.net/",
       "feedUrl": "https://dannorth.net/blog/index.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -121,7 +121,7 @@ const publishers = [
       "name": "Jacob Singh",
       "publisherUrl": "https://jacobsingh.name/",
       "feedUrl": "https://jacobsingh.name/rss/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -131,7 +131,7 @@ const publishers = [
       "name": "Game Developer",
       "publisherUrl": "https://www.gamedeveloper.com/",
       "feedUrl": "https://www.gamedeveloper.com/rss.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -141,7 +141,7 @@ const publishers = [
       "name": "the HUSTLE",
       "publisherUrl": "https://thehustle.co/",
       "feedUrl": "https://thehustle.co/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -151,7 +151,7 @@ const publishers = [
       "name": "Software Engineering Tidbits",
       "publisherUrl": "https://www.softwareengineeringtidbits.com/",
       "feedUrl": "https://www.softwareengineeringtidbits.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -160,7 +160,7 @@ const publishers = [
       "name": "The Pragmatic Engineer",
       "publisherUrl": "https://blog.pragmaticengineer.com/",
       "feedUrl": "https://newsletter.pragmaticengineer.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -170,7 +170,7 @@ const publishers = [
       "name": "Musings Of A Caring Techie",
       "publisherUrl": "https://www.thecaringtechie.com/",
       "feedUrl": "https://www.thecaringtechie.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -180,7 +180,7 @@ const publishers = [
       "name": "Dev Interrupted",
       "publisherUrl": "https://devinterrupted.com/",
       "feedUrl": "https://devinterrupted.substack.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -190,7 +190,7 @@ const publishers = [
       "name": "The Developing Dev",
       "publisherUrl": "https://www.developing.dev/",
       "feedUrl": "https://www.developing.dev/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -200,7 +200,7 @@ const publishers = [
       "name": "Frontend Engineering",
       "publisherUrl": "https://frontendengineering.substack.com/",
       "feedUrl": "https://frontendengineering.substack.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -210,10 +210,108 @@ const publishers = [
       "name": "Financial Times",
       "publisherUrl": "https://www.ft.com/",
       "feedUrl": "https://www.ft.com/rss/home",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
-      "primaryTag": "Business News",
+      "primaryTag": "Business",
       "frequency": "6 hours"
+    },
+    {
+      "name": "CoinDesk",
+      "publisherUrl": "https://www.coindesk.com/",
+      "feedUrl": "https://www.coindesk.com/arc/outboundfeeds/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Crypto",
+      "frequency": "6 hours",
+      "logo": "https://www.coindesk.com/resizer/fTK3gATlyciJ-BZG2_OP12niDe0=/144x32/downloads.coindesk.com/arc/failsafe/feeds/coindesk-feed-logo.png"
+    },
+    {
+      "name": "THE WALL STREET JOURNAL",
+      "publisherUrl": "https://www.wsj.com",
+      "feedUrl": "https://feeds.a.dj.com/rss/RSSWSJD.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
+    },
+    {
+      "name": "THE WALL STREET JOURNAL",
+      "publisherUrl": "https://www.wsj.com",
+      "feedUrl": "https://feeds.a.dj.com/rss/RSSLifestyle.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "LifeStyle",
+      "frequency": "6 hours",
+      "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
+    },
+    {
+      "name": "THE WALL STREET JOURNAL",
+      "publisherUrl": "https://www.wsj.com",
+      "feedUrl": "https://feeds.a.dj.com/rss/RSSOpinion.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
+    },
+    {
+      "name": "FAST COMPANY",
+      "publisherUrl": "https://www.fastcompany.com",
+      "feedUrl": "https://www.fastcompany.com/latest/rss?truncated=true",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "LifeStyle",
+      "frequency": "6 hours",
+      "logo":"https://www.fastcompany.com/asset_files/static/logos/fastcompany/fc-fb-icon_big.png"
+    },
+    {
+      "name": "Axios",
+      "publisherUrl": "https://www.axios.com",
+      "feedUrl": "https://www.axios.com/technology",
+      "feedStatus": "active",
+      "feedType": "html",
+      "primaryTag": "News",
+      "frequency": "6 hours"
+    },
+    {
+      "name": "The New York Times",
+      "publisherUrl": "https://www.nytimes.com",
+      "feedUrl": "http://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "World",
+      "frequency": "6 hours",
+      "logo": "https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png"
+    },
+    {
+      "name": "Washington Post",
+      "publisherUrl": "https://www.washingtonpost.com",
+      "feedUrl": "https://feeds.washingtonpost.com/rss/world",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "World",
+      "frequency": "6 hours"
+    },
+    {
+      "name": "The Guardian",
+      "publisherUrl": "https://www.theguardian.com",
+      "feedUrl": "https://www.theguardian.com/world/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "World",
+      "frequency": "6 hours",
+      "logo": "https://assets.guim.co.uk/images/guardian-logo-rss.c45beb1bafa34b347ac333af2e6fe23f.png"
+    },
+    {
+      "name": "The Information",
+      "publisherUrl": "https://www.theinformation.com",
+      "feedUrl": "https://www.theinformation.com/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "World",
+      "frequency": "6 hours",
+      "logo": "https://ti-assets.theinformation.com/packs/static/assets/images/logo-61c5f316408817d61af5.png"
     }
   ];
 
@@ -253,6 +351,12 @@ const interests = [
     },
     {
       "name": "Travel",
+    },
+    {
+      "name": "LifeStyle",
+    },
+    {
+      "name": "News",
     }
   ];
 export async function handler() {

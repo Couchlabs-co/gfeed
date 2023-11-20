@@ -87,6 +87,12 @@ function getAuthor(item: any, publisher: string) {
       return "Alice Girard Guittard";
     case "Sam Newman":
       return "Sam Newman";
+    case "DAN NORTH":
+      return "Dan North";
+    case "Financial Times":
+      return "Financial Times";
+    case "THE WALL STREET JOURNAL":
+      return "THE WALL STREET JOURNAL";
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];
@@ -114,6 +120,13 @@ function getCategories(item: any, publisher: string) {
     case "Martin Fowler":
       keywords = "software development, programming";
       return keywords;
+    case "FAST COMPANY":
+      return item.categories.map((cat: any) => cat.toLowerCase()).join(',');
+    case "The New York Times":
+      if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
+        return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
+      }
+      return '';
    default: {
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
       keywords = Array.from(new Set(item.categories.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
@@ -131,7 +144,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   let pubDate: string|number;
 
   try {
-    const keywords = getCategories(item, publisher) as string;
+    const keywords = getCategories(item, publisher);
 
     const publishedDate = getPublishedDate(item, publisher) as string;
   

@@ -31,6 +31,7 @@ export async function main() {
       feedUrl: publisher.feedUrl.S,
       publisher: publisher.publisherName.S,
       tag: publisher.primaryTag.S,
+      feedType: publisher.feedType.S,
     };
     const params = {
       MessageBody: JSON.stringify(msgBody),
