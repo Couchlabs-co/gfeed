@@ -16,16 +16,18 @@
         image: "https://picsum.photos/200/300"
     };
 
+    function handleImgError(event: any) {
+        event.target.src = "/imgs/default.avif";
+    }
+
 
 </script>
 
 <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-slate-100">
     {#if Item.image}
-        <img class="w-full h-56" src={Item.image} alt={Item.title}>
+        <img class="w-full h-56" src={Item.image} alt={Item.title} on:error={handleImgError} />
     {:else}
-        <div class="w-full h-56 flex items-center justify-center">
-            <Newspaper class="w-1/2 h-1/2 text-gray-400" />
-        </div>
+        <img class="w-full h-56" src="/imgs/default.avif" alt={Item.title} />
     {/if}
     <div class="px-6 py-4">
         <p class="text-gray-700 text-sm">
