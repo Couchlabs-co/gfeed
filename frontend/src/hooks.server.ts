@@ -7,17 +7,6 @@ import type { Session } from '@auth/core/types';
 
 const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL } = import.meta.env;
 
-interface RCSession extends Session{
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    image: string;
-    emailVerified: boolean;
-    token: string;
-    login_count: number;
-  }
-}
 
 async function authorization({ event, resolve }): Promise<any> {
   // Protect any routes under /authenticated
@@ -57,6 +46,7 @@ const handleAuth = (async (...args) => {
             
           },
         },
+        idToken: true,
         profile(profile) {
           return {
             id: profile.sub,
@@ -91,20 +81,22 @@ const handleAuth = (async (...args) => {
         return token;
       },
       async session({ session, token }) {
-        if(token){
-          session.user = {
-            ...session.user,
-            name: token.name,
-            email: token.email,
-            image: token.picture,
-            sub: token.sub,
-            id: token.sub?.split('|')[1],
-            login_count: token.user?.login_count,
-          };
-          session.access_token = token.accessToken
+        if(!token){
+          return session;
         }
+        session.user = {
+          ...session.user,
+          name: token.name,
+          email: token.email,
+          image: token.picture,
+          sub: token.sub,
+          id: token.sub?.split('|')[1],
+          login_count: token.user?.login_count ?? 0,
+        };
+        session.access_token = token.access_token;
+        
         // Send properties to the client, like an access_token from a provider.
-        return session
+        return session;
       }
     }
   })(...args);
@@ -122,6 +114,7 @@ export const handleError: HandleServerError = async ({ error, event }) => {
 };
 
 async function FetchUser(userId: string) {
+  
   const result = await fetch(`${VITE_API_URL}/users/${userId}`, {
     method: 'GET',
     headers: {
@@ -149,14 +142,13 @@ async function CreateUser({user}: Session) {
 /// type: import('@sveltejs/kit').Handle
 const handleUser = (async ({event, resolve}) => {
   try{
-    const session: RCSession = await event.locals.getSession();
+    const session = await event.locals.getSession();
     if (session && session.user.login_count === 1) {
       const user = await CreateUser(session);
       session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
       event.locals.user = {...session.user };
     } else if(session) {
       event.locals.user = {...session.user };
-      console.log('session.user', session.user);
       const user = await FetchUser(session.user.id);
       session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
       event.locals.user = {...session.user };

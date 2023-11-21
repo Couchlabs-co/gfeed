@@ -1,4 +1,4 @@
-import type { Session as AuthSession } from '@auth/core/types';
+// import type { Session as AuthSession } from '@auth/core/types';
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
@@ -6,6 +6,7 @@ declare global {
 		// interface Error {}
 		interface Session {
 			access_token: string;
+    		id_token: string;
 			user: {
 				id: string,
 				name: string,
@@ -14,11 +15,11 @@ declare global {
 				emailVerified: boolean,
 				login_count: number,
 				sub: string,
-			  },
+			  } & AuthSession['user'],
 			  expires: string,
-		}
-		interface Session extends AuthSession {}
+		};
 		interface Locals {
+			token: string;
 			user: {
 				id: string;
 				name: string;

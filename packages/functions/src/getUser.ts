@@ -14,7 +14,6 @@ type User = {
 };
 
 const getUser = async (id: string) => {
-//   const userId = id.split("|");
   const userTable = Table.user.tableName;
   const userQuery = new QueryCommand({
     TableName: userTable,

@@ -226,7 +226,7 @@ const publishers = [
       "logo": "https://www.coindesk.com/resizer/fTK3gATlyciJ-BZG2_OP12niDe0=/144x32/downloads.coindesk.com/arc/failsafe/feeds/coindesk-feed-logo.png"
     },
     {
-      "name": "THE WALL STREET JOURNAL",
+      "name": "The Wall Street Journal",
       "publisherUrl": "https://www.wsj.com",
       "feedUrl": "https://feeds.a.dj.com/rss/RSSWSJD.xml",
       "feedStatus": "active",
@@ -236,7 +236,7 @@ const publishers = [
       "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
     },
     {
-      "name": "THE WALL STREET JOURNAL",
+      "name": "The Wall Street Journal",
       "publisherUrl": "https://www.wsj.com",
       "feedUrl": "https://feeds.a.dj.com/rss/RSSLifestyle.xml",
       "feedStatus": "active",
@@ -246,7 +246,7 @@ const publishers = [
       "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
     },
     {
-      "name": "THE WALL STREET JOURNAL",
+      "name": "The Wall Street Journal",
       "publisherUrl": "https://www.wsj.com",
       "feedUrl": "https://feeds.a.dj.com/rss/RSSOpinion.xml",
       "feedStatus": "active",
