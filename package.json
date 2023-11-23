@@ -13,9 +13,9 @@
   },
   "devDependencies": {
     "@tsconfig/node16": "^16.1.1",
-    "aws-cdk-lib": "2.99.1",
-    "constructs": "10.2.70",
-    "sst": "2.26.9",
+    "aws-cdk-lib": "2.101.1",
+    "constructs": "10.2.69",
+    "sst": "2.36.3",
     "typescript": "^5.2.2"
   },
   "type": "module"
