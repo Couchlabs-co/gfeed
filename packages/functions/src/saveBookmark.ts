@@ -16,10 +16,9 @@ interface BookmarkAction {
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
-  const user_id = evt.pathParameters?.userId;
   const body: BookmarkAction = JSON.parse(evt.body ?? '');
 
-  if(!body || !body.contentId || !user_id) {
+  if(!body || !body.contentId) {
     return {
       statusCode: 400,
       body: JSON.stringify({"msg": "Bad Request"})
