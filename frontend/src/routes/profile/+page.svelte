@@ -15,8 +15,15 @@
         return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
     }
 
-</script>
+    const userId = data.user?.id ?? '';
 
+</script>
+{#if !data.user?.id}
+    <div class="flex flex-col items-center justify-center">
+        <h1 class="text-2xl">You need to login to view this page</h1>
+        <a href="/login" class="btn btn-primary">Login</a>
+    </div>
+{:else}
 <div class="flex flex-cols gap-2">
     <div class="container w-1/4">
         <!-- <div class="bg-white p-3 "> -->
@@ -36,7 +43,7 @@
                 </li>
                 <li class="flex items-center py-3">
                     <span>Member since</span>
-                    <span class="ml-auto">{formatDate(data.user.createdAt)}</span>
+                    <span class="ml-auto">{formatDate(data.user?.createdAt ?? '')}</span>
                 </li>
             </ul>
             </div>
@@ -110,8 +117,22 @@
                                         {interest.tagName}
                                     </td>
                                     <td class="flex flex-row">
-                                        <button class="btn m-2"><Check /> Interested</button>
-                                        <button class="btn m-2"><Ban /> Not so much</button>
+                                        <button class="btn m-2"  on:click={() =>
+                                            userAction(
+                                                userId,
+                                                interest.tagName,
+                                                "likes",
+                                                "interest",
+                                                "",
+                                                interest.id)}><Check /> Interested</button>
+                                        <button class="btn m-2" on:click={() =>
+                                            userAction(
+                                                userId,
+                                                interest.tagName,
+                                                "dislikes",
+                                                "interest",
+                                                "",
+                                                interest.id)}><Ban /> Not so much</button>
                                     </td>
                                 </tr>
                                 {/each}
@@ -123,7 +144,7 @@
             {#if activeTab === 1}
                 <div>
                     <div class="p-3 shadow-sm rounded-sm">
-                        <h2>Worth Reading...</h2>
+                        <h2>Procastinate I say..</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -137,6 +158,7 @@
                                                     {later.content}
                                                 </a>
                                             </article>
+                                            <button class="btn btn-square btn-outline bg-danger"><Ban /></button>
                                         </td>
                                     </tr>
                                 {/each}
@@ -148,7 +170,7 @@
             {#if activeTab === 2}
                 <div>
                     <div class="p-3 shadow-sm rounded-sm">
-                        <h2>Procastinate I say...</h2>
+                        <h2>Worth Reading...</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -158,7 +180,7 @@
                                     <tr>
                                         <td class="text-base text-black">
                                             <article>
-                                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(data.user?.id, item.title, "viewed", "post", item.link, item.id)}>
+                                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(userId, item.title, "viewed", "post", item.link, item.id)}>
                                                     {item.content}
                                                 </a>
                                             </article>
@@ -174,3 +196,4 @@
         </div>
     </div>
 </div>
+{/if}
