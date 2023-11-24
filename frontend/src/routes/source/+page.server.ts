@@ -1,7 +1,5 @@
 import type { PageServerLoad } from "./$types";
 
-
-/** @type {import('./$types').PageServerLoad} */
 export const load: PageServerLoad = async (event) => {
 	const session = await event.locals.getSession();
 

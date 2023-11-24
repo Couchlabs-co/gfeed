@@ -1,6 +1,7 @@
 <script lang="ts">
     import { readingListStore } from '../../store';
-    import { Star, StarOff } from 'lucide-svelte';
+    import { Star, StarOff, ShieldCheck } from 'lucide-svelte';
+    import { userAction } from '$lib/userActions';
 
 	export let data;
     
@@ -23,7 +24,7 @@
         visibileRows = Items.slice(start, end);
     }
 
-    async function userAction(e: any, title: string, reaction: string, type: string, index: number) {
+    async function handleClick(e: any, title: string, reaction: string, type: string, index: number, contentId: string) {
 
         if (reaction === "likes") {
             likeIndex = index;
@@ -33,19 +34,7 @@
             likeIndex = -1;
         }
 
-        const res = await fetch("/api/engage", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                title,
-                reaction,
-                type,
-                userId: session?.user.id,
-            }),
-        });
-        const data = await res.json();
+        const data = userAction(session?.user.id, title, reaction, type, "", contentId)
         console.log(data);
     }
 
@@ -78,14 +67,21 @@
 
                     <td class="w-96"><span class="text-xl font-semibold">{item.name}</span></td>
                     <td class="w-20">
-                        <button class={i === likeIndex ? "btn btn-square btn-outline bg-success": "btn btn-square btn-outline"} on:click={(e) => userAction(e, item.name, "likes", "publisher", i)}>
+                        <button class={i === likeIndex ? "btn btn-square btn-outline bg-success": "btn btn-square btn-outline"}
+                            on:click={(e) => handleClick(e, item.name, "likes", "publisher", i, item.id)}>
                             <Star color={i === likeIndex ? "white": "black"} />
                         </button>
                     </td>
                     <td class="w-20">
-                        <button class={i === dislikeIndex ? "btn btn-square btn-outline bg-danger": "btn btn-square btn-outline"} on:click={(e) => userAction(e, item.name, "dislikes", "publisher", i)}>
+                        <button class={i === dislikeIndex ? "btn btn-square btn-outline bg-danger": "btn btn-square btn-outline"}
+                            on:click={(e) => handleClick(e, item.name, "dislikes", "publisher", i, item.id)}>
                             <StarOff color={i === dislikeIndex ? "white": "black"}/>
                         </button>
+                        {#if session?.user?.email === "jasdeepm@gmail.com"}
+                            <button class="btn btn-square btn-outline">
+                                <ShieldCheck />
+                            </button>
+                        {/if}
                     </td>
                 </tr>
             {/each}
