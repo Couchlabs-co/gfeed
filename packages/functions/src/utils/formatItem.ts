@@ -28,6 +28,10 @@ function getImage(item: any, publisher: string) {
     return getImageUrl(item.mediaThumbnail.$.url.slice(23));
   }
 
+  if (item.mediaThumbnail && publisher === "Financial Times") {
+    return item.mediaThumbnail.$.url;
+  }
+
   if (item.mediaThumbnail) {
     return getImageUrl(item.mediaThumbnail.$.url);
   }
