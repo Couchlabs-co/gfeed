@@ -1,17 +1,20 @@
 import { Cron, StackContext, Queue, Function, use } from "sst/constructs";
+import { Duration } from "aws-cdk-lib";
 import { DbStack } from "./DbStack";
 
 export function FunctionStack({ stack }: StackContext) {
 
   const { PostTable, PublisherTable } = use(DbStack);
+
   
   const FeedQueue = new Queue(stack, "Queue", {
     consumer: "packages/functions/src/feedHandler.main",
     cdk: {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
-      },
-    },
+        visibilityTimeout: Duration.seconds(45),
+      }
+    }
   });
 
   const FeedCron = new Cron(stack, "FeedCron", {
