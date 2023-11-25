@@ -62,10 +62,17 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
     })
   );
 
-  if(userInterests && userInterests.Items && userInterests.Items?.length !== 0) {
-    for(const interest of userInterests?.Items) {
-      result.Items.filter((item: any) => {
-        return item.tag.S === interest.contentType.S;
+  const publishersUserLikes = userInterests.Items?.filter((item: any) => {
+    return item.userAction.S === "likes" && item.contentType.S === "publisher";
+  });
+  const publishersUserDislikes = userInterests.Items?.filter((item: any) => {
+    return item.userAction.S === "dislikes" && item.contentType.S === "publisher";
+  });
+
+  if(publishersUserDislikes && publishersUserDislikes?.length !== 0) {
+    for(const publisher of publishersUserDislikes) {
+      result.Items = result.Items.filter((item: any) => {
+        return item.publisher?.S !== publisher.content.S;
       });
     }
   }
@@ -100,6 +107,20 @@ export const handler = ApiHandler(async (evt) => {
       }
       const sub = payload.sub ?? "";
       const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
+
+      // const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
+      //   TableName: Table.userActions.tableName,
+      //   KeyConditionExpression: "userId = :userId",
+      //   ExpressionAttributeValues: {
+      //     ":userId": { S: userId },
+      //   },
+      //   ConsistentRead: true,
+      // }));
+
+      // console.log("userInterests: ", userInterests.Items);
+      // const publishersUserLikes = userInterests.Items?.filter((item: any) => {
+      //   return item.userAction.S === "like" && item.contentType.S === "publisher";
+      // });
 
       result = await GetUserFeed(keyDates, userId);
       // result.Count = result.Items?.length;
