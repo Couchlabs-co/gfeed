@@ -33,7 +33,7 @@ export function ApiStack({ stack, app }: StackContext) {
   
   const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable } = use(DbStack);
 
-  const ReadingCornerAPI = new Api(stack, "ReadingCornerAPI", {
+  const IntelliFeedAPI = new Api(stack, "IntelliFeedAPI", {
     customDomain,
     defaults: {
       function: {
@@ -59,10 +59,10 @@ export function ApiStack({ stack, app }: StackContext) {
   });
 
   stack.addOutputs({
-    ApiUrl: ReadingCornerAPI.url,
+    ApiUrl: IntelliFeedAPI.url,
   });
 
   return {
-    ReadingCornerAPI,
+    IntelliFeedAPI,
   }
 }

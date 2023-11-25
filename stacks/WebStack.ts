@@ -34,8 +34,8 @@ export function WebStack({ stack, app }: StackContext) {
       break;
     }
     default: {
-      const {ReadingCornerAPI} = use(ApiStack);
-      apiUrl = ReadingCornerAPI.url;
+      const {IntelliFeedAPI} = use(ApiStack);
+      apiUrl = IntelliFeedAPI.url;
       customDomain = undefined;
     }
   };

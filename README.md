@@ -1,4 +1,4 @@
-# Reading Corner
+# Intelli Feed
 
 # Web
 [![reading-corner-web](https://github.com/jmadan/reading-corner/actions/workflows/actions.yml/badge.svg)](https://github.com/jmadan/reading-corner/actions/workflows/actions.yml)
