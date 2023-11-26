@@ -1,5 +1,6 @@
 <script lang="ts">
     import { BookmarkPost, userAction } from "$lib/userActions";
+    import { Share2 } from "lucide-svelte";
     export let userId: string;
 
     export let Item = {
@@ -29,13 +30,19 @@
         <img class="w-full h-56" src="/imgs/default.avif" alt={Item.title} />
     {/if}
     <div class="px-6 py-4">
-        <p class="text-gray-700 text-sm">
-          {Item.author}, {Item.publisher} on {Item.pubDate}
-        </p>
-      <div class="font-bold text-m mb-2">
-        <a href={Item.link} class="link link-hover" target="_blank" on:click={()=> userAction(userId, Item.title, "viewed", "post", Item.link, Item.id)}>
-            {@html Item.title}
+      <div class="h-16 font-bold text-s mb-2">
+        <a href={Item.link} class="link link-hover text-ellipsis" target="_blank" on:click={()=> userAction(userId, Item.title, "viewed", "post", Item.link, Item.id)}>
+            {#if Item.title.length > 65}
+                {@html Item.title.slice(0,65)}...
+            {:else}
+                {@html Item.title}
+            {/if}
         </a>
+    </div>
+    <div>
+        <p class="text-gray-500 text-sm">
+            {Item.publisher}, {Item.pubDate} <Share2 class="inline-block h-4 w-4" />
+        </p>
     </div>
     </div>
     {#if userId != "0"}

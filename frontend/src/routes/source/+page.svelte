@@ -10,8 +10,7 @@
     let dislikeIndex = -1;
 
     const { Items } = data.data;
-    $readingListStore.sources = Items.lenght? Items: [];
-    let page = 0;
+        $readingListStore.sources = Items.lenght? Items: [];
     let pageIndex = 0;
     let pageSize = 10;
     const totalPages = Math.ceil(Items.length / pageSize);
@@ -24,7 +23,8 @@
         visibileRows = Items.slice(start, end);
     }
 
-    async function handleClick(e: any, title: string, reaction: string, type: string, index: number, contentId: string) {
+    async function handleClick(e: any, title: string, reaction: string, type: string, index: number, contentId: string, contentLink: string) {
+
 
         if (reaction === "likes") {
             likeIndex = index;
@@ -34,7 +34,7 @@
             likeIndex = -1;
         }
 
-        const data = userAction(session?.user.id, title, reaction, type, "", contentId)
+        const data = userAction(session?.user.id, title, reaction, type, contentLink, contentId)
         console.log(data);
     }
 
@@ -68,13 +68,13 @@
                     <td class="w-96"><span class="text-xl font-semibold">{item.name}</span></td>
                     <td class="w-20">
                         <button class={i === likeIndex ? "btn btn-square btn-outline bg-success": "btn btn-square btn-outline"}
-                            on:click={(e) => handleClick(e, item.name, "likes", "publisher", i, item.id)}>
+                            on:click={(e) => handleClick(e, item.name, "likes", "publisher", i, item.publisherId, item.feedUrl)}>
                             <Star color={i === likeIndex ? "white": "black"} />
                         </button>
                     </td>
                     <td class="w-20">
                         <button class={i === dislikeIndex ? "btn btn-square btn-outline bg-danger": "btn btn-square btn-outline"}
-                            on:click={(e) => handleClick(e, item.name, "dislikes", "publisher", i, item.id)}>
+                            on:click={(e) => handleClick(e, item.name, "dislikes", "publisher", i, item.publisherId, item.feedUrl)}>
                             <StarOff color={i === dislikeIndex ? "white": "black"}/>
                         </button>
                         {#if session?.user?.email === "jasdeepm@gmail.com"}

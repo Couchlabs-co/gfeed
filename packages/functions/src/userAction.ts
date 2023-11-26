@@ -28,22 +28,23 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     const userActionsTable = Table.userActions.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
+    const Item = {
+      id: { S: uuid.v4() },
+      sk: { N: `${Date.now()}`},
+      userId: { S: userId },
+      userAction: { S: reaction },
+      content: { S: content },
+      contentType: { S: contentType },
+      contentId: { S: contentId },
+      contentLink: { S: contentLink ?? '' },
+    };
     const command: PutItemCommand = new PutItemCommand({
       TableName: userActionsTable,
-      Item: {
-        id: { S: uuid.v4() },
-        sk: { N: `${Date.now()}`},
-        userId: { S: userId },
-        userAction: { S: reaction },
-        content: { S: content },
-        contentType: { S: contentType },
-        contentId: { S: contentId },
-        contentLink: { S: contentLink ?? null },
-      },
+      Item: Item,
     });
     const res = await dbClient.send(command);
     return {
-      statusCode: 201,
+      statusCode: res.$metadata.httpStatusCode,
       body: JSON.stringify({"msg": "Success"})
     };
     

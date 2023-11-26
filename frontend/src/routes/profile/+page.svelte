@@ -121,18 +121,18 @@
                                             userAction(
                                                 userId,
                                                 interest.tagName,
-                                                "likes",
+                                                "follow",
                                                 "interest",
                                                 "",
-                                                interest.id)}><Check /> Interested</button>
+                                                interest.interestId)}><Check /> Interested</button>
                                         <button class="btn m-2" on:click={() =>
                                             userAction(
                                                 userId,
                                                 interest.tagName,
-                                                "dislikes",
+                                                "unfollow",
                                                 "interest",
                                                 "",
-                                                interest.id)}><Ban /> Not so much</button>
+                                                interest.interestId)}><Ban /> Not so much</button>
                                     </td>
                                 </tr>
                                 {/each}
