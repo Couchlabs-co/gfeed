@@ -17,6 +17,15 @@ export function FunctionStack({ stack }: StackContext) {
     }
   });
 
+  const ImageQueue = new Queue(stack, "ImageQueue", {
+    cdk: {
+      queue: {
+        queueName: `ImageQueue-${stack.stage}`,
+        visibilityTimeout: Duration.seconds(45),
+      }
+    }
+  });
+
   const FeedCron = new Cron(stack, "FeedCron", {
     schedule: "cron(0 */6 * * ? *)",
     job: "packages/functions/src/feedPublisher.main",
@@ -34,5 +43,6 @@ export function FunctionStack({ stack }: StackContext) {
     FeedQueue,
     FeedCron,
     FeedHandler,
+    ImageQueue,
   };
 }
