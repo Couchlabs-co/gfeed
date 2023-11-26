@@ -97,6 +97,8 @@ function getAuthor(item: any, publisher: string) {
       return "Financial Times";
     case "THE WALL STREET JOURNAL":
       return "THE WALL STREET JOURNAL";
+    case "Hacker News":
+      return "Hacker News";
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];
@@ -151,6 +153,8 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
     const keywords = getCategories(item, publisher);
 
     const publishedDate = getPublishedDate(item, publisher) as string;
+
+    const guid = getItemGuid(item, publisher);
   
     pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
     img = getImage(item, publisher) ?? '';
@@ -175,7 +179,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       link: { S: he.decode(item.link).trim() },
       pubDate: { N: new Date(pubDate).getTime().toString() },
       author: { S: getAuthor(item, publisher) },
-      guid: { S: he.decode(item.guid ?? item.id).trim() },
+      guid: { S: guid },
       keywords: { S: keywords ?? tag },
       tag: { S: tag },
       publisher: { S: publisher },
@@ -197,5 +201,12 @@ function extractImageFromDescription(description: any): string {
   const imgRegex = /<img[^>]+src="([^">]+)"/g;
   const imgSrc = imgRegex.exec(description);
   return imgSrc ? imgSrc[1] : "";
+}
+
+function getItemGuid(item: any, publisher: string) {
+  switch(publisher) {
+    default:
+      return he.decode(item.guid ?? item.id).trim()
+  }
 }
 
