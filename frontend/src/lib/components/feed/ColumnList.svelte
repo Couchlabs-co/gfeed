@@ -32,8 +32,8 @@
     <div class="px-6 py-4">
       <div class="h-16 font-bold text-s mb-2">
         <a href={Item.link} class="link link-hover text-ellipsis" target="_blank" on:click={()=> userAction(userId, Item.title, "viewed", "post", Item.link, Item.id)}>
-            {#if Item.title.length > 65}
-                {@html Item.title.slice(0,65)}...
+            {#if Item.title.length > 80}
+                {@html Item.title.slice(0,80)}...
             {:else}
                 {@html Item.title}
             {/if}

@@ -21,7 +21,7 @@ function getImage(item: any, publisher: string) {
   };
 
   if (item.mediaContent) {
-    return getImageUrl(item.mediaContent.$.url);
+    return item.mediaContent.$.url;
   }
 
   if (item.mediaThumbnail && publisher === "HACKERNOON") {
@@ -133,9 +133,11 @@ function getCategories(item: any, publisher: string) {
         return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
       }
       return '';
+    case "The Guardian":
+      return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
    default: {
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
-      keywords = Array.from(new Set(item.categories.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
+      keywords = Array.from(new Set(item.categories.map((cat: string) => cat && cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
         .map((cat: string) => cat.toLowerCase()))).join(',');
     } else if (item.categories && typeof item.categories === "string") {
       keywords = item.categories.toLowerCase();
@@ -191,8 +193,8 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   
   }
   catch (error) {
-    console.log('item', item.title, item.publisher);
-    console.log('error', error);
+    console.log('formatItem item', item.title, item.publisher);
+    console.log('formatItem error', error);
   }
   return {};  
 };

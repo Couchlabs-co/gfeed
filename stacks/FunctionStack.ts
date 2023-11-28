@@ -13,6 +13,7 @@ export function FunctionStack({ stack }: StackContext) {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
         visibilityTimeout: Duration.seconds(45),
+        deliveryDelay: Duration.seconds(1),
       }
     }
   });

@@ -15,7 +15,7 @@ export async function userAction(userId: string, content: string, reaction: stri
         }),
     });
     const data = await res.json();
-    console.log(data);
+    return data;
 }
 
 export async function BookmarkPost(userId: string, content: string, contentType: string, contentId: string, reaction: string, contentLink: string) {

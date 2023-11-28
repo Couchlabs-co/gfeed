@@ -25,10 +25,14 @@ export async function main(event: SQSEvent) {
         }
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
-        console.log("err........", publisher, feedUrl, err, item.title);
+        console.log("feedHandler err........", publisher, feedUrl, err, JSON.stringify(item));
       }
     }
     console.log(`Message processed: "${publisher}"`);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ status: "successful" }),
+    };
   }
     
   return {

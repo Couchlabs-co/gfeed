@@ -20,9 +20,19 @@
 
     const userId = data.user?.id ?? '';
 
-    const userLikedPosts = data.userInterests.interestsByAction.likes.filter((item: any) => {
+    const { userInterests } = data;
+
+    const userLikedPosts = userInterests.interestsByAction && userInterests.interestsByAction.likes ? userInterests.interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
-    })
+    }) : [];
+
+    const userBookmarkedPosts = userInterests.interestsByAction && userInterests.interestsByAction.bookmarks ? userInterests.interestsByAction?.bookmarks.filter((item: any) => {
+        return item.contentType === 'post';
+    }) : [];
+
+    const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follows ? userInterests.interestsByAction?.follows.filter((item: any) => {
+        return item.contentType === 'interest';
+    }) : [];
 
 </script>
 {#if !data.user?.id}
@@ -109,10 +119,10 @@
                 {/each}
             </div>
             {#if activeTab === 0}
-                <UserInterests interests={data.interests.Items} userId={userId} />
+                <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} />
             {/if}
             {#if activeTab === 1}
-                <Bookmarks bookmarks={data.userBookmarks.Items} userId={userId} />
+                <Bookmarks bookmarks={userBookmarkedPosts} userId={userId} />
             {/if}
             {#if activeTab === 2}
                 <UserPosts userPosts={userLikedPosts} userId={userId} />
