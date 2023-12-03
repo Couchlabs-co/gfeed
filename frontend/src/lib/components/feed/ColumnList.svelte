@@ -41,12 +41,12 @@
     </div>
     <div>
         <p class="text-gray-500 text-sm">
-            {Item.publisher}, {Item.pubDate} <Share2 class="inline-block h-4 w-4" />
+            {Item.publisher}, {Item.pubDate}
         </p>
     </div>
     </div>
-    {#if userId != "0"}
-            <div class="flex flex-1 flex-row space-x-2 m-2">
+    <div class="flex flex-1 flex-row space-x-2 m-2">
+        {#if userId != "0"}
                 <button class="btn btn-xs bg-transparent border border-black" type="button" on:click={() => userAction
         (userId, Item.title, "likes", "post", Item.link, Item.id)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20" {...$$props}><path fill="currentColor" fill-rule="evenodd" d="M3.172 5.172a4 4 0 0 1 5.656 0L10 6.343l1.172-1.171a4 4 0 1 1 5.656 5.656L10 17.657l-6.828-6.829a4 4 0 0 1 0-5.656Z" clip-rule="evenodd"/></svg>
@@ -60,6 +60,6 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="1em" viewBox="0 0 384 512" {...$$props}><path fill="currentColor" d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400L0 512z"/></svg>
                 </button>
                 
-            </div>
-    {/if}
+        {/if}
+    </div>
   </div>
