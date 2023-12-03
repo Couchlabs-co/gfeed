@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { userAction } from '$lib/userActions.js';
-	import { Ban, Check } from 'lucide-svelte';
+	import { Ban, Book, Check } from 'lucide-svelte';
+    import UserInterests from '$lib/components/Profile/UserInterests.svelte';
+    import Bookmarks from '$lib/components/Profile/UserBookmarks.svelte';
+	import UserPosts from '$lib/components/Profile/UserPosts.svelte';
     import { DateTime } from 'luxon';
 
 	export let data;
@@ -16,6 +19,20 @@
     }
 
     const userId = data.user?.id ?? '';
+
+    const { userInterests } = data;
+
+    const userLikedPosts = userInterests.interestsByAction && userInterests.interestsByAction.likes ? userInterests.interestsByAction?.likes.filter((item: any) => {
+        return item.contentType === 'post';
+    }) : [];
+
+    const userBookmarkedPosts = userInterests.interestsByAction && userInterests.interestsByAction.bookmarks ? userInterests.interestsByAction?.bookmarks.filter((item: any) => {
+        return item.contentType === 'post';
+    }) : [];
+
+    const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follow ? userInterests.interestsByAction?.follow.filter((item: any) => {
+        return item.contentType === 'interest';
+    }) : [];
 
 </script>
 {#if !data.user?.id}
@@ -102,95 +119,13 @@
                 {/each}
             </div>
             {#if activeTab === 0}
-                <div>
-                    <div class="p-3 shadow-sm rounded-sm">
-                        <h2>What interests you?</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-lg text-black">Interests</th>
-                                    <th class="text-lg text-black">Interested/Not Interested</th>
-                                </tr>
-                                {#each data.interests.Items as interest}
-                                <tr>
-                                    <td class="text-base text-black">
-                                        {interest.tagName}
-                                    </td>
-                                    <td class="flex flex-row">
-                                        <button class="btn m-2"  on:click={() =>
-                                            userAction(
-                                                userId,
-                                                interest.tagName,
-                                                "likes",
-                                                "interest",
-                                                "",
-                                                interest.id)}><Check /> Interested</button>
-                                        <button class="btn m-2" on:click={() =>
-                                            userAction(
-                                                userId,
-                                                interest.tagName,
-                                                "dislikes",
-                                                "interest",
-                                                "",
-                                                interest.id)}><Ban /> Not so much</button>
-                                    </td>
-                                </tr>
-                                {/each}
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+                <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} />
             {/if}
             {#if activeTab === 1}
-                <div>
-                    <div class="p-3 shadow-sm rounded-sm">
-                        <h2>Procastinate I say..</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-lg text-black">Articles</th>
-                                </tr>
-                                {#each data.userBookmarks.Items as later}
-                                    <tr>
-                                        <td class="text-base text-black">
-                                            <article>
-                                                <a href="/" class="link link-hover" target="_blank">
-                                                    {later.content}
-                                                </a>
-                                            </article>
-                                            <button class="btn btn-square btn-outline bg-danger"><Ban /></button>
-                                        </td>
-                                    </tr>
-                                {/each}
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+                <Bookmarks bookmarks={userBookmarkedPosts} userId={userId} />
             {/if}
             {#if activeTab === 2}
-                <div>
-                    <div class="p-3 shadow-sm rounded-sm">
-                        <h2>Worth Reading...</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-lg text-black">Articles</th>
-                                </tr>
-                                {#each data.userBookmarks.Items as item}
-                                    <tr>
-                                        <td class="text-base text-black">
-                                            <article>
-                                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(userId, item.title, "viewed", "post", item.link, item.id)}>
-                                                    {item.content}
-                                                </a>
-                                            </article>
-                                        </td>
-                                    </tr>
-                                {/each}
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+                <UserPosts userPosts={userLikedPosts} userId={userId} />
             {/if}
             
         </div>

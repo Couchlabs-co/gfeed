@@ -62,10 +62,29 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
     })
   );
 
-  if(userInterests && userInterests.Items && userInterests.Items?.length !== 0) {
-    for(const interest of userInterests?.Items) {
-      result.Items.filter((item: any) => {
-        return item.tag.S === interest.contentType.S;
+  const interestsUserFollows = userInterests.Items?.filter((item: any) => {
+    return item.userAction.S === "follow" && item.contentType.S === "interest";
+  });
+
+  const publishersUserLikes = userInterests.Items?.filter((item: any) => {
+    return item.userAction.S === "likes" && item.contentType.S === "publisher";
+  });
+  const publishersUserDislikes = userInterests.Items?.filter((item: any) => {
+    return item.userAction.S === "dislikes" && item.contentType.S === "publisher";
+  });
+
+  if(publishersUserDislikes && publishersUserDislikes?.length !== 0) {
+    for(const publisher of publishersUserDislikes) {
+      result.Items = result.Items.filter((item: any) => {
+        return item.publisher?.S !== publisher.content.S;
+      });
+    }
+  }
+
+  if(interestsUserFollows && interestsUserFollows?.length !== 0) {
+    for(const interest of interestsUserFollows) {
+      result.Items = result.Items.filter((item: any) => {
+        return item.tag?.S.toLowerCase() === interest.content.S?.toLowerCase() || item.tag?.S.toLowerCase() === 'misc';
       });
     }
   }
@@ -102,7 +121,6 @@ export const handler = ApiHandler(async (evt) => {
       const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
 
       result = await GetUserFeed(keyDates, userId);
-      // result.Count = result.Items?.length;
     }
     catch(err) {
       console.log("err: ", err);

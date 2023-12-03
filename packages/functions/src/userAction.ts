@@ -1,4 +1,4 @@
-import { PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand, DeleteItemCommand, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
@@ -17,6 +17,7 @@ interface UserAction {
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
   const body: UserAction = JSON.parse(evt.body ?? '');
+  console.log("body: ", body);
 
   if(!body || !body.content) {
     return {
@@ -28,22 +29,39 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     const userActionsTable = Table.userActions.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
+    
+    if(reaction === 'unfollow') {
+      const command: DeleteItemCommand = new DeleteItemCommand({
+        TableName: userActionsTable,
+        Key: {
+          userId: { S: userId },
+          sk: { S: `${content}#${reaction}` },
+        },
+      });
+      const res = await dbClient.send(command);
+      return {
+        statusCode: res.$metadata.httpStatusCode,
+        body: JSON.stringify({"msg": "Success"})
+      };
+    }
+
+    const Item = {
+      id: { S: uuid.v4() },
+      sk: { S: `${content}#${reaction}`},
+      userId: { S: userId },
+      userAction: { S: reaction },
+      content: { S: content },
+      contentType: { S: contentType },
+      contentId: { S: contentId },
+      contentLink: { S: contentLink ?? '' },
+    };
     const command: PutItemCommand = new PutItemCommand({
       TableName: userActionsTable,
-      Item: {
-        id: { S: uuid.v4() },
-        sk: { N: `${Date.now()}`},
-        userId: { S: userId },
-        userAction: { S: reaction },
-        content: { S: content },
-        contentType: { S: contentType },
-        contentId: { S: contentId },
-        contentLink: { S: contentLink ?? null },
-      },
+      Item: Item,
     });
     const res = await dbClient.send(command);
     return {
-      statusCode: 201,
+      statusCode: res.$metadata.httpStatusCode,
       body: JSON.stringify({"msg": "Success"})
     };
     

@@ -13,6 +13,16 @@ export function FunctionStack({ stack }: StackContext) {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
         visibilityTimeout: Duration.seconds(45),
+        deliveryDelay: Duration.seconds(1),
+      }
+    }
+  });
+
+  const ImageQueue = new Queue(stack, "ImageQueue", {
+    cdk: {
+      queue: {
+        queueName: `ImageQueue-${stack.stage}`,
+        visibilityTimeout: Duration.seconds(45),
       }
     }
   });
@@ -34,5 +44,6 @@ export function FunctionStack({ stack }: StackContext) {
     FeedQueue,
     FeedCron,
     FeedHandler,
+    ImageQueue,
   };
 }

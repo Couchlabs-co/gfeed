@@ -21,7 +21,7 @@ function getImage(item: any, publisher: string) {
   };
 
   if (item.mediaContent) {
-    return getImageUrl(item.mediaContent.$.url);
+    return item.mediaContent.$.url;
   }
 
   if (item.mediaThumbnail && publisher === "HACKERNOON") {
@@ -97,6 +97,8 @@ function getAuthor(item: any, publisher: string) {
       return "Financial Times";
     case "THE WALL STREET JOURNAL":
       return "THE WALL STREET JOURNAL";
+    case "Hacker News":
+      return "Hacker News";
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];
@@ -131,9 +133,11 @@ function getCategories(item: any, publisher: string) {
         return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
       }
       return '';
+    case "The Guardian":
+      return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
    default: {
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
-      keywords = Array.from(new Set(item.categories.map((cat: string) => cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
+      keywords = Array.from(new Set(item.categories.map((cat: string) => cat && cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
         .map((cat: string) => cat.toLowerCase()))).join(',');
     } else if (item.categories && typeof item.categories === "string") {
       keywords = item.categories.toLowerCase();
@@ -151,6 +155,8 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
     const keywords = getCategories(item, publisher);
 
     const publishedDate = getPublishedDate(item, publisher) as string;
+
+    const guid = getItemGuid(item, publisher);
   
     pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
     img = getImage(item, publisher) ?? '';
@@ -175,7 +181,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       link: { S: he.decode(item.link).trim() },
       pubDate: { N: new Date(pubDate).getTime().toString() },
       author: { S: getAuthor(item, publisher) },
-      guid: { S: he.decode(item.guid ?? item.id).trim() },
+      guid: { S: guid },
       keywords: { S: keywords ?? tag },
       tag: { S: tag },
       publisher: { S: publisher },
@@ -187,8 +193,8 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   
   }
   catch (error) {
-    console.log('item', item.title, item.publisher);
-    console.log('error', error);
+    console.log('formatItem item', item.title, item.publisher);
+    console.log('formatItem error', error);
   }
   return {};  
 };
@@ -197,5 +203,12 @@ function extractImageFromDescription(description: any): string {
   const imgRegex = /<img[^>]+src="([^">]+)"/g;
   const imgSrc = imgRegex.exec(description);
   return imgSrc ? imgSrc[1] : "";
+}
+
+function getItemGuid(item: any, publisher: string) {
+  switch(publisher) {
+    default:
+      return he.decode(item.guid ?? item.id).trim()
+  }
 }
 

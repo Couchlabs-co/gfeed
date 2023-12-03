@@ -21,7 +21,7 @@ export function DbStack({ stack }: StackContext) {
   const UserActionsTable = new Table(stack, "userActions", {
     fields: {
       id: "string",
-      sk: "number",
+      sk: "string",
       userId: "string",
       userAction: "string", //like, dislike, follow, bookmark, read
       content: "string", //tag, keyword, post title, author, publisher
