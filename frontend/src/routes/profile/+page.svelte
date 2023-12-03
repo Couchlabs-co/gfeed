@@ -30,7 +30,7 @@
         return item.contentType === 'post';
     }) : [];
 
-    const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follows ? userInterests.interestsByAction?.follows.filter((item: any) => {
+    const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follow ? userInterests.interestsByAction?.follow.filter((item: any) => {
         return item.contentType === 'interest';
     }) : [];
 

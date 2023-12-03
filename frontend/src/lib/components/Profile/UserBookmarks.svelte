@@ -7,11 +7,12 @@
 
 <div>
     <div class="p-3 shadow-sm rounded-sm">
-        <h2>Procastinate I say..</h2>
+        <h2>Library</h2>
+        <div class="mt-4">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-lg text-black">Articles</th>
+                    <th class="text-lg text-black">My saved pieces</th>
                 </tr>
             </thead>
                 {#each bookmarks as bookmark }
@@ -27,5 +28,6 @@
                     </tr>
                 {/each}
         </table>
+    </div>
     </div>
 </div>

@@ -27,30 +27,35 @@
         }
     }
 
+
 </script>
 
 <div class="w-4/5">
     <div class="p-3 shadow-sm rounded-sm">
-        <h2>What interests you?</h2>
+            <h2>Personalize your feed by selecting what you are interested in</h2>
+        <div class="mt-4">
         <table class="table-sm m-auto w-4/5">
             <thead>
                 <tr class="bg-slate-100">
-                    <th class="text-lg text-black text-left">Interests</th>
-                    <th class="text-lg text-black text-left">Interested/Not Interested</th>
+                    <th class="text-lg text-black text-left col-auto">Interests</th>
+                    <!-- <th class="text-lg text-black text-left">Interested/Not Interested</th> -->
                 </tr>
                 {#each interests as interest}
-                {checked = interestsUserFollow.find((item) => item.content === interest.tagName) ? true : false}
-                    
                 <tr>
                     <td class="text-base text-black">
                         {interest.tagName}
                     </td>
                     <td class="flex flex-row">
-                        <input type="checkbox" class="toggle toggle-success" checked={interestToggle(interest.tagName)} on:click|preventDefault={handleClick} value={JSON.stringify(interest)} id={interest.interestId}/>
+                        <input type="checkbox" class="toggle toggle-success"
+                            checked={interestToggle(interest.tagName)} 
+                            value={JSON.stringify(interest)} id={interest.interestId}
+                            on:click|preventDefault={handleClick}
+                        />
                     </td>
                 </tr>
                 {/each}
             </thead>
         </table>
+    </div>
     </div>
 </div>
