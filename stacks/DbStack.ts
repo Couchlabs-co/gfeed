@@ -105,6 +105,7 @@ export function DbStack({ stack }: StackContext) {
       },
     },
     onCreate: "packages/functions/src/seed.handler",
+    onUpdate: "packages/functions/src/seed.handler",
   });
 
   return {
