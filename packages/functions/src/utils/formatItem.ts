@@ -14,6 +14,15 @@ interface RssItem {
   img?: string;
 }
 
+function getDescription(item: any, publisher: string) {
+  switch(publisher){
+    case 'Hacker News':
+      return '';
+    default:
+      return he.decode(item.contentSnippet)
+  }
+}
+
 function getImage(item: any, publisher: string) {
   const getImageUrl = (url: string) => {
     const index = url.indexOf('?');
@@ -147,57 +156,6 @@ function getCategories(item: any, publisher: string) {
   }
 }
 
-export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
-  let img = "";
-  let pubDate: string|number;
-
-  try {
-    const keywords = getCategories(item, publisher);
-
-    const publishedDate = getPublishedDate(item, publisher) as string;
-
-    const guid = getItemGuid(item, publisher);
-  
-    pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
-    img = getImage(item, publisher) ?? '';
-  
-    switch(publisher) {
-      case "A List Apart":
-        if(!img){
-          img = extractImageFromDescription(item.description);
-        }
-        break;
-      case "HACKERNOON":
-        img = img?.replace("https://hackernoon.com/", "");
-        break;
-     default:
-        break;
-    }
-
-    const feedItem: Record<string, AttributeValue> = {
-      id: { S: uuid.v4() },
-      publishedDate: { S: getPublishedDate(item, publisher) },
-      title: { S: he.decode(item.title).trim() },
-      link: { S: he.decode(item.link).trim() },
-      pubDate: { N: new Date(pubDate).getTime().toString() },
-      author: { S: getAuthor(item, publisher) },
-      guid: { S: guid },
-      keywords: { S: keywords ?? tag },
-      tag: { S: tag },
-      publisher: { S: publisher },
-      content: { S: he.decode(item.contentSnippet ?? "") },
-      img: { S: img ?? "" },
-    };
-  
-    return feedItem;
-  
-  }
-  catch (error) {
-    console.log('formatItem item', item.title, item.publisher);
-    console.log('formatItem error', error);
-  }
-  return {};  
-};
 
 function extractImageFromDescription(description: any): string {
   const imgRegex = /<img[^>]+src="([^">]+)"/g;
@@ -212,3 +170,55 @@ function getItemGuid(item: any, publisher: string) {
   }
 }
 
+
+  export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
+    let img = "";
+    let pubDate: string|number;
+  
+    try {
+      const keywords = getCategories(item, publisher);
+  
+      const publishedDate = getPublishedDate(item, publisher) as string;
+  
+      const guid = getItemGuid(item, publisher);
+    
+      pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
+      img = getImage(item, publisher) ?? '';
+    
+      switch(publisher) {
+        case "A List Apart":
+          if(!img){
+            img = extractImageFromDescription(item.description);
+          }
+          break;
+        case "HACKERNOON":
+          img = img?.replace("https://hackernoon.com/", "");
+          break;
+       default:
+          break;
+      }
+  
+      const feedItem: Record<string, AttributeValue> = {
+        id: { S: uuid.v4() },
+        publishedDate: { S: getPublishedDate(item, publisher) },
+        title: { S: he.decode(item.title).trim() },
+        link: { S: he.decode(item.link).trim() },
+        pubDate: { N: new Date(pubDate).getTime().toString() },
+        author: { S: getAuthor(item, publisher) },
+        guid: { S: guid },
+        keywords: { S: keywords ?? tag },
+        tag: { S: tag },
+        publisher: { S: publisher },
+        content: { S: getDescription(item, publisher) },
+        img: { S: img ?? "" },
+      };
+    
+      return feedItem;
+    
+    }
+    catch (error) {
+      console.log('formatItem item', item.title, item.publisher);
+      console.log('formatItem error', error);
+    }
+    return {};  
+  };
