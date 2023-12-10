@@ -1,4 +1,4 @@
-import { PutItemCommand, DeleteItemCommand, GetItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
