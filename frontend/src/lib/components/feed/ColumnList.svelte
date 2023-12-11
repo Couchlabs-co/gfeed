@@ -30,14 +30,12 @@
         <img class="w-full h-56" src="/imgs/default.avif" alt={Item.title} />
     {/if}
     <div class="px-6 py-4">
-      <div class="h-16 font-bold text-s mb-2">
-        <a href={Item.link} class="link link-hover text-ellipsis" target="_blank" on:click={()=> userAction(userId, Item.title, "viewed", "post", Item.link, Item.id)}>
-            {#if Item.title.length > 80}
-                {@html Item.title.slice(0,80)}...
-            {:else}
-                {@html Item.title}
-            {/if}
-        </a>
+      <div class="h-auto font-bold text-s mb-2">
+        <p class="text-ellipsis">
+            <a href={Item.link} class="link link-hover text-ellipsis" target="_blank" on:click={()=> userAction(userId, Item.title, "viewed", "post", Item.link, Item.id)}>
+                    {@html Item.title}
+            </a>
+        </p>
     </div>
     <div>
         <p class="text-gray-500 text-sm">
