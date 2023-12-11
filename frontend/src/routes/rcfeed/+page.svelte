@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { readingListStore } from '../../store.js';
 	import ColumnList from '$lib/components/feed/ColumnList.svelte';
+	import ListItem from '$lib/components/feed/ListItem.svelte';
 
-	/** @type {import('./$types').PageData} */
 	export let data;
 	const { publishers, feed, session } = data;
 
@@ -24,6 +24,8 @@
 		}
 	}
 
+	const listView = false;
+
 </script>
 
 <div class="flex flex-row">
@@ -37,7 +39,24 @@
 			<span class="loading loading-infinity loading-lg" />
 		</div>
 	{/if}
-	{#if feed.Count > 0}
+	{#if feed.Count > 0 && listView}
+		<div class="flex flex-col w-10/12">
+			{#each readingFeed as Item}
+				<ListItem Item ={Item} userId={user_id} key={Item.id}/>
+			{/each}
+		</div>
+		<div class="sidePanel">
+			<h2 class="sidePanelHeading">Filters</h2>
+				<div class="flex flex-row m-4">
+					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
+						<option selected>Publishers</option>
+						{#each publishers.Items as publisher}
+							<option>{publisher.name}</option>
+						{/each}
+					</select>
+				</div>
+		</div>
+	{:else}
 		<div class="flex flex-col w-10/12">
 			<div class="grid grid-cols-3 gap-4">
 				{#each readingFeed as Item}

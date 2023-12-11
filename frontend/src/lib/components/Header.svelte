@@ -9,6 +9,7 @@
 		{ name: 'Plans', href: 'plan'},
 		{ name: 'Sources', href: 'source'},
 		{ name: 'Profile', href: 'profile' },
+		{ name: 'Support', href: 'support'}
 	];
 
 	const SignOut = () => {
