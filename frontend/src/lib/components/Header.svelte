@@ -5,11 +5,11 @@
 	import SearchBox from '../components/Search/SearchBox.svelte';
 
 	const navLinks = [
-		{ name: 'Discover', href: 'discover' },
-		{ name: 'Features', href: 'features' },
-		{ name: 'Sources', href: 'source'},
-		{ name: 'Profile', href: 'profile' },
-		{ name: 'Support', href: 'support'},
+		{ name: 'Discover', href: '/discover' },
+		{ name: 'Features', href: '/features' },
+		{ name: 'Sources', href: '/source'},
+		{ name: 'Profile', href: '/profile' },
+		{ name: 'Support', href: '/support'},
 	];
 
 	const SignOut = () => {
@@ -35,7 +35,6 @@
 				<li>
 					<a
 						href='{link.href}'
-						on:focus={() => console.log('focus')}
 						class="text-sm font-semibold leading-6 text-gray-900"
 						aria-current="page"
 						data-sveltekit-preload-data="off">{link.name}</a>
