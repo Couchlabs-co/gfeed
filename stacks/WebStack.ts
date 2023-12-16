@@ -10,32 +10,32 @@ export function WebStack({ stack, app }: StackContext) {
   switch(stack.stage) {
     case "prod": {
       customDomain = {
-        domainName: "jasdeep.me",
-        domainAlias: "www.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "gfeed.app",
+        domainAlias: "www.gfeed.app",
+        hostedZone: "gfeed.app"
       };
-      apiUrl = "https://api.jasdeep.me";
+      apiUrl = "https://api.gfeed.app";
       break;
     }
     case "uat": {
       customDomain = {
-        domainName: "uat.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "uat.gfeed.app",
+        hostedZone: "gfeed.app"
       }
-      apiUrl = "https://uat.api.jasdeep.me";
+      apiUrl = "https://uat.api.gfeed.app";
       break;
     }
     case "staging": {
       customDomain = {
-        domainName: "staging.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "staging.gfeed.app",
+        hostedZone: "gfeed.app"
       }
-      apiUrl = "https://staging.api.jasdeep.me";
+      apiUrl = "https://staging.api.gfeed.app";
       break;
     }
     default: {
-      const {IntelliFeedAPI} = use(ApiStack);
-      apiUrl = IntelliFeedAPI.url;
+      const {GFeedAPI} = use(ApiStack);
+      apiUrl = GFeedAPI.url;
       customDomain = undefined;
     }
   };

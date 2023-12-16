@@ -8,22 +8,22 @@ export function ApiStack({ stack, app }: StackContext) {
   switch(stack.stage) {
     case "prod": {
       customDomain = {
-        domainName: "api.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "api.gfeed.app",
+        hostedZone: "gfeed.app"
       };
       break;
     }
     case "uat": {
       customDomain = {
-        domainName: "uat.api.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "uat.api.gfeed.app",
+        hostedZone: "gfeed.app"
       }
       break;
     }
     case "staging": {
       customDomain = {
-        domainName: "staging.api.jasdeep.me",
-        hostedZone: "jasdeep.me"
+        domainName: "staging.api.gfeed.app",
+        hostedZone: "gfeed.app"
       }
       break;
     }
@@ -33,7 +33,7 @@ export function ApiStack({ stack, app }: StackContext) {
   
   const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable } = use(DbStack);
 
-  const IntelliFeedAPI = new Api(stack, "IntelliFeedAPI", {
+  const GFeedAPI = new Api(stack, "GFeedAPI", {
     customDomain,
     defaults: {
       function: {
@@ -59,10 +59,10 @@ export function ApiStack({ stack, app }: StackContext) {
   });
 
   stack.addOutputs({
-    ApiUrl: IntelliFeedAPI.url,
+    ApiUrl: GFeedAPI.url,
   });
 
   return {
-    IntelliFeedAPI,
+    GFeedAPI,
   }
 }
