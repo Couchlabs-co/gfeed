@@ -6,9 +6,10 @@
 
 	const navLinks = [
 		{ name: 'Discover', href: 'discover' },
+		{ name: 'Features', href: 'features' },
 		{ name: 'Sources', href: 'source'},
 		{ name: 'Profile', href: 'profile' },
-		{ name: 'Support', href: 'support'}
+		{ name: 'Support', href: 'support'},
 	];
 
 	const SignOut = () => {
