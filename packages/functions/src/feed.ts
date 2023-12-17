@@ -80,10 +80,10 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
       });
     }
   }
-
+  
   if(interestsUserFollows && interestsUserFollows?.length !== 0) {
     for(const interest of interestsUserFollows) {
-      result.Items = result.Items.filter((item: any) => {
+      result.Items.filter((item: any) => {
         return item.tag?.S.toLowerCase() === interest.content.S?.toLowerCase() || item.tag?.S.toLowerCase() === 'misc';
       });
     }
@@ -119,6 +119,8 @@ export const handler = ApiHandler(async (evt) => {
       }
       const sub = payload.sub ?? "";
       const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
+
+      console.log('userId:', userId);
 
       result = await GetUserFeed(keyDates, userId);
     }
