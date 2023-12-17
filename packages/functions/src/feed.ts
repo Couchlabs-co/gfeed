@@ -120,8 +120,6 @@ export const handler = ApiHandler(async (evt) => {
       const sub = payload.sub ?? "";
       const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
 
-      console.log('userId:', userId);
-
       result = await GetUserFeed(keyDates, userId);
     }
     catch(err) {
