@@ -1,6 +1,6 @@
 {
-  "hosted-zone:account=724538604969:domainName=jasdeep.me:region=ap-southeast-2": {
-    "Id": "/hostedzone/Z043713812VO8QVVUATCF",
-    "Name": "jasdeep.me."
+  "hosted-zone:account=724538604969:domainName=gfeed.app:region=ap-southeast-2": {
+    "Id": "/hostedzone/Z08207871CST17AA1IPQ8",
+    "Name": "gfeed.app."
   }
 }
