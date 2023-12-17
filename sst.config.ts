@@ -7,7 +7,7 @@ import { FunctionStack } from "./stacks/FunctionStack";
 export default {
   config  (input) {
     return {
-      name: "intellifeed",
+      name: "gfeed",
       region: "ap-southeast-2",
       stage: input.stage,
     };

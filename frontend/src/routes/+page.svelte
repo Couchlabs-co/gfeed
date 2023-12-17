@@ -7,7 +7,7 @@
 	<div class="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 		<div class="place-self-center mr-auto lg:col-span-12">
 			<h1 class="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl">Place to find what really matters to you</h1>
-			<p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">IntelliFeed is here to change the way you consume information. We understand that your time is precious, and that's why we've created a platform that puts you in control.</p>
+			<p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">GFeed is here to change the way you consume information. We understand that your time is precious, and that's why we've created a platform that puts you in control.</p>
 			<button type="button" class="btn btn-neutral" on:click={() => signIn(
 				'auth0', {
 					redirect: false,
@@ -29,7 +29,7 @@
 		<div class="mb-8 max-w-screen-lg lg:mb-16">
 			<h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Your Interests, Your Feed</h2>
 			<p class="text-gray-500 sm:text-xl dark:text-gray-400">
-				IntelliFeed takes the complexity out and creates a simple personalized content stream tailored to your interests.
+				GFeed takes the complexity out and creates a simple personalized content stream tailored to your interests.
 				Whether you're a tech enthusiast, a foodie, a sports fan, or have any other passion, we've got you covered.
 			</p>
 		</div>
@@ -41,7 +41,7 @@
 				</div>
 				<h3 class="mb-2 text-xl font-bold dark:text-white">Save Time</h3>
 				<p class="text-gray-500 dark:text-gray-400">
-					No more endless scrolling through irrelevant content. IntelliFeed delivers what you want, when you want it.
+					No more endless scrolling through irrelevant content. GFeed delivers what you want, when you want it.
 				</p>
 			</div>
 			<div>
@@ -90,7 +90,7 @@
 				</div>
 				<h3 class="mb-2 text-xl font-bold dark:text-white">Privacy First</h3>
 				<p class="text-gray-500 dark:text-gray-400">
-					Your data is safe with us. We prioritize your privacy and ensure your information is protected. We only save your Name and preferences you select on IntelliFeed.
+					Your data is safe with us. We prioritize your privacy and ensure your information is protected. We only save your Name and preferences you select on GFeed.
 				</p>
 			</div>
 		</div>

@@ -10,6 +10,6 @@
 		</ul>
 	</div>
 	<div>
-		<p>Copyright © 2023 - All right reserved by IntelliFeed</p>
+		<p>Copyright © 2024 - All right reserved by GFeed</p>
 	</div>
 </footer>
