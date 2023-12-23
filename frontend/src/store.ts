@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-export const readingListStore = writable({
+export const gFeedStore = writable({
     articles: [],
     sources: [],
     loading: true,

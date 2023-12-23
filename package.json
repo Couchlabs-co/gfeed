@@ -1,5 +1,5 @@
 {
-  "name": "sst-reading",
+  "name": "sst-gfeed",
   "version": "0.0.1",
   "scripts": {
     "dev": "sst dev",
