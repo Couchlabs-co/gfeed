@@ -12,7 +12,7 @@ export function FunctionStack({ stack }: StackContext) {
     cdk: {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
-        visibilityTimeout: Duration.seconds(45),
+        visibilityTimeout: Duration.seconds(10),
         deliveryDelay: Duration.seconds(1),
       }
     }
