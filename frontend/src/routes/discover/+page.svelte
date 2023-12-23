@@ -1,26 +1,26 @@
 <script lang="ts">
-	import { readingListStore } from '../../store.js';
-	import ColumnList from '$lib/components/feed/ColumnList.svelte';
-	import ListItem from '$lib/components/feed/ListItem.svelte';
+	import { gFeedStore } from '../../store.js';
+	import ColumnList from '../../lib/components/feed/ColumnList.svelte';
+	import ListItem from '../../lib/components/feed/ListItem.svelte';
 
 	export let data;
 	const { publishers, feed, session } = data;
 
-	let readingFeed: any = feed.Items;
+	let gFeed: any = feed.Items;
 
 	const user_id = session ? session.user.id.indexOf('|') > 0 ? session.user?.id.split('|')[1] : session.user?.id : 0;
 
 	if(feed.count){
-		$readingListStore.articles = feed.Items;
-		readingFeed = feed.Items;
+		$gFeedStore.articles = feed.Items;
+		gFeed = feed.Items;
 	}
 
 	const filterFeed = (e: any) => {
 		const publisher = e.target.value;
 		if(publisher !== 'Publishers'){
-			readingFeed = feed.Items.filter((item: any) => item.publisher === publisher);
+			gFeed = feed.Items.filter((item: any) => item.publisher === publisher);
 		} else {
-			readingFeed = feed.Items;
+			gFeed = feed.Items;
 		}
 	}
 
@@ -41,7 +41,7 @@
 	{/if}
 	{#if feed.Count > 0 && listView}
 		<div class="flex flex-col w-10/12">
-			{#each readingFeed as Item}
+			{#each gFeed as Item}
 				<ListItem Item ={Item} userId={user_id} key={Item.id}/>
 			{/each}
 		</div>
@@ -59,7 +59,7 @@
 	{:else}
 		<div class="flex flex-col w-10/12">
 			<div class="grid grid-cols-3 gap-4">
-				{#each readingFeed as Item}
+				{#each gFeed as Item}
 					<ColumnList Item ={Item} userId={user_id} key={Item.id}/>
 				{/each}
 

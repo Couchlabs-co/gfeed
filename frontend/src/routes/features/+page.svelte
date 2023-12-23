@@ -1,9 +1,9 @@
+<script lang="ts">
+  import Heading from '../../lib/components/Heading.svelte';
+</script>
 <div class="relative isolate overflow-hidden py-4 sm:py-4">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-4xl font-bold tracking-tight sm:text-5xl">Features</h2>
-      <p class="mt-6 text-lg leading-8 text-gray-500">Discover and Read what you like</p>
-    </div>
+  <Heading heading={'Features'} subHeading={'Discover and Read what you like'} />
+
     <div class="grid gap-6 auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 m-4">
       <div class="component component-CerCheckBox">
         <div class="bg-blue-light mb-4 h-100 shadow h-full">
@@ -70,5 +70,4 @@
         </tr>
       </table>
     </div>
-  </div>
 </div>
