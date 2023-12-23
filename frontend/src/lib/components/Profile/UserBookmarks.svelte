@@ -1,7 +1,5 @@
 <script lang="ts">
-    import { Ban, Check } from 'lucide-svelte';
-    import { userAction } from '$lib/userActions.js';
-    export let userId: string;
+    import { Ban } from 'lucide-svelte';
     export let bookmarks: any[];
 </script>
 

@@ -21,7 +21,7 @@ const GetUserInterests = async (userId: string) => {
 const GetUserBookmarks = async (userId: string) => {
     const { VITE_API_URL } = import.meta.env;
 	const result = await fetch(`${VITE_API_URL}/bookmarks/${userId}`);
-
+    
 	const res = await result.json();
     const {message, bookmarks} = res;
     if(message === 'Success'){

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Ban, Check } from 'lucide-svelte';
-    import { userAction } from '$lib/userActions.js';
+    import { userAction } from "../../userActions";
     export let interests: any[];
     export let userId: string;
 

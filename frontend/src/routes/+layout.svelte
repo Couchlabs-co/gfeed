@@ -1,12 +1,12 @@
 <script>
 	import '../app.css';
-	import Header from '$lib/components/Header.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import Header from '../lib/components/Header.svelte';
+	import Footer from '../lib/components/Footer.svelte';
 </script>
 
-<div class="container mx-auto w-5/6 min-h-screen">
+<div class="container mx-auto w-5/6">
 	<Header />
-	<div class="w-full m-2 h-5/6">
+	<div class="w-full m-2">
 		<slot />
 	</div>
 	<Footer />

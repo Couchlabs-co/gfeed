@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { userAction } from '$lib/userActions.js';
+    import { userAction } from "../../userActions";
     export let userPosts: any[];
     export let userId: string;
 
@@ -7,12 +7,12 @@
 
 <div>
     <div class="p-3 shadow-sm rounded-sm">
-        <h2>Procrastinating</h2>
+        <!-- <h2>I Liked these</h2> -->
         <div class="mt-4">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-lg text-black">Need to read list</th>
+                    <th class="text-lg text-black">Articles liked</th>
                 </tr>
             </thead>
                 {#each userPosts as item}
