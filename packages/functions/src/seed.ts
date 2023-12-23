@@ -17,7 +17,7 @@ const publishers = [
       "name": "A List Apart",
       "publisherUrl": "https://alistapart.com/",
       "feedUrl": "https://alistapart.com/main/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -26,7 +26,7 @@ const publishers = [
       "name": "Alice GG",
       "publisherUrl": "https://alicegg.tech/",
       "feedUrl": "https://alicegg.tech/feed.xml",
-      "feedStatus": "active",
+      "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -131,7 +131,7 @@ const publishers = [
       "name": "Game Developer",
       "publisherUrl": "https://www.gamedeveloper.com/",
       "feedUrl": "https://www.gamedeveloper.com/rss.xml",
-      "feedStatus": "active",
+      "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -322,6 +322,36 @@ const publishers = [
       "primaryTag": "Misc",
       "frequency": "6 hours",
       "logo": "https://news.ycombinator.com/y18.svg"
+    },
+    {
+      "name": "Damien Aicheh",
+      "publisherUrl": "https://damienaicheh.github.io",
+      "feedUrl": "https://damienaicheh.github.io/feed.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://damienaicheh.github.io/assets/img/logo_circle.svg"
+    },
+    {
+      "name": "Ars Technica",
+      "publisherUrl": "https://arstechnica.com",
+      "feedUrl": "https://feeds.arstechnica.com/arstechnica/index",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png"
+    },
+    {
+      "name": "TokyoDev",
+      "publisherUrl": "https://www.tokyodev.com",
+      "feedUrl": "https://www.tokyodev.com/atom.xml",
+      "feedStatus": "active",
+      "feedType": "atom",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png"
     }
   ];
 
