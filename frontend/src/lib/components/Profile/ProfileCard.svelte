@@ -5,8 +5,6 @@
     export let userName: string;
     export let memberSince: string;
 
-    console.log('memberSince: ', memberSince);
-
     function formatDate(date: string) {
         return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
     }

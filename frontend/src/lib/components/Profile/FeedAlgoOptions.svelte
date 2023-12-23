@@ -3,16 +3,13 @@
     import { page } from "$app/stores";
 
     export let selectedAlgo = 'timeBased';
-    console.log('selectedAlgo', selectedAlgo);
 
     const { user } = $page.data.session || {};
 
     async function handleChange(e: any) {
      if(user.id){
         const response = await userAction(user.id, "feedAlgorithm", "selected", e.target.value, "", "");
-        console.log('response', response);
         selectedAlgo = response.msg === 'Success' ? e.target.value : selectedAlgo;
-        console.log('&&&&&&&&&&&&&&&&', selectedAlgo);
      }
     }
 
