@@ -17,7 +17,6 @@ interface UserAction {
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
   const body: UserAction = JSON.parse(evt.body ?? '');
-  console.log("body: ", body);
 
   if(!body || !body.content) {
     return {
@@ -35,7 +34,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
         TableName: userActionsTable,
         Key: {
           userId: { S: userId },
-          sk: { S: `${content}#${reaction}` },
+          sk: { S: `${content}#follow` },
         },
       });
       const res = await dbClient.send(command);

@@ -8,7 +8,7 @@ export function WebStack({ stack, app }: StackContext) {
   let apiUrl: string | undefined;
 
   switch(stack.stage) {
-    case "prod": {
+    case "production": {
       customDomain = {
         domainName: "gfeed.app",
         domainAlias: "www.gfeed.app",
@@ -67,6 +67,7 @@ export function WebStack({ stack, app }: StackContext) {
       VITE_AUTH0_DOMAIN: Auth0Domain.value,
       VITE_AUTH0_CLIENT_ID: Auth0ClientId.value,
       VITE_CLIENT_SECRET: ClientSecret.value,
+      NODE_ENV: stack.stage
     },
     bind: [Auth0Domain, Auth0ClientId],
   });

@@ -45,26 +45,55 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
     },
     ConsistentRead: true,
   }));
-
-  await Promise.all(
-    dateKeys.map(async (key) => {
-      const command: QueryCommand = new QueryCommand({
-        TableName: Table.posts.tableName,
-        KeyConditionExpression: "publishedDate = :publishedDate",
-        ExpressionAttributeValues: {
-          ":publishedDate": { S: key },
-        },
-        ConsistentRead: true,
-      });
-      let { Count, Items } = await dbClient.send(command);
-      result.Count += Count ?? 0;
-      result.Items = result.Items.concat(Items);
-    })
-  );
-
   const interestsUserFollows = userInterests.Items?.filter((item: any) => {
     return item.userAction.S === "follow" && item.contentType.S === "interest";
   });
+
+  if(interestsUserFollows && interestsUserFollows.length > 0){
+    await Promise.all(
+      interestsUserFollows.map(async (interest) => {
+        const command: QueryCommand = new QueryCommand({
+          TableName: Table.posts.tableName,
+          IndexName: 'tagIndex',
+          KeyConditionExpression: "tag = :tag",
+          ExpressionAttributeValues: {
+            ":tag": { S: interest.content.S ?? 'Misc' },
+          },
+        });
+        let { Count, Items } = await dbClient.send(command);
+        result.Count += Count ?? 0;
+        result.Items = result.Items.concat(Items);
+      })
+    );
+  }
+
+
+  // const userInterestFeedCommand: QueryCommand = new QueryCommand({
+  //   TableName: Table.posts.tableName,
+  //   IndexName: 'tagIndex',
+  //   KeyConditionExpression: "tag = :tag",
+  //   ExpressionAttributeValues: {
+  //     ":tag": { S: key },
+  //   },
+  //   ConsistentRead: true,
+  // });
+  
+  // await Promise.all(
+  //   dateKeys.map(async (key) => {
+  //     const command: QueryCommand = new QueryCommand({
+  //       TableName: Table.posts.tableName,
+  //       KeyConditionExpression: "publishedDate = :publishedDate",
+  //       ExpressionAttributeValues: {
+  //         ":publishedDate": { S: key },
+  //       },
+  //       ConsistentRead: true,
+  //     });
+  //     let { Count, Items } = await dbClient.send(command);
+  //     result.Count += Count ?? 0;
+  //     result.Items = result.Items.concat(Items);
+  //   })
+  // );
+
 
   const publishersUserLikes = userInterests.Items?.filter((item: any) => {
     return item.userAction.S === "likes" && item.contentType.S === "publisher";

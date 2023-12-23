@@ -99,6 +99,8 @@ function getAuthor(item: any, publisher: string) {
       return "THE WALL STREET JOURNAL";
     case "Hacker News":
       return "Hacker News";
+    case "TokyoDev":
+      return "Paul McMahon"
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];

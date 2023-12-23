@@ -7,6 +7,7 @@ import { formatItem } from "./utils/formatItem";
 import { v4 } from "uuid";
 
 export async function main(event: SQSEvent) {
+  const startTime = Date.now();
   const tableName = Table.posts.tableName;
   const records: SQSRecord[] = event.Records;
   for(const record of records){
@@ -19,16 +20,24 @@ export async function main(event: SQSEvent) {
     const rssItems = await fetchRSSFeed(publisher, feedUrl);
     for (const item of rssItems) {
       try {
-        const feedItem = await formatItem(item, publisher, tag);
-        if(publisher === 'Hacker News' && feedItem.title.S?.includes('Show HN')) {
+        if(publisher === 'Damien Aicheh' && item.link?.includes('-fr')){
           continue;
         }
+        if(publisher === 'Hacker News' && item.title?.includes('Show HN')) {
+          continue;
+        }
+        if(publisher === "TokyoDev" && item.link?.includes('-ja')){
+          continue;
+        }
+        const feedItem = await formatItem(item, publisher, tag);
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
         console.log("feedHandler err........", publisher, feedUrl, err, JSON.stringify(item));
       }
     }
     console.log(`Message processed: "${publisher}"`);
+    const endTime = Date.now();
+    console.log(`total time taken: ${endTime - startTime}`)
     return {
       statusCode: 200,
       body: JSON.stringify({ status: "successful" }),
