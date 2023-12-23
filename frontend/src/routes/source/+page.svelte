@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { readingListStore } from '../../store';
+    import { gFeedStore } from '../../store';
     import { Star, StarOff, ShieldCheck } from 'lucide-svelte';
-    import { userAction } from '$lib/userActions';
+    import { userAction } from '../../lib/userActions';
 
 	export let data;
     
@@ -10,7 +10,7 @@
     let dislikeIndex = -1;
 
     const { Items } = data.data;
-        $readingListStore.sources = Items.lenght? Items: [];
+        $gFeedStore.sources = Items.lenght? Items: [];
     let pageIndex = 0;
     let pageSize = 10;
     const totalPages = Math.ceil(Items.length / pageSize);
