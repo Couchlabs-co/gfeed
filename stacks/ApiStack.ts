@@ -1,9 +1,13 @@
-import { StackContext, use, Api } from "sst/constructs";
+import { StackContext, use, Api, Config } from "sst/constructs";
 import { DbStack } from "./DbStack";
 import { SsrDomainProps } from "sst/constructs/SsrSite";
 
 export function ApiStack({ stack, app }: StackContext) {
   let customDomain: SsrDomainProps | undefined;  
+
+  const Auth0APIAudience = new Config.Parameter(stack, "AUTH0_API_AUDIENCE", {
+    value: process.env.AUTH0_API_AUDIENCE ?? '',
+  });
 
   switch(stack.stage) {
     case "prod": {
@@ -43,7 +47,14 @@ export function ApiStack({ stack, app }: StackContext) {
     accessLog:
       "$context.identity.sourceIp,$context.requestTime,$context.httpMethod,$context.routeKey,$context.protocol,$context.status,$context.responseLength,$context.requestId",
     routes: {
-      "POST /feed": "packages/functions/src/feed.handler",
+      "POST /feed": {
+        function : {
+          handler: "packages/functions/src/feed.handler",
+          environment: {
+            AUTH0_API_AUDIENCE: Auth0APIAudience.value
+          }
+        }
+      },
       "POST /users": "packages/functions/src/createUser.handler",
       "GET /users/{userId}": "packages/functions/src/getUser.handler",
       "GET /users/{userId}/interests": "packages/functions/src/userInterests.handler",
