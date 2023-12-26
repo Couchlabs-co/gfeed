@@ -190,10 +190,10 @@ function getFeedDates() {
 
 async function getUserFromToken(token: string) {
   const tokenHeader = await jwtDecode(token, { header: true });
-      const JWKS = jose.createRemoteJWKSet(new URL('https://readingcorner.au.auth0.com/.well-known/jwks.json'));
+      const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.AUTH0_ISSUER}.well-known/jwks.json`));
 
       const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
-        issuer: 'https://readingcorner.au.auth0.com/',
+        issuer: process.env.AUTH0_ISSUER ?? '',
         audience: process.env.AUTH0_API_AUDIENCE ?? '',
       })
       if(tokenHeader.kid !== protectedHeader.kid) {

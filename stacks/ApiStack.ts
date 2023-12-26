@@ -9,6 +9,10 @@ export function ApiStack({ stack, app }: StackContext) {
     value: process.env.AUTH0_API_AUDIENCE ?? '',
   });
 
+  const Auth0Issuer = new Config.Parameter(stack, "AUTH0_ISSUER", {
+    value: process.env.AUTH0_ISSUER ?? '',
+  });
+
   switch(stack.stage) {
     case "prod": {
       customDomain = {
@@ -42,19 +46,16 @@ export function ApiStack({ stack, app }: StackContext) {
     defaults: {
       function: {
         bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable],
+        environment: {
+          AUTH0_API_AUDIENCE: Auth0APIAudience.value,
+          AUTH0_ISSUER: Auth0Issuer.value
+        }
       },
     },
     accessLog:
       "$context.identity.sourceIp,$context.requestTime,$context.httpMethod,$context.routeKey,$context.protocol,$context.status,$context.responseLength,$context.requestId",
     routes: {
-      "POST /feed": {
-        function : {
-          handler: "packages/functions/src/feed.handler",
-          environment: {
-            AUTH0_API_AUDIENCE: Auth0APIAudience.value
-          }
-        }
-      },
+      "POST /feed": "packages/functions/src/feed.handler",
       "POST /users": "packages/functions/src/createUser.handler",
       "GET /users/{userId}": "packages/functions/src/getUser.handler",
       "GET /users/{userId}/interests": "packages/functions/src/userInterests.handler",
