@@ -127,6 +127,7 @@ jobs:
       AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
       AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
       AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_API_AUDIENCE: ${{ var.AUTH0_API_AUDIENCE }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -179,6 +180,7 @@ jobs:
       AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
       AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
       AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+      AUTH0_API_AUDIENCE: ${{ var.AUTH0_API_AUDIENCE }}
       NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
