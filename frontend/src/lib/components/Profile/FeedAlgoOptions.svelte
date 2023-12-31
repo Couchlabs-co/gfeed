@@ -1,14 +1,21 @@
 <script lang="ts">
 	import { userAction } from "../../userActions";
     import { page } from "$app/stores";
+    import { createEventDispatcher } from 'svelte';
 
-    export let selectedAlgo = 'timeBased';
+    const dispatch = createEventDispatcher();
+    export let selectedAlgo: 'timeBased' | 'interestBased' = 'timeBased';
 
     const { user } = $page.data.session || {};
 
     async function handleChange(e: any) {
      if(user.id){
         const response = await userAction(user.id, "feedAlgorithm", "selected", e.target.value, "", "");
+        if(response.msg === 'Success'){
+            dispatch('feedAlgoChanged', {
+                selectedAlgo: e.target.value
+            });
+        }
         selectedAlgo = response.msg === 'Success' ? e.target.value : selectedAlgo;
      }
     }

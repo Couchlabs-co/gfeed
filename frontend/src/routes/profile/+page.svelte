@@ -6,6 +6,7 @@
     import UserStats from '../../lib/components/Profile/UserStats.svelte'
     import FeedAlgoOptions from '../../lib/components/Profile/FeedAlgoOptions.svelte';
     import Heading from '../../lib/components/Heading.svelte';
+    import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data;
     let activeTab = 0;
@@ -33,6 +34,21 @@
         return item.content === 'feedAlgorithm';
     }) : [];
 
+    function handleAlgoChange(eventDetail: Record<string, string>) {
+        toast.success('Feed algorithm saved successfully');
+    }
+
+    function handleInterestChange(eventDetail: Record<string, any>) {
+        console.log('eventDetail: ', eventDetail.detail)
+        const { userInterest, action } = eventDetail.detail;
+        console.log('userInterest: ', JSON.parse(userInterest).tagName)
+        if(action === 'follow') {
+            toast.success(`${JSON.parse(userInterest).tagName} successfully added`);
+        } else {
+            toast.error(`${JSON.parse(userInterest).tagName} successfully removed`);
+        }
+    }
+
 </script>
 {#if !data.user?.id}
     <div class="flex flex-col items-center justify-center">
@@ -55,13 +71,14 @@
         </div> -->
         <div class="relative isolate overflow-hidden py-4 sm:py-4">
             <Heading heading={data.user?.name} />
+            <Toaster />
             <div class="grid grid-flow-row-dense grid-cols-4 grid-rows-1 m-2">
                 <div class="rounded-md w-auto">
                     <ProfileCard userName={data.user?.name} userPic={data.user?.image} memberSince={data.user?.createdAt} />
                 </div>
                 <div class="col-span-2 w-full rounded-md ">
                     <UserStats data={data} />
-                    <FeedAlgoOptions selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].contentType: ''} />
+                    <FeedAlgoOptions selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].contentType: ''} on:feedAlgoChanged={handleAlgoChange}/>
                     <div class="grid grid-cols-1 m-4 w-full">
                         <div class="tabs">
                             {#each tabs as tab, i}
@@ -69,7 +86,7 @@
                             {/each}
                         </div>
                         {#if activeTab === 0}
-                            <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} />
+                            <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} on:userInterestEvent={handleInterestChange}/>
                         {/if}
                         {#if activeTab === 1}
                             <UserPosts userPosts={userLikedPosts} userId={userId} />

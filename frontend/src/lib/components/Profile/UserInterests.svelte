@@ -5,16 +5,28 @@
     export let userId: string;
     let checked = false;
 
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+
     async function handleClick(e: any) {
      const interest = JSON.parse(e.target.value);
      if(e.target.checked) {
          const response = await userAction(userId, interest.tagName, "follow", "interest", "", interest.interestId);
+         console.log('response: ', response);
          if(response.msg === 'Success') {
+             dispatch('userInterestEvent', {
+                userInterest: e.target.value,
+                action: 'follow'
+            });
              e.target.checked = true;
          }
      } else {
         const response = await userAction(userId, interest.tagName, "unfollow", "interest", "", interest.interestId);
          if(response.msg === 'Success') {
+            dispatch('userInterestEvent', {
+               userInterest: e.target.value,
+               action: 'unfollow'
+           });
              e.target.checked = false;
          }
      }
