@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "sst bind vitest",
+    "test": "sst bind vitest run",
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
@@ -18,12 +18,11 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.395.0",
     "@aws-sdk/client-sqs": "^3.398.0",
-    "fast-xml-parser": "^4.2.7",
+    "fast-xml-parser": "^4.3.1",
     "he": "^1.2.0",
     "jose": "^5.0.1",
     "jwt-decode": "^4.0.0",
     "node-fetch": "^3.3.2",
-    "rss-parser": "^3.13.0",
     "uuid": "^9.0.0"
   }
 }

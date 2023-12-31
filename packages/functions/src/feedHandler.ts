@@ -16,17 +16,17 @@ export async function main(event: SQSEvent) {
       console.log(`skipping html feed: ${publisher} with url: ${feedUrl}`);
       break;
     }
-    console.log(`starting to process feed: ${publisher} with url: ${feedUrl}`);
-    const rssItems = await fetchRSSFeed(publisher, feedUrl);
+    console.log(`starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
+    const rssItems = await fetchRSSFeed(publisher, feedUrl, feedType);
     for (const item of rssItems) {
       try {
-        if(publisher === 'Damien Aicheh' && item.link?.includes('-fr')){
+        if(publisher === 'Damien Aicheh' && item.link["@_href"].includes('-fr')){
           continue;
         }
         if(publisher === 'Hacker News' && item.title?.includes('Show HN')) {
           continue;
         }
-        if(publisher === "TokyoDev" && item.link?.includes('-ja')){
+        if(publisher === "TokyoDev" && item.link['@_href'].includes('story-ja')){
           continue;
         }
         const feedItem = await formatItem(item, publisher, tag);

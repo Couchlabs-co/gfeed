@@ -1,28 +1,40 @@
-import Parser from 'rss-parser';
+// import Parser from 'rss-parser';
+import fetch from "node-fetch";
+const { XMLParser } = require("fast-xml-parser");
 
-
-const fetchStandardXMLRSSFeed = async (feedUrl: string) => {
+const fetchStandardXMLRSSFeed = async (feedUrl: string, feedType: string) => {
   try {
-    let parser = new Parser({
-      customFields: {
-        item: [
-          ['media:thumbnail', 'mediaThumbnail'],
-          ['media:content', 'mediaContent'],
-          ['enclosure', 'enclosure'],
-          ['author', 'author', {keepArray: true}],
-        ]  
-      }
-    });
-    const feed = await parser.parseURL(feedUrl);
-    return feed.items;
+    console.log('fetchStandardXMLRSSFeed feedUrl', feedUrl, feedType);
+    const response = await fetch(feedUrl);
+    const xmlData = await response.text();
+    const options = {
+      // attributeNamePrefix: '@_',
+      attrNodeName: 'attr', // default is 'false'
+      // textNodeName: '#text',
+      ignoreAttributes: false,
+      ignoreNameSpace: false,
+      allowBooleanAttributes: true,
+      parseNodeValue: true,
+      parseAttributeValue: true,
+      trimValues: true,
+      parseTrueNumberOnly: false,
+    };
+
+    const parser = new XMLParser(options);
+    let jObj = parser.parse(xmlData);
+    if(feedType === 'atom') {
+      return jObj.feed.entry;
+    } else {
+      return jObj.rss.channel.item;
+    }
   } catch (error) {
     console.error("Error fetching RSS feed:", error);
     return [];
   }
 };
 
-const fetchRSSFeed = async (publisher: string, feedUrl: string) => {
-  return fetchStandardXMLRSSFeed(feedUrl);
+const fetchRSSFeed = async (publisher: string, feedUrl: string, feedType: string) => {
+  return fetchStandardXMLRSSFeed(feedUrl, feedType);
 };
 
 export default fetchRSSFeed;

@@ -20,8 +20,14 @@ function getImage(item: any, publisher: string) {
     return index > 0 ? url.slice(0, index) : url;
   };
 
-  if (item.mediaContent) {
-    return item.mediaContent.$.url;
+  if (item['media:content'] && Array.isArray(item['media:content'])) {
+    return item['media:content'][0]['@_url'];
+  }
+  if (item['media:content'] && !Array.isArray(item['media:content'])) {
+    return item['media:content']['@_url'];
+  }
+  if (item['media:thumbnail']) {
+    return item['media:thumbnail']['@_url'];
   }
 
   if (item.mediaThumbnail && publisher === "HACKERNOON") {
@@ -32,32 +38,51 @@ function getImage(item: any, publisher: string) {
     return item.mediaThumbnail.$.url;
   }
 
-  if (item.mediaThumbnail) {
-    return getImageUrl(item.mediaThumbnail.$.url);
-  }
-
   if (item.enclosure) {
-    return getImageUrl(item.enclosure.url);
+    return getImageUrl(item.enclosure['@_url']);
   }
 
   if (item["content:encoded"] && item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
     const match = he.decode(item["content:encoded"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    return getImageUrl(match.slice(match.indexOf('src="')+5));
+    return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
   }
 
-  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g) && publisher === "Martin Fowler") {
-    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
+  if (item.content && item.content["#text"].match(/(<img.*)src\s*=\s*'(.+?)'/g) && publisher === "Martin Fowler") {
+    const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
     return getImageUrl(match.slice(match.indexOf("https"),match.length-1));
   }
 
-  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*'(.+?)'/g)) {
-    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
-    return getImageUrl(match.slice(match.indexOf('src="')+5));
+  if (item.content && item.content["#text"] && publisher === "Sam Newman") {
+    const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*"(.+?)"/g);
+    if(match){
+      const imgPath = match[0].slice(match[0].indexOf('src="')+5, match[0].length-1);
+      return `https://samnewman.io${imgPath}`;
+    }
+    return '';
   }
 
-  if (item["content"] && item["content"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    const match = he.decode(item["content"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    return getImageUrl(match.slice(match.indexOf('src="')+5));
+  if (item.content && item.content["#text"].match(/(<img.*)src\s*=\s*'(.+?)'/g)) {
+    const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
+  }
+
+  if (item.content && item.content["#text"] && item.content["#text"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
+    const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
+  }
+
+  if (item.description && item.description.match(/(<img.*)src\s*=\s*"(.+?)"/g) && publisher === "Alice GG") {
+    const match = he.decode(item["description"]).match(/(<img.*)src\s*=\s*"(.+?)"/g);
+    if(match){
+      const imgPath = match[0].slice(match[0].indexOf('src="')+5, match[0].length-1);
+      return `https://alicegg.tech${imgPath}`;
+    }
+    return '';
+  }
+
+  if (item.description && item.description.match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
+    const match = he.decode(item["description"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+    return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
   }
 }
 
@@ -68,12 +93,16 @@ function getPublishedDate(item: any, publisher: string) {
   }
 
   if (item["dc:date"]) {
-    const dt = new Date(item["dc:date"]).toISOString().split("T")[0];
+    const dt = new Date(item["dc:date"].trim()).toISOString().split("T")[0];
     return dt.trim();
   }
 
   if (item["dc:created"]) {
     const dt = new Date(item["dc:created"]).toISOString().split("T")[0];
+    return dt.trim();
+  }
+  if(item.published){
+    const dt = new Date(item.published).toISOString().split("T")[0];
     return dt.trim();
   }
  
@@ -101,52 +130,133 @@ function getAuthor(item: any, publisher: string) {
       return "Hacker News";
     case "TokyoDev":
       return "Paul McMahon"
+    case "Mitchell Hashimoto":
+      return "Mitchell Hashimoto";
+    case "Bloomberg Politics":
+      if(item["dc:creator"]) {
+        return item["dc:creator"];
+      } else {
+        return "Bloomberg";
+      }
+    case "A List Apart":
+      return item.author.a["#text"]
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];
     }
-    if(typeof item["author"] !== "string") {
+    if(typeof item["author"] === "object") {
+      return item["author"]["name"];
+    }
+    if(typeof item["author"] !== "string" && item["author"] !== undefined) {
       const author = item["author"][0]["a"].map((author: any) => {
         return author["_"];
       }).join(',');
       return author;
     }
-    return item["author"];
+    return item["author"] ? item["author"] : publisher;
    }
   }
 }
 
 function getCategories(item: any, publisher: string) {
-  let keywords = "";
+  let keywords = null;
   switch(publisher) {
     case "CoinDesk": {
-      return Array.from(new Set(item.categories.map((cat: any) => cat._))).join(',');
+      keywords = Array.from(new Set(item.category.map((cat: any) => cat['#text']))).join(',');
+      break;
     }
     case "Overreacted":
       keywords = "React, JavaScript, Web Development, software development, programming";
-      return keywords
+      break;
     case "Martin Fowler":
       keywords = "software development, programming";
-      return keywords;
-    case "FAST COMPANY":
-      return item.categories.map((cat: any) => cat.toLowerCase()).join(',');
+      break;
     case "The New York Times":
-      if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
-        return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
+      if(item.category && item.category.length > 1){
+        keywords = item.category.map((cat: any) => cat["#text"]).join(',');
       }
-      return '';
     case "The Guardian":
-      return item.categories.map((cat: Record<any, any>) => cat._.toLowerCase()).join(',');
+      return item.category.map((cat: Record<any, any>) => cat["#text"]).join(',');
+    case "Bloomberg": {
+      if(item.category){
+        keywords = item.category[0]._;
+      }
+      break;
+    }
+    case "Damien Aicheh": {
+      keywords = item.category.map((cat: any) => cat['@_term']).join(',');
+      break;
+    }
+    case "The Wall Street Journal": {
+      keywords = item['wsj:articletype'].trim();
+      break;
+    }
    default: {
+    if(item.category && typeof item.category === "string"){
+      keywords = item.category;
+    }
+    if(item.category && typeof item.category !== "string" && item.category.length > 1){
+      keywords = item.category.map((cat: string) => cat).join(',');
+    }
     if (item.categories && item.categories.length > 1 && typeof item.categories !== "string") {
       keywords = Array.from(new Set(item.categories.map((cat: string) => cat && cat.includes('/') ? cat.slice(cat.lastIndexOf('/')+1) : cat)
-        .map((cat: string) => cat.toLowerCase()))).join(',');
+        .map((cat: string) => cat))).join(',');
     } else if (item.categories && typeof item.categories === "string") {
-      keywords = item.categories.toLowerCase();
+      keywords = item.categories;
     }
-    return keywords;
    }
   }
+  return keywords;
+}
+
+function extractImageFromDescription(description: any): string {
+  const imgRegex = /<img[^>]+src="([^">]+)"/g;
+  const imgSrc = imgRegex.exec(description);
+  return imgSrc ? imgSrc[1] : "";
+}
+
+function getItemGuid(item: any, publisher: string) {
+  switch(publisher) {
+    case "InfoQ": {
+      return he.decode(item.guid.trim().slice(0, item.guid.indexOf('utm_')));
+    }
+    case "Mitchell Hashimoto":
+    case "The Guardian":
+    case "DAN NORTH":
+    case "A List Apart":
+    case "Overreacted":
+      return he.decode(item.guid.trim());
+    default:
+      return item.guid ? he.decode(item.guid['#text'].trim()): he.decode(item.id.trim());
+  }
+}
+
+function getItemLink(item: any, publisher: string) {
+  if(typeof item.link === "object"){
+    return he.decode(item.link['@_href'].trim().slice(0, item.link['@_href'].indexOf('utm')));
+  }
+  if(item.link.includes('utm_source')){
+    return he.decode(item.link.trim().slice(0, item.link.indexOf('utm')));
+  } else {
+    return he.decode(item.link.trim());
+  }
+}
+
+function getItemDescription(item: any, publisher: string) {
+  if(item.content){
+    return he.decode(item.content['#text'].trim());
+  }
+  if(item.description){
+    return he.decode(item.description.trim());
+  }
+  return '';
+}
+
+function getItemTitle(item: any, publisher: string): string {
+  if(typeof item.title === 'object'){
+    return he.decode(item.title['#text'].trim());
+  }
+  return he.decode(item.title.trim());
 }
 
 export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
@@ -154,11 +264,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   let pubDate: string|number;
 
   try {
-    const keywords = getCategories(item, publisher);
-
     const publishedDate = getPublishedDate(item, publisher) as string;
-
-    const guid = getItemGuid(item, publisher);
   
     pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
     img = getImage(item, publisher) ?? '';
@@ -179,15 +285,15 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
     const feedItem: Record<string, AttributeValue> = {
       id: { S: uuid.v4() },
       publishedDate: { S: getPublishedDate(item, publisher) },
-      title: { S: he.decode(item.title).trim() },
-      link: { S: he.decode(item.link).trim() },
+      title: { S: getItemTitle(item, publisher) },
+      link: { S: getItemLink(item, publisher) },
       pubDate: { N: new Date(pubDate).getTime().toString() },
       author: { S: getAuthor(item, publisher) },
-      guid: { S: guid },
-      keywords: { S: keywords ?? tag },
+      guid: { S: getItemGuid(item, publisher) },
+      keywords: { S: getCategories(item, publisher) ?? tag },
       tag: { S: tag },
       publisher: { S: publisher },
-      content: { S: he.decode(item.contentSnippet ?? "") },
+      content: { S: getItemDescription(item, publisher) },
       img: { S: img ?? "" },
     };
   
@@ -195,22 +301,8 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   
   }
   catch (error) {
-    console.log('formatItem item', item.title, item.publisher);
+    console.log('formatItem item', item.title, publisher);
     console.log('formatItem error', error);
   }
   return {};  
 };
-
-function extractImageFromDescription(description: any): string {
-  const imgRegex = /<img[^>]+src="([^">]+)"/g;
-  const imgSrc = imgRegex.exec(description);
-  return imgSrc ? imgSrc[1] : "";
-}
-
-function getItemGuid(item: any, publisher: string) {
-  switch(publisher) {
-    default:
-      return he.decode(item.guid ?? item.id).trim()
-  }
-}
-
