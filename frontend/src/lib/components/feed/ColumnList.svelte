@@ -1,5 +1,6 @@
 <script lang="ts">
     import { BookmarkPost, userAction } from "$lib/userActions";
+    import { DateTime } from "luxon";
     import { Share2 } from "lucide-svelte";
     export let userId: string;
 
@@ -39,7 +40,7 @@
     </div>
     <div>
         <p class="text-gray-500 text-sm">
-            {Item.publisher}, {Item.pubDate}
+            {Item.publisher}, {DateTime.fromMillis(Number(Item.pubDate)).toLocaleString(DateTime.DATE_MED)}
         </p>
     </div>
     </div>

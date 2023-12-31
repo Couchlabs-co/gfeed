@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import type { PageServerLoad } from "./$types";
 
 const { VITE_API_URL } = import.meta.env;
@@ -17,20 +16,6 @@ const fetchFeed = async (token: string|undefined) => {
 	});
 
 	const res = await result.json();
-
-	for (const item of res.Items) {
-		item.pubDate = DateTime.fromMillis(Number(item.pubDate)).toLocaleString(DateTime.DATE_MED);
-	}
-
-	res.Items.sort((a: any, b:any) => {
-		if (a.pubDate > b.pubDate) {
-			return -1;
-		}
-		if (a.pubDate < b.pubDate) {
-			return 1;
-		}
-		return 0;
-	});
 
 	return res;
 }
