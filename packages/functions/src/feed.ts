@@ -49,6 +49,7 @@ async function GetFeedInterestBased(userInterests: any) {
           ExpressionAttributeValues: {
             ":tag": { S: interest.content.S ?? 'Misc' },
           },
+          Limit: 100,
         });
         let { Count, Items } = await dbClient.send(command);
         result.Count += Count ?? 0;
@@ -136,7 +137,6 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
-      console.log('userId', userId);
       result = await GetUserFeed(keyDates, userId);
     }
     catch(err) {
