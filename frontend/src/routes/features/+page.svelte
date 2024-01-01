@@ -41,6 +41,7 @@
       </div>
     </div>
   </div>
+  
   <div class="mx-auto max-w-7xl px-6 lg:px-8 my-6">
     <div class="mx-auto max-w-2xl lg:mx-0">
       <h4 class="text-sm font-bold tracking-tight sm:text-2xl">Roadmap</h4>
@@ -49,23 +50,28 @@
       <table class="table-sm">
         <tr>
           <th>1</th>
-          <td>On Demand delete your complete data stored in our system</td>
+          <td>Mobile app (IOS and Android) to use GFeed on the go</td>
           <td></td>
         </tr>
         <tr>
           <th>2</th>
-          <td>Ability to follow creators of the articles</td>
+          <td>On Demand delete your complete data stored in our system</td>
+          <td></td>
         </tr>
         <tr>
           <th>3</th>
-          <td>Ability to read articles behind paywall</td>
+          <td>Ability to follow creators of the articles</td>
         </tr>
         <tr>
           <th>4</th>
-          <td>AI based feed algorithm</td>
+          <td>Ability to read articles behind paywall</td>
         </tr>
         <tr>
           <th>5</th>
+          <td>AI based feed algorithm</td>
+        </tr>
+        <tr>
+          <th>6</th>
           <td>Contextual Search</td>
         </tr>
       </table>

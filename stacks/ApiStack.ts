@@ -39,13 +39,13 @@ export function ApiStack({ stack, app }: StackContext) {
       customDomain =  undefined;
   };
   
-  const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable } = use(DbStack);
+  const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable, NewSources } = use(DbStack);
 
   const GFeedAPI = new Api(stack, "GFeedAPI", {
     customDomain,
     defaults: {
       function: {
-        bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable],
+        bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable, NewSources],
         environment: {
           AUTH0_API_AUDIENCE: Auth0APIAudience.value,
           AUTH0_ISSUER: Auth0Issuer.value
@@ -67,6 +67,7 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /posts/{postTitle}": "packages/functions/src/getPost.handler",
       "POST /bookmarks": "packages/functions/src/saveBookmark.handler",
       "GET /bookmarks/{userId}": "packages/functions/src/getBookmarks.handler",
+      "POST /sources": "packages/functions/src/newSource.handler",
     },
   });
 

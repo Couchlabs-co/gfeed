@@ -1,9 +1,10 @@
 <script lang="ts">
     import { BookmarkPost, userAction } from "$lib/userActions";
     import { DateTime } from "luxon";
-    import { Share2 } from "lucide-svelte";
+    // import { Share2 } from "lucide-svelte";
     export let userId: string;
 
+    // DateTime.fromMillis(Number(Item.pubDate)).diffNow().toObject().hours;
     export let Item = {
         id: "Id",
         title: "Title",

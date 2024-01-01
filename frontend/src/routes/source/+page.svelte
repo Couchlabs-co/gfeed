@@ -1,100 +1,87 @@
 <script lang="ts">
-    import { gFeedStore } from '../../store';
-    import { Star, StarOff, ShieldCheck } from 'lucide-svelte';
-    import { userAction } from '../../lib/userActions';
+    import Heading from '../../lib/components/Heading.svelte';
+    import { Toaster, toast } from 'svelte-french-toast';
 
 	export let data;
+
+    /** @type {import('./$types').ActionData} */
+    export let form;
     
-    const { session } = data;
-    let likeIndex = -1;
-    let dislikeIndex = -1;
-
     const { Items } = data.data;
-        $gFeedStore.sources = Items.lenght? Items: [];
-    let pageIndex = 0;
-    let pageSize = 10;
-    const totalPages = Math.ceil(Items.length / pageSize);
-    let visibileRows = Items.slice(pageIndex, pageIndex + pageSize);
 
-    async function changePage(index: number) {
-        let pageIndex = index;
-        const start = pageIndex * pageSize;
-        const end = start + pageSize;
-        visibileRows = Items.slice(start, end);
-    }
-
-    async function handleClick(e: any, title: string, reaction: string, type: string, index: number, contentId: string, contentLink: string) {
-
-
-        if (reaction === "likes") {
-            likeIndex = index;
-            dislikeIndex = -1;
-        } else {
-            dislikeIndex = index;
-            likeIndex = -1;
-        }
-
-        const data = userAction(session?.user.id, title, reaction, type, contentLink, contentId)
-        console.log(data);
+    if (form?.msg === "Success") {
+        toast.success("Source added successfully");
+    } else if(form !== null){
+        toast.error("Error adding source");
     }
 
 </script>
-<div>
-    <h3 class="mt-2 mb-2">
-        Some of the sources we pull data from to make sure you have latest content
-    </h3>
-    <div class="overflow-x-auto h-max w-9/12 items-center place-content-center m-auto">
-        <table class="table">
-        <thead>
-          <tr>
-            <th class="text-2xl">Publishers</th>
-          </tr>
-        </thead>
-        <tbody>
-            {#each visibileRows as item,  i (i)}
-                <tr>
-                    <td class="w-60">
-                        {#if item.logo}
-                            <img src={item.logo} alt={item.name} width="32" height="32"/>
-                        {:else}
-                            <div class="avatar placeholder">
-                                <div class="bg-neutral-focus text-neutral-content rounded w-10">
-                                    <span>{item.name}</span>
-                                </div>
-                            </div> 
-                        {/if}
-                    </td>
+<div class="relative isolate overflow-hidden py-4 sm:py-4">
+    <Heading heading={'All Sources'} subHeading={'Some of the sources we pull data from to make sure you have latest content'} />
 
-                    <td class="w-96"><span class="text-xl font-semibold">{item.name}</span></td>
-                    <td class="w-20">
-                        <button class={i === likeIndex ? "btn btn-square btn-outline bg-success": "btn btn-square btn-outline"}
-                            on:click={(e) => handleClick(e, item.name, "likes", "publisher", i, item.publisherId, item.feedUrl)}>
-                            <Star color={i === likeIndex ? "white": "black"} />
-                        </button>
-                    </td>
-                    <td class="w-20">
-                        <button class={i === dislikeIndex ? "btn btn-square btn-outline bg-danger": "btn btn-square btn-outline"}
-                            on:click={(e) => handleClick(e, item.name, "dislikes", "publisher", i, item.publisherId, item.feedUrl)}>
-                            <StarOff color={i === dislikeIndex ? "white": "black"}/>
-                        </button>
-                        {#if session?.user?.email === "jasdeepm@gmail.com"}
-                            <button class="btn btn-square btn-outline">
-                                <ShieldCheck />
-                            </button>
-                        {/if}
-                    </td>
-                </tr>
-            {/each}
-            <tr><td>&nbsp;</td></tr>
-        </tbody>
-        </table>
-        <div class="mx-2 grid grid-cols-2 content-center">
-            <div></div>
-            <div class="join">
-                {#each Array(totalPages) as _, i}
-                    <button class="join-item btn" on:click={()=>changePage(i)}>{i+1}</button>
+    <div class="flex flex-row">
+        <div class="flex flex-col w-8/12">
+            <div class="grid grid-cols-3 gap-4">
+                {#each Items as Item}
+                <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-slate-100">
+                    <div class="px-6 py-4">
+                    <div class="h-auto font-bold text-s mb-2">
+                        <p class="text-ellipsis">
+                            {Item}
+                        </p>
+                    </div>
+                    </div>
+                </div>
                 {/each}
+
             </div>
         </div>
-      </div>
+
+        <div class="sidePanel">
+            <Toaster />
+            <div class="mx-auto px-6 lg:px-8 my-6">
+                <div class="mx-auto lg:mx-0">
+                <h4 class="text-sm font-bold tracking-tight sm:text-2xl">Suggest a source</h4>
+                </div>
+                <div>
+                <form class="w-full" method="POST" action="?/addSource">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="source-name">
+                        Source Name
+                        </label>
+                        <input type="text" placeholder="e.g. hacker news" class="input input-bordered w-full max-w-xs" name="source-name"/>
+                    </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block tracking-wide text-gray-700 text-xs font-bold mb-2" for="source-url">
+                        Source URL
+                        </label>
+                        <input type="text" placeholder="e.g. https://news.ycombinator.com" class="input input-bordered w-full max-w-xs" name="source-url"/>
+                    </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-2">
+                    <div class="w-full px-3">
+                        <button class="btn btn-neutral btn-wide" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+	.sidePanel {
+		margin-left: 2;
+		width: 30%;
+		height: 100%;
+		overflow-x: hidden;
+		padding-top: 20px;
+		display: flexbox;
+	}
+</style>
