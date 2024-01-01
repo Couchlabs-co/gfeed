@@ -7,7 +7,7 @@
 	<div class="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 		<div class="place-self-center mr-auto lg:col-span-12">
 			<h1 class="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl">Place to find what really matters to you</h1>
-			<p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">GFeed is here to change the way you consume information. We understand that your time is precious, and that's why we've created a platform that puts you in control.</p>
+			<p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">GFeed changes the way you consume information. Your time is precious, and that's why GFeed puts you in control.</p>
 			<button type="button" class="btn btn-neutral" on:click={() => signIn(
 				'auth0', {
 					redirect: false,

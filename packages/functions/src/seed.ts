@@ -1,5 +1,5 @@
 import { dbClient } from "./utils/dbClient";
-import { PutItemCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { Table } from "sst/node/table";
 import { v4 } from "uuid";
 
@@ -26,7 +26,7 @@ const publishers = [
       "name": "Alice GG",
       "publisherUrl": "https://alicegg.tech/",
       "feedUrl": "https://alicegg.tech/feed.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -56,7 +56,7 @@ const publishers = [
       "publisherUrl": "https://samnewman.io/",
       "feedUrl": "https://samnewman.io/blog/feed.xml",
       "feedStatus": "active",
-      "feedType": "xml",
+      "feedType": "atom",
       "primaryTag": "Tech",
       "frequency": "6 hours"
     },
@@ -131,7 +131,7 @@ const publishers = [
       "name": "Game Developer",
       "publisherUrl": "https://www.gamedeveloper.com/",
       "feedUrl": "https://www.gamedeveloper.com/rss.xml",
-      "feedStatus": "inactive",
+      "feedStatus": "inactive-permanently",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -170,7 +170,7 @@ const publishers = [
       "name": "Musings Of A Caring Techie",
       "publisherUrl": "https://www.thecaringtechie.com/",
       "feedUrl": "https://www.thecaringtechie.com/feed",
-      "feedStatus": "inactive",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
@@ -185,6 +185,16 @@ const publishers = [
       "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Feff814ba-ca84-4452-a48d-789e87a955bd_750x750.png"
+    },
+    {
+      "name": "The LeadTech Diet",
+      "publisherUrl": "https://leonardoborges.substack.com/",
+      "feedUrl": "https://leonardoborges.substack.com/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F626b16c4-f791-49ce-ae0b-33549f8407f2_214x214.png"
     },
     {
       "name": "The Developing Dev",
@@ -251,7 +261,7 @@ const publishers = [
       "feedUrl": "https://feeds.a.dj.com/rss/RSSOpinion.xml",
       "feedStatus": "active",
       "feedType": "xml",
-      "primaryTag": "Tech",
+      "primaryTag": "Misc",
       "frequency": "6 hours",
       "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
     },
@@ -308,7 +318,7 @@ const publishers = [
       "publisherUrl": "https://www.theinformation.com",
       "feedUrl": "https://www.theinformation.com/feed",
       "feedStatus": "active",
-      "feedType": "xml",
+      "feedType": "atom",
       "primaryTag": "World",
       "frequency": "6 hours",
       "logo": "https://ti-assets.theinformation.com/packs/static/assets/images/logo-61c5f316408817d61af5.png"
@@ -328,7 +338,7 @@ const publishers = [
       "publisherUrl": "https://damienaicheh.github.io",
       "feedUrl": "https://damienaicheh.github.io/feed.xml",
       "feedStatus": "active",
-      "feedType": "xml",
+      "feedType": "atom",
       "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://damienaicheh.github.io/assets/img/logo_circle.svg"
@@ -351,17 +361,177 @@ const publishers = [
       "feedType": "atom",
       "primaryTag": "Tech",
       "frequency": "6 hours",
-      "logo": "https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png"
+      "logo": ""
     },
     {
       "name": "Mitchell Hashimoto",
       "publisherUrl": "https://mitchellh.com",
       "feedUrl": "https://mitchellh.com/feed.xml",
       "feedStatus": "active",
-      "feedType": "atom",
+      "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours",
-      "logo": "https://cdn.arstechnica.net/wp-content/uploads/2016/10/cropped-ars-logo-512_480-32x32.png"
+      "logo": ""
+    },
+    {
+      "name": "Bloomberg",
+      "publisherUrl": "https://bloomberg.com",
+      "feedUrl": "https://feeds.bloomberg.com/technology/news.rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech, News",
+      "frequency": "6 hours",
+      "logo": "https://www.bloomberg.com/feeds/static/images/bloomberg_logo_blue.png"
+    },
+    {
+      "name": "Bloomberg",
+      "publisherUrl": "https://bloomberg.com",
+      "feedUrl": "https://feeds.bloomberg.com/politics/news.rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Politics",
+      "frequency": "6 hours",
+      "logo": "https://www.bloomberg.com/feeds/static/images/bloomberg_logo_blue.png"
+    },
+    {
+      "name": "FotMob",
+      "publisherUrl": "https://www.fotmob.com",
+      "feedUrl": "https://pub.fotmob.com/prod/news/api/rss/world",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "CaughtOffside",
+      "publisherUrl": "https://www.caughtoffside.com",
+      "feedUrl": "https://www.caughtoffside.com/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Yahoo",
+      "publisherUrl": "https://sports.yahoo.com/",
+      "feedUrl": "https://sports.yahoo.com/rss/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": "http://l.yimg.com/rz/d/yahoo_sports_en-US_s_f_p_182x21_sports.gif"
+    },
+    {
+      "name": "The New York Times",
+      "publisherUrl": "https://nytimes.com/",
+      "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": "https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png"
+    },
+    {
+      "name": "Washington Post",
+      "publisherUrl": "https://www.washingtonpost.com",
+      "feedUrl": "https://feeds.washingtonpost.com/rss/opinions",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Politics",
+      "frequency": "6 hours",
+      "logo": "https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png"
+    },
+    {
+      "name": "The New York Times",
+      "publisherUrl": "https://www.nytimes.com/ca/section/politic",
+      "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Politics",
+      "frequency": "6 hours",
+      "logo": "https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png"
+    },
+    {
+      "name": "HuffPost",
+      "publisherUrl": "https://www.huffpost.com/news/politics",
+      "feedUrl": "https://www.huffpost.com/section/politics/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Politics",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "InfoQ",
+      "publisherUrl": "https://www.infoq.com",
+      "feedUrl": "https://feed.infoq.com",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/sportsmoney/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/business/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Business",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/lifestyle/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "LifeStyle",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/travel/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Travel",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/food-drink/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Food",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Forbes",
+      "publisherUrl": "https://www.forbes.com",
+      "feedUrl": "https://feeds.forbes.com/digital-assets/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Crypto",
+      "frequency": "6 hours",
+      "logo": ""
     }
   ];
 

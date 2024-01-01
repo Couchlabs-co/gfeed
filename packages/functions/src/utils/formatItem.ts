@@ -172,6 +172,7 @@ function getCategories(item: any, publisher: string) {
       keywords = "software development, programming";
       break;
     case "The New York Times":
+    case "Forbes":
       if(item.category && item.category.length > 1){
         keywords = item.category.map((cat: any) => cat["#text"]).join(',');
       }
@@ -179,7 +180,7 @@ function getCategories(item: any, publisher: string) {
       return item.category.map((cat: Record<any, any>) => cat["#text"]).join(',');
     case "Bloomberg": {
       if(item.category){
-        keywords = item.category[0]._;
+        keywords = item.category["#text"];
       }
       break;
     }
@@ -206,6 +207,7 @@ function getCategories(item: any, publisher: string) {
     }
    }
   }
+
   return keywords;
 }
 
@@ -296,7 +298,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       content: { S: getItemDescription(item, publisher) },
       img: { S: img ?? "" },
     };
-  
+
     return feedItem;
   
   }
