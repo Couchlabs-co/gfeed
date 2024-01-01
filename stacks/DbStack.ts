@@ -97,6 +97,15 @@ export function DbStack({ stack }: StackContext) {
     },
     primaryIndex: { partitionKey: "interestName" },
   });
+
+  const NewSources = new Table(stack, "sources", {
+    fields: {
+      sourceName: "string",
+      sourceUrl: "string",
+      status: "string",
+    },
+    primaryIndex: { partitionKey: "sourceName" },
+  });
   
   new Script(stack, "Script", {
     defaults: {
@@ -114,6 +123,7 @@ export function DbStack({ stack }: StackContext) {
     UserTable,
     UserActionsTable,
     InterestsTable,
-    BookmarkTable
+    BookmarkTable,
+    NewSources
   };
 }

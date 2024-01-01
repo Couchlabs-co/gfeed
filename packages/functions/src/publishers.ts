@@ -5,6 +5,7 @@ import { Table } from "sst/node/table";
 
 export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
+  const uniq = evt.queryStringParameters?.uniq;
   
   const scanCommand: ScanCommand = new ScanCommand({
     TableName: Table.publisher.tableName,
@@ -17,6 +18,15 @@ export const handler = ApiHandler(async (evt) => {
   const {Count, Items}: ScanCommandOutput = await dbClient.send(scanCommand);
 
   const publishers = <any>[];
+
+  if(uniq === "true"){
+    const uniqItems = Array.from([...new Set(Items?.map(item => item.publisherName.S))]);
+    // console.log("uniqItems: ", uniqItems);
+    return {
+          statusCode: 200,
+          body: JSON.stringify({ Count: uniqItems.length, Items: uniqItems }),
+        };
+  }
 
   if(Items && Items.length){
       for (const item of Items) {
