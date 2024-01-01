@@ -1,4 +1,4 @@
-import { StackContext, SvelteKitSite, Config, use } from "sst/constructs";
+import { StackContext, SvelteKitSite, Config, use, Api } from "sst/constructs";
 import { SsrDomainProps } from "sst/constructs/SsrSite";
 import { ApiStack } from "./ApiStack";
 
@@ -6,6 +6,7 @@ export function WebStack({ stack, app }: StackContext) {
 
   let customDomain: SsrDomainProps | undefined;
   let apiUrl: string | undefined;
+  const {GFeedAPI, Auth0APIAudience} = use(ApiStack);
 
   switch(stack.stage) {
     case "production": {
@@ -34,7 +35,6 @@ export function WebStack({ stack, app }: StackContext) {
       break;
     }
     default: {
-      const {GFeedAPI} = use(ApiStack);
       apiUrl = GFeedAPI.url;
       customDomain = undefined;
     }
@@ -48,12 +48,12 @@ export function WebStack({ stack, app }: StackContext) {
     value: process.env.AUTH0_CLIENT_ID ?? '',
   });
 
-  const Auth0Audience = new Config.Parameter(stack, "AUTH0_AUDIENCE", {
-    value: process.env.AUTH0_AUDIENCE ?? '',
-  });
-
   const ClientSecret = new Config.Parameter(stack, "AUTH0_CLIENT_SECRET", {
     value: process.env.AUTH0_CLIENT_SECRET ?? '',
+  });
+
+  const DomainName = new Config.Parameter(stack, "DOMAIN_NAME", {
+    value: process.env.DOMAIN_NAME ?? '',
   });
 
   const Site = new SvelteKitSite(stack, "site", {
@@ -67,6 +67,8 @@ export function WebStack({ stack, app }: StackContext) {
       VITE_AUTH0_DOMAIN: Auth0Domain.value,
       VITE_AUTH0_CLIENT_ID: Auth0ClientId.value,
       VITE_CLIENT_SECRET: ClientSecret.value,
+      VITE_AUTH0_API_AUDIENCE: Auth0APIAudience.value,
+      VITE_DOMAIN_NAME: DomainName.value,
       NODE_ENV: stack.stage
     },
     bind: [Auth0Domain, Auth0ClientId],

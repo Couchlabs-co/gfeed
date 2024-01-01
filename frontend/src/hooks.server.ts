@@ -5,7 +5,7 @@ import { redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 import type { Session } from '@auth/core/types';
 
-const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL } = import.meta.env;
+const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL, VITE_AUTH0_API_AUDIENCE, VITE_DOMAIN_NAME } = import.meta.env;
 
 
 async function authorization({ event, resolve }): Promise<any> {
@@ -42,11 +42,9 @@ const handleAuth = (async (...args) => {
         authorization: {
           params: {
             scope: "openid profile email offline_access",
-            audience: `https://api.readingcorner.com`,
-            
+            audience: `${VITE_AUTH0_API_AUDIENCE}`
           },
         },
-        idToken: true,
         profile(profile) {
           return {
             id: profile.sub,
@@ -54,7 +52,7 @@ const handleAuth = (async (...args) => {
             email: profile.email,
             image: profile.picture,
             emailVerified: profile.email_verified,
-            login_count: profile['https://readingcorner.com/count'],
+            login_count: profile[`${VITE_DOMAIN_NAME}/count`],
           };
         }
       } as Provider,

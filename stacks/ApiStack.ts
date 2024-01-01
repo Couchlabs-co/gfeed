@@ -14,7 +14,7 @@ export function ApiStack({ stack, app }: StackContext) {
   });
 
   switch(stack.stage) {
-    case "prod": {
+    case "production": {
       customDomain = {
         domainName: "api.gfeed.app",
         hostedZone: "gfeed.app"
@@ -77,5 +77,6 @@ export function ApiStack({ stack, app }: StackContext) {
 
   return {
     GFeedAPI,
+    Auth0APIAudience
   }
 }
