@@ -56,6 +56,10 @@ export function WebStack({ stack, app }: StackContext) {
     value: process.env.DOMAIN_NAME ?? '',
   });
 
+  const SentryDSN = new Config.Parameter(stack, "SENTRY_DSN", {
+    value: process.env.SENTRY_DSN ?? '',
+  });
+
   const Site = new SvelteKitSite(stack, "site", {
     customDomain,
     runtime: "nodejs18.x",
@@ -69,7 +73,8 @@ export function WebStack({ stack, app }: StackContext) {
       VITE_CLIENT_SECRET: ClientSecret.value,
       VITE_AUTH0_API_AUDIENCE: Auth0APIAudience.value,
       VITE_DOMAIN_NAME: DomainName.value,
-      NODE_ENV: stack.stage
+      VITE_SENTRY_DSN: SentryDSN.value,
+      VITE_NODE_ENV: stack.stage
     },
     bind: [Auth0Domain, Auth0ClientId],
   });

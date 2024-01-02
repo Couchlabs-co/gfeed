@@ -1,7 +1,10 @@
 import * as Sentry from "@sentry/sveltekit";
 
+const { VITE_SENTRY_DSN, VITE_NODE_ENV } = import.meta.env;
+
 Sentry.init({
-  dsn: "https://0b36a5b45e437e89f170afc798e43f65@o129578.ingest.sentry.io/4506002558746624",
+  dsn: VITE_SENTRY_DSN,
+  environment: VITE_NODE_ENV,
 
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control

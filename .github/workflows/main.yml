@@ -103,6 +103,7 @@ jobs:
       AUTH0_ISSUER: ${{ vars.AUTH0_ISSUER }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -159,6 +160,7 @@ jobs:
       AUTH0_ISSUER: ${{ vars.AUTH0_ISSUER }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
