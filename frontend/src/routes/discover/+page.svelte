@@ -5,6 +5,7 @@
 
 	export let data;
 	const { publishers, feed, session } = data;
+	console.log(publishers.Items[0].tag);
 
 	let gFeed: any = feed.Items;
 
@@ -51,7 +52,7 @@
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
 						<option selected>Publishers</option>
 						{#each publishers.Items as publisher}
-							<option>{publisher.name}</option>
+							<option>{publisher.name - publisher.tag}</option>
 						{/each}
 					</select>
 				</div>
@@ -71,7 +72,7 @@
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
 						<option selected>Publishers</option>
 						{#each publishers.Items as publisher}
-							<option>{publisher.name}</option>
+							<option>{publisher.name} - {publisher.tag}</option>
 						{/each}
 					</select>
 				</div>
