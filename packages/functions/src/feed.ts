@@ -5,21 +5,25 @@ import { Table } from "sst/node/table";
 import {jwtDecode} from "jwt-decode";
 import * as jose from 'jose';
 const he = require('he');
+import { DateTime } from "luxon";
 
 async function GetFeedTimeBased() {
-  const keyDates = getFeedDates();
+  const today = DateTime.now();
+  const pk = parseInt(today.year+''+today.toFormat("MM"));
+  const rangeStart = today.minus({days: 7});
+
   const result = {
     Count: 0,    
     Items: <any>[],
   };
 
   await Promise.all(
-    keyDates.map(async (key) => {
+    [pk, rangeStart.year+''+rangeStart.toFormat("MM")].map(async (key) => {
       const command: QueryCommand = new QueryCommand({
         TableName: Table.posts.tableName,
-        KeyConditionExpression: "publishedDate = :publishedDate",
+        KeyConditionExpression: "pk = :pk",
         ExpressionAttributeValues: {
-          ":publishedDate": { S: key },
+          ":pk": { N: `${key}` },
         },
         ConsistentRead: true,
       });
@@ -49,7 +53,7 @@ async function GetFeedInterestBased(userInterests: any) {
           ExpressionAttributeValues: {
             ":tag": { S: interest.content.S ?? 'Misc' },
           },
-          Limit: 100,
+          Limit: 150,
         });
         let { Count, Items } = await dbClient.send(command);
         result.Count += Count ?? 0;
@@ -84,7 +88,7 @@ async function GetFeedInterestBased(userInterests: any) {
   return result;
 }
 
-async function GetUserFeed(dateKeys: string[], userId: string) {
+async function GetUserFeed(userId: string) {
   let result = {
     Count: 0,
     Items: <any>[],
@@ -106,8 +110,6 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
     return item.userAction.S === "selected" && item.content.S === "feedAlgorithm";
   });
 
-  // console.log(userAlgoPreference[0].contentType.S);
-
   if(userAlgoPreference && userAlgoPreference.length > 0){
     switch(userAlgoPreference[0].contentType.S){
       case 'timeBased': {
@@ -126,7 +128,6 @@ async function GetUserFeed(dateKeys: string[], userId: string) {
 
 export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
-  const keyDates = getFeedDates();
   
   let result = {
     Count: 0,
@@ -137,7 +138,7 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
-      result = await GetUserFeed(keyDates, userId);
+      result = await GetUserFeed(userId);
     }
     catch(err) {
       console.log("err: ", err);
@@ -179,15 +180,6 @@ export const handler = ApiHandler(async (evt) => {
     body: JSON.stringify({ Count: feedItems.length, Items: feedItems }),
   };
 });
-function getFeedDates() {
-  const keys = [];
-  for (let i = 0; i < 7; i++) {
-    const dt = new Date();
-    keys.push(new Date(dt.setDate(dt.getDate() - i)).toISOString().split("T")[0]);
-  }
-  return keys;
-}
-
 async function getUserFromToken(token: string) {
   const tokenHeader = await jwtDecode(token, { header: true });
       const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.AUTH0_ISSUER}.well-known/jwks.json`));
