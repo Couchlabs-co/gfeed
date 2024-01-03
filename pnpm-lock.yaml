@@ -148,6 +148,9 @@ importers:
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
+      luxon:
+        specifier: ^3.4.3
+        version: 3.4.3
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -158,6 +161,9 @@ importers:
       '@types/aws-lambda':
         specifier: ^8.10.119
         version: 8.10.122
+      '@types/luxon':
+        specifier: ^3.3.2
+        version: 3.3.2
       '@types/node':
         specifier: ^20.5.1
         version: 20.8.0
