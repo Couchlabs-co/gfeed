@@ -17,7 +17,7 @@ const publishers = [
       "name": "A List Apart",
       "publisherUrl": "https://alistapart.com/",
       "feedUrl": "https://alistapart.com/main/feed/",
-      "feedStatus": "active",
+      "feedStatus": "inactive",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"
@@ -532,6 +532,16 @@ const publishers = [
       "primaryTag": "Crypto",
       "frequency": "6 hours",
       "logo": ""
+    },
+    {
+      "name": "The New Yorker",
+      "publisherUrl": "https://www.newyorker.com",
+      "feedUrl": "https://www.newyorker.com/feed/culture",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Culture",
+      "frequency": "6 hours",
+      "logo": ""
     }
   ];
 
@@ -541,6 +551,9 @@ const interests = [
     },
     {
       "name": "Crypto",
+    },
+    {
+      "name": "Culture",
     },
     {
       "name": "Business",

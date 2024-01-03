@@ -110,7 +110,7 @@ function getPublishedDate(item: any, publisher: string) {
 }
 
 function getAuthor(item: any, publisher: string) {
-  
+
   switch(publisher) {
     case "Overreacted":
       return "Dan Abramov";
@@ -138,8 +138,20 @@ function getAuthor(item: any, publisher: string) {
       } else {
         return "Bloomberg";
       }
-    case "A List Apart":
-      return item.author.a["#text"]
+    case "A List Apart": {
+      if(Array.isArray(item.author)){
+        return item.author.map((author: any) => author.a["text"]).join(',');
+      } else {
+        return item.author.a["#text"];
+      }
+    }
+    case "The Information": {
+      if(Array.isArray(item.author)){
+        return item.author.map((author: any) => author.name).join(',');
+      } else {
+        return item.author.name;
+      }
+    }
    default: {
     if(item["dc:creator"]) {
      return item["dc:creator"];
