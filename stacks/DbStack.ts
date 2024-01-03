@@ -67,6 +67,7 @@ export function DbStack({ stack }: StackContext) {
   const PostTable = new Table(stack, "posts", {
     fields: {
       id: "string",
+      pk: "number",
       publishedDate: "string",
       title: "string",
       author: "string",
@@ -80,7 +81,7 @@ export function DbStack({ stack }: StackContext) {
       img: "string",
       tag: "string",
     },
-    primaryIndex: { partitionKey: "publishedDate", sortKey: "guid" },
+    primaryIndex: { partitionKey: "pk", sortKey: "guid" },
     globalIndexes: { 
       authorIndex: { partitionKey: "author", sortKey: "guid" }, 
       titleIndex: { partitionKey: "title" }, 
