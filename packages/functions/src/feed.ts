@@ -121,6 +121,8 @@ async function GetUserFeed(userId: string) {
         break;
       }
     }
+  } else {
+    result = await GetFeedTimeBased();
   }
 
   return result;
