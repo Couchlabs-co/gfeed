@@ -12,27 +12,37 @@ async function GetFeedTimeBased() {
   const pk = parseInt(today.year+''+today.toFormat("MM"));
   const rangeStart = today.minus({days: 7});
 
+  const feedRange = [];
+
+  if(pk === parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))) {
+    feedRange.push(pk);
+  } else {
+    feedRange.push(pk);
+    feedRange.push(parseInt(rangeStart.year+''+rangeStart.toFormat("MM")));
+  }
+
   const result = {
     Count: 0,    
     Items: <any>[],
   };
 
   await Promise.all(
-    [pk, rangeStart.year+''+rangeStart.toFormat("MM")].map(async (key) => {
+    feedRange.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
         TableName: Table.posts.tableName,
         KeyConditionExpression: "pk = :pk",
         ExpressionAttributeValues: {
           ":pk": { N: `${key}` },
         },
+        Limit: 150,
         ConsistentRead: true,
       });
       let { Count, Items } = await dbClient.send(command);
       result.Count += Count ?? 0;
       result.Items = result.Items.concat(Items);
     })
-  );  
-
+  );
+  
   return result;
 }
 
