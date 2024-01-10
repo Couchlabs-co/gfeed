@@ -55,13 +55,11 @@ export async function main(event: SQSEvent) {
   };
 }
 async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
-  const pkDate = DateTime.fromISO(feedItem.publishedDate.S);
-  const pk = Number(`${pkDate.year}${pkDate.toFormat("MM")}`);
 
   const putParams = new UpdateItemCommand({
     TableName: tableName,
     Key: {
-      pk: { N: `${pk}` },
+      pk: feedItem.pk,
       guid: feedItem.guid,
     },
     UpdateExpression: "set #id = :id, #publishedDate = :publishedDate, #title = :title, #link = :link, #author = :author, #keywords = :keywords, #pubDate = :pubDate, #content = :content, #publisher = :publisher, #publisherId = :publisherId, #img = :img, #tag = :tag",

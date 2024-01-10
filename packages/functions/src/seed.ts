@@ -279,7 +279,7 @@ const publishers = [
       "name": "Axios",
       "publisherUrl": "https://www.axios.com",
       "feedUrl": "https://www.axios.com/technology",
-      "feedStatus": "active",
+      "feedStatus": "inactive-inactive",
       "feedType": "html",
       "primaryTag": "News",
       "frequency": "6 hours"

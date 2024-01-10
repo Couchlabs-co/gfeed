@@ -1,5 +1,6 @@
 import { AttributeValue } from "@aws-sdk/client-dynamodb";
 import * as uuid from "uuid";
+import { DateTime } from "luxon";
 const he = require('he');
 
 interface RssItem {
@@ -86,24 +87,20 @@ function getImage(item: any, publisher: string) {
   }
 }
 
-function getPublishedDate(item: any, publisher: string) {
+function getPublishedDate(item: any, publisher: string): string|null {
   if (item.pubDate) {
-    const dt = new Date(item.pubDate).toISOString().split("T")[0];
-    return dt.trim();
+    return DateTime.fromISO(item.pubDate).toISODate();
   }
 
   if (item["dc:date"]) {
-    const dt = new Date(item["dc:date"].trim()).toISOString().split("T")[0];
-    return dt.trim();
+    return DateTime.fromISO(item["dc:date"].trim()).toISODate();
   }
 
   if (item["dc:created"]) {
-    const dt = new Date(item["dc:created"]).toISOString().split("T")[0];
-    return dt.trim();
+    return DateTime.fromISO(item["dc:created"]).toISODate();
   }
   if(item.published){
-    const dt = new Date(item.published).toISOString().split("T")[0];
-    return dt.trim();
+    return DateTime.fromISO(item.published).toISODate();
   }
  
   return '';
@@ -185,11 +182,11 @@ function getCategories(item: any, publisher: string) {
       break;
     case "The New York Times":
     case "Forbes":
+    case "The Guardian":
       if(item.category && item.category.length > 1){
         keywords = item.category.map((cat: any) => cat["#text"]).join(',');
       }
-    case "The Guardian":
-      return item.category.map((cat: Record<any, any>) => cat["#text"]).join(',');
+      break;
     case "Bloomberg": {
       if(item.category){
         keywords = item.category["#text"];
@@ -230,6 +227,7 @@ function extractImageFromDescription(description: any): string {
 }
 
 function getItemGuid(item: any, publisher: string) {
+
   switch(publisher) {
     case "InfoQ": {
       return he.decode(item.guid.trim().slice(0, item.guid.indexOf('utm_')));
@@ -241,7 +239,13 @@ function getItemGuid(item: any, publisher: string) {
     case "Overreacted":
       return he.decode(item.guid.trim());
     default:
-      return item.guid ? he.decode(item.guid['#text'].trim()): he.decode(item.id.trim());
+      if(item.guid && typeof item.guid['#text'] === "string"){
+        return he.decode(item.guid['#text'].trim());
+      } else if(item.guid['#text']) {
+        return item.guid['#text'].toString();
+      } else {
+        return he.decode(item.id).toString();
+      }
   }
 }
 
@@ -296,12 +300,15 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
         break;
     }
 
+    const pk = Number(`${DateTime.fromISO(pubDate).year}${DateTime.fromISO(pubDate).toFormat("MM")}`);
+
     const feedItem: Record<string, AttributeValue> = {
       id: { S: uuid.v4() },
-      publishedDate: { S: getPublishedDate(item, publisher) },
+      pk: { N: `${pk}` },
+      publishedDate: { S: (getPublishedDate(item, publisher) ?? DateTime.now().toLocaleString()) },
       title: { S: getItemTitle(item, publisher) },
       link: { S: getItemLink(item, publisher) },
-      pubDate: { N: new Date(pubDate).getTime().toString() },
+      pubDate: { N: DateTime.fromISO(pubDate).toMillis().toString() },
       author: { S: getAuthor(item, publisher) },
       guid: { S: getItemGuid(item, publisher) },
       keywords: { S: getCategories(item, publisher) ?? tag },
