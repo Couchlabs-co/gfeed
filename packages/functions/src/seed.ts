@@ -542,6 +542,16 @@ const publishers = [
       "primaryTag": "Culture",
       "frequency": "6 hours",
       "logo": ""
+    },
+    {
+      "name": "The New Stack",
+      "publisherUrl": "https://www.thenewstack.io",
+      "feedUrl": "https://www.thenewstack.io/blog/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
     }
   ];
 

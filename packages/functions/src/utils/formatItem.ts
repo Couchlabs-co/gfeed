@@ -43,6 +43,11 @@ function getImage(item: any, publisher: string) {
     return getImageUrl(item.enclosure['@_url']);
   }
 
+  if(publisher === "The New Stack" && item["content:encoded"]){
+      const match = item["content:encoded"][0].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
+      return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
+  }
+
   if (item["content:encoded"] && item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
     const match = he.decode(item["content:encoded"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
     return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
