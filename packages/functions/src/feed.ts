@@ -53,6 +53,14 @@ async function GetFeedInterestBased(userInterests: any) {
     Items: <any>[],
   };
 
+  if(userInterests && userInterests.length >= 0){
+    userInterests.push({
+      content: {
+        S: 'Misc'
+      },
+    })
+  }
+
   if(userInterests && userInterests.length > 0){
     await Promise.all(
       userInterests.map(async (interest: any) => {
