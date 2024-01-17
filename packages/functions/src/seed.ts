@@ -17,7 +17,7 @@ const publishers = [
       "name": "A List Apart",
       "publisherUrl": "https://alistapart.com/",
       "feedUrl": "https://alistapart.com/main/feed/",
-      "feedStatus": "inactive",
+      "feedStatus": "inactive-inactive",
       "feedType": "xml",
       "primaryTag": "Tech",
       "frequency": "6 hours"

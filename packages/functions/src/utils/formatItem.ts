@@ -2,6 +2,7 @@ import { AttributeValue } from "@aws-sdk/client-dynamodb";
 import * as uuid from "uuid";
 import { DateTime } from "luxon";
 const he = require('he');
+import formatDate from "./formatDate";
 
 interface RssItem {
   title: string;
@@ -90,25 +91,6 @@ function getImage(item: any, publisher: string) {
     const match = he.decode(item["description"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
     return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
   }
-}
-
-function getPublishedDate(item: any, publisher: string): string|null {
-  if (item.pubDate) {
-    return DateTime.fromISO(item.pubDate).toISODate();
-  }
-
-  if (item["dc:date"]) {
-    return DateTime.fromISO(item["dc:date"].trim()).toISODate();
-  }
-
-  if (item["dc:created"]) {
-    return DateTime.fromISO(item["dc:created"]).toISODate();
-  }
-  if(item.published){
-    return DateTime.fromISO(item.published).toISODate();
-  }
- 
-  return '';
 }
 
 function getAuthor(item: any, publisher: string) {
@@ -284,12 +266,12 @@ function getItemTitle(item: any, publisher: string): string {
 
 export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
   let img = "";
-  let pubDate: string|number;
 
   try {
-    const publishedDate = getPublishedDate(item, publisher) as string;
-  
-    pubDate = publishedDate ? new Date(publishedDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0];
+    const publishedDate = formatDate(item, publisher);
+    const pubDate = publishedDate.toMillis();
+
+    
     img = getImage(item, publisher) ?? '';
   
     switch(publisher) {
@@ -301,19 +283,19 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       case "HACKERNOON":
         img = img?.replace("https://hackernoon.com/", "");
         break;
-     default:
+      default:
         break;
     }
-
-    const pk = Number(`${DateTime.fromISO(pubDate).year}${DateTime.fromISO(pubDate).toFormat("MM")}`);
-
+          
+    const pk = Number(`${publishedDate.year}${publishedDate.toFormat('MM')}`);
+    
     const feedItem: Record<string, AttributeValue> = {
       id: { S: uuid.v4() },
       pk: { N: `${pk}` },
-      publishedDate: { S: (getPublishedDate(item, publisher) ?? DateTime.now().toLocaleString()) },
+      publishedDate: { S: publishedDate.toString() },
       title: { S: getItemTitle(item, publisher) },
       link: { S: getItemLink(item, publisher) },
-      pubDate: { N: DateTime.fromISO(pubDate).toMillis().toString() },
+      pubDate: { N: pubDate.toString() },
       author: { S: getAuthor(item, publisher) },
       guid: { S: getItemGuid(item, publisher) },
       keywords: { S: getCategories(item, publisher) ?? tag },
