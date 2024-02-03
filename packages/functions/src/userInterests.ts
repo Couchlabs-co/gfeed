@@ -63,13 +63,13 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       }, {});
 
       return {
-        statusCode: 201,
+        statusCode: 200,
         body: JSON.stringify({"message": "Success", "data": {interestsByType, interestsByAction}})
       };
     }
 
     return {
-      statusCode: 201,
+      statusCode: 200,
       body: JSON.stringify({"message": "Success", "data": {interestsByType: [], interestsByAction: []}})
     };
     
