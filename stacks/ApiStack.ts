@@ -13,8 +13,8 @@ export function ApiStack({ stack, app }: StackContext) {
     value: process.env.AUTH0_ISSUER ?? '',
   });
 
-  const XAPIKey = new Config.Parameter(stack, "X_API_KEY", {
-    value: process.env.X_API_KEY ?? '',
+  const UserAPIKey = new Config.Parameter(stack, "USER_API_KEY", {
+    value: process.env.USER_API_KEY ?? '',
   })
 
   switch(stack.stage) {
@@ -53,7 +53,7 @@ export function ApiStack({ stack, app }: StackContext) {
         environment: {
           AUTH0_API_AUDIENCE: Auth0APIAudience.value,
           AUTH0_ISSUER: Auth0Issuer.value,
-          X_API_Key: XAPIKey.value
+          USER_API_KEY: UserAPIKey.value
         }
       },
     },

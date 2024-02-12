@@ -2,7 +2,6 @@ import { AttributeValue, PutItemCommand, UpdateItemCommand } from "@aws-sdk/clie
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
-// import * as uuid from "uuid";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
@@ -45,8 +44,10 @@ const createUser = async (id: string, name: string, email: string, channel: stri
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
+  console.log("evt headers: ", evt.headers["x-api-key"], process.env.USER_API_KEY);
 
-  if(!evt.headers["x-api-key"] || evt.headers["x-api-key"] !== process.env.X_API_KEY) {
+
+  if(!evt.headers["x-api-key"] || evt.headers["x-api-key"] !== process.env.USER_API_KEY) {
     return {
       statusCode: 403,
       body: JSON.stringify({"message": "Unauthorised"})

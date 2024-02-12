@@ -104,7 +104,7 @@ jobs:
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-      X_API_KEY: ${{ secrets.X_API_KEY }}
+      USER_API_KEY: ${{ secrets.USER_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -162,7 +162,7 @@ jobs:
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-      X_API_KEY: ${{ secrets.X_API_KEY }}
+      USER_API_KEY: ${{ secrets.USER_API_KEY }}
       NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
