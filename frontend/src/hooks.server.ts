@@ -124,28 +124,29 @@ async function FetchUser(userId: string) {
   return user;
 }
 
-async function CreateUser({user}: Session) {
-  const result = await fetch(`${VITE_API_URL}/users`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({user}),
-  });
+// async function CreateUser({user}: Session) {
+//   const result = await fetch(`${VITE_API_URL}/users`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({user}),
+//   });
 
-  const newUser = await result.json();
-  return newUser;
-}
+//   const newUser = await result.json();
+//   return newUser;
+// }
 
 /// type: import('@sveltejs/kit').Handle
 const handleUser = (async ({event, resolve}) => {
   try{
     const session = await event.locals.getSession();
-    if (session && session.user.login_count === 1) {
-      const user = await CreateUser(session);
-      session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
-      event.locals.user = {...session.user };
-    } else if(session) {
+    // if (session && session.user.login_count === 1) {
+    //   const user = await CreateUser(session);
+    //   session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});
+    //   event.locals.user = {...session.user };
+    // } else 
+    if(session) {
       event.locals.user = {...session.user };
       const user = await FetchUser(session.user.id);
       session.user = Object.assign({}, session.user, {createdAt: user.user.Attributes.createdAt.S});

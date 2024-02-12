@@ -46,6 +46,13 @@ const createUser = async (id: string, name: string, email: string, channel: stri
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
 
+  if(!evt.headers["x-api-key"] || evt.headers["x-api-key"] !== process.env.X_API_KEY) {
+    return {
+      statusCode: 403,
+      body: JSON.stringify({"message": "Unauthorised"})
+    }
+  }
+
   const {user} = JSON.parse(evt.body ?? '');
 
   if(!user || !user.email) {

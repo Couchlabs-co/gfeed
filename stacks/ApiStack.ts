@@ -13,6 +13,10 @@ export function ApiStack({ stack, app }: StackContext) {
     value: process.env.AUTH0_ISSUER ?? '',
   });
 
+  const XAPIKey = new Config.Parameter(stack, "X_API_KEY", {
+    value: process.env.X_API_KEY ?? '',
+  })
+
   switch(stack.stage) {
     case "production": {
       customDomain = {
@@ -48,7 +52,8 @@ export function ApiStack({ stack, app }: StackContext) {
         bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable, NewSources],
         environment: {
           AUTH0_API_AUDIENCE: Auth0APIAudience.value,
-          AUTH0_ISSUER: Auth0Issuer.value
+          AUTH0_ISSUER: Auth0Issuer.value,
+          X_API_Key: XAPIKey.value
         }
       },
     },
