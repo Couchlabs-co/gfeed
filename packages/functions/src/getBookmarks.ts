@@ -12,7 +12,7 @@ type Bookmark = {
   sk: number;
 };
 
-const getBookmarks = async (userId: string) => {
+export const getBookmarks = async (userId: string) => {
   const bookmarkTable = Table.bookmark.tableName;
   const bookmarkQuery = new QueryCommand({
     TableName: bookmarkTable,

@@ -4,31 +4,30 @@ import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
+enum UserAction {
+  likes = "likes",
+  dislikes = "dislikes",
+  viewed = "viewed",
+  bookmark = "bookmark",
+  follow = "follow",
+  unfollow = "unfollow",
+  selected = "selected",
+}
+
 interface Interest {
   content: string;
   contentType: string;
-  userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark';
+  userAction: keyof typeof UserAction;
 }
 
-export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
-  console.log("evt time: ", evt.requestContext.time);
-  const user_id = evt.pathParameters?.userId;
-
-  if(!user_id) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({"message": "Bad Request"})
-    };
-  }
-
-  try {
-    const UserActionsTable = Table.userActions.tableName;
+export const getInterests = async (userId: string) => {
+  const UserActionsTable = Table.userActions.tableName;
     
     const command: QueryCommand = new QueryCommand({
       TableName: UserActionsTable,
       KeyConditionExpression: "userId = :userId",
       ExpressionAttributeValues: {
-        ":userId": { S: user_id },
+        ":userId": { S: userId },
       },
     });
     
@@ -39,7 +38,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       for(const item of res.Items){
         interests.push({
           content: item.content.S as string,
-          userAction: item.userAction.S,
+          userAction: UserAction[item.userAction.S as keyof typeof UserAction],
           contentType: item.contentType.S as string,
         })
       }
@@ -55,7 +54,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
       const interestsByAction = interests.reduce((acc, item) => {
         const interestAction = item.userAction;
-        if(!acc[interestAction]) {
+        if(interestAction !== undefined && !acc[interestAction]) {
           acc[interestAction] = [];
         }
         acc[interestAction].push(item)
@@ -63,15 +62,35 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       }, {});
 
       return {
+        interestsByType,
+        interestsByAction
+      }
+    }
+    return {
+      interestsByType: [],
+      interestsByAction: []
+    }
+}
+
+export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
+  console.log("evt time: ", evt.requestContext.time);
+  const user_id = evt.pathParameters?.userId;
+
+  if(!user_id) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({"message": "Bad Request"})
+    };
+  }
+
+  try {
+    
+    const {interestsByAction, interestsByType} = await getInterests(user_id);
+
+      return {
         statusCode: 200,
         body: JSON.stringify({"message": "Success", "data": {interestsByType, interestsByAction}})
       };
-    }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({"message": "Success", "data": {interestsByType: [], interestsByAction: []}})
-    };
     
   } catch (err) {
     console.log("err........", err);
