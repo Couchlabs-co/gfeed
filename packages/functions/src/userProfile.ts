@@ -52,7 +52,6 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     const bookmarks = await getBookmarks(user_id);
     const { interestsByAction, interestsByType } = await getInterests(user_id);
-
     const userLikedPostsCount = interestsByAction && interestsByAction.likes ? interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
     }).length : 0;
@@ -76,23 +75,18 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
         body: JSON.stringify({
             "message": "Success", 
             "data": {
-                userid: user_id, 
+                userId: user_id, 
                 bookmarks: bookmarks.Items, 
                 interestsByType, 
                 interestsByAction,
                 stats: {
-                    likes: userLikedPostsCount,
-                    dislikes: userDisLikedPostsCount,
-                    viewed: userViewedPostsCount,
-                    bookmarks: bookmarks.Count
+                    likeCount: userLikedPostsCount,
+                    dislikeCount: userDisLikedPostsCount,
+                    viewCount: userViewedPostsCount,
+                    bookmarkCount: bookmarks.Count
                 }
             }})
     };
-
-    // return {
-    //   statusCode: 200,
-    //   body: JSON.stringify({"message": "Success", "data": {interestsByType: [], interestsByAction: []}})
-    // };
     
   } catch (err) {
     console.log("err........", err);
