@@ -552,6 +552,26 @@ const publishers = [
       "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": ""
+    },
+    {
+      "name": "formula1.com",
+      "publisherUrl": "https://formula1.com",
+      "feedUrl": "https://formula1.com/en/latest/all.xml",
+      "feedStatus": "``active",
+      "feedType": "xml",
+      "primaryTag": "Sports",
+      "frequency": "6 hours",
+      "logo": "https://formula1.com/etc/designs/fom-website/images/svg/f1-brand-logo.svg"
+    },
+    {
+      "name": "Human Who Codes",
+      "publisherUrl": "https://humanwhocodes.com",
+      "feedUrl": "https://humanwhocodes.com/feeds/blog.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://humanwhocodes.com/_astro/logo-full-web.fbbbde18.svg"
     }
   ];
 
