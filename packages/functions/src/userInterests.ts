@@ -18,6 +18,7 @@ interface Interest {
   content: string;
   contentType: string;
   userAction: keyof typeof UserAction;
+  contentLink?: string;
 }
 
 export const getInterests = async (userId: string) => {
@@ -40,6 +41,7 @@ export const getInterests = async (userId: string) => {
           content: item.content.S as string,
           userAction: UserAction[item.userAction.S as keyof typeof UserAction],
           contentType: item.contentType.S as string,
+          contentLink: item.contentLink?.S as string
         })
       }
       

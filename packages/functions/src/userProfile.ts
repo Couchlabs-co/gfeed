@@ -16,7 +16,8 @@ enum UserAction {
 interface Interest {
     content: string;
     contentType: string;
-    userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark';
+    userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark' | 'follow' | 'selected';
+    contentLink?: string;
 }
 
 interface UserProfile {
@@ -50,7 +51,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    const bookmarks = await getBookmarks(user_id);
+    // const bookmarks = await getBookmarks(user_id);
     const { interestsByAction, interestsByType } = await getInterests(user_id);
     const userLikedPostsCount = interestsByAction && interestsByAction.likes ? interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
@@ -68,6 +69,10 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
         return item.contentType === 'interest';
     }) : [];
 
+    const userBookmarks = interestsByAction && interestsByAction.bookmark ? interestsByAction?.bookmark.filter((item: any) => {
+        return item.contentType === 'post';
+    }) : [];
+
     const feedAlgoSelected = interestsByAction && interestsByAction.selected ? interestsByAction?.selected[0].contentType : 'default';
 
     return {
@@ -76,14 +81,13 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
             "message": "Success", 
             "data": {
                 userId: user_id, 
-                bookmarks: bookmarks.Items, 
                 interestsByType, 
                 interestsByAction,
                 stats: {
                     likeCount: userLikedPostsCount,
                     dislikeCount: userDisLikedPostsCount,
                     viewCount: userViewedPostsCount,
-                    bookmarkCount: bookmarks.Count
+                    bookmarkCount: userBookmarks.length
                 }
             }})
     };
