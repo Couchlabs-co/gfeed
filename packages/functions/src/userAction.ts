@@ -28,13 +28,15 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     const userActionsTable = Table.userActions.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
+
+    const sk = `${content.toLocaleLowerCase().replace(' ', '-').trim()}#${reaction}`;
     
     if(reaction === 'unfollow') {
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: userActionsTable,
         Key: {
           userId: { S: userId },
-          sk: { S: `${content}#follow` },
+          sk: { S: `${content.toLocaleLowerCase().replace(' ', '-').trim()}#follow` },
         },
       });
       const res = await dbClient.send(command);
@@ -46,7 +48,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
     const Item = {
       id: { S: uuid.v4() },
-      sk: { S: `${content}#${reaction}`},
+      sk: { S: `${sk}`},
       userId: { S: userId },
       userAction: { S: reaction },
       content: { S: content },
