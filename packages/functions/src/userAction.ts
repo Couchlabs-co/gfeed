@@ -29,14 +29,16 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     const userActionsTable = Table.userActions.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
 
-    const sk = `${content.toLocaleLowerCase().replace(' ', '-').trim()}#${reaction}`;
+    const formattedContent = content.toLowerCase().split(' ').join('-').trim();
+
+    const sk = `${formattedContent}#${reaction}`;
     
     if(reaction === 'unfollow') {
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: userActionsTable,
         Key: {
           userId: { S: userId },
-          sk: { S: `${content.toLocaleLowerCase().replace(' ', '-').trim()}#follow` },
+          sk: { S: `${formattedContent}#follow` },
         },
       });
       const res = await dbClient.send(command);
