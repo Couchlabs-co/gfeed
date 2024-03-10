@@ -80,6 +80,7 @@ export function DbStack({ stack }: StackContext) {
       publisherId: "string",
       img: "string",
       tag: "string",
+      dayMonth: "number",
     },
     primaryIndex: { partitionKey: "pk", sortKey: "guid" },
     globalIndexes: { 
@@ -87,7 +88,7 @@ export function DbStack({ stack }: StackContext) {
       titleIndex: { partitionKey: "title" }, 
       publisherIndex: { partitionKey: "publisher" },
       publisherIdIndex: { partitionKey: "publisherId" },
-      tagIndex: { partitionKey: "tag" },
+      tagIndex: { partitionKey: "tag", sortKey: "dayMonth" },
     },
   });
 
