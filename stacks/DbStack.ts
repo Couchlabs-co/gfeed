@@ -87,7 +87,7 @@ export function DbStack({ stack }: StackContext) {
       titleIndex: { partitionKey: "title" }, 
       publisherIndex: { partitionKey: "publisher" },
       publisherIdIndex: { partitionKey: "publisherId" },
-      tagIndex: { partitionKey: "tag" },
+      tagIndex: { partitionKey: "tag", sortKey: "pk" },
     },
   });
 
