@@ -71,6 +71,7 @@ async function GetFeedInterestBased(userInterests: any) {
           ExpressionAttributeValues: {
             ":tag": { S: interest.content.S ?? 'Misc' },
           },
+          ScanIndexForward: false,
           Limit: 150,
         });
         let { Count, Items } = await dbClient.send(command);
