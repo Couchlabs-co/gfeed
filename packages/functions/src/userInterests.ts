@@ -23,17 +23,18 @@ interface Interest {
 }
 
 export const getInterests = async (userId: string) => {
-  const UserActionsTable = Table.userActions.tableName;
+  const BigOneTable = Table.bigTable.tableName;
     
     const command: QueryCommand = new QueryCommand({
-      TableName: UserActionsTable,
-      KeyConditionExpression: "userId = :userId",
+      TableName: BigOneTable,
+      KeyConditionExpression: "pk = :pk",
       ExpressionAttributeValues: {
-        ":userId": { S: userId },
+        ":pk": { S: `user#${userId}` },
       },
     });
     
     const res: QueryCommandOutput = await dbClient.send(command);
+
     const interests: Array<Interest> =[];
     
     if(res.Items){

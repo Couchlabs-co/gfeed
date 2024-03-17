@@ -4,7 +4,7 @@ import { DbStack } from "./DbStack";
 
 export function FunctionStack({ stack }: StackContext) {
 
-  const { PostTable, PublisherTable } = use(DbStack);
+  const { PublisherTable, BigTable } = use(DbStack);
 
   const PostDeadLetterQueue = new Queue(stack, "PostDLQ", {
     cdk: {
@@ -48,15 +48,15 @@ export function FunctionStack({ stack }: StackContext) {
   const FeedCron = new Cron(stack, "FeedCron", {
     schedule: "cron(0 */6 * * ? *)",
     job: "packages/functions/src/feedPublisher.main",
-  }).bind([PublisherTable, FeedQueue]);
+  }).bind([PublisherTable, FeedQueue, BigTable]);
 
   const FeedHandler = new Function(stack, "FeedHandler", {
     handler: "packages/functions/src/feedHandler.main",
-    bind: [PostTable, FeedQueue, PostQueue],
+    bind: [FeedQueue, PostQueue, BigTable],
     logRetention: "three_days",
   });
 
-  FeedQueue.bind([PostTable, PostDeadLetterQueue]);
+  FeedQueue.bind([PostDeadLetterQueue, BigTable]);
 
   return {
     FeedQueue,

@@ -18,16 +18,16 @@ const GetUserInterests = async (userId: string) => {
     }
 };
 
-const GetUserBookmarks = async (userId: string) => {
-    const { VITE_API_URL } = import.meta.env;
-	const result = await fetch(`${VITE_API_URL}/bookmarks/${userId}`);
+// const GetUserBookmarks = async (userId: string) => {
+//     const { VITE_API_URL } = import.meta.env;
+// 	const result = await fetch(`${VITE_API_URL}/bookmarks/${userId}`);
     
-	const res = await result.json();
-    const {message, bookmarks} = res;
-    if(message === 'Success'){
-        return bookmarks;
-    }
-};
+// 	const res = await result.json();
+//     const {message, bookmarks} = res;
+//     if(message === 'Success'){
+//         return bookmarks;
+//     }
+// };
 
 export async function load(event: ServerLoadEvent) {
     const { VITE_API_URL } = import.meta.env;
@@ -42,7 +42,7 @@ export async function load(event: ServerLoadEvent) {
         return {
             interests : await GetInterests(), 
             userInterests: await GetUserInterests(userId as string),
-            userBookmarks: await GetUserBookmarks(userId as string),
+            // userBookmarks: await GetUserBookmarks(userId as string),
             user: event.locals.user
         };
     }

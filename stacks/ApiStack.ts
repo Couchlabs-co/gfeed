@@ -43,13 +43,13 @@ export function ApiStack({ stack, app }: StackContext) {
       customDomain =  undefined;
   };
   
-  const { PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable, NewSources } = use(DbStack);
+  const { PublisherTable, InterestsTable, NewSources, BigTable } = use(DbStack);
 
   const GFeedAPI = new Api(stack, "GFeedAPI", {
     customDomain,
     defaults: {
       function: {
-        bind: [PostTable, UserTable, UserActionsTable, BookmarkTable, PublisherTable, InterestsTable, NewSources],
+        bind: [PublisherTable, InterestsTable, NewSources, BigTable],
         environment: {
           AUTH0_API_AUDIENCE: Auth0APIAudience.value,
           AUTH0_ISSUER: Auth0Issuer.value,

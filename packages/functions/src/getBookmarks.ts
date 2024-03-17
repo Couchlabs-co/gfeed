@@ -13,7 +13,7 @@ type Bookmark = {
 };
 
 export const getBookmarks = async (userId: string) => {
-  const bookmarkTable = Table.bookmark.tableName;
+  const bookmarkTable = Table.bigTable.tableName;
   const bookmarkQuery = new QueryCommand({
     TableName: bookmarkTable,
     KeyConditionExpression: "#userId = :userId",

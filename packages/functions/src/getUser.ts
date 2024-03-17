@@ -1,4 +1,4 @@
-import { AttributeValue, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { AttributeValue, GetItemCommand, QueryCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
@@ -14,40 +14,30 @@ type User = {
 };
 
 const getUser = async (id: string) => {
-  const userTable = Table.user.tableName;
-  const userQuery = new QueryCommand({
+  const userTable = Table.bigTable.tableName;
+  const userQuery = new GetItemCommand({
     TableName: userTable,
-    IndexName: "idIndex",
-    KeyConditionExpression: "#id = :id",
-    ExpressionAttributeNames: {
-      "#id": "id",
-    },
-    ExpressionAttributeValues: {
-      ":id": { S: id },
+    Key: {
+      pk: { S: `user#${id}` },
+      sk: { S: "info" },
     },
   });
 
-  const users: User[] = [];
-    const res = await dbClient.send(userQuery);
-    // return res;
-    if(res.Count && res.Count > 0 && res.Items) {
-      for(const user of res.Items) {
-        const { id, email, name, pic, channel, createdAt } = user;
-        users.push({
-          id: id.S!,
-          email: email.S!,
-          name: name.S!,
-          pic: pic.S!,
-          channel: channel.S!,
-          createdAt: createdAt.S!,
-        })
-      }
+  let user: User | null = null;
+  const res = await dbClient.send(userQuery);
+  if(res.Item){
+    const { id, email, name, pic, channel, createdAt } = res.Item;
+    user = {
+      id: id.S!,
+      email: email.S!,
+      name: name.S!,
+      pic: pic.S!,
+      channel: channel.S!,
+      createdAt: createdAt.S!,
     }
-    return {
-      Count: res.Count,
-      users,
-    }
-
+  }
+  
+  return user;
 }
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {

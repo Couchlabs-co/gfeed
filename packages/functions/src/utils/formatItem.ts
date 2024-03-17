@@ -225,6 +225,9 @@ function getItemGuid(item: any, publisher: string) {
     case "A List Apart":
     case "Overreacted":
       return he.decode(item.guid.trim());
+    case "Martin Fowler":
+    case "The Information":
+      return he.decode(item.id.trim()).toString();
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
         return he.decode(item.guid['#text'].trim());

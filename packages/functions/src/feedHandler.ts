@@ -1,6 +1,6 @@
 import { SQSEvent, SQSRecord } from "aws-lambda";
 import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
-import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { Table } from "sst/node/table";
 import fetchRSSFeed from "./utils/fetchRssFeed";
@@ -8,13 +8,14 @@ import { formatItem } from "./utils/formatItem";
 import { v4 } from "uuid";
 import { Queue } from "sst/node/queue";
 import { DateTime } from "luxon";
+// import { posix } from "path";
 
 const sqs = new SQSClient({
   region: "ap-southeast-2",
 });
 
 export async function main(event: SQSEvent) {
-  const tableName = Table.posts.tableName;
+  const tableName = Table.bigTable.tableName;
   const records: SQSRecord[] = event.Records;
   console.log('length of records from queue: ', records.length);
   for(const record of records){
@@ -41,7 +42,7 @@ export async function main(event: SQSEvent) {
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
         console.log("feedHandler err........", publisher, feedUrl, err, item.title);
-        // await ItemToDeadLetterQ(item);
+        await ItemToDeadLetterQ(item);
       }
     }
     console.log(`Message processed: ${publisher} with url: ${feedUrl}`);
@@ -55,6 +56,8 @@ export async function main(event: SQSEvent) {
   };
 }
 async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
+
+  const mainTable = Table.bigTable.tableName;
 
   const putParams = new UpdateItemCommand({
     TableName: tableName,
@@ -93,7 +96,26 @@ async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
     },
     ReturnValues: "ALL_NEW",
   });
-  await dbClient.send(putParams);
+
+   const putParamsForGfeed = new PutItemCommand({
+      TableName: mainTable,
+      Item: {
+        pk: { S: `post#${feedItem.pk.N.toString()}` },
+        sk: { S: feedItem.pubDate.N.toString() },
+        title: { S: feedItem.title.S },
+        content: { S: feedItem.content.S },
+        author: { S: feedItem.author.S },
+        publisher: { S: feedItem.publisher.S },
+        link: { S: feedItem.link.S },
+        imgUrl: { S: feedItem.img.S },
+        keywords: { S: feedItem.keywords.S },
+        publisherId: { S: publisherId.S },
+        tag: { S: feedItem.tag.S },
+        guid: { S: feedItem.guid.S },
+        publishedDate: { S: feedItem.publishedDate.S },
+      },
+    });
+  await dbClient.send(putParamsForGfeed);
 }
 
 async function ItemToDeadLetterQ(item: any) {

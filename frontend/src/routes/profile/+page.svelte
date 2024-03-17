@@ -18,21 +18,23 @@
 
     const userId = data.user?.id ?? '';
 
-    const { userInterests, userBookmarks } = data;
+    const { userInterests } = data;
 
     const userLikedPosts = userInterests.interestsByAction && userInterests.interestsByAction.likes ? userInterests.interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
     }) : [];
 
-    const userBookmarkedPosts = userBookmarks.Items;
+    // const userBookmarkedPosts = userBookmarks.Items;
 
     const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follow ? userInterests.interestsByAction?.follow.filter((item: any) => {
         return item.contentType === 'interest';
     }) : [];
 
     const feedAlgoSelected = userInterests.interestsByAction && userInterests.interestsByAction.selected ? userInterests.interestsByAction?.selected.filter((item: any) => {
-        return item.content === 'feedAlgorithm';
+        return item.contentType === 'feedAlgo';
     }) : [];
+
+    console.log('feedAlgoSelected: ', feedAlgoSelected);
 
     function handleAlgoChange(eventDetail: Record<string, string>) {
         toast.success('Feed algorithm saved successfully');
@@ -78,7 +80,7 @@
                 </div>
                 <div class="col-span-2 w-full rounded-md ">
                     <UserStats data={data} />
-                    <FeedAlgoOptions selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].contentType: ''} on:feedAlgoChanged={handleAlgoChange}/>
+                    <FeedAlgoOptions selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
                     <div class="grid grid-cols-1 m-4 w-full">
                         <div class="tabs">
                             {#each tabs as tab, i}
@@ -92,7 +94,7 @@
                             <UserPosts userPosts={userLikedPosts} userId={userId} />
                         {/if}
                         {#if activeTab === 2}
-                            <Bookmarks bookmarks={userBookmarkedPosts} />
+                            <Bookmarks bookmarks={[]}/>
                         {/if}
                         
                     </div>

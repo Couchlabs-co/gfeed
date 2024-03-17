@@ -5,40 +5,23 @@ import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
-  const userId = id.split("|");
-  const userTable = Table.user.tableName;
-    const userRecord: Record<string, AttributeValue> = {
-      id: { S: userId.length > 1 ? userId[1] : userId[0] },
-      name: { S: name },
-      email: { S: email },
-      channel: { S: channel },
-      pic: { S: pic },
-      createdAt: { S: new Date().toISOString() },
-    };
-    const command = new UpdateItemCommand({
+  const userTable = Table.bigTable.tableName;
+
+    const userCommand = new PutItemCommand({
       TableName: userTable,
-      Key: {
+      Item: {
+        pk: { S: `user#${id}` },
+        sk: { S: `info` },
+        name: { S: name },
         email: { S: email },
+        channel: { S: channel },
+        pic: { S: pic ?? '' },
+        type: { S: 'USER' },
+        createdAt: { S: new Date().toISOString() },
       },
-      UpdateExpression: "set #id = :id, #name = :name, #channel = :channel, #pic = :pic, #createdAt = :createdAt",
-      ExpressionAttributeNames: {
-        "#id": "id",
-        "#name": "name",
-        "#channel": "channel",
-        "#pic": "pic",
-        "#createdAt": "createdAt",
-      },
-      ExpressionAttributeValues: {
-        ":id": userRecord.id,
-        ":name": userRecord.name, 
-        ":channel": userRecord.channel,
-        ":pic": userRecord.pic,
-        ":createdAt": userRecord.createdAt,
-      },
-      ReturnValues: "ALL_NEW",
     });
 
-    const res = await dbClient.send(command);
+    const res = await dbClient.send(userCommand);
     return res;
 }
 

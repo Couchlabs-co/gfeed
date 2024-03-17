@@ -9,16 +9,16 @@ import { DateTime } from "luxon";
 
 async function GetFeedTimeBased() {
   const today = DateTime.now();
-  const pk = parseInt(today.year+''+today.toFormat("MM"));
+  const pk = `post#${parseInt(today.year+''+today.toFormat("MM"))}`;
   const rangeStart = today.minus({days: 7});
 
   const feedRange = [];
 
-  if(pk === parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))) {
+  if(pk === `post#${parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))}`) {
     feedRange.push(pk);
   } else {
     feedRange.push(pk);
-    feedRange.push(parseInt(rangeStart.year+''+rangeStart.toFormat("MM")));
+    feedRange.push(`post#${parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))}`);
   }
 
   const result = {
@@ -29,10 +29,10 @@ async function GetFeedTimeBased() {
   await Promise.all(
     feedRange.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
-        TableName: Table.posts.tableName,
+        TableName: Table.bigTable.tableName,
         KeyConditionExpression: "pk = :pk",
         ExpressionAttributeValues: {
-          ":pk": { N: `${key}` },
+          ":pk": { S: `${key}` },
         },
         Limit: 150,
         ConsistentRead: true,
@@ -65,11 +65,11 @@ async function GetFeedInterestBased(userInterests: any) {
     await Promise.all(
       userInterests.map(async (interest: any) => {
         const command: QueryCommand = new QueryCommand({
-          TableName: Table.posts.tableName,
+          TableName: Table.bigTable.tableName,
           IndexName: 'tagIndex',
           KeyConditionExpression: "tag = :tag",
           ExpressionAttributeValues: {
-            ":tag": { S: interest.content.S ?? 'Misc' },
+            ":tag": { S: interest.content.S },
           },
           ScanIndexForward: false,
           Limit: 150,
@@ -114,19 +114,21 @@ async function GetUserFeed(userId: string) {
   };
 
   const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
-    TableName: Table.userActions.tableName,
-    KeyConditionExpression: "userId = :userId",
+    TableName: Table.bigTable.tableName,
+    KeyConditionExpression: "pk = :pk",
+    FilterExpression: "ctt = :ctt)",
     ExpressionAttributeValues: {
-      ":userId": { S: userId },
+      ":pk": { S: `user#${userId}` },
+      ":ctt": { S: "interest" },
     },
     ConsistentRead: true,
   }));
   const interestsUserFollows = userInterests.Items?.filter((item: any) => {
-    return item.userAction.S === "follow" && item.contentType.S === "interest";
+    return item.ua.S === "follow" && item.ctt.S === "interest";
   });
 
   const userAlgoPreference = userInterests.Items?.filter((item: any) => {
-    return item.userAction.S === "selected" && item.content.S === "feedAlgorithm";
+    return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
   });
 
   if(userAlgoPreference && userAlgoPreference.length > 0){
@@ -177,18 +179,18 @@ export const handler = ApiHandler(async (evt) => {
 
   for (const item of result.Items) {
     feedItems.push({
-      id: item.id.S,
+      id: item.pk.S,
       publishedDate: item.publishedDate.S,
       title: item.title.S && he.decode(item.title.S),
       link: item.link.S && he.decode(item.link.S),
-      pubDate: item.pubDate.N,
+      pubDate: item.sk.S,
       author: item.author.S,
       content: item.content.S && he.decode(item.content.S),
       guid: item.guid.S && he.decode(item.guid.S),
       publisher: item.publisher?.S,
       keywords: item.keywords?.S ?? "",
       tag: item.tag?.S ?? "",
-      image: item.img?.S ?? "",
+      image: item.imgUrl?.S ?? "",
     });
   }
 

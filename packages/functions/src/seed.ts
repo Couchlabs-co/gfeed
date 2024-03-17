@@ -557,7 +557,7 @@ const publishers = [
       "name": "formula1.com",
       "publisherUrl": "https://formula1.com",
       "feedUrl": "https://formula1.com/en/latest/all.xml",
-      "feedStatus": "``active",
+      "feedStatus": "active",
       "feedType": "xml",
       "primaryTag": "Sports",
       "frequency": "6 hours",

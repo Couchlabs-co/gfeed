@@ -27,7 +27,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
   try {
     const { userId, content, contentType, contentId, reaction } = body;
-    const bookmarkTable = Table.bookmark.tableName;
+    const bookmarkTable = Table.bigTable.tableName;
     if(reaction === 'save'){
       const command: PutItemCommand = new PutItemCommand({
         TableName: bookmarkTable,

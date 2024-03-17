@@ -26,7 +26,8 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    const userActionsTable = Table.userActions.tableName;
+    // const BigOneTable = Table.userActions.tableName;
+    const BigOneTable = Table.bigTable.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
 
     const formattedContent = content.toLowerCase().split(' ').join('-').trim();
@@ -35,9 +36,9 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     
     if(reaction === 'unfollow') {
       const command: DeleteItemCommand = new DeleteItemCommand({
-        TableName: userActionsTable,
+        TableName: BigOneTable,
         Key: {
-          userId: { S: userId },
+          pk: { S: `user#${userId}` },
           sk: { S: `${formattedContent}#follow` },
         },
       });
@@ -49,17 +50,17 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     }
 
     const Item = {
+      pk: { S: `user#${userId}` }, // user#1234
+      sk: { S: `${sk}`}, // 
       id: { S: uuid.v4() },
-      sk: { S: `${sk}`},
-      userId: { S: userId },
-      userAction: { S: reaction },
-      content: { S: content },
-      contentType: { S: contentType },
-      contentId: { S: contentId },
-      contentLink: { S: contentLink ?? '' },
+      ua: { S: reaction }, // follow | like | dislike | view | bookmark
+      ct: { S: content }, // post title | interest name
+      ctt: { S: contentType }, // interest | post | algorithm
+      cid: { S: contentId }, // post id | interest id
+      cl: { S: contentLink ?? '' },  // post link | interest link
     };
     const command: PutItemCommand = new PutItemCommand({
-      TableName: userActionsTable,
+      TableName: BigOneTable,
       Item: Item,
     });
     const res = await dbClient.send(command);
