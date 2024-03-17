@@ -26,13 +26,11 @@ const createUser = async (id: string, name: string, email: string, channel: stri
           TableName: userTable,
           Item: {
             pk: { S: `user#${id}` },
-            sk: { S: `interest` },
-            id: { S: uuid.v4() },
+            sk: { S: `feedAlgo#selected` },
+            cid: { S: uuid.v4() },
             ua: { S: 'selected' }, // follow | like | dislike | view | bookmark
             ct: { S: 'timeBased' }, // post title | interest name
             ctt: { S: 'feedAlgo' }, // interest | post | algorithm
-            cid: { S: '' }, // post id | interest id
-            cl: { S: '' },
           },
         });
 

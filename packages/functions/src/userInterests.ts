@@ -44,7 +44,7 @@ export const getInterests = async (userId: string) => {
         }
         interests.push({
           content: item.ct.S as string,
-          contentId: item.id.S as string,
+          contentId: item.cid.S as string,
           userAction: UserAction[item.ua.S as keyof typeof UserAction],
           contentType: item.ctt.S as string,
           contentLink: item.cl?.S as string

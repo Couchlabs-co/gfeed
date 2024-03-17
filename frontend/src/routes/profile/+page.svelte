@@ -34,8 +34,6 @@
         return item.contentType === 'feedAlgo';
     }) : [];
 
-    console.log('feedAlgoSelected: ', feedAlgoSelected);
-
     function handleAlgoChange(eventDetail: Record<string, string>) {
         toast.success('Feed algorithm saved successfully');
     }
