@@ -116,7 +116,7 @@ async function GetUserFeed(userId: string) {
   const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
     TableName: Table.bigTable.tableName,
     KeyConditionExpression: "pk = :pk",
-    FilterExpression: "ctt = :ctt)",
+    FilterExpression: "ctt = :ctt",
     ExpressionAttributeValues: {
       ":pk": { S: `user#${userId}` },
       ":ctt": { S: "interest" },
@@ -161,6 +161,7 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
+      console.log("userId: ", userId);
       result = await GetUserFeed(userId);
     }
     catch(err) {

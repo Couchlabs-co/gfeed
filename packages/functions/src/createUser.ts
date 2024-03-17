@@ -1,7 +1,8 @@
-import { AttributeValue, PutItemCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
+import * as uuid from "uuid";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
@@ -21,7 +22,22 @@ const createUser = async (id: string, name: string, email: string, channel: stri
       },
     });
 
+    const userFeedAlgoCommand = new PutItemCommand({
+          TableName: userTable,
+          Item: {
+            pk: { S: `user#${id}` },
+            sk: { S: `interest` },
+            id: { S: uuid.v4() },
+            ua: { S: 'selected' }, // follow | like | dislike | view | bookmark
+            ct: { S: 'timeBased' }, // post title | interest name
+            ctt: { S: 'feedAlgo' }, // interest | post | algorithm
+            cid: { S: '' }, // post id | interest id
+            cl: { S: '' },
+          },
+        });
+
     const res = await dbClient.send(userCommand);
+    await dbClient.send(userFeedAlgoCommand);
     return res;
 }
 
@@ -49,6 +65,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     if(user.id){
       const res = await createUser(user.id, user.name, user.email, "google", user.image);
+
       return {
         statusCode: 201,
         body: JSON.stringify({"message": "Success", "user": res})

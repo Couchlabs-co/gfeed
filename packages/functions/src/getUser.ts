@@ -26,9 +26,9 @@ const getUser = async (id: string) => {
   let user: User | null = null;
   const res = await dbClient.send(userQuery);
   if(res.Item){
-    const { id, email, name, pic, channel, createdAt } = res.Item;
+    const { pk, email, name, pic, channel, createdAt } = res.Item;
     user = {
-      id: id.S!,
+      id: pk.S!,
       email: email.S!,
       name: name.S!,
       pic: pic.S!,

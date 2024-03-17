@@ -9,7 +9,7 @@ const GetInterests = async () => {
 
 const GetUserInterests = async (userId: string) => {
     const { VITE_API_URL } = import.meta.env;
-	const result = await fetch(`${VITE_API_URL}/users/${userId}/interests`);
+	const result = await fetch(`${VITE_API_URL}/users/${userId}/profile`);
 
 	const res = await result.json();
     const {message, data} = res;
