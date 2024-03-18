@@ -1,6 +1,6 @@
 import { AttributeValue } from "@aws-sdk/client-dynamodb";
 import * as uuid from "uuid";
-import { DateTime } from "luxon";
+import { getTime, getYear, getMonth, format } from 'date-fns';
 const he = require('he');
 import formatDate from "./formatDate";
 
@@ -228,6 +228,11 @@ function getItemGuid(item: any, publisher: string) {
     case "Martin Fowler":
     case "The Information":
       return he.decode(item.id.trim()).toString();
+    case "TokyoDev":
+    case "Sam Newman":
+      return he.decode(item.id.trim()).toString();
+    case "HuffPost":
+      return he.decode(item.guid.trim());
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
         return he.decode(item.guid['#text'].trim());
@@ -272,7 +277,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
 
   try {
     const publishedDate = formatDate(item, publisher);
-    const pubDate = publishedDate.toMillis();
+    const pubDate = getTime(publishedDate.toString()) ;
 
     
     img = getImage(item, publisher) ?? '';
@@ -289,16 +294,17 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       default:
         break;
     }
-          
-    const pk = Number(`${publishedDate.year}${publishedDate.toFormat('MM')}`);
+    
+    const pk = Number(`${getYear(publishedDate.toString())}${("0"+(getMonth(publishedDate.toString())+1)).slice(-2)}`);
     
     const feedItem: Record<string, AttributeValue> = {
       id: { S: uuid.v4() },
-      pk: { N: `${pk}` },
+      pk: { S: `${pk}` },
+      sk: { S: getItemGuid(item, publisher) },
       publishedDate: { S: publishedDate.toString() },
       title: { S: getItemTitle(item, publisher) },
       link: { S: getItemLink(item, publisher) },
-      pubDate: { N: pubDate.toString() },
+      pubDate: { N: `${pubDate}` },
       author: { S: getAuthor(item, publisher) },
       guid: { S: getItemGuid(item, publisher) },
       keywords: { S: getCategories(item, publisher) ?? tag },

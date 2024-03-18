@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { BookmarkPost, userAction } from "$lib/userActions";
+    import { userAction } from "$lib/userActions";
     import { DateTime } from "luxon";
     // import { Share2 } from "lucide-svelte";
     export let userId: string;
@@ -21,7 +21,6 @@
     function handleImgError(event: any) {
         event.target.src = "/imgs/default.avif";
     }
-
 
 </script>
 

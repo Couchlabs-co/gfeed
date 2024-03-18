@@ -7,7 +7,6 @@ import fetchRSSFeed from "./utils/fetchRssFeed";
 import { formatItem } from "./utils/formatItem";
 import { v4 } from "uuid";
 import { Queue } from "sst/node/queue";
-import { DateTime } from "luxon";
 // import { posix } from "path";
 
 const sqs = new SQSClient({
@@ -59,49 +58,12 @@ async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
 
   const mainTable = Table.bigTable.tableName;
 
-  const putParams = new UpdateItemCommand({
-    TableName: tableName,
-    Key: {
-      pk: feedItem.pk,
-      guid: feedItem.guid,
-    },
-    UpdateExpression: "set #id = :id, #publishedDate = :publishedDate, #title = :title, #link = :link, #author = :author, #keywords = :keywords, #pubDate = :pubDate, #content = :content, #publisher = :publisher, #publisherId = :publisherId, #img = :img, #tag = :tag",
-    ExpressionAttributeNames: {
-      "#id": "id",
-      "#publishedDate": "publishedDate",
-      "#title": "title",
-      "#link": "link",
-      "#author": "author",
-      "#keywords": "keywords",
-      "#pubDate": "pubDate",
-      "#content": "content",
-      "#publisher": "publisher",
-      "#publisherId": "publisherId",
-      "#tag": "tag",
-      "#img": "img",
-    },
-    ExpressionAttributeValues: {
-      ":id": { S: v4() },
-      ":publishedDate": feedItem.publishedDate,
-      ":title": feedItem.title,
-      ":link": feedItem.link,
-      ":author": feedItem.author,
-      ":keywords": feedItem.keywords,
-      ":pubDate": feedItem.pubDate,
-      ":content": feedItem.content,
-      ":publisher": feedItem.publisher,
-      ":publisherId": publisherId,
-      ":tag": feedItem.tag,
-      ":img": feedItem.img ?? '',
-    },
-    ReturnValues: "ALL_NEW",
-  });
-
    const putParamsForGfeed = new PutItemCommand({
       TableName: mainTable,
       Item: {
-        pk: { S: `post#${feedItem.pk.N.toString()}` },
-        sk: { S: feedItem.pubDate.N.toString() },
+        pk: { S: `post#${feedItem.pk.S}` },
+        sk: { S: feedItem.sk.S },
+        id: { S: v4() },
         title: { S: feedItem.title.S },
         content: { S: feedItem.content.S },
         author: { S: feedItem.author.S },
@@ -110,6 +72,7 @@ async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
         imgUrl: { S: feedItem.img.S },
         keywords: { S: feedItem.keywords.S },
         publisherId: { S: publisherId.S },
+        pubDate: { N: feedItem.pubDate.N },
         tag: { S: feedItem.tag.S },
         guid: { S: feedItem.guid.S },
         publishedDate: { S: feedItem.publishedDate.S },
