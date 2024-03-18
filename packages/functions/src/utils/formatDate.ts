@@ -1,29 +1,35 @@
-import { DateTime } from "luxon";
+import { parseISO, toDate } from 'date-fns';
 
-const formatDate = (item: any, publisher: string): DateTime => {
+const formatDate = (item: any, publisher: string): String => {
   let dt = null;
 
   if (item.pubDate) {
-    dt =item.pubDate;
-    return DateTime.fromMillis(Date.parse(dt));
+    dt = Date.parse(item.pubDate);
+    // return DateTime.fromMillis(Date.parse(dt));
+    return toDate(dt).toISOString();
   }
 
   if (item["dc:date"]) {
-    dt = item["dc:date"];
-    return DateTime.fromISO(dt);
+    dt = Date.parse(item["dc:date"].trim());
+    return toDate(dt).toISOString();
   }
 
   if (item["dc:created"]) {
-    dt = item["dc:created"];
-    return DateTime.fromISO(dt);
+    dt = Date.parse(item["dc:created"].trim());
+    return toDate(dt).toISOString();
   }
   
   if (item.published){
-    dt = item.published;
-    return DateTime.fromISO(dt);
+    dt = Date.parse(item.published);
+    return toDate(dt).toISOString();
   }
 
-  return DateTime.now();
+  if(item.updated){
+    dt = Date.parse(item.updated);
+    return toDate(dt).toISOString();
+  }
+
+  return new Date().toISOString();
 
 }
 

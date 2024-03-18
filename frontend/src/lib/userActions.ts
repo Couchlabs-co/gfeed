@@ -17,22 +17,3 @@ export async function userAction(userId: string, content: string, reaction: stri
     const data = await res.json();
     return data;
 }
-
-export async function BookmarkPost(userId: string, content: string, contentType: string, contentId: string, reaction: string, contentLink: string) {
-    const res = await fetch("/api/bookmark", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            content,
-            reaction,
-            contentType,
-            contentId,
-            userId,
-            contentLink
-        }),
-    });
-    const data = await res.json();
-    console.log(data);
-}
