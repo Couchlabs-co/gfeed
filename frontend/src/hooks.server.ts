@@ -5,7 +5,7 @@ import { redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 import type { Session } from '@auth/core/types';
 
-const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL, VITE_AUTH0_API_AUDIENCE, VITE_DOMAIN_NAME } = import.meta.env;
+const { VITE_AUTH0_DOMAIN, VITE_AUTH0_CLIENT_ID, VITE_CLIENT_SECRET, VITE_API_URL, VITE_AUTH0_API_AUDIENCE, VITE_DOMAIN_NAME, VITE_WEB_API_KEY } = import.meta.env;
 
 
 async function authorization({ event, resolve }): Promise<any> {
@@ -128,7 +128,7 @@ async function CreateUser(user: any) {
   const result = await fetch(`${VITE_API_URL}/users`, {
     method: 'POST',
     headers: {
-      'x-api-key': 'k@xm2uBztFcwUqbTArNeUX.C',
+      'x-api-key': VITE_WEB_API_KEY,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({user}),

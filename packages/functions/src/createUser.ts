@@ -7,6 +7,7 @@ import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 const createUser = async (id: string, name: string, email: string, channel: string, pic: string) => {
   const userTable = Table.bigTable.tableName;
+  console.info("creating user: ", email, channel);
 
     const userCommand = new PutItemCommand({
       TableName: userTable,
@@ -41,8 +42,6 @@ const createUser = async (id: string, name: string, email: string, channel: stri
 
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
-  console.log("evt headers: ", evt.headers["x-api-key"], process.env.USER_API_KEY);
-
 
   if(!evt.headers["x-api-key"] || evt.headers["x-api-key"] !== process.env.USER_API_KEY) {
     return {
@@ -61,6 +60,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
+    console.log("user: ", JSON.stringify(user));
     if(user.id){
       const res = await createUser(user.id, user.name, user.email, "google", user.image);
 
