@@ -61,6 +61,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     }
 
     if(contentType === 'feedAlgo') {
+      Item.sk = { S: `feedAlgo#${reaction}` };
       Item.cid = { S: uuid.v4() };
     }
 
@@ -72,6 +73,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       TableName: BigOneTable,
       Item: Item,
     });
+
     const res = await dbClient.send(command);
     return {
       statusCode: res.$metadata.httpStatusCode,

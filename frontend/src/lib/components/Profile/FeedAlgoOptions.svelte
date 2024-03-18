@@ -10,7 +10,7 @@
 
     async function handleChange(e: any) {
      if(user.id){
-        const response = await userAction(user.id,  e.target.value, "selected", "feedAlgo", "", "");
+        const response = await userAction(user.id, e.target.value, "selected", "feedAlgo", "", "");
         if(response.msg === 'Success'){
             dispatch('feedAlgoChanged', {
                 selectedAlgo: e.target.value

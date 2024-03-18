@@ -55,7 +55,7 @@ async function GetFeedInterestBased(userInterests: any) {
 
   if(userInterests && userInterests.length >= 0){
     userInterests.push({
-      content: {
+      ct: {
         S: 'Misc'
       },
     })
@@ -69,7 +69,7 @@ async function GetFeedInterestBased(userInterests: any) {
           IndexName: 'tagIndex',
           KeyConditionExpression: "tag = :tag",
           ExpressionAttributeValues: {
-            ":tag": { S: interest.content.S },
+            ":tag": { S: interest.ct.S },
           },
           ScanIndexForward: false,
           Limit: 150,
@@ -116,13 +116,13 @@ async function GetUserFeed(userId: string) {
   const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
     TableName: Table.bigTable.tableName,
     KeyConditionExpression: "pk = :pk",
-    FilterExpression: "ctt = :ctt",
+    FilterExpression: "attribute_exists(ctt)",
     ExpressionAttributeValues: {
       ":pk": { S: `user#${userId}` },
-      ":ctt": { S: "interest" },
     },
     ConsistentRead: true,
   }));
+
   const interestsUserFollows = userInterests.Items?.filter((item: any) => {
     return item.ua.S === "follow" && item.ctt.S === "interest";
   });
@@ -132,7 +132,7 @@ async function GetUserFeed(userId: string) {
   });
 
   if(userAlgoPreference && userAlgoPreference.length > 0){
-    switch(userAlgoPreference[0].contentType.S){
+    switch(userAlgoPreference[0].ct.S){
       case 'timeBased': {
         result = await GetFeedTimeBased();
         break
@@ -161,7 +161,6 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
-      console.log("userId: ", userId);
       result = await GetUserFeed(userId);
     }
     catch(err) {
