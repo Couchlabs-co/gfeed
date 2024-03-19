@@ -1,7 +1,6 @@
-import { DateTime } from "luxon";
 import { parseISO, toDate } from 'date-fns';
 
-const formatDate = (item: any, publisher: string): DateTime | String => {
+const formatDate = (item: any, publisher: string): String => {
   let dt = null;
 
   if (item.pubDate) {
@@ -30,7 +29,12 @@ const formatDate = (item: any, publisher: string): DateTime | String => {
     return toDate(dt).toISOString();
   }
 
-  return DateTime.now();
+  if(item.updated){
+    dt = Date.parse(item.updated);
+    return toDate(dt).toISOString();
+  }
+
+  return new Date().toISOString();
 
 }
 

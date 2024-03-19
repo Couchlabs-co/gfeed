@@ -5,20 +5,25 @@ import { Table } from "sst/node/table";
 import {jwtDecode} from "jwt-decode";
 import * as jose from 'jose';
 const he = require('he');
-import { DateTime } from "luxon";
+import { getMonth, getYear, sub } from 'date-fns';
 
 async function GetFeedTimeBased() {
-  const today = DateTime.now();
-  const pk = `post#${parseInt(today.year+''+today.toFormat("MM"))}`;
-  const rangeStart = today.minus({days: 7});
+  const today = new Date();
+  const currentMonth = ("0" + (getMonth(today) + 1)).slice(-2);
+  const currentYear = getYear(today);
+  const pk = `post#${currentYear}${currentMonth}`;
+
+  const rangeStart = sub(today, {days: 7});
+  const prevMonth = ("0" + (getMonth(rangeStart) + 1)).slice(-2);
+  const prevYear = getYear(rangeStart);
 
   const feedRange = [];
 
-  if(pk === `post#${parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))}`) {
+  if(pk === `post#${prevYear}${prevMonth}`) {
     feedRange.push(pk);
   } else {
     feedRange.push(pk);
-    feedRange.push(`post#${parseInt(rangeStart.year+''+rangeStart.toFormat("MM"))}`);
+    feedRange.push(`post#${prevYear}${prevMonth}`);
   }
 
   const result = {
