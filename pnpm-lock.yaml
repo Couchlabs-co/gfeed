@@ -54,9 +54,6 @@ importers:
       lucide-svelte:
         specifier: ^0.284.0
         version: 0.284.0(svelte@4.2.8)
-      luxon:
-        specifier: ^3.4.3
-        version: 3.4.3
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -85,9 +82,6 @@ importers:
       '@sveltejs/adapter-auto':
         specifier: ^2.1.0
         version: 2.1.0(@sveltejs/kit@1.30.3)
-      '@types/luxon':
-        specifier: ^3.3.2
-        version: 3.3.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.7.4
         version: 6.7.4(@typescript-eslint/parser@6.7.4)(eslint@8.50.0)(typescript@5.2.2)
@@ -4056,10 +4050,6 @@ packages:
     resolution: {integrity: sha512-RbSSoHliUbnXj3ny0CNFOoxrIDV6SUGyStHsvDqosw6CkdPV8TtWGlfecuK4ToyMEAql6pzNxgCFKanovUzlgQ==}
     dev: true
 
-  /@types/luxon@3.3.2:
-    resolution: {integrity: sha512-l5cpE57br4BIjK+9BSkFBOsWtwv6J9bJpC7gdXIzZyI0vuKvNTk0wZZrkQxMGsUAuGW9+WMNWF2IJMD7br2yeQ==}
-    dev: true
-
   /@types/node-fetch@2.6.6:
     resolution: {integrity: sha512-95X8guJYhfqiuVVhRFxVQcf4hW/2bCuoPwDasMf/531STFoNoWTT7YDnWdXHEZKqAGUigmpG31r2FE70LwnzJw==}
     dependencies:
@@ -6526,11 +6516,6 @@ packages:
       svelte: '>=3 <5'
     dependencies:
       svelte: 4.2.8
-    dev: false
-
-  /luxon@3.4.3:
-    resolution: {integrity: sha512-tFWBiv3h7z+T/tDaoxA8rqTxy1CHV6gHS//QdaH4pulbq/JuBSGgQspQQqcgnwdAx6pNI7cmvz5Sv/addzHmUg==}
-    engines: {node: '>=12'}
     dev: false
 
   /magic-string@0.27.0:

@@ -188,7 +188,7 @@ export const handler = ApiHandler(async (evt) => {
       publishedDate: item.publishedDate.S,
       title: item.title.S && he.decode(item.title.S),
       link: item.link.S && he.decode(item.link.S),
-      pubDate: item.sk.S,
+      pubDate: parseInt(item.pubDate.N),
       author: item.author.S,
       content: item.content.S && he.decode(item.content.S),
       guid: item.guid.S && he.decode(item.guid.S),
@@ -200,7 +200,7 @@ export const handler = ApiHandler(async (evt) => {
   }
 
   feedItems.sort((a: any, b:any) => {
-    return b.pubDate - a.pubDate;
+    return parseInt(b.pubDate) - parseInt(a.pubDate);
   });
 
   return {
@@ -210,17 +210,17 @@ export const handler = ApiHandler(async (evt) => {
 });
 async function getUserFromToken(token: string) {
   const tokenHeader = await jwtDecode(token, { header: true });
-      const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.AUTH0_ISSUER}.well-known/jwks.json`));
+  const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.AUTH0_ISSUER}.well-known/jwks.json`));
 
-      const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
-        issuer: process.env.AUTH0_ISSUER ?? '',
-        audience: process.env.AUTH0_API_AUDIENCE ?? '',
-      })
-      if(tokenHeader.kid !== protectedHeader.kid) {
-        throw new Error('Unforbidden');
-      }
-      const sub = payload.sub ?? "";
-      const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
-      return userId;
+  const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
+    issuer: process.env.AUTH0_ISSUER ?? '',
+    audience: process.env.AUTH0_API_AUDIENCE ?? '',
+  })
+  if(tokenHeader.kid !== protectedHeader.kid) {
+    throw new Error('Unforbidden');
+  }
+  const sub = payload.sub ?? "";
+  const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
+  return userId;
 }
 

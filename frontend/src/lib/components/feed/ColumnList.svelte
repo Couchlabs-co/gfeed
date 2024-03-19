@@ -1,10 +1,9 @@
 <script lang="ts">
     import { userAction } from "$lib/userActions";
-    import { DateTime } from "luxon";
-    // import { Share2 } from "lucide-svelte";
+    import { format } from 'date-fns';
+
     export let userId: string;
 
-    // DateTime.fromMillis(Number(Item.pubDate)).diffNow().toObject().hours;
     export let Item = {
         id: "Id",
         title: "Title",
@@ -40,7 +39,7 @@
     </div>
     <div>
         <p class="text-gray-500 text-sm">
-            {Item.publisher}, {DateTime.fromMillis(Number(Item.pubDate)).toLocaleString(DateTime.DATE_MED)}
+            {Item.publisher}, {format(Item.pubDate, "dd MMM yyyy")}
         </p>
     </div>
     </div>

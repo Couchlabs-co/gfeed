@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { DateTime } from 'luxon';
+    import { format } from 'date-fns';
 
     export let userPic: string;
     export let userName: string;
     export let memberSince: string;
 
     function formatDate(date: string) {
-        return DateTime.fromISO(date).toLocaleString(DateTime.DATE_MED);
+        return format(date, "dd MMM yyyy");
     }
 </script>
 <div class="container w-4/5 rounded-md">
