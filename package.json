@@ -1,6 +1,7 @@
 {
   "name": "sst-gfeed",
   "version": "2.0.0",
+  "workspaces": ["frontend/*", "packages/*"],
   "scripts": {
     "dev": "sst dev",
     "build": "sst build",
