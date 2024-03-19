@@ -26,8 +26,6 @@ async function GetFeedTimeBased() {
     feedRange.push(`post#${prevYear}${prevMonth}`);
   }
 
-  console.log("feedRange: ", feedRange);
-
   const result = {
     Count: 0,    
     Items: <any>[],
