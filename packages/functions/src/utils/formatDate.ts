@@ -29,6 +29,11 @@ const formatDate = (item: any, publisher: string): String => {
     return toDate(dt).toISOString();
   }
 
+  if(item.updated){
+    dt = Date.parse(item.updated);
+    return toDate(dt).toISOString();
+  }
+
   return new Date().toISOString();
 
 }
