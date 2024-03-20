@@ -3,24 +3,12 @@ import { main } from "../src/feedHandler";
 import { SQSEvent } from "aws-lambda";
 import sqsEvent from './__mocks__/sqsEvent.json';
 import mockDynamoDBClient from './__mocks__/mockDynamoDBClient'
-import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
+import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import fs from 'fs';
 import { mockFetch } from "./__mocks__/mockFetch";
 import path from "path";
 
 describe("feedHandler", () => {
-
-    // vi.mock('fetch', ()=>{
-    //     return {
-    //         ok: true,
-    //         text: () => {
-    //             const xmlFile = fs.readFileSync('./__mocks__/overreacted.xml', 'utf8');
-    //             return new Promise((resolve, reject) => {
-    //                 resolve(xmlFile);
-    //             });
-    //         }
-    //     };
-    // });
 
     beforeEach(() => {
         mockDynamoDBClient.reset();
@@ -37,12 +25,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Wired', feedUrl: 'https://www.wired.com/feed/rss' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Wired', feedUrl: 'https://www.wired.com/feed/rss' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse overreacted xml feed", async () => {
@@ -52,12 +39,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Overreacted', feedUrl: 'https://overreacted.io/rss.xml' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Overreacted', feedUrl: 'https://overreacted.io/rss.xml' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse martinfowler atom feed", async () => {
@@ -67,12 +53,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Martin Fowler', feedUrl: 'https://martinfowler.com/feed.atom' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'atom', publisher: 'Martin Fowler', feedUrl: 'https://martinfowler.com/feed.atom' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse techcrunch xml feed", async () => {
@@ -82,12 +67,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'TechCrunch', feedUrl: 'https://techcrunch.com/feed' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'TechCrunch', feedUrl: 'https://techcrunch.com/feed' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse mozilla hacks xml feed", async () => {
@@ -97,12 +81,12 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Mozilla Hacks', feedUrl: 'https://hacks.mozilla.org/feed/' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Mozilla Hacks', feedUrl: 'https://hacks.mozilla.org/feed/' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
         console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse a list part xml feed", async () => {
@@ -112,12 +96,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'A List Apart', feedUrl: 'https://alistapart.com/main/feed/' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'A List Apart', feedUrl: 'https://alistapart.com/main/feed/' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse alicegg xml feed", async () => {
@@ -127,12 +110,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Alice GG', feedUrl: 'https://alicegg.tech/feed.xml' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Alice GG', feedUrl: 'https://alicegg.tech/feed.xml' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse samnewman xml feed", async () => {
@@ -142,12 +124,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Sam Newman', feedUrl: 'https://samnewman.io/blog/feed.xml' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Sam Newman', feedUrl: 'https://samnewman.io/blog/feed.xml' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse hackernoon xml feed", async () => {
@@ -157,12 +138,11 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'HACKERNOON', feedUrl: 'https://hackernoon.com/feed' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'HACKERNOON', feedUrl: 'https://hackernoon.com/feed' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse jacob singh xml feed", async () => {
@@ -172,12 +152,12 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'Jacob Singh', feedUrl: 'https://jacobsingh.name/rss/' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Jacob Singh', feedUrl: 'https://jacobsingh.name/rss/' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
         console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse dev intruppted xml feed", async () => {
@@ -187,11 +167,10 @@ describe("feedHandler", () => {
             response: xmlFile
         }
         mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ publisher: 'devintruppted', feedUrl: 'https://devinterrupted.substack.com/feed' });
-        mockDynamoDBClient.on(UpdateItemCommand).resolves({});
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'devintruppted', feedUrl: 'https://devinterrupted.substack.com/feed' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
-        expect(response).toBeTruthy();
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 });

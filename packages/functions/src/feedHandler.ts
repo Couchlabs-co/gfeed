@@ -5,9 +5,7 @@ import { dbClient } from "./utils/dbClient";
 import { Table } from "sst/node/table";
 import fetchRSSFeed from "./utils/fetchRssFeed";
 import { formatItem } from "./utils/formatItem";
-import { v4 } from "uuid";
 import { Queue } from "sst/node/queue";
-// import { posix } from "path";
 
 const sqs = new SQSClient({
   region: "ap-southeast-2",
@@ -41,7 +39,7 @@ export async function main(event: SQSEvent) {
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
         console.log("feedHandler err........", publisher, feedUrl, err, item.title);
-        await ItemToDeadLetterQ(item);
+        // await ItemToDeadLetterQ(item);
       }
     }
     console.log(`Message processed: ${publisher} with url: ${feedUrl}`);
@@ -56,14 +54,12 @@ export async function main(event: SQSEvent) {
 }
 async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
 
-  const mainTable = Table.bigTable.tableName;
-
    const putParamsForGfeed = new PutItemCommand({
-      TableName: mainTable,
+      TableName: tableName,
       Item: {
         pk: { S: `post#${feedItem.pk.S}` },
         sk: { S: feedItem.sk.S },
-        id: { S: v4() },
+        id: { S: feedItem.id.S },
         title: { S: feedItem.title.S },
         content: { S: feedItem.content.S },
         author: { S: feedItem.author.S },

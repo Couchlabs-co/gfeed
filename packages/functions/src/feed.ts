@@ -7,7 +7,7 @@ import * as jose from 'jose';
 const he = require('he');
 import { getMonth, getYear, sub } from 'date-fns';
 
-async function GetFeedTimeBased() {
+async function getTimeBasedFeed() {
   const today = new Date();
   const currentMonth = ("0" + (getMonth(today) + 1)).slice(-2);
   const currentYear = getYear(today);
@@ -51,20 +51,21 @@ async function GetFeedTimeBased() {
   return result;
 }
 
-async function GetFeedInterestBased(userInterests: any) {
+async function getInterestBasedFeed(userInterests: any) {
   
   const result = {
     Count: 0,    
     Items: <any>[],
   };
 
-  if(userInterests && userInterests.length >= 0){
-    userInterests.push({
-      ct: {
-        S: 'Misc'
-      },
-    })
-  }
+  // removing serendipity of Misc tag. Need a better way to surface Hacker News
+  // if(userInterests && userInterests.length >= 0){
+  //   userInterests.push({
+  //     ct: {
+  //       S: 'Misc'
+  //     },
+  //   })
+  // }
 
   if(userInterests && userInterests.length > 0){
     await Promise.all(
@@ -100,15 +101,6 @@ async function GetFeedInterestBased(userInterests: any) {
       });
     }
   }
-  
-  // if(interestsUserFollows && interestsUserFollows?.length !== 0) {
-  //   for(const interest of interestsUserFollows) {
-  //     result.Items.filter((item: any) => {
-  //       return item.tag?.S.toLowerCase() === interest.content.S?.toLowerCase() || item.tag?.S.toLowerCase() === 'misc';
-  //     });
-  //   }
-  // }
-
   return result;
 }
 
@@ -139,16 +131,16 @@ async function GetUserFeed(userId: string) {
   if(userAlgoPreference && userAlgoPreference.length > 0){
     switch(userAlgoPreference[0].ct.S){
       case 'timeBased': {
-        result = await GetFeedTimeBased();
+        result = await getTimeBasedFeed();
         break
       }
       case 'interestBased': {
-        result = await GetFeedInterestBased(interestsUserFollows);
+        result = await getInterestBasedFeed(interestsUserFollows);
         break;
       }
     }
   } else {
-    result = await GetFeedTimeBased();
+    result = await getTimeBasedFeed();
   }
 
   return result;
@@ -178,17 +170,17 @@ export const handler = ApiHandler(async (evt) => {
       }
     }
   } else {
-    result = await GetFeedTimeBased();
+    result = await getTimeBasedFeed();
   }
   const feedItems = <any>[];
 
   for (const item of result.Items) {
     feedItems.push({
-      id: item.pk.S,
+      id: item.id.S,
       publishedDate: item.publishedDate.S,
       title: item.title.S && he.decode(item.title.S),
       link: item.link.S && he.decode(item.link.S),
-      pubDate: parseInt(item.pubDate.N),
+      pubDate: item.pubDate ? parseInt(item.pubDate.N) : parseInt(item.sk.S),
       author: item.author.S,
       content: item.content.S && he.decode(item.content.S),
       guid: item.guid.S && he.decode(item.guid.S),
