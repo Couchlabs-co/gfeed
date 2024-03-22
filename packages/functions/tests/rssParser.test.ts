@@ -1,5 +1,5 @@
 import { describe, beforeEach ,afterEach, expect, vi, it } from "vitest";
-import { main } from "../src/feedHandler";
+import { main } from "../src/rssParser";
 import { SQSEvent } from "aws-lambda";
 import sqsEvent from './__mocks__/sqsEvent.json';
 import mockDynamoDBClient from './__mocks__/mockDynamoDBClient'
@@ -8,7 +8,7 @@ import fs from 'fs';
 import { mockFetch } from "./__mocks__/mockFetch";
 import path from "path";
 
-describe("feedHandler", () => {
+describe("rssParser", () => {
 
     beforeEach(() => {
         mockDynamoDBClient.reset();

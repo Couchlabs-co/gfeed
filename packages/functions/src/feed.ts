@@ -8,6 +8,7 @@ const he = require('he');
 import { getMonth, getYear, sub } from 'date-fns';
 
 async function getTimeBasedFeed() {
+  console.log("getting time based feed");
   const today = new Date();
   const currentMonth = ("0" + (getMonth(today) + 1)).slice(-2);
   const currentYear = getYear(today);
@@ -52,6 +53,8 @@ async function getTimeBasedFeed() {
 }
 
 async function getInterestBasedFeed(userInterests: any) {
+
+  console.log("getting interest based feed");
   
   const result = {
     Count: 0,    
@@ -110,6 +113,8 @@ async function GetUserFeed(userId: string) {
     Items: <any>[],
   };
 
+  console.log('getting user feed for user: ', userId);
+
   const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
     TableName: Table.bigTable.tableName,
     KeyConditionExpression: "pk = :pk",
@@ -158,6 +163,7 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
+      console.log("userId: ", userId);
       result = await GetUserFeed(userId);
     }
     catch(err) {

@@ -38,7 +38,7 @@ export async function main(event: SQSEvent) {
         const feedItem = await formatItem(item, publisher, tag);
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
-        console.log("feedHandler err........", publisher, feedUrl, err, item.title);
+        console.log("rssParser err........", publisher, feedUrl, err, item.title);
         // await ItemToDeadLetterQ(item);
       }
     }

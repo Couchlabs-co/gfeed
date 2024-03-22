@@ -16,7 +16,7 @@ export function FunctionStack({ stack }: StackContext) {
   });
   
   const FeedQueue = new Queue(stack, "Queue", {
-    consumer: "packages/functions/src/feedHandler.main",
+    consumer: "packages/functions/src/rssParser.main",
     cdk: {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
@@ -45,13 +45,13 @@ export function FunctionStack({ stack }: StackContext) {
     }
   });
 
-  const FeedCron = new Cron(stack, "FeedCron", {
+  const RssCron = new Cron(stack, "RssCron", {
     schedule: "cron(0 */6 * * ? *)",
-    job: "packages/functions/src/feedPublisher.main",
+    job: "packages/functions/src/rssPublishers.main",
   }).bind([PublisherTable, FeedQueue, BigTable]);
 
-  const FeedHandler = new Function(stack, "FeedHandler", {
-    handler: "packages/functions/src/feedHandler.main",
+  const RssParser = new Function(stack, "RssParser", {
+    handler: "packages/functions/src/rssParser.main",
     bind: [FeedQueue, PostQueue, BigTable],
     logRetention: "three_days",
   });
@@ -60,8 +60,8 @@ export function FunctionStack({ stack }: StackContext) {
 
   return {
     FeedQueue,
-    FeedCron,
-    FeedHandler,
+    RssCron,
+    RssParser,
     ImageQueue,
   };
 }
