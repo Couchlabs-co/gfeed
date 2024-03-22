@@ -52,9 +52,6 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Install dependencies
-        run: bun install
-
       - name: run tests
         run: |
           cd packages/functions
@@ -138,6 +135,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
+      
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: latest
+          run_install: false
           
       - uses: oven-sh/setup-bun@v1
         with:
