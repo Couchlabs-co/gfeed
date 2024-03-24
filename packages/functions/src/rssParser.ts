@@ -29,7 +29,7 @@ export async function main(event: SQSEvent) {
         if(publisher === 'Damien Aicheh' && item.link["@_href"].includes('-fr')){
           continue;
         }
-        if(publisher === 'Hacker News' && item.title?.includes('Show HN')) {
+        if(publisher === 'Hacker News' && (item.title?.includes('Show HN') || item.title?.includes('Ask HN'))) {
           continue;
         }
         if(publisher === "TokyoDev" && item.link['@_href'].includes('story-ja')){
