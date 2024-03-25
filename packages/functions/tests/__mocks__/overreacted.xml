@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Dan Abramov's Overreacted Blog RSS Feed]]></title><description><![CDATA[Personal blog by Dan Abramov. I explain with words and code.]]></description><link>https://overreacted.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 10 Nov 2022 18:15:40 GMT</lastBuildDate><item><title><![CDATA[npm audit: Broken by Design]]></title><description><![CDATA[Found 99 vulnerabilities (84 moderately irrelevant, 15 highly irrelevant)]]></description><link>https://overreacted.io/npm-audit-broken-by-design/</link><guid isPermaLink="false">https://overreacted.io/npm-audit-broken-by-design/</guid><pubDate>Wed, 07 Jul 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Security is important. Nobody wants to be the person advocating for less security. So nobody wants to say it. But somebody has to say it.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title><![CDATA[Dan Abramov's Overreacted Blog RSS Feed]]></title>
+    <description><![CDATA[Personal blog by Dan Abramov. I explain with words and code.]]></description>
+    <link>https://overreacted.io</link>
+    <generator>GatsbyJS</generator>
+    <lastBuildDate>Thu, 10 Nov 2022 18:15:40 GMT</lastBuildDate>
+    <item>
+      <title><![CDATA[npm audit: Broken by Design]]></title>
+      <description><![CDATA[Found 99 vulnerabilities (84 moderately irrelevant, 15 highly irrelevant)]]></description>
+      <link>https://overreacted.io/npm-audit-broken-by-design/</link>
+      <guid isPermaLink="false">https://overreacted.io/npm-audit-broken-by-design/</guid>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Security is important. Nobody wants to be the person advocating for less security. So nobody wants to say it. But somebody has to say it.&lt;/p&gt;
 &lt;p&gt;So I guess I’ll say it.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The way &lt;code class=&quot;language-text&quot;&gt;npm audit&lt;/code&gt; works is broken. Its rollout as a default after every &lt;code class=&quot;language-text&quot;&gt;npm install&lt;/code&gt; was rushed, inconsiderate, and inadequate for the front-end tooling.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Have you heard the story about &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the boy who cried wolf?&lt;/a&gt; Spoiler alert: the wolf eats the sheep. If we don’t want our sheep to be eaten, we need better tools.&lt;/p&gt;
@@ -209,7 +225,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;Today, &lt;code class=&quot;language-text&quot;&gt;npm audit&lt;/code&gt; is broken by design.&lt;/p&gt;
 &lt;p&gt;Beginners, experienced developers, maintainers, security departments, and, most importantly — our users — deserve better.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/npm-audit-broken-by-design/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Before You memo()]]></title><description><![CDATA[Rendering optimizations that come naturally.]]></description><link>https://overreacted.io/before-you-memo/</link><guid isPermaLink="false">https://overreacted.io/before-you-memo/</guid><pubDate>Tue, 23 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are many articles written about React performance optimizations. In general, if some state update is slow, you need to:&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Before You memo()]]></title>
+      <description><![CDATA[Rendering optimizations that come naturally.]]></description>
+      <link>https://overreacted.io/before-you-memo/</link>
+      <guid isPermaLink="false">https://overreacted.io/before-you-memo/</guid>
+      <pubDate>Tue, 23 Feb 2021 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;There are many articles written about React performance optimizations. In general, if some state update is slow, you need to:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Verify you’re running a production build. (Development builds are intentionally slower, in extreme cases even by an order of magnitude.)&lt;/li&gt;
 &lt;li&gt;Verify that you didn’t put the state higher in the tree than necessary. (For example, putting input state in a centralized store might not be the best idea.)&lt;/li&gt;
@@ -317,29 +341,26 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;&lt;a href=&quot;https://kentcdodds.com/blog/optimize-react-re-renders&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Yes, probably.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This is not a new idea. It’s a natural consequence of React composition model. It’s simple enough that it’s underappreciated, and deserves a bit more love.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/before-you-memo/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[The WET Codebase]]></title><description><![CDATA[Come waste your time with me.]]></description><link>https://overreacted.io/the-wet-codebase/</link><guid isPermaLink="false">https://overreacted.io/the-wet-codebase/</guid><pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Don’t Repeat Yourself&lt;/a&gt; Wikipedia article states:&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[The WET Codebase]]></title>
+      <description><![CDATA[Come waste your time with me.]]></description>
+      <link>https://overreacted.io/the-wet-codebase/</link>
+      <guid isPermaLink="false">https://overreacted.io/the-wet-codebase/</guid>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/Don%27t_repeat_yourself&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Don’t Repeat Yourself&lt;/a&gt; Wikipedia article states:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Violations of DRY are typically referred to as WET solutions, which is commonly taken to stand for “write every time”, “write everything twice”, “we enjoy typing” or “waste everyone’s time”.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;But as any Phish fan can tell you, &lt;a href=&quot;https://www.youtube.com/watch?v=Zg2tVuXXkpk&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;wasting time&lt;/a&gt; is actually good!&lt;/p&gt;
 &lt;p&gt;A year ago, I gave a conference talk, and I want to share it today with those of you who haven’t watched it. This talk isn’t about React, or even JavaScript.&lt;/p&gt;
 &lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;https://www.deconstructconf.com/2019/dan-abramov-the-wet-codebase&quot;&gt;
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABxUlEQVQoz4WSz0sbURSF8y+4EjfauhDFpjQNjYomNhGlqIs2JbRKEFGsC6FQN4qCYBeKWqhiUasUik5jlCzcC4KIrqRQdCG4kHZji4Vq/Jlk4uebN53MTJW6ONzhced75953HOnjOdLHCno1pKCKmjqag7MIpKKQmEeNi7P4zf2GHFqTGlfQq/2b5DwHP2bYXH/H7ta4gH+RUv9CzX5TDrtDvUk6S0aJRXtxeSpxlT7mUZmPtvYGDvc/wakBtbuTDrVDjWzYl7DzCD/3PuIpD5CX7yYcCvKiIUxWtpOx96+BRRJ/ZjNO/wHqMMNy8mhW7mz76yiFxSUU+Z7wtK6eumet5Dpr6OluFsDYbUBzZMPhr+/T+P01+GtbCDUFaQw+p7A2jK+qWrrXerTe/wCVzA6Th8KlGqW7q5UHxQG8vgAVpVUUuLyEXgY5+/2ZyxPlNoemJDC9wNrKIHeLPDjdXu4JZWXf523/KznyhRj5pn8ddncWhwK4ujxATp6bOwUC+tDLyHAHO9/GMuOqluhcAxovnYnNRYSN1SEmP7xhaqKTpVifWMOCDHjKkkPrqjTZHsV6kwy2gHK5qEvsVEuA8RD2cJvgK1jsyeH8emh9AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABxUlEQVQoz4WSz0sbURSF8y+4EjfauhDFpjQNjYomNhGlqIs2JbRKEFGsC6FQN4qCYBeKWqhiUasUik5jlCzcC4KIrqRQdCG4kHZji4Vq/Jlk4uebN53MTJW6ONzhced75953HOnjOdLHCno1pKCKmjqag7MIpKKQmEeNi7P4zf2GHFqTGlfQq/2b5DwHP2bYXH/H7ta4gH+RUv9CzX5TDrtDvUk6S0aJRXtxeSpxlT7mUZmPtvYGDvc/wakBtbuTDrVDjWzYl7DzCD/3PuIpD5CX7yYcCvKiIUxWtpOx96+BRRJ/ZjNO/wHqMMNy8mhW7mz76yiFxSUU+Z7wtK6eumet5Dpr6OluFsDYbUBzZMPhr+/T+P01+GtbCDUFaQw+p7A2jK+qWrrXerTe/wCVzA6Th8KlGqW7q5UHxQG8vgAVpVUUuLyEXgY5+/2ZyxPlNoemJDC9wNrKIHeLPDjdXu4JZWXf523/KznyhRj5pn8ddncWhwK4ujxATp6bOwUC+tDLyHAHO9/GMuOqluhcAxovnYnNRYSN1SEmP7xhaqKTpVifWMOCDHjKkkPrqjTZHsV6kwy2gHK5qEvsVEuA8RD2cJvgK1jsyeH8emh9AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Slide from the talk&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/fcda8/wet_codebase.png&quot;
-        srcset=&quot;https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/12f09/wet_codebase.png 148w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/e4a3f/wet_codebase.png 295w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/fcda8/wet_codebase.png 590w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/efc66/wet_codebase.png 885w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/c83ae/wet_codebase.png 1180w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/51800/wet_codebase.png 1196w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Slide from the talk&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/fcda8/wet_codebase.png&quot; srcset=&quot;https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/12f09/wet_codebase.png 148w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/e4a3f/wet_codebase.png 295w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/fcda8/wet_codebase.png 590w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/efc66/wet_codebase.png 885w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/c83ae/wet_codebase.png 1180w,https://overreacted.io/static/2b269b9cc5c8adb3b9c1172dfbc10abb/51800/wet_codebase.png 1196w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -349,7 +370,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;I hope you’ll enjoy watching this talk as much as I enjoyed presenting it. I would like to thank &lt;a href=&quot;https://twitter.com/garybernhardt/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Gary&lt;/a&gt; and the team for organizing a stellar conference. I’m also thankful to &lt;a href=&quot;https://twitter.com/sebmarkbage&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sebastian&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/sandimetz&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sandi&lt;/a&gt;, and &lt;a href=&quot;https://twitter.com/_chenglou&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Cheng&lt;/a&gt; for the talks that inspired this one.&lt;/p&gt;
 &lt;p&gt;I miss conferences. Hope to see you all soon.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/the-wet-codebase/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Goodbye, Clean Code]]></title><description><![CDATA[Let clean code guide you. Then let it go.]]></description><link>https://overreacted.io/goodbye-clean-code/</link><guid isPermaLink="false">https://overreacted.io/goodbye-clean-code/</guid><pubDate>Sat, 11 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It was a late evening.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Goodbye, Clean Code]]></title>
+      <description><![CDATA[Let clean code guide you. Then let it go.]]></description>
+      <link>https://overreacted.io/goodbye-clean-code/</link>
+      <guid isPermaLink="false">https://overreacted.io/goodbye-clean-code/</guid>
+      <pubDate>Sat, 11 Jan 2020 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;It was a late evening.&lt;/p&gt;
 &lt;p&gt;My colleague has just checked in the code that they’ve been writing all week. We were working on a graphics editor canvas, and they implemented the ability to resize shapes like rectangles and ovals by dragging small handles at their edges.&lt;/p&gt;
 &lt;p&gt;The code worked.&lt;/p&gt;
 &lt;p&gt;But it was repetitive. Each shape (such as a rectangle or an oval) had a different set of handles, and dragging each handle in different directions affected the shape’s position and size in a different way. If the user held Shift, we’d also need to preserve proportions while resizing. There was a bunch of math.&lt;/p&gt;
@@ -489,7 +518,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;But don’t stop there. Don’t be a clean code zealot. Clean code is not a goal. It’s an attempt to make some sense out of the immense complexity of systems we’re dealing with. It’s a defense mechanism when you’re not yet sure how a change would affect the codebase but you need guidance in a sea of unknowns.&lt;/p&gt;
 &lt;p&gt;Let clean code guide you. &lt;strong&gt;Then let it go.&lt;/strong&gt;&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/goodbye-clean-code/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[My Decade in Review]]></title><description><![CDATA[A personal reflection.]]></description><link>https://overreacted.io/my-decade-in-review/</link><guid isPermaLink="false">https://overreacted.io/my-decade-in-review/</guid><pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I started this decade as a first-year college student fresh out of high school. I was 17, didn’t have a job, didn’t have any industry connections, and really didn’t know shit. And now you’re reading my blog! I would have been proud.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[My Decade in Review]]></title>
+      <description><![CDATA[A personal reflection.]]></description>
+      <link>https://overreacted.io/my-decade-in-review/</link>
+      <guid isPermaLink="false">https://overreacted.io/my-decade-in-review/</guid>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;I started this decade as a first-year college student fresh out of high school. I was 17, didn’t have a job, didn’t have any industry connections, and really didn’t know shit. And now you’re reading my blog! I would have been proud.&lt;/p&gt;
 &lt;p&gt;I’ve told bits and pieces of my story on different podcasts. Now feels like an appropriate time to write down the parts that were most memorable to me.&lt;/p&gt;
 &lt;p&gt;Every person’s story is unique and not directly reproducible. I’ve benefited immensely from the privilege of being born in an upper middle class family and looking like a typical coder stereotype. People took chances on me. Still, I hope that sharing my story can be helpful to compare our experiences. Even if our circumstances are too different, at least you might find some of it entertaining.&lt;/p&gt;
 &lt;h2 id=&quot;2010&quot;&gt;&lt;a href=&quot;#2010&quot; aria-hidden class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2010&lt;/h2&gt;
@@ -610,7 +647,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;Or, should I say, &lt;em&gt;this&lt;/em&gt; decade?&lt;/p&gt;
 &lt;p&gt;Welcome to the twenties.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/my-decade-in-review/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[What Are the React Team Principles?]]></title><description><![CDATA[UI Before API.]]></description><link>https://overreacted.io/what-are-the-react-team-principles/</link><guid isPermaLink="false">https://overreacted.io/what-are-the-react-team-principles/</guid><pubDate>Wed, 25 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;During my time on the React team, I’ve been lucky to see how &lt;a href=&quot;https://twitter.com/jordwalke&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jordan&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/sebmarkbage&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sebastian&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/sophiebits&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sophie&lt;/a&gt; and other tenured team members approach problems. In this post, I’m distilling what I learned from them into a few high-level technical principles. These principles aren’t meant to be exhaustive. This is my personal attempt to formalize observations about how the React team operates — other team members may have different perspectives.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[What Are the React Team Principles?]]></title>
+      <description><![CDATA[UI Before API.]]></description>
+      <link>https://overreacted.io/what-are-the-react-team-principles/</link>
+      <guid isPermaLink="false">https://overreacted.io/what-are-the-react-team-principles/</guid>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;During my time on the React team, I’ve been lucky to see how &lt;a href=&quot;https://twitter.com/jordwalke&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Jordan&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/sebmarkbage&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sebastian&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/sophiebits&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Sophie&lt;/a&gt; and other tenured team members approach problems. In this post, I’m distilling what I learned from them into a few high-level technical principles. These principles aren’t meant to be exhaustive. This is my personal attempt to formalize observations about how the React team operates — other team members may have different perspectives.&lt;/p&gt;
 &lt;h2 id=&quot;ui-before-api&quot;&gt;&lt;a href=&quot;#ui-before-api&quot; aria-hidden class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;UI Before API&lt;/h2&gt;
 &lt;p&gt;Every abstraction has its own quirks when deployed at scale. How do those quirks manifest themselves in the user interfaces? Can you tell when an app is built with a certain abstraction?&lt;/p&gt;
 &lt;p&gt;Abstractions have a direct effect on the user experiences — enabling, perpetuating, or even making some of them impossible. This is why when designing APIs, we don’t start with the abstraction itself. Instead, we start with the desired user experience, and work backwards to the abstraction.&lt;/p&gt;
@@ -645,7 +690,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;Does your team have a set of principles? I’d love to hear about them.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This article was originally posted &lt;a href=&quot;https://react.christmas/2019/24&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/what-are-the-react-team-principles/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[On let vs const]]></title><description><![CDATA[So which one should I use?]]></description><link>https://overreacted.io/on-let-vs-const/</link><guid isPermaLink="false">https://overreacted.io/on-let-vs-const/</guid><pubDate>Sun, 22 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;My &lt;a href=&quot;https://overreacted.io/what-is-javascript-made-of/&quot;&gt;previous post&lt;/a&gt; included this paragraph:&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[On let vs const]]></title>
+      <description><![CDATA[So which one should I use?]]></description>
+      <link>https://overreacted.io/on-let-vs-const/</link>
+      <guid isPermaLink="false">https://overreacted.io/on-let-vs-const/</guid>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;My &lt;a href=&quot;https://overreacted.io/what-is-javascript-made-of/&quot;&gt;previous post&lt;/a&gt; included this paragraph:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;let&lt;/code&gt; vs &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt; vs &lt;code class=&quot;language-text&quot;&gt;var&lt;/code&gt;&lt;/strong&gt;: Usually you want &lt;code class=&quot;language-text&quot;&gt;let&lt;/code&gt;. If you want to forbid assignment to this variable, you can use &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt;. (Some codebases and coworkers are pedantic and force you to use &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt; when there is only one assignment.)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -673,7 +726,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;If you care, use a linter that automates checking and fixing this so that changing &lt;code class=&quot;language-text&quot;&gt;let&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;const&lt;/code&gt; doesn’t become a delay in code review.&lt;/p&gt;
 &lt;p&gt;Finally, remember that linters exist to serve &lt;em&gt;you&lt;/em&gt;. If a linter rule annoys you and your team, delete it. It may not be worth it. Learn from your own mistakes.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/on-let-vs-const/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[What Is JavaScript Made Of?]]></title><description><![CDATA[Getting a closure on JavaScript.]]></description><link>https://overreacted.io/what-is-javascript-made-of/</link><guid isPermaLink="false">https://overreacted.io/what-is-javascript-made-of/</guid><pubDate>Fri, 20 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;During my first few years of using JavaScript, I felt like a fraud. Even though I could build websites with frameworks, something was missing. I dreaded JavaScript job interviews because I didn’t have a solid grasp on fundamentals.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[What Is JavaScript Made Of?]]></title>
+      <description><![CDATA[Getting a closure on JavaScript.]]></description>
+      <link>https://overreacted.io/what-is-javascript-made-of/</link>
+      <guid isPermaLink="false">https://overreacted.io/what-is-javascript-made-of/</guid>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;During my first few years of using JavaScript, I felt like a fraud. Even though I could build websites with frameworks, something was missing. I dreaded JavaScript job interviews because I didn’t have a solid grasp on fundamentals.&lt;/p&gt;
 &lt;p&gt;Over the years, I’ve formed a mental model of JavaScript that gave me confidence. Here, I’m sharing a &lt;strong&gt;very compressed&lt;/strong&gt; version of it. It’s structured like a glossary, with each topic getting a few sentences.&lt;/p&gt;
 &lt;p&gt;As you read through this post, try to mentally keep score about how &lt;em&gt;confident&lt;/em&gt; you feel about each topic. I won’t judge you if quite a few of them are a miss! At the end of this post, there is something that might help in that case.&lt;/p&gt;
 &lt;hr&gt;
@@ -739,7 +800,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;If you want to join me for a deeper dive in each of these topics, I have something for you. &lt;strong&gt;&lt;a href=&quot;https://justjavascript.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Just JavaScript&lt;/a&gt; is my distilled mental model of how JavaScript works, and it’s going to feature visual illustrations by the amazing &lt;a href=&quot;https://illustrated.dev/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Maggie Appleton&lt;/a&gt;&lt;/strong&gt;. Unlike this post, it goes at a slower pace so you can follow along on every detail.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Just JavaScript&lt;/em&gt; is in a very early stage so it’s only available as a series of emails with zero polish or editing. If this project sounds interesting, you can &lt;a href=&quot;https://justjavascript.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;sign up&lt;/a&gt; to receive free drafts by email. I will be grateful for your feedback. Thank you!&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/what-is-javascript-made-of/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[How Does the Development Mode Work?]]></title><description><![CDATA[Dead code elimination by convention.]]></description><link>https://overreacted.io/how-does-the-development-mode-work/</link><guid isPermaLink="false">https://overreacted.io/how-does-the-development-mode-work/</guid><pubDate>Sun, 04 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;If your JavaScript codebase is even moderately complex, &lt;strong&gt;you probably have a way to bundle and run different code in development and production&lt;/strong&gt;.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[How Does the Development Mode Work?]]></title>
+      <description><![CDATA[Dead code elimination by convention.]]></description>
+      <link>https://overreacted.io/how-does-the-development-mode-work/</link>
+      <guid isPermaLink="false">https://overreacted.io/how-does-the-development-mode-work/</guid>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;If your JavaScript codebase is even moderately complex, &lt;strong&gt;you probably have a way to bundle and run different code in development and production&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Bundling and running different code in development and production is powerful. In development mode, React includes many warnings that help you find problems before they lead to bugs. However, the code necessary to detect such mistakes often increases the bundle size and makes the app run slower.&lt;/p&gt;
 &lt;p&gt;The slowdown is acceptable in development. In fact, running the code slower in development &lt;em&gt;might even be beneficial&lt;/em&gt; because it partially compensates for the discrepancy between fast developer machines and an average consumer device.&lt;/p&gt;
 &lt;p&gt;In production we don’t want to pay any of that cost. Hence, we omit these checks in production. How does that work? Let’s take a look.&lt;/p&gt;
@@ -815,30 +884,14 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;That’s bad because it makes the website load and run slower.&lt;/p&gt;
 &lt;p&gt;In the last two years, the situation has significantly improved. For example, webpack added a simple &lt;code class=&quot;language-text&quot;&gt;mode&lt;/code&gt; option instead of manually configuring the &lt;code class=&quot;language-text&quot;&gt;process.env.NODE_ENV&lt;/code&gt; replacement. React DevTools also now displays a red icon on sites with development mode, making it easy to spot and even &lt;a href=&quot;https://mobile.twitter.com/BestBuySupport/status/1027195363713736704&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;report&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/0a47e/devmode.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/0a47e/devmode.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 33.108108108108105%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAABYlAAAWJQFJUiTwAAABGUlEQVQY04WQ3W6DMAyF8/4vtStWSEmAQlm7aZUmIPy1lIRAoFCYA+p1jyLn2FbkL0bTOz1fAgvp0PfX6v73+RGdv1C7qus6pZSUErxstDa/dfSl1GNon9NjWZZxmtoyr283RAnFluW5XhAEpmn6/gE8sW1sYUqhSanjUEIw3v+cnFuZqH4QXKwgE0pYWuR5ylgcx4yxvCiKsoSgiymUU7DX8hpHUcIy6GZZdvm9AOY4jgiwXoSy0cQCzHaU5m0F5xCVTiTnHIwmH8dhGJBhGK7jAuzRO5mGa1sHlxyJHfret++esbU3dztC6Po7HB7DRjTLKj153Y1ei2wUrztRd/eqvVcSTF110IRRQsB4DoDwYJ5niPBnmPwP62GCWHyCrHAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 33.108108108108105%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAABYlAAAWJQFJUiTwAAABGUlEQVQY04WQ3W6DMAyF8/4vtStWSEmAQlm7aZUmIPy1lIRAoFCYA+p1jyLn2FbkL0bTOz1fAgvp0PfX6v73+RGdv1C7qus6pZSUErxstDa/dfSl1GNon9NjWZZxmtoyr283RAnFluW5XhAEpmn6/gE8sW1sYUqhSanjUEIw3v+cnFuZqH4QXKwgE0pYWuR5ylgcx4yxvCiKsoSgiymUU7DX8hpHUcIy6GZZdvm9AOY4jgiwXoSy0cQCzHaU5m0F5xCVTiTnHIwmH8dhGJBhGK7jAuzRO5mGa1sHlxyJHfret++esbU3dztC6Po7HB7DRjTLKj153Y1ei2wUrztRd/eqvVcSTF110IRRQsB4DoDwYJ5niPBnmPwP62GCWHyCrHAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Development mode warning in React DevTools&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/fcda8/devmode.png&quot;
-        srcset=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/12f09/devmode.png 148w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/e4a3f/devmode.png 295w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/fcda8/devmode.png 590w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/0a47e/devmode.png 600w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Development mode warning in React DevTools&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/fcda8/devmode.png&quot; srcset=&quot;https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/12f09/devmode.png 148w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/e4a3f/devmode.png 295w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/fcda8/devmode.png 590w,https://overreacted.io/static/ca1c0db064f73cc5c8e21ad605eaba26/0a47e/devmode.png 600w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -893,34 +946,26 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;Separating development and production modes is a very useful technique. I recommend using it in your libraries and the application code for the kinds of checks that are too expensive to do in production, but are valuable (and often critical!) to do in development.&lt;/p&gt;
 &lt;p&gt;As with any powerful feature, there are some ways you can misuse it. This will be the topic of my next post!&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/how-does-the-development-mode-work/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Algebraic Effects for the Rest of Us]]></title><description><![CDATA[They’re not burritos.]]></description><link>https://overreacted.io/algebraic-effects-for-the-rest-of-us/</link><guid isPermaLink="false">https://overreacted.io/algebraic-effects-for-the-rest-of-us/</guid><pubDate>Sun, 21 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Have you heard about &lt;em&gt;algebraic effects&lt;/em&gt;?&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Algebraic Effects for the Rest of Us]]></title>
+      <description><![CDATA[They’re not burritos.]]></description>
+      <link>https://overreacted.io/algebraic-effects-for-the-rest-of-us/</link>
+      <guid isPermaLink="false">https://overreacted.io/algebraic-effects-for-the-rest-of-us/</guid>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Have you heard about &lt;em&gt;algebraic effects&lt;/em&gt;?&lt;/p&gt;
 &lt;p&gt;My first attempts to figure out what they are or why I should care about them were unsuccessful. I found a &lt;a href=&quot;https://www.eff-lang.org/handlers-tutorial.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/algeff-tr-2016-v2.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;pdfs&lt;/a&gt; but they only confused me more. (There’s something about academic pdfs that makes me sleepy.)&lt;/p&gt;
 &lt;p&gt;But my colleague Sebastian &lt;a href=&quot;https://mobile.twitter.com/sebmarkbage/status/763792452289343490&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kept&lt;/a&gt; &lt;a href=&quot;https://mobile.twitter.com/sebmarkbage/status/776883429400915968&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;referring&lt;/a&gt; &lt;a href=&quot;https://mobile.twitter.com/sebmarkbage/status/776840575207116800&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;to&lt;/a&gt; &lt;a href=&quot;https://mobile.twitter.com/sebmarkbage/status/969279885276454912&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;them&lt;/a&gt; as a mental model for some things we do inside of React. (Sebastian works on the React team and came up with quite a few ideas, including Hooks and Suspense.) At some point, it became a running joke on the React team, with many of our conversations ending with:&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 400px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 400px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 87.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQDBQL/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwD/2gAMAwEAAhADEAAAAeVtVlNwrBdforHjhb//xAAdEAACAgEFAAAAAAAAAAAAAAABAgADERMhIjIz/9oACAEBAAEFAgu9yaYxCoK2K7NxEr85Z3//xAAWEQADAAAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BI//EABkRAAEFAAAAAAAAAAAAAAAAAAEAEBESUf/aAAgBAgEBPwESrHH/AP/EABsQAAMAAgMAAAAAAAAAAAAAAAABEQIhEBJh/9oACAEBAAY/AhbvC6pssbnhMtMRkM//xAAcEAABBQEBAQAAAAAAAAAAAAABABARIUExUXH/2gAIAQEAAT8h6MQS7j0Q0nDe0EQwmNK0gPhDXflh/9oADAMBAAIAAwAAABDcL/z/xAAZEQABBQAAAAAAAAAAAAAAAAARAAEQQVH/2gAIAQMBAT8QLWg2f//EABkRAQACAwAAAAAAAAAAAAAAAAEAECExUf/aAAgBAgEBPxBLKR7Iar//xAAeEAEAAgIBBQAAAAAAAAAAAAABABEhQaExUXGx8f/aAAgBAQABPxBLMvoqCCrF614lnURBHN9agjMlNH1m5Zjzl2rB2nGfcZefP//Z&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 87.16216216216216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQDBQL/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwD/2gAMAwEAAhADEAAAAeVtVlNwrBdforHjhb//xAAdEAACAgEFAAAAAAAAAAAAAAABAgADERMhIjIz/9oACAEBAAEFAgu9yaYxCoK2K7NxEr85Z3//xAAWEQADAAAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BI//EABkRAAEFAAAAAAAAAAAAAAAAAAEAEBESUf/aAAgBAgEBPwESrHH/AP/EABsQAAMAAgMAAAAAAAAAAAAAAAABEQIhEBJh/9oACAEBAAY/AhbvC6pssbnhMtMRkM//xAAcEAABBQEBAQAAAAAAAAAAAAABABARIUExUXH/2gAIAQEAAT8h6MQS7j0Q0nDe0EQwmNK0gPhDXflh/9oADAMBAAIAAwAAABDcL/z/xAAZEQABBQAAAAAAAAAAAAAAAAARAAEQQVH/2gAIAQMBAT8QLWg2f//EABkRAQACAwAAAAAAAAAAAAAAAAEAECExUf/aAAgBAgEBPxBLKR7Iar//xAAeEAEAAgIBBQAAAAAAAAAAAAABABEhQaExUXGx8f/aAAgBAQABPxBLMvoqCCrF614lnURBHN9agjMlNH1m5Zjzl2rB2nGfcZefP//Z&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;&quot;Algebraic Effects&quot; caption on the &quot;Ancient Aliens&quot; guy meme&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg&quot;
-        srcset=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/a80bd/effects.jpg 148w,https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/1c91a/effects.jpg 295w,https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg 400w&quot;
-        sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;&quot;Algebraic Effects&quot; caption on the &quot;Ancient Aliens&quot; guy meme&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg&quot; srcset=&quot;https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/a80bd/effects.jpg 148w,https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/1c91a/effects.jpg 295w,https://overreacted.io/static/5fb19385d24afb94180b6ba9aeb2b8d4/066f9/effects.jpg 400w&quot; sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -1184,7 +1229,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;Many people also pointed out that if you omit the typing aspects (as I did in this article), you can find much earlier prior art for this in the &lt;a href=&quot;https://en.wikibooks.org/wiki/Common_Lisp/Advanced_topics/Condition_System&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;condition system&lt;/a&gt; in Common Lisp. You might also enjoy reading James Long’s &lt;a href=&quot;https://jlongster.com/Whats-in-a-Continuation&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;post on continuations&lt;/a&gt; that explains how the &lt;code class=&quot;language-text&quot;&gt;call/cc&lt;/code&gt; primitive can also serve as a foundation for building resumable exceptions in userland.&lt;/p&gt;
 &lt;p&gt;If you find other useful resources on algebraic effects for people with JavaScript background, please let me know on Twitter!&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/algebraic-effects-for-the-rest-of-us/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Preparing for a Tech Talk, Part 3: Content]]></title><description><![CDATA[Turning an idea into a talk.]]></description><link>https://overreacted.io/preparing-for-tech-talk-part-3-content/</link><guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-3-content/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Preparing for a Tech Talk, Part 3: Content]]></title>
+      <description><![CDATA[Turning an idea into a talk.]]></description>
+      <link>https://overreacted.io/preparing-for-tech-talk-part-3-content/</link>
+      <guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-3-content/</guid>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
 &lt;p&gt;Sometimes people ask me how I prepare for a talk. For every speaker, the answer is very personal. I’m just sharing what works for me.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;This is the third post in a series&lt;/strong&gt; where I explain my process preparing for a tech talk — from conceiving the idea to the actual day of the presentation:&lt;/p&gt;
 &lt;ul&gt;
@@ -1283,7 +1336,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;In this post, I described how I prepare the content for my talks. In the next post, I will share some tips about what I do on the day of the talk itself.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous in this series: &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/&quot;&gt;Preparing for a Tech Talk, Part 2: What, Why, and How&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-3-content/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Name It, and They Will Come]]></title><description><![CDATA[A change starts with a story.]]></description><link>https://overreacted.io/name-it-and-they-will-come/</link><guid isPermaLink="false">https://overreacted.io/name-it-and-they-will-come/</guid><pubDate>Mon, 25 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;You’ve discovered something new.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Name It, and They Will Come]]></title>
+      <description><![CDATA[A change starts with a story.]]></description>
+      <link>https://overreacted.io/name-it-and-they-will-come/</link>
+      <guid isPermaLink="false">https://overreacted.io/name-it-and-they-will-come/</guid>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;You’ve discovered something new.&lt;/p&gt;
 &lt;p&gt;You haven’t seen solutions &lt;em&gt;quite like this&lt;/em&gt; before. You try to keep your ego in check and be skeptical. But the butterflies in your stomach won’t listen.&lt;/p&gt;
 &lt;p&gt;You don’t want to get carried away, but deep down you already know it:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;You’re onto something.&lt;/strong&gt;&lt;/p&gt;
@@ -1330,7 +1391,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;&lt;strong&gt;By telling a story.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Name it, and they will come.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/name-it-and-they-will-come/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Writing Resilient Components]]></title><description><![CDATA[Four principles to set you on the right path.]]></description><link>https://overreacted.io/writing-resilient-components/</link><guid isPermaLink="false">https://overreacted.io/writing-resilient-components/</guid><pubDate>Sat, 16 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When people start learning React, they often ask for a style guide. While it’s a good idea to have some consistent rules applied across a project, a lot of them are arbitrary — and so React doesn’t have a strong opinion about them.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Writing Resilient Components]]></title>
+      <description><![CDATA[Four principles to set you on the right path.]]></description>
+      <link>https://overreacted.io/writing-resilient-components/</link>
+      <guid isPermaLink="false">https://overreacted.io/writing-resilient-components/</guid>
+      <pubDate>Sat, 16 Mar 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;When people start learning React, they often ask for a style guide. While it’s a good idea to have some consistent rules applied across a project, a lot of them are arbitrary — and so React doesn’t have a strong opinion about them.&lt;/p&gt;
 &lt;p&gt;You can use different type systems, prefer function declarations or arrow functions, sort your props in alphabetical order or in an order you find pleasing.&lt;/p&gt;
 &lt;p&gt;This flexibility allows &lt;a href=&quot;https://reactjs.org/docs/add-react-to-a-website.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;integrating React&lt;/a&gt; into projects with existing conventions. But it also invites endless debates.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;There &lt;em&gt;are&lt;/em&gt; important design principles that every component should strive to follow. But I don’t think style guides capture those principles well. We’ll talk about style guides first, and then &lt;a href=&quot;#writing-resilient-components&quot;&gt;look at the principles that really &lt;em&gt;are&lt;/em&gt; useful&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
@@ -1862,7 +1931,15 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;&lt;strong&gt;These principles help you write components that are &lt;a href=&quot;https://overreacted.io/optimized-for-change/&quot;&gt;optimized for change&lt;/a&gt;. It’s easy to add, change them, and delete them.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;And most importantly, once our components are resilient, we can come back to the pressing dilemma of whether or not props should be sorted by alphabet.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/writing-resilient-components/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[A Complete Guide to useEffect]]></title><description><![CDATA[Effects are a part of your data flow.]]></description><link>https://overreacted.io/a-complete-guide-to-useeffect/</link><guid isPermaLink="false">https://overreacted.io/a-complete-guide-to-useeffect/</guid><pubDate>Sat, 09 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;You wrote a few components with &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks&lt;/a&gt;. Maybe even a small app. You’re mostly satisfied. You’re comfortable with the API and picked up a few tricks along the way. You even made some &lt;a href=&quot;https://reactjs.org/docs/hooks-custom.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;custom Hooks&lt;/a&gt; to extract repetitive logic (300 lines gone!) and showed it off to your colleagues. “Great job”, they said.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[A Complete Guide to useEffect]]></title>
+      <description><![CDATA[Effects are a part of your data flow.]]></description>
+      <link>https://overreacted.io/a-complete-guide-to-useeffect/</link>
+      <guid isPermaLink="false">https://overreacted.io/a-complete-guide-to-useeffect/</guid>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;You wrote a few components with &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks&lt;/a&gt;. Maybe even a small app. You’re mostly satisfied. You’re comfortable with the API and picked up a few tricks along the way. You even made some &lt;a href=&quot;https://reactjs.org/docs/hooks-custom.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;custom Hooks&lt;/a&gt; to extract repetitive logic (300 lines gone!) and showed it off to your colleagues. “Great job”, they said.&lt;/p&gt;
 &lt;p&gt;But sometimes when you &lt;code class=&quot;language-text&quot;&gt;useEffect&lt;/code&gt;, the pieces don’t quite fit together. You have a nagging feeling that you’re missing something. It seems similar to class lifecycles… but is it really? You find yourself asking questions like:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;🤔 How do I replicate &lt;code class=&quot;language-text&quot;&gt;componentDidMount&lt;/code&gt; with &lt;code class=&quot;language-text&quot;&gt;useEffect&lt;/code&gt;?&lt;/li&gt;
@@ -1878,30 +1955,14 @@ To address all issues (including breaking changes), run:
 &lt;p&gt;“Unlearn what you have learned.” — Yoda&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 497px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 497px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAF5WKs71REF/8QAGxAAAQUBAQAAAAAAAAAAAAAAAgABAxESEyH/2gAIAQEAAQUCvzvk9Woz0njdBK5j/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Bh//EAB0QAAICAQUAAAAAAAAAAAAAAAABAhEhMTJBUZH/2gAIAQEABj8CK4Nno10Obm8FvU//xAAbEAEBAQEAAwEAAAAAAAAAAAABEQAhMVFxgf/aAAgBAQABPyH0Zd076TuCbR9Rz80qZiwUvg37TTf/2gAMAwEAAgADAAAAEEPf/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAERMUH/2gAIAQMBAT8QlaUf/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAx/9oACAECAQE/EFOQF//EABwQAQEAAgIDAAAAAAAAAAAAAAERACExQVFx0f/aAAgBAQABPxA0TUOLkyoSi0+4SldSl6yfaQttpzhvHAwULvWAwOi0F8zP/9k=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAF5WKs71REF/8QAGxAAAQUBAQAAAAAAAAAAAAAAAgABAxESEyH/2gAIAQEAAQUCvzvk9Woz0njdBK5j/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8Bh//EAB0QAAICAQUAAAAAAAAAAAAAAAABAhEhMTJBUZH/2gAIAQEABj8CK4Nno10Obm8FvU//xAAbEAEBAQEAAwEAAAAAAAAAAAABEQAhMVFxgf/aAAgBAQABPyH0Zd076TuCbR9Rz80qZiwUvg37TTf/2gAMAwEAAgADAAAAEEPf/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAERMUH/2gAIAQMBAT8QlaUf/8QAFhEBAQEAAAAAAAAAAAAAAAAAAQAx/9oACAECAQE/EFOQF//EABwQAQEAAgIDAAAAAAAAAAAAAAERACExQVFx0f/aAAgBAQABPxA0TUOLkyoSi0+4SldSl6yfaQttpzhvHAwULvWAwOi0F8zP/9k=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Yoda sniffing the air. Caption: “I smell bacon.”&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg&quot;
-        srcset=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/a80bd/yoda.jpg 148w,https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/1c91a/yoda.jpg 295w,https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg 497w&quot;
-        sizes=&quot;(max-width: 497px) 100vw, 497px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Yoda sniffing the air. Caption: “I smell bacon.”&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg&quot; srcset=&quot;https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/a80bd/yoda.jpg 148w,https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/1c91a/yoda.jpg 295w,https://overreacted.io/static/6203a1f1f2c771816a5ba0969baccd12/fce5f/yoda.jpg 497w&quot; sizes=&quot;(max-width: 497px) 100vw, 497px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -2966,7 +3027,15 @@ someone &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span cla
 &lt;p&gt;Now that you know pretty much everything I know about using effects, check out the &lt;a href=&quot;#tldr&quot;&gt;TLDR&lt;/a&gt; in the beginning. Does it make sense? Did I miss something? (I haven’t run out of paper yet!)&lt;/p&gt;
 &lt;p&gt;I’d love to hear from you on Twitter! Thanks for reading.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/a-complete-guide-to-useeffect/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[How Are Function Components Different from Classes?]]></title><description><![CDATA[They’re a whole different Pokémon.]]></description><link>https://overreacted.io/how-are-function-components-different-from-classes/</link><guid isPermaLink="false">https://overreacted.io/how-are-function-components-different-from-classes/</guid><pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;How do React function components differ from React classes?&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[How Are Function Components Different from Classes?]]></title>
+      <description><![CDATA[They’re a whole different Pokémon.]]></description>
+      <link>https://overreacted.io/how-are-function-components-different-from-classes/</link>
+      <guid isPermaLink="false">https://overreacted.io/how-are-function-components-different-from-classes/</guid>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;How do React function components differ from React classes?&lt;/p&gt;
 &lt;p&gt;For a while, the canonical answer has been that classes provide access to more features (like state). With &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks&lt;/a&gt;, that’s not true anymore.&lt;/p&gt;
 &lt;p&gt;Maybe you’ve heard one of them is better for performance. Which one? Many of such benchmarks are &lt;a href=&quot;https://medium.com/@dan_abramov/this-benchmark-is-indeed-flawed-c3d6b5b6f97f?source=your_stories_page---------------------------&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;flawed&lt;/a&gt; so I’d be careful &lt;a href=&quot;https://github.com/ryardley/hooks-perf-issues/pull/2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;drawing conclusions&lt;/a&gt; from them. Performance primarily depends on what the code is doing rather than whether you chose a function or a class. In our observation, the performance differences are negligible, though optimization strategies are a bit &lt;a href=&quot;https://reactjs.org/docs/hooks-faq.html#are-hooks-slow-because-of-creating-functions-in-render&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;different&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In either case we &lt;a href=&quot;https://reactjs.org/docs/hooks-faq.html#should-i-use-hooks-classes-or-a-mix-of-both&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;don’t recommend&lt;/a&gt; rewriting your existing components unless you have other reasons and don’t mind being an early adopter. Hooks are still new (like React was in 2014), and some “best practices” haven’t yet found their way into the tutorials.&lt;/p&gt;
@@ -3219,7 +3288,15 @@ someone &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span cla
 &lt;p&gt;&lt;img src=&quot;https://overreacted.io/fc3bddf6d4ca14bc77917ac0cfad3608/pikachu.gif&quot; alt=&quot;Smiling Pikachu&quot;&gt;&lt;/p&gt;
 &lt;p&gt;They’re a whole different Pokémon.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/how-are-function-components-different-from-classes/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Coping with Feedback]]></title><description><![CDATA[Sometimes I can’t fall asleep.]]></description><link>https://overreacted.io/coping-with-feedback/</link><guid isPermaLink="false">https://overreacted.io/coping-with-feedback/</guid><pubDate>Sat, 02 Mar 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;The last few weeks have been very hectic. We’ve finally released a stable version of &lt;a href=&quot;https://reactjs.org/blog/2019/02/06/react-v16.8.0.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; and the first &lt;a href=&quot;https://reactjs.org/blog/2019/02/23/is-react-translated-yet.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React website translations&lt;/a&gt;. Both of these projects meant a lot to me, and shipping them felt great.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Coping with Feedback]]></title>
+      <description><![CDATA[Sometimes I can’t fall asleep.]]></description>
+      <link>https://overreacted.io/coping-with-feedback/</link>
+      <guid isPermaLink="false">https://overreacted.io/coping-with-feedback/</guid>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;The last few weeks have been very hectic. We’ve finally released a stable version of &lt;a href=&quot;https://reactjs.org/blog/2019/02/06/react-v16.8.0.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; and the first &lt;a href=&quot;https://reactjs.org/blog/2019/02/23/is-react-translated-yet.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React website translations&lt;/a&gt;. Both of these projects meant a lot to me, and shipping them felt great.&lt;/p&gt;
 &lt;p&gt;However, I also feel more pressure now to stay on top of the scrutiny that comes when you mark something as stable. Hooks are very new, we are still figuring out “best practices” for some of the less common patterns — both internally at Facebook and in GitHub discussions. But the longer it takes to document and enforce them (e.g. with warnings), the more risk there is that someone will create a course or write an article using a broken pattern without realizing that. It’s hard not to feel at least partially responsible when that happens.&lt;/p&gt;
 &lt;p&gt;Most of this is self-imposed. No one technically expects me to care. I do though.&lt;/p&gt;
 &lt;p&gt;Maintaining a balance between &lt;em&gt;providing&lt;/em&gt; guidance and &lt;em&gt;learning&lt;/em&gt; from people using an API and their experiences can take some toll. Especially when you don’t know all the answers yet. Over the past weeks, I had a few nights when I couldn’t remember if I slept at all due to nonstopping internal monologue.&lt;/p&gt;
@@ -3234,7 +3311,15 @@ someone &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span cla
 &lt;p&gt;The deeper problem is that I’m restless when I know there is a problem but I don’t have a fix ready yet. Such as writing documentation, correcting a bug or sharing an idea. This drive can be helpful but at some point it’s not worth it.&lt;/p&gt;
 &lt;p&gt;The techniques above help me reduce the anxiety to the point where that drive is productive to me. But I should watch out. It’s important to be surrounded by people who can tell when you’re going off the rails. I feel thankful to have them.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/coping-with-feedback/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Fix Like No One’s Watching]]></title><description><![CDATA[The other kind of technical debt.]]></description><link>https://overreacted.io/fix-like-no-ones-watching/</link><guid isPermaLink="false">https://overreacted.io/fix-like-no-ones-watching/</guid><pubDate>Fri, 15 Feb 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Some technical debt is in plain sight.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Fix Like No One’s Watching]]></title>
+      <description><![CDATA[The other kind of technical debt.]]></description>
+      <link>https://overreacted.io/fix-like-no-ones-watching/</link>
+      <guid isPermaLink="false">https://overreacted.io/fix-like-no-ones-watching/</guid>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Some technical debt is in plain sight.&lt;/p&gt;
 &lt;p&gt;An inadequate data structure might lead to convoluted code. When the requirements keep changing, the code might contain traces of previous approaches. Sometimes the code is written in a hurry or is just sloppy.&lt;/p&gt;
 &lt;p&gt;This kind of technical debt is easy to discuss because it’s highly visible. It manifests as bugs, performance problems, and difficulties adding features.&lt;/p&gt;
 &lt;p&gt;There is another, more insidious kind of technical debt.&lt;/p&gt;
@@ -3244,7 +3329,15 @@ someone &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span cla
 &lt;p&gt;You never know. This is why you must actively reduce friction. Like your project’s fate depends on it. Because it does.&lt;/p&gt;
 &lt;p&gt;Fix like no one’s watching.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/fix-like-no-ones-watching/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Making setInterval Declarative with React Hooks]]></title><description><![CDATA[How I learned to stop worrying and love refs.]]></description><link>https://overreacted.io/making-setinterval-declarative-with-react-hooks/</link><guid isPermaLink="false">https://overreacted.io/making-setinterval-declarative-with-react-hooks/</guid><pubDate>Mon, 04 Feb 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;If you played with &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; for more than a few hours, you probably ran into an intriguing problem: using &lt;code class=&quot;language-text&quot;&gt;setInterval&lt;/code&gt; just &lt;a href=&quot;https://stackoverflow.com/questions/53024496/state-not-updating-when-using-react-state-hook-within-setinterval&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;doesn’t work&lt;/a&gt; as you’d expect.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Making setInterval Declarative with React Hooks]]></title>
+      <description><![CDATA[How I learned to stop worrying and love refs.]]></description>
+      <link>https://overreacted.io/making-setinterval-declarative-with-react-hooks/</link>
+      <guid isPermaLink="false">https://overreacted.io/making-setinterval-declarative-with-react-hooks/</guid>
+      <pubDate>Mon, 04 Feb 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;If you played with &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; for more than a few hours, you probably ran into an intriguing problem: using &lt;code class=&quot;language-text&quot;&gt;setInterval&lt;/code&gt; just &lt;a href=&quot;https://stackoverflow.com/questions/53024496/state-not-updating-when-using-react-state-hook-within-setinterval&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;doesn’t work&lt;/a&gt; as you’d expect.&lt;/p&gt;
 &lt;p&gt;In the &lt;a href=&quot;https://mobile.twitter.com/ryanflorence/status/1088606583637061634&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;words&lt;/a&gt; of Ryan Florence:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I’ve had a lot of people point to setInterval with hooks as some sort of egg on React’s face&lt;/p&gt;
@@ -3649,32 +3742,24 @@ someone &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span cla
 &lt;p&gt;This is an early time for Hooks, and there are definitely still patterns we need to work out and compare. Don’t rush to adopt Hooks if you’re used to following well-known “best practices”. There’s still a lot to try and discover.&lt;/p&gt;
 &lt;p&gt;I hope this post helps you understand the common pitfalls related to using APIs like &lt;code class=&quot;language-text&quot;&gt;setInterval()&lt;/code&gt; with Hooks, the patterns that can help you overcome them, and the sweet fruit of creating more expressive declarative APIs on top of them.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/making-setinterval-declarative-with-react-hooks/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[React as a UI Runtime]]></title><description><![CDATA[An in-depth description of the React programming model.]]></description><link>https://overreacted.io/react-as-a-ui-runtime/</link><guid isPermaLink="false">https://overreacted.io/react-as-a-ui-runtime/</guid><pubDate>Sat, 02 Feb 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Most tutorials introduce React as a UI library. This makes sense because React &lt;em&gt;is&lt;/em&gt; a UI library. That’s literally what the tagline says!&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[React as a UI Runtime]]></title>
+      <description><![CDATA[An in-depth description of the React programming model.]]></description>
+      <link>https://overreacted.io/react-as-a-ui-runtime/</link>
+      <guid isPermaLink="false">https://overreacted.io/react-as-a-ui-runtime/</guid>
+      <pubDate>Sat, 02 Feb 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Most tutorials introduce React as a UI library. This makes sense because React &lt;em&gt;is&lt;/em&gt; a UI library. That’s literally what the tagline says!&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 500px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 500px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 29.054054054054056%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABEElEQVQY011Qy07DMBD0v1CniRM7dt4Pp01VWgmQOKEeekKCA0hIFUcOSIgfH9amDaWH0c4+ZrxeFiY5zjGPswlBqMCvIvCZ8Ajm8t/MpcZxdmkYyoKECubmAcv3b1S7J8Iz6v0L8vs95pH2c9I0MKWFLnqorJ2MWSBoE2H+QEVOm8jxDv3rB+zbJ4bDF5rHA8ztDjxMEcnSmzitM4nTyhsnugaTpoai19K8hc47z11T0pAQGkrliGMDlZKJrrw4qyxh8BqHhOpClcQ7MFP2aPoV+sV6QjesMYwb1N2IjnLXt8trLFZbtNbxDey49bmrO41QhT8DO32V0218PPIpP4v8OOu2dBvN6Ps8+u2dbvoDB8/AqO9EOdcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 29.054054054054056%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABEElEQVQY011Qy07DMBD0v1CniRM7dt4Pp01VWgmQOKEeekKCA0hIFUcOSIgfH9amDaWH0c4+ZrxeFiY5zjGPswlBqMCvIvCZ8Ajm8t/MpcZxdmkYyoKECubmAcv3b1S7J8Iz6v0L8vs95pH2c9I0MKWFLnqorJ2MWSBoE2H+QEVOm8jxDv3rB+zbJ4bDF5rHA8ztDjxMEcnSmzitM4nTyhsnugaTpoai19K8hc47z11T0pAQGkrliGMDlZKJrrw4qyxh8BqHhOpClcQ7MFP2aPoV+sV6QjesMYwb1N2IjnLXt8trLFZbtNbxDey49bmrO41QhT8DO32V0218PPIpP4v8OOu2dBvN6Ps8+u2dbvoDB8/AqO9EOdcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;React homepage screenshot: &quot;A JavaScript library for building user interfaces&quot;&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png&quot;
-        srcset=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/12f09/react.png 148w,https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/e4a3f/react.png 295w,https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png 500w&quot;
-        sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;React homepage screenshot: &quot;A JavaScript library for building user interfaces&quot;&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png&quot; srcset=&quot;https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/12f09/react.png 148w,https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/e4a3f/react.png 295w,https://overreacted.io/static/0429fcb4a2f2022852afc698ff8968f1/0b533/react.png 500w&quot; sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -4412,7 +4497,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;&lt;strong&gt;I think it speaks to the success of React’s API that you can get very far without ever thinking about most of these topics.&lt;/strong&gt; Good defaults like the reconciliation heuristics do the right thing in most cases. Warnings, like the &lt;code class=&quot;language-text&quot;&gt;key&lt;/code&gt; warning, nudge you when you risk shooting yourself in the foot.&lt;/p&gt;
 &lt;p&gt;If you’re a UI library nerd, I hope this post was somewhat entertaining and clarified how React works in more depth. Or maybe you decided React is too complicated and you’ll never look at it again. In either case, I’d love to hear from you on Twitter! Thank you for reading.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/react-as-a-ui-runtime/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Why Isn’t X a Hook?]]></title><description><![CDATA[Just because we can, doesn’t mean we should.]]></description><link>https://overreacted.io/why-isnt-x-a-hook/</link><guid isPermaLink="false">https://overreacted.io/why-isnt-x-a-hook/</guid><pubDate>Sat, 26 Jan 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Since the first alpha version of &lt;a href=&quot;https://reactjs.org/hooks&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; was released, there is a question that keeps coming up in discussions: “Why isn’t &lt;em&gt;&amp;#x3C;some other API&gt;&lt;/em&gt; a Hook?”&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Why Isn’t X a Hook?]]></title>
+      <description><![CDATA[Just because we can, doesn’t mean we should.]]></description>
+      <link>https://overreacted.io/why-isnt-x-a-hook/</link>
+      <guid isPermaLink="false">https://overreacted.io/why-isnt-x-a-hook/</guid>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Since the first alpha version of &lt;a href=&quot;https://reactjs.org/hooks&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;React Hooks&lt;/a&gt; was released, there is a question that keeps coming up in discussions: “Why isn’t &lt;em&gt;&amp;#x3C;some other API&gt;&lt;/em&gt; a Hook?”&lt;/p&gt;
 &lt;p&gt;To remind you, here’s a few things that &lt;em&gt;are&lt;/em&gt; Hooks:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://reactjs.org/docs/hooks-reference.html#usestate&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;useState()&lt;/code&gt;&lt;/a&gt; lets you declare a state variable.&lt;/li&gt;
@@ -4563,7 +4656,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;Can you see why?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;(Whispers: Composition… Debugging…)&lt;/em&gt;&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/why-isnt-x-a-hook/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[The “Bug-O” Notation]]></title><description><![CDATA[What is the 🐞(<i>n</i>) of your API?]]></description><link>https://overreacted.io/the-bug-o-notation/</link><guid isPermaLink="false">https://overreacted.io/the-bug-o-notation/</guid><pubDate>Fri, 25 Jan 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When you write performance-sensitive code, it’s a good idea to keep in mind its algorithmic complexity. It is often expressed with the &lt;a href=&quot;https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Big-O notation&lt;/a&gt;.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[The “Bug-O” Notation]]></title>
+      <description><![CDATA[What is the 🐞(<i>n</i>) of your API?]]></description>
+      <link>https://overreacted.io/the-bug-o-notation/</link>
+      <guid isPermaLink="false">https://overreacted.io/the-bug-o-notation/</guid>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;When you write performance-sensitive code, it’s a good idea to keep in mind its algorithmic complexity. It is often expressed with the &lt;a href=&quot;https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Big-O notation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Big-O is a measure of &lt;strong&gt;how much slower the code will get as you throw more data at it&lt;/strong&gt;. For example, if a sorting algorithm has O(&lt;i&gt;n&lt;sup&gt;2&lt;/sup&gt;&lt;/i&gt;) complexity, sorting ×50 times more items will be roughly 50&lt;sup&gt;2&lt;/sup&gt; = 2,500 times slower. Big O doesn’t give you an exact number, but it helps you understand how an algorithm &lt;em&gt;scales&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Some examples: O(&lt;i&gt;n&lt;/i&gt;), O(&lt;i&gt;n&lt;/i&gt; log &lt;i&gt;n&lt;/i&gt;), O(&lt;i&gt;n&lt;sup&gt;2&lt;/sup&gt;&lt;/i&gt;), O(&lt;i&gt;n!&lt;/i&gt;).&lt;/p&gt;
 &lt;p&gt;However, &lt;strong&gt;this post isn’t about algorithms or performance&lt;/strong&gt;. It’s about APIs and debugging. It turns out, API design involves very similar considerations.&lt;/p&gt;
@@ -4710,7 +4811,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;&lt;strong&gt;Next time you see an API discussion, consider: what is the 🐞(&lt;em&gt;n&lt;/em&gt;) of common debugging tasks in it?&lt;/strong&gt; What about existing APIs and principles you’re deeply familiar with? Redux, CSS, inheritance — they all have their own Bug-O.&lt;/p&gt;
 &lt;hr&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/the-bug-o-notation/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Preparing for a Tech Talk, Part 2: What, Why, and How]]></title><description><![CDATA[We need to go deeper.]]></description><link>https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/</link><guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/</guid><pubDate>Mon, 07 Jan 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Preparing for a Tech Talk, Part 2: What, Why, and How]]></title>
+      <description><![CDATA[We need to go deeper.]]></description>
+      <link>https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/</link>
+      <guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/</guid>
+      <pubDate>Mon, 07 Jan 2019 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
 &lt;p&gt;Sometimes people ask me how I prepare for a talk. For every speaker, the answer is very personal. I’m just sharing what works for me.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;This is the second post in a series&lt;/strong&gt; where I explain my process preparing for a tech talk — from conceiving the idea to the actual day of the presentation:&lt;/p&gt;
 &lt;ul&gt;
@@ -4728,30 +4837,14 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;What is the one thing that you want people to take away from your talk?&lt;/strong&gt; I try to formulate it as a sentence early on. This idea shouldn’t be longer than a dozen words. People will forget most of what you say so you need to pick carefully &lt;em&gt;what&lt;/em&gt; you want to stick. It’s the seed you want to plant in their heads.&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/8e1fc/totem.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/8e1fc/totem.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBA//EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAVyzrXIz/8QAHBAAAwABBQAAAAAAAAAAAAAAAQIDEQAEEiEi/9oACAEBAAEFApy6fyTEa27HFWbkztn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAaEAACAgMAAAAAAAAAAAAAAAAAAQIxEBEh/9oACAEBAAY/AiK1bKwuln//xAAaEAEAAgMBAAAAAAAAAAAAAAABABEQMUFh/9oACAEBAAE/IaihB4C1HtsdGGrRWIf/2gAMAwEAAgADAAAAECgP/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxC4VH//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EJpGf//EABsQAQACAwEBAAAAAAAAAAAAAAEAESExUUFh/9oACAEBAAE/EMyFm4TTUL21SzAwp2UZmfSZ0xZXdT0ep//Z&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBA//EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/2gAMAwEAAhADEAAAAVyzrXIz/8QAHBAAAwABBQAAAAAAAAAAAAAAAQIDEQAEEiEi/9oACAEBAAEFApy6fyTEa27HFWbkztn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAaEAACAgMAAAAAAAAAAAAAAAAAAQIxEBEh/9oACAEBAAY/AiK1bKwuln//xAAaEAEAAgMBAAAAAAAAAAAAAAABABEQMUFh/9oACAEBAAE/IaihB4C1HtsdGGrRWIf/2gAMAwEAAgADAAAAECgP/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxC4VH//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EJpGf//EABsQAQACAwEBAAAAAAAAAAAAAAEAESExUUFh/9oACAEBAAE/EMyFm4TTUL21SzAwp2UZmfSZ0xZXdT0ep//Z&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Spinning top from the Inception movie&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c72d/totem.jpg&quot;
-        srcset=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/a80bd/totem.jpg 148w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c91a/totem.jpg 295w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c72d/totem.jpg 590w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/a8a14/totem.jpg 885w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/8e1fc/totem.jpg 900w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Spinning top from the Inception movie&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c72d/totem.jpg&quot; srcset=&quot;https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/a80bd/totem.jpg 148w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c91a/totem.jpg 295w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/1c72d/totem.jpg 590w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/a8a14/totem.jpg 885w,https://overreacted.io/static/75d0f71a5046459adaaed7f65f2f46c6/8e1fc/totem.jpg 900w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -4768,30 +4861,14 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;hr&gt;
 &lt;p&gt;An idea is the &lt;strong&gt;“What”&lt;/strong&gt; of my talk. But there is also &lt;strong&gt;“How”&lt;/strong&gt; and &lt;strong&gt;“Why”&lt;/strong&gt;:&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/eb2ef/how-what-why.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/eb2ef/how-what-why.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB5UlEQVQoz3WR208TURDG+T99NtFnH4yh8clojAImmqJg0CpRGtju9kIFFGi9JmU1xRBsIZZYY9utYBuKMZru/Jy9tSh6TiYzZ+Y73/nmzAgnliAiQSRumHM03iJID+tRPMQLI39R+TsiE99/51d/HpdpPX3ElbCml13XHVhEeoIweimouziNh8zPnWZu9gyV7cu+WoR/rj8UHifzQk9Jm1U+/5xipzvNVnuSvaMpzSXpyT5O8ys7u1VqtRrlcpl6vT5UePwPIsJNeYElt8mTICczLKn34gx3mXh+kd1PVTr7HZrNhk/qOE5IGBL4v+cNQeOqvMXsx3nGLGOvRzl78xSXVs5xtXCehW6csdIF3pD7T8si4ecHE92jgskdVTLDIvd5fHiLRHtCbdz3Wc0v60MGk0q6TN8T4srgftCyGxzEadEqGTTsFC3bpLFhcLCZ4ejDEofbeQ7eZ2lupGgopmVbfCkl+VF5N5yBrzAi63QhtwgLWUipN9Rbeb7de4R9ZZzqjTi9B0kwvZq2m8oFuAUTqVSjnkOFvR7knyBGCkmnEcvCtUzIZmkldCixGJnYKKXr1xSXp2+aPiawtJIaiA4maNlTaNuw8hTWC7C2prbum6xqXCjCy1dQLA7yQwuxHs6zToffafwhsP6uyDEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB5UlEQVQoz3WR208TURDG+T99NtFnH4yh8clojAImmqJg0CpRGtju9kIFFGi9JmU1xRBsIZZYY9utYBuKMZru/Jy9tSh6TiYzZ+Y73/nmzAgnliAiQSRumHM03iJID+tRPMQLI39R+TsiE99/51d/HpdpPX3ElbCml13XHVhEeoIweimouziNh8zPnWZu9gyV7cu+WoR/rj8UHifzQk9Jm1U+/5xipzvNVnuSvaMpzSXpyT5O8ys7u1VqtRrlcpl6vT5UePwPIsJNeYElt8mTICczLKn34gx3mXh+kd1PVTr7HZrNhk/qOE5IGBL4v+cNQeOqvMXsx3nGLGOvRzl78xSXVs5xtXCehW6csdIF3pD7T8si4ecHE92jgskdVTLDIvd5fHiLRHtCbdz3Wc0v60MGk0q6TN8T4srgftCyGxzEadEqGTTsFC3bpLFhcLCZ4ejDEofbeQ7eZ2lupGgopmVbfCkl+VF5N5yBrzAi63QhtwgLWUipN9Rbeb7de4R9ZZzqjTi9B0kwvZq2m8oFuAUTqVSjnkOFvR7knyBGCkmnEcvCtUzIZmkldCixGJnYKKXr1xSXp2+aPiawtJIaiA4maNlTaNuw8hTWC7C2prbum6xqXCjCy1dQLA7yQwuxHs6zToffafwhsP6uyDEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Pyramid: “How” is on top of “What”. “What” is on top of “Why”.&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/fcda8/how-what-why.png&quot;
-        srcset=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/12f09/how-what-why.png 148w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/e4a3f/how-what-why.png 295w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/fcda8/how-what-why.png 590w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/efc66/how-what-why.png 885w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/c83ae/how-what-why.png 1180w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/eb2ef/how-what-why.png 1324w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Pyramid: “How” is on top of “What”. “What” is on top of “Why”.&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/fcda8/how-what-why.png&quot; srcset=&quot;https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/12f09/how-what-why.png 148w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/e4a3f/how-what-why.png 295w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/fcda8/how-what-why.png 590w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/efc66/how-what-why.png 885w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/c83ae/how-what-why.png 1180w,https://overreacted.io/static/fb49faeb9e354bb061e253c3b490488b/eb2ef/how-what-why.png 1324w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -4818,66 +4895,33 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;hr&gt;
 &lt;p&gt;Here’s the example “What”, “Why”, and “How” from my talks.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot;&gt;
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVQoz3WSi08TQRCH+bMpKjEl9oGkCRUocoUYDRBsr8WIoiiv2gdoUYuaFiNYSV+UR0sJpS29/dx7FIvi7E12dnb2u9/sXQ9/mRCia6VhLsvS01374oZa03pugtVqNUqlIm1NP1pnP6eQztjRxA8DJYSxIR9zXAN2IPrciS/blzQaLT2i3QyzGbexEbvDWdUncwULZkHFdWjP/6TrdiCWybUm2Nr38rkwQvZcoShmORfHFuxf6JXCVqvF6WmVer1uFH0hSrg9xnjaycO0A9+3e4ykBlAbPtYIcK6d/YF2REm/AjabTY6PjqhXL9gjxVTexdj2AMPJfoY/9DO6bceTuIVP5vy/HGywQFtcXim0qN0tm8mf7ODduYs70YcrYcMZ68UZ72UoeRvPp34GN/twRm3cT9mIaosY+rqgpkJLtia/7GEyTOl9iEJClR4kFwuQe/eUfDxIaTNk5AobKsW4ykEywEXmoykOq+XTapV8uUz7WF704ivyvilSQ172xyfZG1UoTz4hO+anoDziu9dnxCX/Y756Rth9MAHqPCKTMfvTgbq25skJ2ouXEApzNjfHyfQ0WUXhrd1OzOUi6nISd7uJOBwkBt1k/QqVmRkqszMw/wwRVBG7e9Zvo0nklpS99AaxugqraxCJ0Hi9xKEszgWC1OTLdC+qISrPF2jJWtYjRq1YkWeWV0yvVPgNCogX14HVT9cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVQoz3WSi08TQRCH+bMpKjEl9oGkCRUocoUYDRBsr8WIoiiv2gdoUYuaFiNYSV+UR0sJpS29/dx7FIvi7E12dnb2u9/sXQ9/mRCia6VhLsvS01374oZa03pugtVqNUqlIm1NP1pnP6eQztjRxA8DJYSxIR9zXAN2IPrciS/blzQaLT2i3QyzGbexEbvDWdUncwULZkHFdWjP/6TrdiCWybUm2Nr38rkwQvZcoShmORfHFuxf6JXCVqvF6WmVer1uFH0hSrg9xnjaycO0A9+3e4ykBlAbPtYIcK6d/YF2REm/AjabTY6PjqhXL9gjxVTexdj2AMPJfoY/9DO6bceTuIVP5vy/HGywQFtcXim0qN0tm8mf7ODduYs70YcrYcMZ68UZ72UoeRvPp34GN/twRm3cT9mIaosY+rqgpkJLtia/7GEyTOl9iEJClR4kFwuQe/eUfDxIaTNk5AobKsW4ykEywEXmoykOq+XTapV8uUz7WF704ivyvilSQ172xyfZG1UoTz4hO+anoDziu9dnxCX/Y756Rth9MAHqPCKTMfvTgbq25skJ2ouXEApzNjfHyfQ0WUXhrd1OzOUi6nISd7uJOBwkBt1k/QqVmRkqszMw/wwRVBG7e9Zvo0nklpS99AaxugqraxCJ0Hi9xKEszgWC1OTLdC+qISrPF2jJWtYjRq1YkWeWV0yvVPgNCogX14HVT9cAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;How: “Live demo”. What: “Functional principles improve the developer experience”. Why: “Create your own tools to make programming fun”.&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/fcda8/how-what-why-hot-reloading.png&quot;
-        srcset=&quot;https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/12f09/how-what-why-hot-reloading.png 148w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/e4a3f/how-what-why-hot-reloading.png 295w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/fcda8/how-what-why-hot-reloading.png 590w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/efc66/how-what-why-hot-reloading.png 885w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/c83ae/how-what-why-hot-reloading.png 1180w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/eb2ef/how-what-why-hot-reloading.png 1324w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;How: “Live demo”. What: “Functional principles improve the developer experience”. Why: “Create your own tools to make programming fun”.&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/fcda8/how-what-why-hot-reloading.png&quot; srcset=&quot;https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/12f09/how-what-why-hot-reloading.png 148w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/e4a3f/how-what-why-hot-reloading.png 295w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/fcda8/how-what-why-hot-reloading.png 590w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/efc66/how-what-why-hot-reloading.png 885w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/c83ae/how-what-why-hot-reloading.png 1180w,https://overreacted.io/static/a65c15cd4ca2277599972b89da3cbf0b/eb2ef/how-what-why-hot-reloading.png 1324w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
   &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;(The above pyramid is for &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hot reloading with time travel&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot;&gt;
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVQoz3WS/U/TUBSG+a+FRGMIEFaIIEJWZRuCHz+MMWAbmwEUFhEEjRMhZMMQostkY7Z0HVr21ft42244Cd7m5PSee+/T972nPdwYQoiumY03LcvIdq2LW/Z6o+c2WLVapVQq0mo5Ry3yhQDZ4wFsceKihLBdpmg//wA7ECd33putJrVaQxYbNGtL7O30sbt9j8uKKlfPHOEetHOuC9rzP+nO0ElTFCEyhSkOyyr5WkiaD1Oj4l1IB9ql9Fpho9HANCtYluXa2TXXeWmMMS9VJZpBFi5VwoafBctPTJ+hWrsBdTgyroH1eh1N07gyrzhhn4kvd1HSvYy+7WVkS+atPiYz91E27zC618vrX/PSeattX3Sa0G3ZK37jmGWmpbpHPD17wFx5nGB+hEBeceeB7wqzZ2NEUXnPqoP0GiS6Lbdl27Kz5x+iaPsxLg5W0A8SMicwDleoHCXddzcfJtA+Jyh+nMfKZq7v0VVoVir8KJdp6TqkXmGHlziekA3wB/kZfE7h8QzFJ7N8fahyHnhGbtxPaXqOvBri94sILC4jcrm/lh1t9YsL7GQKEV2EeJyjqUnW+vt55/ORHhqUMcS24mPLN8zG4ICsD7OjKFgRCYzFEZEo4vS0/dvYEvlJyl5bx97YhM009dU1tFgMXcKNuLQmP3SZSnG+uISRkNcga+ZKEuR+4Zx5s+GFYfAHLWkantktagwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVQoz3WS/U/TUBSG+a+FRGMIEFaIIEJWZRuCHz+MMWAbmwEUFhEEjRMhZMMQostkY7Z0HVr21ft42244Cd7m5PSee+/T972nPdwYQoiumY03LcvIdq2LW/Z6o+c2WLVapVQq0mo5Ry3yhQDZ4wFsceKihLBdpmg//wA7ECd33putJrVaQxYbNGtL7O30sbt9j8uKKlfPHOEetHOuC9rzP+nO0ElTFCEyhSkOyyr5WkiaD1Oj4l1IB9ql9Fpho9HANCtYluXa2TXXeWmMMS9VJZpBFi5VwoafBctPTJ+hWrsBdTgyroH1eh1N07gyrzhhn4kvd1HSvYy+7WVkS+atPiYz91E27zC618vrX/PSeattX3Sa0G3ZK37jmGWmpbpHPD17wFx5nGB+hEBeceeB7wqzZ2NEUXnPqoP0GiS6Lbdl27Kz5x+iaPsxLg5W0A8SMicwDleoHCXddzcfJtA+Jyh+nMfKZq7v0VVoVir8KJdp6TqkXmGHlziekA3wB/kZfE7h8QzFJ7N8fahyHnhGbtxPaXqOvBri94sILC4jcrm/lh1t9YsL7GQKEV2EeJyjqUnW+vt55/ORHhqUMcS24mPLN8zG4ICsD7OjKFgRCYzFEZEo4vS0/dvYEvlJyl5bx97YhM009dU1tFgMXcKNuLQmP3SZSnG+uISRkNcga+ZKEuR+4Zx5s+GFYfAHLWkantktagwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;How: “Live demo”. What: “Waiting for CPU and IO has a unified solution”. Why: “React cares about both user and developer experience”.&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/fcda8/how-what-why-beyond-react-16.png&quot;
-        srcset=&quot;https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/12f09/how-what-why-beyond-react-16.png 148w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/e4a3f/how-what-why-beyond-react-16.png 295w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/fcda8/how-what-why-beyond-react-16.png 590w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/efc66/how-what-why-beyond-react-16.png 885w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/c83ae/how-what-why-beyond-react-16.png 1180w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/eb2ef/how-what-why-beyond-react-16.png 1324w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;How: “Live demo”. What: “Waiting for CPU and IO has a unified solution”. Why: “React cares about both user and developer experience”.&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/fcda8/how-what-why-beyond-react-16.png&quot; srcset=&quot;https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/12f09/how-what-why-beyond-react-16.png 148w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/e4a3f/how-what-why-beyond-react-16.png 295w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/fcda8/how-what-why-beyond-react-16.png 590w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/efc66/how-what-why-beyond-react-16.png 885w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/c83ae/how-what-why-beyond-react-16.png 1180w,https://overreacted.io/static/0d4310b34364a1ba80b55650f5e4c11c/eb2ef/how-what-why-beyond-react-16.png 1324w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
   &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;(The above pyramid is for &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Beyond React 16&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot;&gt;
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACC0lEQVQoz3WSj08SYRjH/afbpNZqy0JJSlcOHFhUWzWKA0J0xRJZ6sSGlo7URjYcAvHLA+cBx9376b0DFJu9t+fe93mf5/nc93nfG+OfIYQY8Uz6bkXa/khcXJPbH2PXwVqtFuVyCcOwSjWOCz72D+9hipyNEsK0mWLwXAEOIdY8XPeMHp2OLjd1jG6Y9IaDzfXbnKkeGS1awvvQYd0IdOx/0q1RZ5Wi6WenOMdexUO+s0CVIB3UAWwAHVF6oVDXdZrNJpqm2X66leBVbRpF8xHW5lHOvYQ7Pl43ZonWFjg3zq5CLY60C2C326VWraKpbXJ8I1CawpVy4N64ycMv43I9zvSaA2fiBk+zd1jVQ7LzXv8shx1aQC7vzH7n+YmCl2Ve8q7twbV1i0D5Ed5fTmZ27+I/dtkxK2eTjxiD0iHUVijMvmxT3mw5HaKUUahuR2l8j9HYW6SxG0PNxlF/xKUfoyZjfzIRCltvaR9sX5yjrbCpqpxUKhj1OsSX4P0HUOKceJ+TdT+hNB+g4HlGbtZLfs5PUfq/53zobxQIW/kK4uDwsmVLW+/0FLG0jAjJYDSKGQlzHgyyM/OY1IP7fHW7WZt0kpyYYH1qktKLAHooZOeKSERC5froaPDbWO1mMvApgVhJIj6v2EYqRVfuVSNRmotxzuQHT2Oy3ajsIJmUttrPkzVYs2VS2F9dcR5KTo4EJAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 57.432432432432435%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAACC0lEQVQoz3WSj08SYRjH/afbpNZqy0JJSlcOHFhUWzWKA0J0xRJZ6sSGlo7URjYcAvHLA+cBx9376b0DFJu9t+fe93mf5/nc93nfG+OfIYQY8Uz6bkXa/khcXJPbH2PXwVqtFuVyCcOwSjWOCz72D+9hipyNEsK0mWLwXAEOIdY8XPeMHp2OLjd1jG6Y9IaDzfXbnKkeGS1awvvQYd0IdOx/0q1RZ5Wi6WenOMdexUO+s0CVIB3UAWwAHVF6oVDXdZrNJpqm2X66leBVbRpF8xHW5lHOvYQ7Pl43ZonWFjg3zq5CLY60C2C326VWraKpbXJ8I1CawpVy4N64ycMv43I9zvSaA2fiBk+zd1jVQ7LzXv8shx1aQC7vzH7n+YmCl2Ve8q7twbV1i0D5Ed5fTmZ27+I/dtkxK2eTjxiD0iHUVijMvmxT3mw5HaKUUahuR2l8j9HYW6SxG0PNxlF/xKUfoyZjfzIRCltvaR9sX5yjrbCpqpxUKhj1OsSX4P0HUOKceJ+TdT+hNB+g4HlGbtZLfs5PUfq/53zobxQIW/kK4uDwsmVLW+/0FLG0jAjJYDSKGQlzHgyyM/OY1IP7fHW7WZt0kpyYYH1qktKLAHooZOeKSERC5froaPDbWO1mMvApgVhJIj6v2EYqRVfuVSNRmotxzuQHT2Oy3ajsIJmUttrPkzVYs2VS2F9dcR5KTo4EJAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;How: “Live demo”. What: “Hooks make stateful logic reusable. Why: “Hooks reveal the true nature of React”.&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/fcda8/how-what-why-introducing-hooks.png&quot;
-        srcset=&quot;https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/12f09/how-what-why-introducing-hooks.png 148w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/e4a3f/how-what-why-introducing-hooks.png 295w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/fcda8/how-what-why-introducing-hooks.png 590w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/efc66/how-what-why-introducing-hooks.png 885w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/c83ae/how-what-why-introducing-hooks.png 1180w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/eb2ef/how-what-why-introducing-hooks.png 1324w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;How: “Live demo”. What: “Hooks make stateful logic reusable. Why: “Hooks reveal the true nature of React”.&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/fcda8/how-what-why-introducing-hooks.png&quot; srcset=&quot;https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/12f09/how-what-why-introducing-hooks.png 148w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/e4a3f/how-what-why-introducing-hooks.png 295w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/fcda8/how-what-why-introducing-hooks.png 590w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/efc66/how-what-why-introducing-hooks.png 885w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/c83ae/how-what-why-introducing-hooks.png 1180w,https://overreacted.io/static/cd27cea1fdca520d929385de0cc1581b/eb2ef/how-what-why-introducing-hooks.png 1324w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -4890,7 +4934,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;&lt;strong&gt;Next in this series: &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-3-content/&quot;&gt;Preparing for a Tech Talk, Part 3: Content&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Previous in this series: &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-1-motivation/&quot;&gt;Preparing for a Tech Talk, Part 1: Motivation&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[The Elements of UI Engineering]]></title><description><![CDATA[What makes UI engineering difficult?]]></description><link>https://overreacted.io/the-elements-of-ui-engineering/</link><guid isPermaLink="false">https://overreacted.io/the-elements-of-ui-engineering/</guid><pubDate>Sun, 30 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In my &lt;a href=&quot;https://overreacted.io/things-i-dont-know-as-of-2018/&quot;&gt;previous post&lt;/a&gt;, I talked about admitting our knowledge gaps. You might conclude that I suggest settling for mediocrity. I don’t! This is a broad field.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[The Elements of UI Engineering]]></title>
+      <description><![CDATA[What makes UI engineering difficult?]]></description>
+      <link>https://overreacted.io/the-elements-of-ui-engineering/</link>
+      <guid isPermaLink="false">https://overreacted.io/the-elements-of-ui-engineering/</guid>
+      <pubDate>Sun, 30 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;In my &lt;a href=&quot;https://overreacted.io/things-i-dont-know-as-of-2018/&quot;&gt;previous post&lt;/a&gt;, I talked about admitting our knowledge gaps. You might conclude that I suggest settling for mediocrity. I don’t! This is a broad field.&lt;/p&gt;
 &lt;p&gt;I strongly believe that you can “begin anywhere” and don’t need to learn technologies in any particular order. But I also place great value in gaining expertise. Personally I’ve mostly been interested in creating user interfaces.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;I’ve been mulling over what it is that I &lt;em&gt;do&lt;/em&gt; know about and consider valuable.&lt;/strong&gt; Sure, I’m familiar with a few technologies (e.g. JavaScript and React). But the more important lessons from experience are elusive. I never tried to put them into words. This is my first attempt to catalog and describe some of them.&lt;/p&gt;
 &lt;hr&gt;
@@ -4921,7 +4973,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;&lt;strong&gt;Think of a non-trivial UI element from an app you enjoy using, and go through this list of problems. Can you describe some of the tradeoffs chosen by its developers? Try to recreate a similar behavior from scratch!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I learned a lot about UI engineering by experimenting with these problems in small apps without using libraries. I recommend the same to anyone who wants to gain a deeper appreciation for the tradeoffs in UI engineering.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/the-elements-of-ui-engineering/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Things I Don’t Know as of 2018]]></title><description><![CDATA[We can admit our knowledge gaps without devaluing our expertise.]]></description><link>https://overreacted.io/things-i-dont-know-as-of-2018/</link><guid isPermaLink="false">https://overreacted.io/things-i-dont-know-as-of-2018/</guid><pubDate>Fri, 28 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;People often assume that I know far more than I actually do. That’s not a bad problem to have and I’m not complaining. (Folks from minority groups often suffer the opposite bias despite their hard-earned credentials, and that &lt;em&gt;sucks&lt;/em&gt;.)&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Things I Don’t Know as of 2018]]></title>
+      <description><![CDATA[We can admit our knowledge gaps without devaluing our expertise.]]></description>
+      <link>https://overreacted.io/things-i-dont-know-as-of-2018/</link>
+      <guid isPermaLink="false">https://overreacted.io/things-i-dont-know-as-of-2018/</guid>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;People often assume that I know far more than I actually do. That’s not a bad problem to have and I’m not complaining. (Folks from minority groups often suffer the opposite bias despite their hard-earned credentials, and that &lt;em&gt;sucks&lt;/em&gt;.)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;In this post I’ll offer an incomplete list of programming topics that people often wrongly assume that I know.&lt;/strong&gt; I’m not saying &lt;em&gt;you&lt;/em&gt; don’t need to learn them — or that I don’t know &lt;em&gt;other&lt;/em&gt; useful things. But since I’m not in a vulnerable position myself right now, I can be honest about this.&lt;/p&gt;
 &lt;p&gt;Here’s why I think it’s important.&lt;/p&gt;
 &lt;hr&gt;
@@ -4973,7 +5033,15 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;Update: I also &lt;a href=&quot;https://overreacted.io/the-elements-of-ui-engineering/&quot;&gt;wrote&lt;/a&gt; about a few things that I know.&lt;/p&gt;
 &lt;/blockquote&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/things-i-dont-know-as-of-2018/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Preparing for a Tech Talk, Part 1: Motivation]]></title><description><![CDATA[Here’s my recipe for a good talk idea.]]></description><link>https://overreacted.io/preparing-for-tech-talk-part-1-motivation/</link><guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-1-motivation/</guid><pubDate>Wed, 26 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Preparing for a Tech Talk, Part 1: Motivation]]></title>
+      <description><![CDATA[Here’s my recipe for a good talk idea.]]></description>
+      <link>https://overreacted.io/preparing-for-tech-talk-part-1-motivation/</link>
+      <guid isPermaLink="false">https://overreacted.io/preparing-for-tech-talk-part-1-motivation/</guid>
+      <pubDate>Wed, 26 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;I’ve done a &lt;a href=&quot;https://www.youtube.com/watch?v=xsSnOQynTHs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=nLF0n9SACd4&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tech&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;talks&lt;/a&gt; that I think went well.&lt;/p&gt;
 &lt;p&gt;Sometimes people ask me how I prepare for a talk. For every speaker, the answer is very personal. I’m just sharing what works for me.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;This is the first post in a series&lt;/strong&gt; where I explain my process preparing for a tech talk — from conceiving the idea to the actual day of the presentation:&lt;/p&gt;
 &lt;ul&gt;
@@ -5001,30 +5069,14 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;hr&gt;
 &lt;p&gt;That is my formula. Yours might be different — think about it! Which talks made you feel in a special way? What are the structural similarities between them? (We’ll discuss the talk structure more in the next posts in this series.)&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/e5166/patronus.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/e5166/patronus.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 60.13513513513513%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAME/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/2gAMAwEAAhADEAAAAYs+agoiC//EABsQAAICAwEAAAAAAAAAAAAAAAECAAMQERIx/9oACAEBAAEFAk84Q1blbGHH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BiP/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/Aar/xAAcEAABAwUAAAAAAAAAAAAAAAABAAIQERIhUWH/2gAIAQEABj8CRN9Hah/Mz//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFhMUFx/9oACAEBAAE/ISb54uD7R7RFysPCZK6gYJ//2gAMAwEAAgADAAAAEPDv/8QAFREBAQAAAAAAAAAAAAAAAAAAECH/2gAIAQMBAT8Qgf/EABYRAAMAAAAAAAAAAAAAAAAAAAEQIf/aAAgBAgEBPxCgn//EABkQAQADAQEAAAAAAAAAAAAAAAEAESFBUf/aAAgBAQABPxBgAU0QDp7C27RQElo2twT6QlvHCaTVUBu8n//Z&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 60.13513513513513%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAME/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/2gAMAwEAAhADEAAAAYs+agoiC//EABsQAAICAwEAAAAAAAAAAAAAAAECAAMQERIx/9oACAEBAAEFAk84Q1blbGHH/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BiP/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/Aar/xAAcEAABAwUAAAAAAAAAAAAAAAABAAIQERIhUWH/2gAIAQEABj8CRN9Hah/Mz//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFhMUFx/9oACAEBAAE/ISb54uD7R7RFysPCZK6gYJ//2gAMAwEAAgADAAAAEPDv/8QAFREBAQAAAAAAAAAAAAAAAAAAECH/2gAIAQMBAT8Qgf/EABYRAAMAAAAAAAAAAAAAAAAAAAEQIf/aAAgBAgEBPxCgn//EABkQAQADAQEAAAAAAAAAAAAAAAEAESFBUf/aAAgBAQABPxBgAU0QDp7C27RQElo2twT6QlvHCaTVUBu8n//Z&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Luna Lovegood invoking a Patronus Charm. Image © 2007 Warner Bros. Ent&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c72d/patronus.jpg&quot;
-        srcset=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/a80bd/patronus.jpg 148w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c91a/patronus.jpg 295w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c72d/patronus.jpg 590w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/a8a14/patronus.jpg 885w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/fbd2c/patronus.jpg 1180w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/e5166/patronus.jpg 1200w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Luna Lovegood invoking a Patronus Charm. Image © 2007 Warner Bros. Ent&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c72d/patronus.jpg&quot; srcset=&quot;https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/a80bd/patronus.jpg 148w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c91a/patronus.jpg 295w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/1c72d/patronus.jpg 590w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/a8a14/patronus.jpg 885w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/fbd2c/patronus.jpg 1180w,https://overreacted.io/static/db2622db20b3b3b7774017caac1037ae/e5166/patronus.jpg 1200w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -5046,30 +5098,14 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;For me, a talk is just a way to generalize those conversations and make them one-to-many rather than one-to-one. It’s like a “library” you extract out of the “application code” of many in-person and social media conversations.&lt;/p&gt;
 &lt;p&gt;So if you want to give a great talk, &lt;em&gt;talking&lt;/em&gt; to people is a good way to start.&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/c08c5/cauldron.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/c08c5/cauldron.jpg&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQED/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAFne9TG5Okt54khX//EABwQAAICAgMAAAAAAAAAAAAAAAECABEDEgQjMf/aAAgBAQABBQLI3WwFt7l0hlTlOd9mssb/AP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/AWP/xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAgEBPwEI/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAECIRARMXH/2gAIAQEABj8Cl6RS7i3KQtPDpUdZ0//EABwQAAIDAQADAAAAAAAAAAAAAAABESExUUGBof/aAAgBAQABPyFSdO8HlptsXuSjQep4yrad/RJFtMgFDVWSj3bo7qf/2gAMAwEAAgADAAAAEMjvv//EABcRAAMBAAAAAAAAAAAAAAAAAAABMRD/2gAIAQMBAT8QaTXT/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAFB/9oACAECAQE/ENCH/8QAHBABAAMAAwEBAAAAAAAAAAAAAQARITFBUWHx/9oACAEBAAE/EOSlczTd0xLS767H9g2EoxQY6GygDXg+oRjsBVdJWKT2uxXHT8xcygAAxRZa1nM//9k=&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQED/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/9oADAMBAAIQAxAAAAFne9TG5Okt54khX//EABwQAAICAgMAAAAAAAAAAAAAAAECABEDEgQjMf/aAAgBAQABBQLI3WwFt7l0hlTlOd9mssb/AP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/AWP/xAAVEQEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAgEBPwEI/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAECIRARMXH/2gAIAQEABj8Cl6RS7i3KQtPDpUdZ0//EABwQAAIDAQADAAAAAAAAAAAAAAABESExUUGBof/aAAgBAQABPyFSdO8HlptsXuSjQep4yrad/RJFtMgFDVWSj3bo7qf/2gAMAwEAAgADAAAAEMjvv//EABcRAAMBAAAAAAAAAAAAAAAAAAABMRD/2gAIAQMBAT8QaTXT/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAFB/9oACAECAQE/ENCH/8QAHBABAAMAAwEBAAAAAAAAAAAAAQARITFBUWHx/9oACAEBAAE/EOSlczTd0xLS767H9g2EoxQY6GygDXg+oRjsBVdJWKT2uxXHT8xcygAAxRZa1nM//9k=&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Hermione Granger making a potion. Vials have text imposed on top: &quot;motivations&quot; and &quot;conversations&quot;. Cauldron is a metaphor for your talk. Image © 2001 Warner Bros. Ent&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c72d/cauldron.jpg&quot;
-        srcset=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/a80bd/cauldron.jpg 148w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c91a/cauldron.jpg 295w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c72d/cauldron.jpg 590w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/c08c5/cauldron.jpg 640w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Hermione Granger making a potion. Vials have text imposed on top: &quot;motivations&quot; and &quot;conversations&quot;. Cauldron is a metaphor for your talk. Image © 2001 Warner Bros. Ent&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c72d/cauldron.jpg&quot; srcset=&quot;https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/a80bd/cauldron.jpg 148w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c91a/cauldron.jpg 295w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/1c72d/cauldron.jpg 590w,https://overreacted.io/static/7c324114478c65f71622e8f823dceee3/c08c5/cauldron.jpg 640w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -5081,34 +5117,26 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
 &lt;p&gt;In the next posts in this series, I will talk about preparing the talk outline, slides, rehearsing the talks, and what I do on the day of the presentation.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Next in this series: &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-2-what-why-and-how/&quot;&gt;Preparing for a Tech Talk, Part 2: What, Why, and How&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/preparing-for-tech-talk-part-1-motivation/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Why Do React Hooks Rely on Call Order?]]></title><description><![CDATA[Lessons learned from mixins, render props, HOCs, and classes.]]></description><link>https://overreacted.io/why-do-hooks-rely-on-call-order/</link><guid isPermaLink="false">https://overreacted.io/why-do-hooks-rely-on-call-order/</guid><pubDate>Thu, 13 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;At React Conf 2018, the React team presented the &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks proposal&lt;/a&gt;.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Why Do React Hooks Rely on Call Order?]]></title>
+      <description><![CDATA[Lessons learned from mixins, render props, HOCs, and classes.]]></description>
+      <link>https://overreacted.io/why-do-hooks-rely-on-call-order/</link>
+      <guid isPermaLink="false">https://overreacted.io/why-do-hooks-rely-on-call-order/</guid>
+      <pubDate>Thu, 13 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;At React Conf 2018, the React team presented the &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks proposal&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you’d like to understand what Hooks are and what problems they solve, check out &lt;a href=&quot;https://www.youtube.com/watch?v=dpw9EHDh2bM&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;our talks&lt;/a&gt; introducing them and &lt;a href=&quot;https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;my follow-up article&lt;/a&gt; addressing common misconceptions.&lt;/p&gt;
 &lt;p&gt;Chances are you won’t like Hooks at first:&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/f868f/hooks-hn1.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/f868f/hooks-hn1.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 19.594594594594593%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA1UlEQVQY01VQ266CMBDk/7/oJB5UKNDW0yLwIDExIl4QOCRG/YBxd6MPPkxmOzubTibo+yO67gDm67UVHscTHo9/wfM5Cd/v4xez/gG/b7eeMCAwJkaaLhFFM8RxiCRZII5+ZV6tElijZK/UHDpbIgx/oDXfLJCSlz0Z6bvdBpfLHkFdF2LIcwNrFZzTWK8tqsqjLB3pFrnXdJjC0459Wkcoij+ZvcvgvUFdl5I+YNFQCmalQjFWlZNkTbPFNHX0c0O1NDif91RJK0m4poHqGd4VsYe9L/zQGSMpPy/HAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 19.594594594594593%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA1UlEQVQY01VQ266CMBDk/7/oJB5UKNDW0yLwIDExIl4QOCRG/YBxd6MPPkxmOzubTibo+yO67gDm67UVHscTHo9/wfM5Cd/v4xez/gG/b7eeMCAwJkaaLhFFM8RxiCRZII5+ZV6tElijZK/UHDpbIgx/oDXfLJCSlz0Z6bvdBpfLHkFdF2LIcwNrFZzTWK8tqsqjLB3pFrnXdJjC0459Wkcoij+ZvcvgvUFdl5I+YNFQCmalQjFWlZNkTbPFNHX0c0O1NDif91RJK0m4poHqGd4VsYe9L/zQGSMpPy/HAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Negative HN comment&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/fcda8/hooks-hn1.png&quot;
-        srcset=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/12f09/hooks-hn1.png 148w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/e4a3f/hooks-hn1.png 295w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/fcda8/hooks-hn1.png 590w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/efc66/hooks-hn1.png 885w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/c83ae/hooks-hn1.png 1180w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/f868f/hooks-hn1.png 1382w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Negative HN comment&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/fcda8/hooks-hn1.png&quot; srcset=&quot;https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/12f09/hooks-hn1.png 148w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/e4a3f/hooks-hn1.png 295w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/fcda8/hooks-hn1.png 590w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/efc66/hooks-hn1.png 885w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/c83ae/hooks-hn1.png 1180w,https://overreacted.io/static/d498863e7382b4d5ee4d8753e6e74a1e/f868f/hooks-hn1.png 1382w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -5117,30 +5145,14 @@ fiber&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;hooks &lt;spa
     &lt;/p&gt;
 &lt;p&gt;They’re like a music record that grows on you only after a few good listens:&lt;/p&gt;
 &lt;p&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/1dbe8/hooks-hn2.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
+  &lt;a class=&quot;gatsby-resp-image-link&quot; href=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/1dbe8/hooks-hn2.png&quot; style=&quot;display: block&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;
   &gt;
   
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &lt;span class=&quot;gatsby-resp-image-wrapper&quot; style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
   &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 23.64864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABBklEQVQY0z1Q2XKCQBDk//8nFcsCUwJyhuUIBEuFeKBERcHyeuzMTkIeunp7pmd7apTNpsB2+4W6XqGqSuIljscKl8uB0bbfzF13+OM91fb//d5zvTZ4PFooInAQChdCOHBdA75v8TsIbCRJgDj2WUeRR70JfG8Cx9ZJ+9wLaN5zTf6j3i2hSNEP9RyGLqLQowAT6YdgyKAsC3/D3m0OlD4ZwEuRv2l2UIbDF5jmG0bagNm2xtDUAcZjFbquEWswjBFU9RW6rBFkkOPosMhrUs+mjaV3vV5Amc8zrFZzTPMEeR5jNkuJE+aynKIociwWn6zTVOB0rvF8drjfzwx5t9vtxJB3/AEwKl21CwjATgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &lt;span class=&quot;gatsby-resp-image-background-image&quot; style=&quot;padding-bottom: 23.64864864864865%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAABBklEQVQY0z1Q2XKCQBDk//8nFcsCUwJyhuUIBEuFeKBERcHyeuzMTkIeunp7pmd7apTNpsB2+4W6XqGqSuIljscKl8uB0bbfzF13+OM91fb//d5zvTZ4PFooInAQChdCOHBdA75v8TsIbCRJgDj2WUeRR70JfG8Cx9ZJ+9wLaN5zTf6j3i2hSNEP9RyGLqLQowAT6YdgyKAsC3/D3m0OlD4ZwEuRv2l2UIbDF5jmG0bagNm2xtDUAcZjFbquEWswjBFU9RW6rBFkkOPosMhrUs+mjaV3vV5Amc8zrFZzTPMEeR5jNkuJE+aynKIociwWn6zTVOB0rvF8drjfzwx5t9vtxJB3/AEwKl21CwjATgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
     &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Positive HN comment from the same person four days later&quot;
-        title=&quot;&quot;
-        src=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/fcda8/hooks-hn2.png&quot;
-        srcset=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/12f09/hooks-hn2.png 148w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/e4a3f/hooks-hn2.png 295w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/fcda8/hooks-hn2.png 590w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/efc66/hooks-hn2.png 885w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/c83ae/hooks-hn2.png 1180w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/1dbe8/hooks-hn2.png 1374w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      &lt;img class=&quot;gatsby-resp-image-image&quot; style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot; alt=&quot;Positive HN comment from the same person four days later&quot; title=&quot;&quot; src=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/fcda8/hooks-hn2.png&quot; srcset=&quot;https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/12f09/hooks-hn2.png 148w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/e4a3f/hooks-hn2.png 295w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/fcda8/hooks-hn2.png 590w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/efc66/hooks-hn2.png 885w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/c83ae/hooks-hn2.png 1180w,https://overreacted.io/static/b31774c3ef4f2239bf9e62fe9272662b/1dbe8/hooks-hn2.png 1374w&quot; sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -5504,7 +5516,15 @@ Status
 &lt;p&gt;Hooks aren’t perfect either, but it’s the best tradeoff we could find for solving these problems. There are things we &lt;a href=&quot;https://github.com/reactjs/rfcs/pull/68#issuecomment-440780509&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;still need to fix&lt;/a&gt;, and there exist things that are more awkward with Hooks than classes. That is also a topic for another blog post.&lt;/p&gt;
 &lt;p&gt;Whether I covered your favorite alternative proposal or not, I hope this writeup helped shed some light on our thinking process and the criteria we consider when choosing an API. As you can see, a lot of it (such as making sure that copy-pasting, moving code, adding and removing dependencies works as expected) has to do with &lt;a href=&quot;https://overreacted.io/optimized-for-change/&quot;&gt;optimizing for change&lt;/a&gt;. I hope that React users will appreciate these aspects.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/why-do-hooks-rely-on-call-order/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Optimized for Change]]></title><description><![CDATA[What makes a great API?]]></description><link>https://overreacted.io/optimized-for-change/</link><guid isPermaLink="false">https://overreacted.io/optimized-for-change/</guid><pubDate>Wed, 12 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;What makes a great API?&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Optimized for Change]]></title>
+      <description><![CDATA[What makes a great API?]]></description>
+      <link>https://overreacted.io/optimized-for-change/</link>
+      <guid isPermaLink="false">https://overreacted.io/optimized-for-change/</guid>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;What makes a great API?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Good&lt;/em&gt; API design is memorable and unambiguous. It encourages readable, correct and performant code, and helps developers fall into &lt;a href=&quot;https://blog.codinghorror.com/falling-into-the-pit-of-success/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;the pit of success&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I call these design aspects “first order” because they are the first things a library developer tends to focus on. You might have to compromise on some of them and make tradeoffs but at least they’re always on your mind.&lt;/p&gt;
 &lt;p&gt;However, unless you’re sending a rover to Mars, your code will probably change over time. And so will the code of your API consumers.&lt;/p&gt;
@@ -5514,7 +5534,15 @@ Status
 &lt;p&gt;Great APIs not only let you fall into a pit of success, but help you &lt;em&gt;stay&lt;/em&gt; there.&lt;/p&gt;
 &lt;p&gt;They’re optimized for change.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/optimized-for-change/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[How Does setState Know What to Do?]]></title><description><![CDATA[Dependency injection is nice if you don’t have to think about it.]]></description><link>https://overreacted.io/how-does-setstate-know-what-to-do/</link><guid isPermaLink="false">https://overreacted.io/how-does-setstate-know-what-to-do/</guid><pubDate>Sun, 09 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When you call &lt;code class=&quot;language-text&quot;&gt;setState&lt;/code&gt; in a component, what do you think happens?&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[How Does setState Know What to Do?]]></title>
+      <description><![CDATA[Dependency injection is nice if you don’t have to think about it.]]></description>
+      <link>https://overreacted.io/how-does-setstate-know-what-to-do/</link>
+      <guid isPermaLink="false">https://overreacted.io/how-does-setstate-know-what-to-do/</guid>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;When you call &lt;code class=&quot;language-text&quot;&gt;setState&lt;/code&gt; in a component, what do you think happens?&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight has-highlighted-lines&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; ReactDOM &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react-dom&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
@@ -5639,7 +5667,15 @@ inst&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props &lt;span
 &lt;p&gt;You don’t need to think about how this works when you use React. We’d like React users to spend more time thinking about their application code than abstract concepts like dependency injection. But if you’ve ever wondered how &lt;code class=&quot;language-text&quot;&gt;this.setState()&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;useState()&lt;/code&gt; know what to do, I hope this helps.&lt;/p&gt;
 &lt;hr&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/how-does-setstate-know-what-to-do/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[My Wishlist for Hot Reloading]]></title><description><![CDATA[I don't want a lot for Christmas. There is just one thing I need.]]></description><link>https://overreacted.io/my-wishlist-for-hot-reloading/</link><guid isPermaLink="false">https://overreacted.io/my-wishlist-for-hot-reloading/</guid><pubDate>Sat, 08 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Do you have a project that you approach repeatedly with a mix of success and failure, step aside for a while, and then try again — year after year? For some, it might be a router or a virtual list scroller. For me, it’s hot reloading.&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[My Wishlist for Hot Reloading]]></title>
+      <description><![CDATA[I don't want a lot for Christmas. There is just one thing I need.]]></description>
+      <link>https://overreacted.io/my-wishlist-for-hot-reloading/</link>
+      <guid isPermaLink="false">https://overreacted.io/my-wishlist-for-hot-reloading/</guid>
+      <pubDate>Sat, 08 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Do you have a project that you approach repeatedly with a mix of success and failure, step aside for a while, and then try again — year after year? For some, it might be a router or a virtual list scroller. For me, it’s hot reloading.&lt;/p&gt;
 &lt;p&gt;My first exposure to the idea of changing code on the fly was a brief mention in a book about Erlang that I read as a teenager. Much later, like many others, I fell in love with &lt;a href=&quot;https://vimeo.com/36579366&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Bret Victor’s beautiful demos&lt;/a&gt;. I’ve read somewhere Bret was unhappy with people cherry-picking “easy” parts of his demos and screwing up the big vision. (I don’t know if this is true.) &lt;strong&gt;In either case, to me shipping even small incremental improvements that people take for granted later is a success.&lt;/strong&gt; Smarter people than me will work on Next Big Ideas.&lt;/p&gt;
 &lt;p&gt;Now, I want to be clear that none of the &lt;em&gt;ideas&lt;/em&gt; discussed in this post are mine. I’ve been &lt;a href=&quot;https://redux.js.org/introduction/prior-art&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;inspired&lt;/a&gt; by many projects and people. In fact, even people whose projects I’ve never tried occasionally told me I’ve ripped off their stuff.&lt;/p&gt;
 &lt;p&gt;I’m not an inventor. If I have a “principle”, it is to take a vision that inspires me, and share it with more people — through words, code, and demos.&lt;/p&gt;
@@ -5737,7 +5773,15 @@ window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cla
 &lt;p&gt;I don’t know how many of these goals we can satisfy with JavaScript. But there’s one more reason I’m looking forward to working on hot reloading again. As an engineer I’m more organized than before. In particular, &lt;strong&gt;I’ve finally learned my lesson to write up requirements like this before diving into another implementation.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Maybe this one will actually work! But if it doesn’t, at least I’ve left some breadcrumbs for the next person who tries it.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/my-wishlist-for-hot-reloading/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Why Do React Elements Have a $$typeof Property?]]></title><description><![CDATA[It has something to do with security.]]></description><link>https://overreacted.io/why-do-react-elements-have-typeof-property/</link><guid isPermaLink="false">https://overreacted.io/why-do-react-elements-have-typeof-property/</guid><pubDate>Mon, 03 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;You might think you’re writing JSX:&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Why Do React Elements Have a $$typeof Property?]]></title>
+      <description><![CDATA[It has something to do with security.]]></description>
+      <link>https://overreacted.io/why-do-react-elements-have-typeof-property/</link>
+      <guid isPermaLink="false">https://overreacted.io/why-do-react-elements-have-typeof-property/</guid>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;You might think you’re writing JSX:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;marquee&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;bgcolor&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation attr-equals&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;#ffa7c4&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;marquee&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;But really, you’re calling a function:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;React&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
@@ -5817,7 +5861,15 @@ messageEl&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;innerHTML
 &lt;p&gt;Alas, they don’t get this extra protection. React still includes the &lt;code class=&quot;language-text&quot;&gt;$$typeof&lt;/code&gt; field on the element for consistency, but it’s &lt;a href=&quot;https://github.com/facebook/react/blob/8482cbe22d1a421b73db602e1f470c632b09f693/packages/shared/ReactSymbols.js#L14-L16&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;set to a number&lt;/a&gt; — &lt;code class=&quot;language-text&quot;&gt;0xeac7&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Why this number specifically? &lt;code class=&quot;language-text&quot;&gt;0xeac7&lt;/code&gt; kinda looks like “React”.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/why-do-react-elements-have-typeof-property/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[How Does React Tell a Class from a Function?]]></title><description><![CDATA[We talk about classes, new, instanceof, prototype chains, and API design.]]></description><link>https://overreacted.io/how-does-react-tell-a-class-from-a-function/</link><guid isPermaLink="false">https://overreacted.io/how-does-react-tell-a-class-from-a-function/</guid><pubDate>Sun, 02 Dec 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Consider this &lt;code class=&quot;language-text&quot;&gt;Greeting&lt;/code&gt; component which is defined as a function:&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[How Does React Tell a Class from a Function?]]></title>
+      <description><![CDATA[We talk about classes, new, instanceof, prototype chains, and API design.]]></description>
+      <link>https://overreacted.io/how-does-react-tell-a-class-from-a-function/</link>
+      <guid isPermaLink="false">https://overreacted.io/how-does-react-tell-a-class-from-a-function/</guid>
+      <pubDate>Sun, 02 Dec 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Consider this &lt;code class=&quot;language-text&quot;&gt;Greeting&lt;/code&gt; component which is defined as a function:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Greeting&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;p&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -6165,7 +6217,15 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;&lt;strong&gt;If the final API is successful, &lt;em&gt;its users&lt;/em&gt; never have to think about this process.&lt;/strong&gt; Instead they can focus on creating apps.&lt;/p&gt;
 &lt;p&gt;But if you’re also curious… it’s nice to know how it works.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/how-does-react-tell-a-class-from-a-function/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item><item><title><![CDATA[Why Do We Write super(props)?]]></title><description><![CDATA[There’s a twist at the end.]]></description><link>https://overreacted.io/why-do-we-write-super-props/</link><guid isPermaLink="false">https://overreacted.io/why-do-we-write-super-props/</guid><pubDate>Fri, 30 Nov 2018 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I heard &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks&lt;/a&gt; are the new hotness. Ironically, I want to start this blog by describing fun facts about &lt;em&gt;class&lt;/em&gt; components. How about that!&lt;/p&gt;
+      </content:encoded>
+    </item>
+    <item>
+      <title><![CDATA[Why Do We Write super(props)?]]></title>
+      <description><![CDATA[There’s a twist at the end.]]></description>
+      <link>https://overreacted.io/why-do-we-write-super-props/</link>
+      <guid isPermaLink="false">https://overreacted.io/why-do-we-write-super-props/</guid>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;p&gt;I heard &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Hooks&lt;/a&gt; are the new hotness. Ironically, I want to start this blog by describing fun facts about &lt;em&gt;class&lt;/em&gt; components. How about that!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;These gotchas are &lt;em&gt;not&lt;/em&gt; important for using React productively. But you might find them amusing if you like to dig deeper into how things work.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Here’s the first one.&lt;/p&gt;
 &lt;hr&gt;
@@ -6283,4 +6343,7 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;&lt;strong&gt;With the class fields proposal this whole pitfall mostly disappears anyway.&lt;/strong&gt; Without an explicit constructor, all arguments are passed down automatically. This is what allows an expression like &lt;code class=&quot;language-text&quot;&gt;state = {}&lt;/code&gt; to include references to &lt;code class=&quot;language-text&quot;&gt;this.props&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;this.context&lt;/code&gt; if necessary.&lt;/p&gt;
 &lt;p&gt;With Hooks, we don’t even have &lt;code class=&quot;language-text&quot;&gt;super&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;this&lt;/code&gt;. But that’s a topic for another day.&lt;/p&gt;
                 &lt;div style=&quot;margin-top=55px; font-style: italic;&quot;&gt;(This is an article posted to my blog at overreacted.io. You can read it online by &lt;a href=&quot;https://overreacted.io/why-do-we-write-super-props/&quot;&gt;clicking here&lt;/a&gt;.)&lt;/div&gt;
-              </content:encoded></item></channel></rss>
+      </content:encoded>
+    </item>
+  </channel>
+</rss>

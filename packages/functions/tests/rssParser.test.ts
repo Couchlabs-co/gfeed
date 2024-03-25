@@ -173,4 +173,72 @@ describe("rssParser", () => {
         const response = await main(event);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
+
+    it("parse thecyberwire xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/thecyberwire.xml'), 'utf8');
+        const options = {
+            url: 'https://thecyberwire.com/feeds/rss.xml',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'thecyberwire', feedUrl: 'https://thecyberwire.com/feeds/rss.xml' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+    it("parse darkreading xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/darkreading.xml'), 'utf8');
+        const options = {
+            url: 'https://www.darkreading.com/rss.xml',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'darkreading', feedUrl: 'https://www.darkreading.com/rss.xml' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+    it("parse zero day initiative xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/zerodayinitiative.xml'), 'utf8');
+        const options = {
+            url: 'https://www.zerodayinitiative.com/blog?format=rss',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Zero Day Initiative', feedUrl: 'https://www.zerodayinitiative.com/blog?format=rss' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+    it("parse uber blog xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/uberblog.xml'), 'utf8');
+        const options = {
+            url: 'https://www.uber.com/en-AU/blog/rss/',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Uber Blog', feedUrl: 'https://www.uber.com/en-AU/blog/rss/' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+
+    it("parse fastcompany xml feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/fastCompanyTech.xml'), 'utf8');
+        const options = {
+            url: 'https://www.fastcompany.com/technology/rss',
+            response: xmlFile
+        }
+        mockFetch(options)
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'FAST COMPANY', feedUrl: 'https://www.fastcompany.com/technology/rss' });
+        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+
 });

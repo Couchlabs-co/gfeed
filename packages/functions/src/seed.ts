@@ -276,6 +276,16 @@ const publishers = [
       "logo":"https://www.fastcompany.com/asset_files/static/logos/fastcompany/fc-fb-icon_big.png"
     },
     {
+      "name": "FAST COMPANY",
+      "publisherUrl": "https://www.fastcompany.com",
+      "feedUrl": "https://www.fastcompany.com/technology/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo":"https://www.fastcompany.com/asset_files/static/logos/fastcompany/fc-fb-icon_big.png"
+    },
+    {
       "name": "Axios",
       "publisherUrl": "https://www.axios.com",
       "feedUrl": "https://www.axios.com/technology",
@@ -572,6 +582,116 @@ const publishers = [
       "primaryTag": "Tech",
       "frequency": "6 hours",
       "logo": "https://humanwhocodes.com/_astro/logo-full-web.fbbbde18.svg"
+    },
+    {
+      "name": "The T-Shaped Dev",
+      "publisherUrl": "https://thetshaped.dev",
+      "feedUrl": "https://thetshaped.dev/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7f66bb7c-c96f-4c71-ba2d-d561152c83a2_600x600.png"
+    },
+    {
+      "name": "Microsoft Security Response Center",
+      "publisherUrl": "https://msrc.microsoft.com/blog/feed",
+      "feedUrl": "https://msrc.microsoft.com/blog/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Uber Blog",
+      "publisherUrl": "https://www.uber.com",
+      "feedUrl": "https://www.uber.com/en-AU/blog/engineering/rss/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "Zero Day Initiative",
+      "publisherUrl": "https://www.thezdi.com",
+      "feedUrl": "https://www.zerodayinitiative.com/blog?format=rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "darkreading",
+      "publisherUrl": "https://www.darkreading.com",
+      "feedUrl": "https://www.darkreading.com/rss.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "The CyberWire",
+      "publisherUrl": "https://thecyberwire.com",
+      "feedUrl": "https://thecyberwire.com/feeds/rss.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "WIRED",
+      "publisherUrl": "https://www.wired.com",
+      "feedUrl": "https://www.wired.com/feed/tag/ai/latest/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "WIRED",
+      "publisherUrl": "https://www.wired.com",
+      "feedUrl": "https://www.wired.com/feed/tag/business/latest/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Business",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "WIRED",
+      "publisherUrl": "https://www.wired.com",
+      "feedUrl": "https://www.wired.com/feed/tag/science/latest/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Science",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "WIRED",
+      "publisherUrl": "https://www.wired.com",
+      "feedUrl": "https://www.wired.com/feed/tag/culture/latest/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Culture",
+      "frequency": "6 hours",
+      "logo": ""
+    },
+    {
+      "name": "WIRED",
+      "publisherUrl": "https://www.wired.com",
+      "feedUrl": "https://www.wired.com/feed/tag/security/latest/rss",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Tech",
+      "frequency": "6 hours",
+      "logo": ""
     }
   ];
 

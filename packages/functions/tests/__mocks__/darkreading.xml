@@ -1,0 +1,1012 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:media="http://search.yahoo.com/mrss/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0" xml:base="https://www.darkreading.com">
+    <channel>
+        <title>darkreading</title>
+        <link>https://www.darkreading.com</link>
+        <description>Public RSS feed</description>
+        <language>en</language>
+        <atom:link href="https://www.darkreading.com/feeds/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title>
+                <![CDATA[ Russian APT Releases More Deadly Variant of AcidRain Wiper Malware ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/russian-apt-releases-more-deadly-variant-of-acidrain-wiper-malware ]]>
+            </link>
+            <description>
+                <![CDATA[ New AcidPour variant can attack a significantly broader range of targets including IoT devices, storage area networks, and handhelds. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 21:58:48 GMT</pubDate>
+            <dc:creator>Jai Vijayan, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/russian-apt-releases-more-deadly-variant-of-acidrain-wiper-malware ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd55b3e75613b4802/65fdf687d902fc040ad1cef5/acidrain_Renidan_Alam_StockPhotojpeg.jpeg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd55b3e75613b4802/65fdf687d902fc040ad1cef5/acidrain_Renidan_Alam_StockPhotojpeg.jpeg" medium="image">
+                <media:title type="html">acidrain_Renidan_Alam_StockPhotojpeg.jpeg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ AWS CISO: Pay Attention to How AI Uses Your Data ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/aws-ciso-cloud-customers-need-secure-ai-workloads ]]>
+            </link>
+            <description>
+                <![CDATA[ Amazon Web Services CISO Chris Betz explains why generative AI is both a time-saving tool as well as a double-edged sword. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 20:00:00 GMT</pubDate>
+            <dc:creator>Grant Gross, Contributing Writer, Dark Reading</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/aws-ciso-cloud-customers-need-secure-ai-workloads ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd1cffa459be606e3/65fddd275a8354040acd9945/robotknight-Eric_Muhamad_Naris-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd1cffa459be606e3/65fddd275a8354040acd9945/robotknight-Eric_Muhamad_Naris-alamy.jpg" medium="image">
+                <media:title type="html">robotknight-Eric_Muhamad_Naris-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Apple Stingy With Details About Latest iOS Update ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/apple-is-sparse-with-details-in-latest-ios-update ]]>
+            </link>
+            <description>
+                <![CDATA[ The security update comes just weeks after the release of iOS 17.4, but Apple has not included CVEs or information about the fixes. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 18:40:14 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/apple-is-sparse-with-details-in-latest-ios-update ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltb9b1d748e110fdb6/64f176805236174571948df4/apple_logo_and_iphone-GK_Images-alamy_.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltb9b1d748e110fdb6/64f176805236174571948df4/apple_logo_and_iphone-GK_Images-alamy_.jpg" medium="image">
+                <media:title type="html">apple_logo_and_iphone-GK_Images-alamy_.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 8 Strategies for Enhancing Code Signing Security ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/8-strategies-enhancing-code-signing-security ]]>
+            </link>
+            <description>
+                <![CDATA[ Strong code-signing best practices are an invaluable way to build trust in the development process and enable a more secure software supply chain. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 14:00:00 GMT</pubDate>
+            <dc:creator>Murali Palanisamy</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/8-strategies-enhancing-code-signing-security ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt3671e6a958c64994/65fd832c26161e040a8fcb22/Signing_Andrea_Danti_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt3671e6a958c64994/65fd832c26161e040a8fcb22/Signing_Andrea_Danti_Alamy.jpg" medium="image">
+                <media:title type="html">Signing_Andrea_Danti_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Kenya to TikTok: Prove Compliance With Our Privacy Laws ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyber-risk/kenya-to-tiktok-prove-compliance-with-our-privacy-laws ]]>
+            </link>
+            <description>
+                <![CDATA[ Beleaguered social media platform now faces scrutiny by the Kenyan government over cybersecurity and data privacy. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 13:22:43 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyber-risk/kenya-to-tiktok-prove-compliance-with-our-privacy-laws ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt4d63787128864c1b/64f1704e78997265f4832a8e/tiktok-Aleksey_Zotov_-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt4d63787128864c1b/64f1704e78997265f4832a8e/tiktok-Aleksey_Zotov_-alamy.jpg" medium="image">
+                <media:title type="html">tiktok-Aleksey_Zotov_-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Why AI Obituary Scams Are a Cyber-Risk for Businesses ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/why-ai-obituary-scams-cyber-risk-businesses ]]>
+            </link>
+            <description>
+                <![CDATA[ Scammers now use AI to instantly whip up SEO-friendly bereavement scams, and it's never been easier to swindle mourners or use them to get to their employers. ]]>
+            </description>
+            <pubDate>Fri, 22 Mar 2024 13:00:00 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/why-ai-obituary-scams-cyber-risk-businesses ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9a80433da2f4349e/65fc8729c348e4040aa8a4bd/Hoodie-Delphotos-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9a80433da2f4349e/65fc8729c348e4040aa8a4bd/Hoodie-Delphotos-Alamy.jpg" medium="image">
+                <media:title type="html">Hoodie-Delphotos-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Strata Identity Releases New Authentication Recipes ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/identity-access-management-security/strata-identity-releases-new-authentication-recipes ]]>
+            </link>
+            <description>
+                <![CDATA[ The Microsoft Identity Cookbook is a collection of orchestration recipes to help organizations adopt cloud-based identity providers. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 22:45:23 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/identity-access-management-security/strata-identity-releases-new-authentication-recipes ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt152fbb4bb18ce84a/65ba6be7afc23e040ae82840/poptika-identity-security-shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt152fbb4bb18ce84a/65ba6be7afc23e040ae82840/poptika-identity-security-shutterstock.jpg" medium="image">
+                <media:title type="html">poptika-identity-security-shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Tesla Hack Team Wins $200K and a New Car ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/team-s-tesla-hack-wins-them-200k-and-a-new-car ]]>
+            </link>
+            <description>
+                <![CDATA[ Zero Day Initiative awarded a total of $732,000 to researchers who found 19 unique cybersecurity vulnerabilities during the first day of Pwn2Own. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 22:32:49 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/team-s-tesla-hack-wins-them-200k-and-a-new-car ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blte76e9e4ad91ff3d3/65fcaa86f5d321040aa69699/tesla_3_William_Barton_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blte76e9e4ad91ff3d3/65fcaa86f5d321040aa69699/tesla_3_William_Barton_Alamy.jpg" medium="image">
+                <media:title type="html">tesla_3_William_Barton_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Changing Concepts of Identity Underscore 'Perfect Storm' of Cyber-Risk ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/changing-concepts-identity-perfect-storm-cyber-risk ]]>
+            </link>
+            <description>
+                <![CDATA[ Forgepoint Capital's Alberto Yépez discusses how the concept of identity is changing: It doesn't just mean &quot;us&quot; anymore. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 22:04:35 GMT</pubDate>
+            <dc:creator>Kristina Beek, Associate Editor, Dark Reading</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/changing-concepts-identity-perfect-storm-cyber-risk ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6d724bd75b2fc766/6565c4bb9bac33040a512492/thunderstorm-FelixMittermei_pixabay.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6d724bd75b2fc766/6565c4bb9bac33040a512492/thunderstorm-FelixMittermei_pixabay.jpg" medium="image">
+                <media:title type="html">thunderstorm-FelixMittermei_pixabay.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Ivanti Keeps Security Teams Scrambling With 2 More Vulns ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/ivanti-security-teams-scrambling-2-vulns ]]>
+            </link>
+            <description>
+                <![CDATA[ Since the beginning of this year, the company has disclosed some seven critical bugs so far, almost all of which attackers have quickly exploited in mass attacks. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 21:22:06 GMT</pubDate>
+            <dc:creator>Jai Vijayan, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/ivanti-security-teams-scrambling-2-vulns ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blta4c43eb0af5a65ad/65fc8fb26a38240407cf7476/ivanti_Alexander_Tolstykh_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blta4c43eb0af5a65ad/65fc8fb26a38240407cf7476/ivanti_Alexander_Tolstykh_shutterstock.jpg" medium="image">
+                <media:title type="html">ivanti_Alexander_Tolstykh_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ NIST's Vuln Database Downshifts, Prompting Questions About Its Future ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/nist-vuln-database-downshifts-prompting-questions-about-its-future ]]>
+            </link>
+            <description>
+                <![CDATA[ NVD may be in peril, and while alternatives exist, enterprise security managers will need to plan accordingly to stay on top of new threats. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 20:24:59 GMT</pubDate>
+            <dc:creator>David Strom</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/nist-vuln-database-downshifts-prompting-questions-about-its-future ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt798a92c8e406a0e1/65dcdd270f7fab040aa0e8b7/NIST_Borka_Kiss_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt798a92c8e406a0e1/65dcdd270f7fab040aa0e8b7/NIST_Borka_Kiss_Alamy.jpg" medium="image">
+                <media:title type="html">NIST_Borka_Kiss_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ How Can We Reduce Threats From the Initial Access Brokers Market? ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/how-to-reduce-threats-from-the-initial-access-brokers-market ]]>
+            </link>
+            <description>
+                <![CDATA[ The ready-made access IABs offer has become an integral part of the ransomware ecosystem. Here's how to stop them before they can profit from your assets. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 19:05:00 GMT</pubDate>
+            <dc:creator>Edge Editors</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/how-to-reduce-threats-from-the-initial-access-brokers-market ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt98f43bf537a7b79c/65f36ceec348e4040aa89574/horsebarn-Allen_Creative_slash_Steve-Allen-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt98f43bf537a7b79c/65f36ceec348e4040aa89574/horsebarn-Allen_Creative_slash_Steve-Allen-alamy.jpg" medium="image">
+                <media:title type="html">horsebarn-Allen_Creative_slash_Steve-Allen-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 300K Internet Hosts at Risk for 'Devastating' Loop DoS Attack ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/300k-internet-hosts-at-risk-for-devastating-loop-dos-attack ]]>
+            </link>
+            <description>
+                <![CDATA[ Attackers can create a self-perpetuating, infinite scenario in such a way that volumes of traffic overwhelm network resources indefinitely. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 18:17:06 GMT</pubDate>
+            <dc:creator>Elizabeth Montalbano, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/300k-internet-hosts-at-risk-for-devastating-loop-dos-attack ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt8586a85b5be442e6/65fc6082f5d321040aa69621/infinity-sakkmesterke-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt8586a85b5be442e6/65fc6082f5d321040aa69621/infinity-sakkmesterke-Alamy.jpg" medium="image">
+                <media:title type="html">infinity-sakkmesterke-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Session Takeover Bug in AWS Apache Airflow Reveals Larger Cloud Risk ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/1-click-takeover-bug-aws-apache-airflow-risk ]]>
+            </link>
+            <description>
+                <![CDATA[ A bug exposed users of an AWS workflow management service to cookie tossing, but behind the scenes lies an even deeper issue that runs across all of the top cloud services. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 17:13:23 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/1-click-takeover-bug-aws-apache-airflow-risk ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blted60bbf46cea2475/65fc4d37ff8167040a980e6f/AWS_Azure-GK_Images-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blted60bbf46cea2475/65fc4d37ff8167040a980e6f/AWS_Azure-GK_Images-Alamy.jpg" medium="image">
+                <media:title type="html">AWS_Azure-GK_Images-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Cyber Warfare: Understanding New Frontiers in Global Conflicts ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/cyber-warfare-understanding-new-frontiers-in-global-conflicts ]]>
+            </link>
+            <description>
+                <![CDATA[ An arms race is developing between those using technology to target adversaries and those using it prevent attacks from succeeding. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 14:00:00 GMT</pubDate>
+            <dc:creator>Gerasim Hovhannisyan</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/cyber-warfare-understanding-new-frontiers-in-global-conflicts ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt1757fd2f83fee776/64f174b022fa750d89d8d1ce/Cyberwar_Brain_light_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt1757fd2f83fee776/64f174b022fa750d89d8d1ce/Cyberwar_Brain_light_Alamy.jpg" medium="image">
+                <media:title type="html">Cyberwar_Brain_light_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ United Arab Emirates Faces Intensified Cyber-Risk ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyber-risk/united-arab-emirates-faces-intensified-cyber-risk ]]>
+            </link>
+            <description>
+                <![CDATA[ The UAE leads the Middle East in digital-transformation efforts, but slow patching and legacy technology continue to thwart its security posture. ]]>
+            </description>
+            <pubDate>Thu, 21 Mar 2024 05:00:00 GMT</pubDate>
+            <dc:creator>Robert Lemos, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyber-risk/united-arab-emirates-faces-intensified-cyber-risk ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blta598001d36b2f6f1/65fb097dd4f967040a4b970d/AbuDhabiUAE_Kevpix_AlamyStockPhoto.jpeg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blta598001d36b2f6f1/65fb097dd4f967040a4b970d/AbuDhabiUAE_Kevpix_AlamyStockPhoto.jpeg" medium="image">
+                <media:title type="html">AbuDhabiUAE_Kevpix_AlamyStockPhoto.jpeg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Using East-West Network Visibility to Detect Threats in Later Stages of MITRE ATT&amp;CK ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/using-east-west-network-visibility-detect-threats-mitre-attck ]]>
+            </link>
+            <description>
+                <![CDATA[ Ensuring that traffic visibility covers both client-server and server-server communications helps NetOps teams analyze and spot potential threats early on, avoiding catastrophic effects. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 22:36:20 GMT</pubDate>
+            <dc:creator>Tom Bienkowski</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/using-east-west-network-visibility-detect-threats-mitre-attck ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltecb08f0b5cca5b99/64f1171fb87aa7887915af9e/PeskyMonkey-compass_17763891_SMALL.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltecb08f0b5cca5b99/64f1171fb87aa7887915af9e/PeskyMonkey-compass_17763891_SMALL.jpg" medium="image">
+                <media:title type="html">PeskyMonkey-compass_17763891_SMALL.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Federal Warning Highlights Cyber Vulnerability of US Water Systems ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/ics-ot-security/new-us-warning-highlights-vulnerability-of-us-water-systems-to-cyberattacks ]]>
+            </link>
+            <description>
+                <![CDATA[ The White House urged operators of water and wastewater systems to review and beef up their security controls against attacks by Iran- and China-based groups. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 21:45:25 GMT</pubDate>
+            <dc:creator>Jai Vijayan, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/ics-ot-security/new-us-warning-highlights-vulnerability-of-us-water-systems-to-cyberattacks ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt2b465c36fbceebe2/65fb5a6f9409ef040ab7c5e2/water_Bilanol_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt2b465c36fbceebe2/65fb5a6f9409ef040ab7c5e2/water_Bilanol_shutterstock.jpg" medium="image">
+                <media:title type="html">water_Bilanol_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Tax Hackers Blitz Small Business With Phishing Emails ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/tax-cons-targeting-small-business-with-phishing-emails ]]>
+            </link>
+            <description>
+                <![CDATA[ Armed with little more than an email address, scammers are trying to trick small businesses and the self employed into giving up Social Security numbers. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 20:57:00 GMT</pubDate>
+            <dc:creator>Becky Bracken</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/tax-cons-targeting-small-business-with-phishing-emails ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltf17e36573a0de24b/65fb37abf2e490040a762cbf/tax_day_Michael_Burrell_Alamy_Stock_Photo_.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltf17e36573a0de24b/65fb37abf2e490040a762cbf/tax_day_Michael_Burrell_Alamy_Stock_Photo_.jpg" medium="image">
+                <media:title type="html">tax_day_Michael_Burrell_Alamy_Stock_Photo_.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Deloitte Launches CyberSphere Platform to Simplify Cyber Operations for Clients ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/deloitte-launches-cybersphere-platform-to-simplify-cyber-operations-for-clients ]]>
+            </link>
+            <description>
+                <![CDATA[ ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 19:44:29 GMT</pubDate>
+            <dc:creator/>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/deloitte-launches-cybersphere-platform-to-simplify-cyber-operations-for-clients ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png" medium="image">
+                <media:title type="html">325351_DR23_Graphics_General_Large_Text_v1.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Pathlock Introduces Continuous Controls Monitoring to Reduce Time and Costs ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyber-risk/pathlock-introduces-continuous-controls-monitoring-to-reduce-time-and-costs ]]>
+            </link>
+            <description>
+                <![CDATA[ ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 19:29:17 GMT</pubDate>
+            <dc:creator/>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyber-risk/pathlock-introduces-continuous-controls-monitoring-to-reduce-time-and-costs ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png" medium="image">
+                <media:title type="html">325351_DR23_Graphics_General_Large_Text_v1.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Akamai Research Finds 29% of Web Attacks Target APIs ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/application-security/akamai-research-finds-29-of-web-attacks-target-apis ]]>
+            </link>
+            <description>
+                <![CDATA[ ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 19:11:48 GMT</pubDate>
+            <dc:creator/>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/application-security/akamai-research-finds-29-of-web-attacks-target-apis ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png" medium="image">
+                <media:title type="html">325351_DR23_Graphics_General_Large_Text_v1.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Kaspersky Identifies Three New Android Malware Threats ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/endpoint-security/kaspersky-identifies-three-new-android-malware-threats ]]>
+            </link>
+            <description>
+                <![CDATA[ ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 18:56:01 GMT</pubDate>
+            <dc:creator/>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/endpoint-security/kaspersky-identifies-three-new-android-malware-threats ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png" medium="image">
+                <media:title type="html">325351_DR23_Graphics_General_Large_Text_v1.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ India's Android Users Hit by Malware-as-a-Service Campaign ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/hackers-target-android-users-in-india-through-maas-campaign ]]>
+            </link>
+            <description>
+                <![CDATA[ Hackers are seeking sensitive personal information on user devices, including banking data and SMS messages. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 18:05:18 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/hackers-target-android-users-in-india-through-maas-campaign ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt22a8713655a5818d/655f3d59a656e4040a96c096/india_ADragan_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt22a8713655a5818d/655f3d59a656e4040a96c096/india_ADragan_shutterstock.jpg" medium="image">
+                <media:title type="html">india_ADragan_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Don't Answer the Phone: Inside a Real-Life Vishing Attack ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/dont-answer-phone-inside-real-life-vishing-attack ]]>
+            </link>
+            <description>
+                <![CDATA[ Successful attackers focus on the psychological manipulation of human emotions, which is why anyone, even a tech-savvy person, can become a victim. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 15:33:03 GMT</pubDate>
+            <dc:creator>Elizabeth Montalbano, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/dont-answer-phone-inside-real-life-vishing-attack ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltf0a85c24d58eac4a/65cbe31d59ebc9040a75707d/telephone-Brian_Jackson-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltf0a85c24d58eac4a/65cbe31d59ebc9040a75707d/telephone-Brian_Jackson-Alamy.jpg" medium="image">
+                <media:title type="html">telephone-Brian_Jackson-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ After LockBit, ALPHV Takedowns, RaaS Startups Go on a Recruiting Drive ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/after-lockbit-alphv-takedowns-raas-recruiting-drive ]]>
+            </link>
+            <description>
+                <![CDATA[ Law enforcement action hasn't eradicated ransomware groups, but it has shaken up the cyber underground and sown distrust among thieves. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 15:07:30 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/after-lockbit-alphv-takedowns-raas-recruiting-drive ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt860625083973911e/64f17dff12374c5f46b091cf/ransomware-Zoonar_GmbH-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt860625083973911e/64f17dff12374c5f46b091cf/ransomware-Zoonar_GmbH-alamy.jpg" medium="image">
+                <media:title type="html">ransomware-Zoonar_GmbH-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 'Fluffy Wolf' Spreads Meta Stealer in Corporate Phishing Campaign ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/fluffy-wolf-spreads-meta-stealer-in-corporate-phishing-campaign ]]>
+            </link>
+            <description>
+                <![CDATA[ Unsophisticated threat actor is targeting Russian companies with both readily available malware and authentic software. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 14:29:10 GMT</pubDate>
+            <dc:creator>Elizabeth Montalbano, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/fluffy-wolf-spreads-meta-stealer-in-corporate-phishing-campaign ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt93c0368f5a31e117/65faeb3ef5bd5d040a9d0ac0/wolf_Marco_Arduino_via_AlamyStockPhoto.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt93c0368f5a31e117/65faeb3ef5bd5d040a9d0ac0/wolf_Marco_Arduino_via_AlamyStockPhoto.jpg" medium="image">
+                <media:title type="html">wolf_Marco_Arduino_via_AlamyStockPhoto.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ AI Won't Solve Cybersecurity's Retention Problem ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/ai-wont-solve-cybersecuritys-retention-problem ]]>
+            </link>
+            <description>
+                <![CDATA[ To fix retention and skills gaps, we need to encourage more women and minorities to build careers in cybersecurity. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 14:00:00 GMT</pubDate>
+            <dc:creator>Lisa Tetrault</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/ai-wont-solve-cybersecuritys-retention-problem ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt96f02dec9b2ebc45/65fae700990e9d040a7900bf/V2-Retention_Andriy_Popov_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt96f02dec9b2ebc45/65fae700990e9d040a7900bf/V2-Retention_Andriy_Popov_Alamy.jpg" medium="image">
+                <media:title type="html">V2-Retention_Andriy_Popov_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Connectivity Standards Alliance Meets Device Security Challenges With a Unified Standard and Certification ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/ics-ot-security/connectivity-standards-alliance-meets-device-security-challenges-with-a-unified-standard-and-certification ]]>
+            </link>
+            <description>
+                <![CDATA[ The new IoT Device Security Specification 1.0, with accompanying certification, aims to offer a unified industry standard and increase consumer awareness. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 13:00:00 GMT</pubDate>
+            <dc:creator>Hollie Hennessy</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/ics-ot-security/connectivity-standards-alliance-meets-device-security-challenges-with-a-unified-standard-and-certification ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltdfc947df346390a0/656e035859f08b040ab06283/Hollie_Hennessy_2023.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltdfc947df346390a0/656e035859f08b040ab06283/Hollie_Hennessy_2023.png" medium="image">
+                <media:title type="html">Hollie_Hennessy_2023.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Hackers Posing as Law Firms Phish Global Orgs in Multiple Languages ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/hackers-posing-law-firms-phish-global-orgs-multiple-languages ]]>
+            </link>
+            <description>
+                <![CDATA[ Companies trust lawyers with the most sensitive information they've got. Attackers are aiming to exploit that bond to deliver malware. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 12:00:00 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/hackers-posing-law-firms-phish-global-orgs-multiple-languages ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt92892759999a2648/65fa128d2d7272040a9bf67f/Lawyer-Gregg_Vignal-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt92892759999a2648/65fa128d2d7272040a9bf67f/Lawyer-Gregg_Vignal-Alamy.jpg" medium="image">
+                <media:title type="html">Lawyer-Gregg_Vignal-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Russian Intelligence Targets Victims Worldwide in Rapid-Fire Cyberattacks ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/russian-intelligence-targets-victims-worldwide-in-rapid-fire-cyberattacks ]]>
+            </link>
+            <description>
+                <![CDATA[ Russia's government is pretending to be other governments in emails, with an eye toward stealing strategic intel. ]]>
+            </description>
+            <pubDate>Wed, 20 Mar 2024 11:04:06 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/russian-intelligence-targets-victims-worldwide-in-rapid-fire-cyberattacks ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9352a5c08aa5a3fc/65bc03aea381e50407fdbd9a/bearworm-Design_Pics_Inc-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9352a5c08aa5a3fc/65bc03aea381e50407fdbd9a/bearworm-Design_Pics_Inc-alamy.jpg" medium="image">
+                <media:title type="html">bearworm-Design_Pics_Inc-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Detecting Cloud Threats With CloudGrappler ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/detecting-cloud-threats-with-cloudgrappler ]]>
+            </link>
+            <description>
+                <![CDATA[ The open source tool from Permiso can help security teams identify threat actors lurking within their AWS and Azure environments. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 22:49:56 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/detecting-cloud-threats-with-cloudgrappler ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt99840482e6eb5165/65b90b1dafc23e040ae824f2/magnifying_glass_password_Brian_Jackson_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt99840482e6eb5165/65b90b1dafc23e040ae824f2/magnifying_glass_password_Brian_Jackson_Alamy.jpg" medium="image">
+                <media:title type="html">magnifying_glass_password_Brian_Jackson_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Airbus Calls Off Planned Acquisition of Atos Cybersecurity Group ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyber-risk/airbus-calls-off-planned-acquisition-of-atos-cybersecurity-group ]]>
+            </link>
+            <description>
+                <![CDATA[ The purchase would have given Airbus more capabilities to address rising cyber threats in the aviation and aerospace industry. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 21:39:47 GMT</pubDate>
+            <dc:creator>Jai Vijayan, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyber-risk/airbus-calls-off-planned-acquisition-of-atos-cybersecurity-group ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt13019c8829b9ec89/65f9f5cec4edb10407bdd8f3/airbus_Manuel_Esteban_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt13019c8829b9ec89/65f9f5cec4edb10407bdd8f3/airbus_Manuel_Esteban_shutterstock.jpg" medium="image">
+                <media:title type="html">airbus_Manuel_Esteban_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Fortra Releases Update on Critical Severity RCE Flaw ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/fortra-releases-update-on-critical-severity-rce-flaw ]]>
+            </link>
+            <description>
+                <![CDATA[ The flaw has a CVSS rating of 9.8, and the company recommends product upgrades to fix the issue. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 21:38:49 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/fortra-releases-update-on-critical-severity-rce-flaw ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd6b4f91f19eae5bd/64f175d690b1dc2bd4fe601a/vulnerability-ktdesign-AdobeStock.jpeg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd6b4f91f19eae5bd/64f175d690b1dc2bd4fe601a/vulnerability-ktdesign-AdobeStock.jpeg" medium="image">
+                <media:title type="html">vulnerability-ktdesign-AdobeStock.jpeg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Cheating Hack Halts Apex Legends E-Sports Tourney ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyber-risk/apex-legends-tourney-spoiled-by-hackers ]]>
+            </link>
+            <description>
+                <![CDATA[ Electronic Arts is trying to track down the RCE exploit that allowed hackers to inject cheats into games during the recent Apex Legends Global Series. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 21:10:11 GMT</pubDate>
+            <dc:creator>Becky Bracken</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyber-risk/apex-legends-tourney-spoiled-by-hackers ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9488e74c7dcdf42a/65f9f363fb1d60040a53f18b/Apex_Legends_SOPA_Images_Limited_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9488e74c7dcdf42a/65f9f363fb1d60040a53f18b/Apex_Legends_SOPA_Images_Limited_Alamy.jpg" medium="image">
+                <media:title type="html">Apex_Legends_SOPA_Images_Limited_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 5 Ways CISOs Can Navigate Their New Business Role ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/5-ways-cisos-can-navigate-new-business-role ]]>
+            </link>
+            <description>
+                <![CDATA[ CISOs can successfully make their business operations more secure and play a larger role in the organization's overall strategy, but there are pitfalls to avoid, Forrester analysts warn. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 20:57:41 GMT</pubDate>
+            <dc:creator>David Strom</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/5-ways-cisos-can-navigate-new-business-role ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9ce213b11725991b/65f9f26a0c5b54040a8f336f/priorities-Jerome-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9ce213b11725991b/65f9f26a0c5b54040a8f336f/priorities-Jerome-Alamy.jpg" medium="image">
+                <media:title type="html">priorities-Jerome-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Name That Toon: Bridge the Gap ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/name-that-toon-bridge-the-gap ]]>
+            </link>
+            <description>
+                <![CDATA[ Feeling creative? Submit your caption and our panel of experts will reward the winner with a $25 Amazon gift card. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 17:00:00 GMT</pubDate>
+            <dc:creator>John Klossner, Cartoonist</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/name-that-toon-bridge-the-gap ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt79e06efbb297dedd/65f990fbf5d321040aa68fba/DRtoon_March2024.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt79e06efbb297dedd/65f990fbf5d321040aa68fba/DRtoon_March2024.jpg" medium="image">
+                <media:title type="html">DRtoon_March2024.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ New Regulations Make D&amp;O Insurance a Must for CISOs ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/new-regulations-make-d-o-insurance-a-must-for-cisos ]]>
+            </link>
+            <description>
+                <![CDATA[ CISOs currently hold all of the responsibility to stop cyberattacks yet have none of the authority to fund the technological defenses that regulations require. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 17:00:00 GMT</pubDate>
+            <dc:creator>Stephen Lawton, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/new-regulations-make-d-o-insurance-a-must-for-cisos ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltcf005a14b9f43fe8/65f8fee7c43817040af3f125/dandoinsurance-designer491-alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltcf005a14b9f43fe8/65f8fee7c43817040af3f125/dandoinsurance-designer491-alamy.jpg" medium="image">
+                <media:title type="html">dandoinsurance-designer491-alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 'PhantomBlu' Cyberattackers Backdoor Microsoft Office Users via OLE ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/phantomblu-cyberattackers-backdoor-microsoft-office-users-ole ]]>
+            </link>
+            <description>
+                <![CDATA[ The cyber campaign uses social engineering and sophisticated evasion tactics, including a novel malware-delivery method, to compromise hundreds of Microsoft Office users. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 14:53:31 GMT</pubDate>
+            <dc:creator>Elizabeth Montalbano, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/phantomblu-cyberattackers-backdoor-microsoft-office-users-ole ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd24be6f78a919039/65dce5475f8112040afc5b81/rat-David_Chapman-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltd24be6f78a919039/65dce5475f8112040afc5b81/rat-David_Chapman-Alamy.jpg" medium="image">
+                <media:title type="html">rat-David_Chapman-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ The New CISO: Rethinking the Role ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/new-ciso-rethinking-the-role ]]>
+            </link>
+            <description>
+                <![CDATA[ Rising cybersecurity demands are changing the role of the head security officer. CISOs need to make a list, check it at least twice, and document every step. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 14:00:00 GMT</pubDate>
+            <dc:creator>James Doggett</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/new-ciso-rethinking-the-role ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt8c9a87dc12741d38/65f997fb6c9f9b040a4d58ca/CISO_Kjetil_Kolbjørnsrud_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt8c9a87dc12741d38/65f997fb6c9f9b040a4d58ca/CISO_Kjetil_Kolbjørnsrud_Alamy.jpg" medium="image">
+                <media:title type="html">CISO_Kjetil_Kolbjørnsrud_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 'Conversation Overflow' Cyberattacks Bypass AI Security to Target Execs ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/conversation-overflow-cyberattacks-bypass-ai-security ]]>
+            </link>
+            <description>
+                <![CDATA[ Credential-stealing emails are getting past artificial intelligence's &quot;known good&quot; email security controls by cloaking malicious payloads within seemingly benign emails. The tactic poses a significant threat to enterprise networks. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 12:00:00 GMT</pubDate>
+            <dc:creator>Nathan Eddy, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/conversation-overflow-cyberattacks-bypass-ai-security ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt85dc00eb7fe28ab6/65f44d5e092de0040ade336d/AI_Blackboard_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt85dc00eb7fe28ab6/65f44d5e092de0040ade336d/AI_Blackboard_Alamy.jpg" medium="image">
+                <media:title type="html">AI_Blackboard_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ North Korea-Linked Group Levels Multistage Cyberattack on South Korea ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/north-korea-linked-group-level-multistage-cyberattack-on-south-korea ]]>
+            </link>
+            <description>
+                <![CDATA[ Kimsuky-attributed campaign uses eight steps to compromise systems — from initial execution to downloading additional code from Dropbox, and executing code to establish stealth and persistence. ]]>
+            </description>
+            <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
+            <dc:creator>Robert Lemos, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/north-korea-linked-group-level-multistage-cyberattack-on-south-korea ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6f092f0df0aaff58/64f174bc705b0eaf4d4ca749/northkorea_David_Carillet_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6f092f0df0aaff58/64f174bc705b0eaf4d4ca749/northkorea_David_Carillet_shutterstock.jpg" medium="image">
+                <media:title type="html">northkorea_David_Carillet_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ ML Model Repositories: The Next Big Supply Chain Attack Target ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cloud-security/ml-model-repositories-next-big-supply-chain-attack-target ]]>
+            </link>
+            <description>
+                <![CDATA[ Machine-learning model platforms like Hugging Face are suspectible to the same kind of attacks that threat actors have executed successfully for years via npm, PyPI, and other open source repos. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 22:07:48 GMT</pubDate>
+            <dc:creator>Jai Vijayan, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cloud-security/ml-model-repositories-next-big-supply-chain-attack-target ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltade80e5c93b40777/65f8a6e8f2e490040a7627a1/ML_Jirsak_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltade80e5c93b40777/65f8a6e8f2e490040a7627a1/ML_Jirsak_shutterstock.jpg" medium="image">
+                <media:title type="html">ML_Jirsak_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Chinese APT 'Earth Krahang' Compromises 48 Gov't Orgs on 5 Continents ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/chinese-apt-earth-krahang-compromised-48-gov-orgs-5-continents ]]>
+            </link>
+            <description>
+                <![CDATA[ The group uses pretty standard open source tooling and social engineering to burrow into high-level government agencies across the globe. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 21:49:10 GMT</pubDate>
+            <dc:creator>Nate Nelson, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/threat-intelligence/chinese-apt-earth-krahang-compromised-48-gov-orgs-5-continents ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9fdbabec5e1b2c26/64f17550f11104237e1bf6f3/Earth-Globe-Iulia_Bycheva-Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt9fdbabec5e1b2c26/64f17550f11104237e1bf6f3/Earth-Globe-Iulia_Bycheva-Alamy.jpg" medium="image">
+                <media:title type="html">Earth-Globe-Iulia_Bycheva-Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Saudi Arabia's National Cybersecurity Authority Announces the GCF Annual Meeting 2024 ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/saudi-arabia-s-national-cybersecurity-authority-announces-the-gcf-annual-meeting-2024 ]]>
+            </link>
+            <description>
+                <![CDATA[ ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 20:27:38 GMT</pubDate>
+            <dc:creator/>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/saudi-arabia-s-national-cybersecurity-authority-announces-the-gcf-annual-meeting-2024 ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt850556f866500627/654a5a8e05eb4d040a046894/325351_DR23_Graphics_General_Large_Text_v1.png" medium="image">
+                <media:title type="html">325351_DR23_Graphics_General_Large_Text_v1.png</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Brazilian Authorities Arrest Members of Banking Trojan Cybercrime Group ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/brazilian-authorities-arrest-members-of-banking-trojan-cybercrime-group ]]>
+            </link>
+            <description>
+                <![CDATA[ Interpol assisted in the operation, in which analysts identified Grandoreiro group members by analyzing and matching malware samples. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 20:25:03 GMT</pubDate>
+            <dc:creator>Dark Reading Staff</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/brazilian-authorities-arrest-members-of-banking-trojan-cybercrime-group ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltc54298fabc388f2b/64f172767af83396cdfcda6f/interpol_HUANG_Zheng_shutterstock.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/bltc54298fabc388f2b/64f172767af83396cdfcda6f/interpol_HUANG_Zheng_shutterstock.jpg" medium="image">
+                <media:title type="html">interpol_HUANG_Zheng_shutterstock.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Fujitsu: Malware on Company Computers Exposed Customer Data ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/fujitsu-malware-on-company-computers-exposed-customer-data ]]>
+            </link>
+            <description>
+                <![CDATA[ It remains unclear how long the IT services giant's systems were infiltrated and just how the cyberattack unfolded. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 20:20:40 GMT</pubDate>
+            <dc:creator>Becky Bracken</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/fujitsu-malware-on-company-computers-exposed-customer-data ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt0d78aa686aae6c8d/65f893276b2184040adf7322/Fujitsu_Eric_D_ricochet69_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt0d78aa686aae6c8d/65f893276b2184040adf7322/Fujitsu_Eric_D_ricochet69_Alamy.jpg" medium="image">
+                <media:title type="html">Fujitsu_Eric_D_ricochet69_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ Tracking Everything on the Dark Web Is Mission Critical ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/tracking-everything-on-dark-web-is-mission-critical ]]>
+            </link>
+            <description>
+                <![CDATA[ On the Dark Web, stolen secrets are your enemy, and context is your friend. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 14:00:00 GMT</pubDate>
+            <dc:creator>Itzik Alvas</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/vulnerabilities-threats/tracking-everything-on-dark-web-is-mission-critical ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt25581c53db7d77f2/64f17462c3efae1a35f0f00a/HackerHands_Andrey_Khokhlov_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt25581c53db7d77f2/64f17462c3efae1a35f0f00a/HackerHands_Andrey_Khokhlov_Alamy.jpg" medium="image">
+                <media:title type="html">HackerHands_Andrey_Khokhlov_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ South African Government Pension Data Leak Fears Spark Probe ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/south-african-government-pension-data-leak-fears-spark-probe ]]>
+            </link>
+            <description>
+                <![CDATA[ LockBit ransomware gang claims 668GB of data it dumped online was stolen from South Africa's pension agency. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 07:00:00 GMT</pubDate>
+            <dc:creator>John Leyden, Contributing Writer</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cyberattacks-data-breaches/south-african-government-pension-data-leak-fears-spark-probe ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt11ec335ddbceccdb/64f1789dd5f7ca122565c159/Ransomware_Christophe_Coat_Alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt11ec335ddbceccdb/64f1789dd5f7ca122565c159/Ransomware_Christophe_Coat_Alamy.jpg" medium="image">
+                <media:title type="html">Ransomware_Christophe_Coat_Alamy.jpg</media:title>
+            </media:content>
+        </item>
+        <item>
+            <title>
+                <![CDATA[ 3 Ways Businesses Can Overcome the Cybersecurity Skills Shortage ]]>
+            </title>
+            <link>
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/3-ways-businesses-can-overcome-cybersecurity-skills-shortage ]]>
+            </link>
+            <description>
+                <![CDATA[ With budget constraints and a limited supply of skilled talent, businesses need to get creative to defend against rampant cybersecurity threats. ]]>
+            </description>
+            <pubDate>Mon, 18 Mar 2024 05:00:00 GMT</pubDate>
+            <dc:creator>Jesper Trolle</dc:creator>
+            <guid isPermaLink="false">
+                <![CDATA[ https://www.darkreading.com/cybersecurity-operations/3-ways-businesses-can-overcome-cybersecurity-skills-shortage ]]>
+            </guid>
+            <media:thumbnail url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt923b5c28733cea68/65f0b9e5bb278f04079df922/helpwanted_ChristopheCoat_alamy.jpg"/>
+            <media:content url="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt923b5c28733cea68/65f0b9e5bb278f04079df922/helpwanted_ChristopheCoat_alamy.jpg" medium="image">
+                <media:title type="html">helpwanted_ChristopheCoat_alamy.jpg</media:title>
+            </media:content>
+        </item>
+    </channel>
+</rss>

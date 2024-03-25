@@ -233,6 +233,8 @@ function getItemGuid(item: any, publisher: string) {
       return he.decode(item.id.trim()).toString();
     case "HuffPost":
       return he.decode(item.guid.trim());
+    case "Uber Blog":
+      return he.decode(item.link.toLowerCase().trim());
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
         return he.decode(item.guid['#text'].trim());

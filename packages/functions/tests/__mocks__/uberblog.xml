@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>
+      <![CDATA[Australia | Latest News & Stories | Uber Blog]]>
+    </title>
+    <link>https://www.uber.com</link>
+    <description>
+      <![CDATA[Check out the official blog from Uber to get the latest news, announcements, and things to do in Australia.]]>
+    </description>
+    <lastBuildDate>Mon Mar 25 2024 04:33:53 GMT+0000 (Coordinated Universal Time)</lastBuildDate>
+    <language>en</language>
+    <item>
+      <title>
+        <![CDATA[Get your money faster* with Instant cash outs]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/eats-get-your-money-faster-with-instant-cash-outs/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-03-19 23:35:45]]>
+      </pubDate>
+      <category>
+        <![CDATA[Deliver]]>
+      </category>
+      <description>
+        <![CDATA[<p>Get your money faster* with instant cash outs</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Balancing HDFS DataNodes in the Uber DataLake]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/balancing-hdfs-datanodes-in-the-uber-datalake/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-03-14 13:30:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Data / ML]]>
+      </category>
+      <description>
+        <![CDATA[<p>Uber has one of the largest Apache Hadoopâ“‡ Distributed File System (HDFS) deployments in the world, with exabytes of data across tens of clusters. HDFS team at Uber had to solve the problem of distributing data more effectively among DataNodes to achieve greater efficiency, service reliability, and high performance while preventing higher probability of slowness and risk of node failure and data loss.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Load Balancing: Handling Heterogeneous Hardware]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/load-balancing-handling-heterogeneous-hardware/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-03-07 15:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Backend]]>
+      </category>
+      <description>
+        <![CDATA[<p>Learn about how Uber changed it&#8217;s RPC load balancing within Service Mesh to mitigate hardware heterogeneity.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Automatic Pausing for Merchants]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/automatic-pausing-for-merchants/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-03-06 22:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Merchants]]>
+      </category>
+      <description>
+        <![CDATA[<p>Orders that are cancelled or not accepted create a negative experience for the customer, and can discourage them from ordering from you in the future. Stores may be paused for a number of reasons including when restaurants are deemed too busy or unavailable to take new orders.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Network IDS Ruleset Management with Aristotle v2]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/network-ids-ruleset-management-with-aristotle-v2/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-02-29 15:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Backend]]>
+      </category>
+      <description>
+        <![CDATA[<p>Overwhelmed with network security events? Learn how Uber&#8217;s Cyber Defense team programmatically manages network IDS rulesets, augments alerts for correlation, and open-sourced the code they use to do it.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Building Scalable, Real-Time Chat to Improve Customer Experience]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/building-scalable-real-time-chat/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-02-20 15:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Backend]]>
+      </category>
+      <description>
+        <![CDATA[<p>Innovatively scaling its chat channel, Uber&#8217;s Customer Obsession Team enhanced global support by transitioning 36% of contact volume to chat, leveraging a new architecture that slashed error rates from 46% to 0.45%, showcasing a significant leap in efficiency and customer satisfaction.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[How Uber Serves Over 40 Million Reads Per Second from Online Storage Using an Integrated Cache]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-02-15 15:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Backend]]>
+      </category>
+      <description>
+        <![CDATA[<p>Learn how Uber serves over 40 million reads per second from its in-house, distributed database built on top of MySQL using an integrated caching solution: CacheFront.&#8221;</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Jupiter: Config Driven Adtech Batch Ingestion Platform]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/jupiter-batch-ingestion-platform/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-02-06 15:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Data / ML]]>
+      </category>
+      <description>
+        <![CDATA[<p>Learn how Uber unifies its marketplace and brand, and reliably optimizes marketing strategy expenditures with Jupiter: Uber&#8217;s Performance Marketing Ingestion Platform.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[DataCentral: Uberâ€™s Big Data Observability and Chargeback Platform]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/datacentral-ubers-observability-and-chargeback-platform/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-02-01 15:30:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[AI]]>
+      </category>
+      <description>
+        <![CDATA[<p>Discover real-time query analytics and governance with DataCentral: Uberâ€™s big data observability powerhouse, tackling millions of queries in petabyte-scale environments.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Stopping Uber Fraudsters Through Risk Challenges]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/stopping-uber-fraudsters-through-risk-challenges/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-01-25 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Backend]]>
+      </category>
+      <description>
+        <![CDATA[<p>Want to effectively mitigate fraud without compromising your user experience? Learn how we secured the Uber app with risk challenges, like penny drop verificationâ€”just one of many employed to verify Uber users making credit or debit card payments.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Palette Meta Store Journey]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/palette-meta-store-journey/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-01-18 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[AI]]>
+      </category>
+      <description>
+        <![CDATA[<p>Our innovative overhaul of Palette Metadata systems reduced Palette Onboarding Deployment time by a staggering 95%â€”come read how we achieved this triumph of efficiency.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Digital Driverâ€™s licences now accepted on alcohol drop-offs]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/digital-drivers-licences-alcohol-drop-offs/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-01-15 23:45:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Deliver]]>
+      </category>
+      <description>
+        <![CDATA[<p>Our ID scanning tool now accepts Digital Driver&#8217;s licences for age verification on alcohol deliveries in Australia. </p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Uber: GC Tuning for Improved Presto Reliability]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/uber-gc-tuning-for-improved-presto-reliability/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2024-01-11 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Data / ML]]>
+      </category>
+      <description>
+        <![CDATA[<p>Want to improve the reliability of your Presto cluster with just a few lines of code? Come read how we reduced errors by 90% through improving garbage collection.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[uVitals â€“ An Anomaly Detection & Alerting System]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/uvitals-an-anomaly-detection-alerting-system/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2023-12-28 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Data / ML]]>
+      </category>
+      <description>
+        <![CDATA[<p>In today&#8217;s fast-paced digital world, preventing downtime and disruptions is crucial. Learn how uVitals is helping to reduce the time to detect anomalies from days to hours, improving the signal-to-noise ratio by up to 95% at Uber scale.</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Supercharge the Way You Render Large Lists in React]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/supercharge-the-way-you-render-large-lists-in-react/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2023-12-21 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Engineering]]>
+      </category>
+      <description>
+        <![CDATA[<p>Delve into our latest blog for insights on optimizing React for rendering large lists, raising performance scores from 43 to 78 with strategies like infinite scrolling and windowing. Refine your React techniques with expert advice and proven results!</p>
+]]>
+      </description>
+    </item>
+    <item>
+      <title>
+        <![CDATA[Improving Uber Eats Home Feed Recommendations via Debiased Relevance Predictions]]>
+      </title>
+      <link>
+        <![CDATA[https://www.uber.com/en-AU/blog/improving-uber-eats-home-feed-recommendations/]]>
+      </link>
+      <pubDate>
+        <![CDATA[2023-12-14 16:00:00]]>
+      </pubDate>
+      <category>
+        <![CDATA[Engineering]]>
+      </category>
+      <description>
+        <![CDATA[<p>Learn about how we tackled the problem of position bias in the way Uber Eats presents options to users, allowing us to better anticipate and serve their needs with smart data modeling.</p>
+]]>
+      </description>
+    </item>
+  </channel>
+</rss>
