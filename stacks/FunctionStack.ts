@@ -46,17 +46,17 @@ export function FunctionStack({ stack }: StackContext) {
   });
 
   const RssCron = new Cron(stack, "RssCron", {
-    schedule: "cron(0 */6 * * ? *)",
+    schedule: "cron(0 */3 * * ? *)",
     job: "packages/functions/src/rssPublishers.main",
   }).bind([PublisherTable, FeedQueue, BigTable]);
 
   const RssParser = new Function(stack, "RssParser", {
     handler: "packages/functions/src/rssParser.main",
-    bind: [FeedQueue, PostQueue, BigTable],
+    bind: [FeedQueue, PostQueue, BigTable, PublisherTable],
     logRetention: "three_days",
   });
 
-  FeedQueue.bind([PostDeadLetterQueue, BigTable]);
+  FeedQueue.bind([PostDeadLetterQueue, BigTable, PublisherTable]);
 
   return {
     FeedQueue,

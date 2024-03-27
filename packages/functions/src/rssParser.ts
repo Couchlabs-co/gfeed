@@ -39,12 +39,16 @@ export async function main(event: SQSEvent) {
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
         console.log("rssParser err........", publisher, feedUrl, err, item.title);
+        await updateRSSPublisherPulledTime(publisher, feedUrl, 0, "failed");
+        break;
         // await ItemToDeadLetterQ(item);
       }
     }
     console.log(`Message processed: ${publisher} with url: ${feedUrl}`);
     const endTime = Date.now();
-    console.log(`total time taken: ${endTime - startTime}`)
+    const timeTaken = endTime - startTime;
+    console.log(`total time taken: ${timeTaken}`)
+    await updateRSSPublisherPulledTime(publisher, feedUrl, timeTaken);
   }
     
   return {
@@ -54,7 +58,7 @@ export async function main(event: SQSEvent) {
 }
 async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
 
-   const putParamsForGfeed = new PutItemCommand({
+   const putQuery = new PutItemCommand({
       TableName: tableName,
       Item: {
         pk: { S: `post#${feedItem.pk.S}` },
@@ -74,7 +78,7 @@ async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
         publishedDate: { S: feedItem.publishedDate.S },
       },
     });
-  await dbClient.send(putParamsForGfeed);
+  await dbClient.send(putQuery);
 }
 
 async function ItemToDeadLetterQ(item: any) {
@@ -84,5 +88,24 @@ async function ItemToDeadLetterQ(item: any) {
   };
   await sqs.send(new SendMessageCommand(params));
   console.log("Sent message to queue", params);
+}
+
+// function to update lastPulled time and time take for the feed
+async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, timeTaken: number, status: String = "success") {
+  const updateQuery = new UpdateItemCommand({
+    TableName: Table.publisher.tableName,
+    Key: {
+      publisherName: { S: `${publisher}` },
+      feedUrl: { S: `${feedUrl}` },
+    },
+    UpdateExpression: "set lastCrawled = :t, timeTaken = :tt, crawledStatus = :s",
+    ExpressionAttributeValues: {
+      ":t": { S: new Date().toISOString() },
+      ":tt": { N: `${timeTaken}` },
+      ":s": { S: `${status}` },
+    },
+  });
+  await dbClient.send(updateQuery);
+  console.log("updated lastCrawled time for publisher: ", publisher);
 }
 
