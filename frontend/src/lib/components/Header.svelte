@@ -8,7 +8,7 @@
 		{ name: 'Discover', href: '/discover' },
 		{ name: 'Features', href: '/features' },
 		{ name: 'Sources', href: '/source' },
-		// { name: 'Support', href: '/support' },
+		{ name: 'Privacy', href: '/privacy' },
 		{ name: 'Profile', href: '/profile' },
 	];
 
