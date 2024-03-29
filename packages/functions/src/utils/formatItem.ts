@@ -22,6 +22,10 @@ function getImage(item: any, publisher: string) {
     return index > 0 ? url.slice(0, index) : url;
   };
 
+  if(publisher === "luk6xff tech blog") {
+    return '';
+  }
+
   if (item['media:content'] && Array.isArray(item['media:content'])) {
     return item['media:content'][0]['@_url'];
   }
@@ -41,6 +45,10 @@ function getImage(item: any, publisher: string) {
   }
 
   if (item.enclosure) {
+
+    if(Array.isArray(item.enclosure)){
+      return getImageUrl(item.enclosure[0]['@_url']);
+    }
     return getImageUrl(item.enclosure['@_url']);
   }
 
@@ -157,10 +165,9 @@ function getAuthor(item: any, publisher: string) {
 function getCategories(item: any, publisher: string) {
   let keywords = null;
   switch(publisher) {
-    case "CoinDesk": {
+    case "CoinDesk":
       keywords = Array.from(new Set(item.category.map((cat: any) => cat['#text']))).join(',');
       break;
-    }
     case "Overreacted":
       keywords = "React, JavaScript, Web Development, software development, programming";
       break;
@@ -170,6 +177,7 @@ function getCategories(item: any, publisher: string) {
     case "The New York Times":
     case "Forbes":
     case "The Guardian":
+    case "Lambda the Ultimate - Programming Languages Weblog": 
       if(item.category && item.category.length > 1){
         keywords = item.category.map((cat: any) => cat["#text"]).join(',');
       }
@@ -224,16 +232,18 @@ function getItemGuid(item: any, publisher: string) {
     case "DAN NORTH":
     case "A List Apart":
     case "Overreacted":
+    case "HuffPost":
+    case "luke6xff tech blog":
+    case "The Daily WTF":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
-      return he.decode(item.id.trim()).toString();
     case "TokyoDev":
     case "Sam Newman":
+    case "Reddit":
       return he.decode(item.id.trim()).toString();
-    case "HuffPost":
-      return he.decode(item.guid.trim());
     case "Uber Blog":
+    case "Lambda the Ultimate - Programming Languages Weblog":
       return he.decode(item.link.toLowerCase().trim());
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
