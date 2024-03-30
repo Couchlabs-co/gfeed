@@ -14,15 +14,16 @@ const sqs = new SQSClient({
 export async function main(event: SQSEvent) {
   const tableName = Table.bigTable.tableName;
   const records: SQSRecord[] = event.Records;
+  let feedRssStatus = "success";
   console.log('length of records from queue: ', records.length);
   for(const record of records){
     const startTime = Date.now();
     const { id: publisherId, publisher, feedUrl, tag, feedType } = JSON.parse(record.body);
     if(feedType === 'html') {
-      console.log(`skipping html feed: ${publisher} with url: ${feedUrl}`);
+      console.log(`\n skipping html feed: ${publisher} with url: ${feedUrl}`);
       break;
     }
-    console.log(`starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
+    console.log(`\n starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
     const rssItems = await fetchRSSFeed(publisher, feedUrl, feedType);
     for (const item of rssItems) {
       try {
@@ -36,10 +37,14 @@ export async function main(event: SQSEvent) {
           continue;
         }
         const feedItem = await formatItem(item, publisher, tag);
+        if(feedItem.publisher.S === "TechCrunch" && feedItem.img.S === "") {
+          addToMediaQueue(feedItem, publisherId);
+        }
         await SaveItem(tableName, feedItem, publisherId);
       } catch (err) {
         console.log("rssParser err........", publisher, feedUrl, err, item.title);
-        await updateRSSPublisherPulledTime(publisher, feedUrl, 0, "failed");
+        feedRssStatus = "failed";
+        await updateRSSPublisherPulledTime(publisher, feedUrl, 0, feedRssStatus);
         break;
         // await ItemToDeadLetterQ(item);
       }
@@ -48,7 +53,9 @@ export async function main(event: SQSEvent) {
     const endTime = Date.now();
     const timeTaken = endTime - startTime;
     console.log(`total time taken: ${timeTaken}`)
-    await updateRSSPublisherPulledTime(publisher, feedUrl, timeTaken);
+    if(feedRssStatus !== "failed") {
+      await updateRSSPublisherPulledTime(publisher, feedUrl, timeTaken, "success");
+    }
   }
     
   return {
@@ -91,7 +98,7 @@ async function ItemToDeadLetterQ(item: any) {
 }
 
 // function to update lastPulled time and time take for the feed
-async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, timeTaken: number, status: String = "success") {
+async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, timeTaken: number, status: String) {
   const updateQuery = new UpdateItemCommand({
     TableName: Table.publisher.tableName,
     Key: {
@@ -107,5 +114,14 @@ async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, 
   });
   await dbClient.send(updateQuery);
   console.log("updated lastCrawled time for publisher: ", publisher);
+}
+
+async function addToMediaQueue(feedItem: Record<any, import("@aws-sdk/client-dynamodb").AttributeValue>, publisherId: String) {
+  const params = {
+    MessageBody: JSON.stringify({feedItem, publisherId}),
+    QueueUrl: Queue.ImageQueue.queueUrl,
+  };
+  await sqs.send(new SendMessageCommand(params));
+  console.log("Sent message to image queue", feedItem.link.S);
 }
 

@@ -24,6 +24,7 @@
     "jose": "^5.0.1",
     "jwt-decode": "^4.0.0",
     "node-fetch": "^3.3.2",
+    "node-html-parser": "^6.1.13",
     "uuid": "^9.0.0"
   }
 }

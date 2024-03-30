@@ -40,6 +40,9 @@ export function DbStack({ stack }: StackContext) {
   });
   
   new Script(stack, "Script", {
+    params:{
+      env: stack.stage,
+    },
     defaults: {
       function: {
         bind: [PublisherTable, InterestsTable],
