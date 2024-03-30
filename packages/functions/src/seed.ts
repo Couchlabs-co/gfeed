@@ -865,9 +865,12 @@ const interests = [
       "name": "Misc",
     }
   ];
-export async function handler() {
+export async function handler(event: any) {
 
-    for (const publisher of publishers) {
+  const env  = event.params.env;
+
+    if (env === "production") {
+      for (const publisher of publishers) {
         const seedCommand = new PutItemCommand({
             TableName: Table.publisher.tableName,
             Item: {
@@ -882,6 +885,26 @@ export async function handler() {
             },
         })
         await dbClient.send(seedCommand);
+      }
+    } else {
+      for (const publisher of publishers) {
+        if(publisher.name === "TechCrunch") {
+          const seedCommand = new PutItemCommand({
+              TableName: Table.publisher.tableName,
+              Item: {
+                  id: { S: v4() },
+                  publisherName: { S: publisher.name },
+                  feedUrl: { S: publisher.feedUrl },
+                  feedType: { S: publisher.feedType },
+                  feedStatus: { S: publisher.feedStatus },
+                  publisherUrl: { S: publisher.publisherUrl ?? "" },
+                  logo: { S: publisher.logo ?? "" },
+                  primaryTag: { S: publisher.primaryTag ?? "" },
+              },
+          })
+          await dbClient.send(seedCommand);
+        }
+      }
     }
 
     for (const interest of interests) {
