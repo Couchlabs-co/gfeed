@@ -813,6 +813,16 @@ const publishers = [
       "frequency": "3 hours",
       "logo": "https://assets.guim.co.uk/images/guardian-logo-rss.c45beb1bafa34b347ac333af2e6fe23f.png"
     },
+    {
+      "name": "MarketWatch",
+      "publisherUrl": "https://www.marketwatch.com",
+      "feedUrl": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Business",
+      "frequency": "3 hours",
+      "logo": "https://www.marketwatch.com/rss/marketwatch.gif"
+    },
   ];
 
 const interests = [
@@ -888,7 +898,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "TechCrunch") {
+        if(publisher.name === "MarketWatch") {
           const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
               Item: {
