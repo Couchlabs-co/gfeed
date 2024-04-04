@@ -75,7 +75,7 @@ async function getInterestBasedFeed(userInterests: any) {
       userInterests.map(async (interest: any) => {
         const command: QueryCommand = new QueryCommand({
           TableName: Table.bigTable.tableName,
-          IndexName: 'tagIndex',
+          IndexName: 'tagPubDateIndex',
           KeyConditionExpression: "tag = :tag",
           ExpressionAttributeValues: {
             ":tag": { S: interest.ct.S },

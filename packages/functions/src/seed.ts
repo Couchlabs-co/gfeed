@@ -898,7 +898,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News") {
           const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
               Item: {
