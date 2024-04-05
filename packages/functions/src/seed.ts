@@ -823,6 +823,16 @@ const publishers = [
       "frequency": "3 hours",
       "logo": "https://www.marketwatch.com/rss/marketwatch.gif"
     },
+    {
+      "name": "NPR",
+      "publisherUrl": "https://npr.org",
+      "feedUrl": "https://feeds.npr.org/15709577/rss.xml",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Entertainment",
+      "frequency": "3 hours",
+      "logo": "https://media.npr.org/images/podcasts/primary/npr_generic_image_300.jpg?s=200"
+    },
   ];
 
 const interests = [
@@ -847,18 +857,18 @@ const interests = [
     {
       "name": "Entertainment",
     },
-    {
-      "name": "Health",
-    },
+    // {
+    //   "name": "Health",
+    // },
     {
       "name": "Science",
     },
     {
       "name": "World",
     },
-    {
-      "name": "Weather",
-    },
+    // {
+    //   "name": "Weather",
+    // },
     {
       "name": "Food",
     },
@@ -868,9 +878,9 @@ const interests = [
     {
       "name": "LifeStyle",
     },
-    {
-      "name": "News",
-    },
+    // {
+    //   "name": "News",
+    // },
     {
       "name": "Misc",
     }
@@ -898,7 +908,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "NPR") {
           const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
               Item: {

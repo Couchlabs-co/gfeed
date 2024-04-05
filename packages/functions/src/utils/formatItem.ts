@@ -281,6 +281,10 @@ function getItemTitle(item: any, publisher: string): string {
   if(typeof item.title === 'object'){
     return he.decode(item.title['#text'].trim());
   }
+  if(publisher === "Reddit"){
+    item.title = item.title.indexOf('[P]') || item.title.indexOf('[D]') ? item.title.slice(3) : item.title;
+    return he.decode(item.title.trim());
+  }
   return he.decode(item.title.trim());
 }
 
