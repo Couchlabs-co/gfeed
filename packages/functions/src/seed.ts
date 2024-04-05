@@ -833,6 +833,46 @@ const publishers = [
       "frequency": "3 hours",
       "logo": "https://media.npr.org/images/podcasts/primary/npr_generic_image_300.jpg?s=200"
     },
+    {
+      "name": "Rolling Stone",
+      "publisherUrl": "https://www.rollingstone.com",
+      "feedUrl": "https://www.rollingstone.com/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Entertainment",
+      "frequency": "3 hours",
+      "logo": "https://www.rollingstone.com/wp-content/uploads/2022/08/cropped-Rolling-Stone-Favicon.png?w=32"
+    },
+    {
+      "name": "Mens Health Australia",
+      "publisherUrl": "https://menshealth.com.au",
+      "feedUrl": "https://menshealth.com.au/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Health",
+      "frequency": "3 hours",
+      "logo": "https://menshealth.com.au/wp-content/uploads/2021/12/cropped-Mens-Health-32x32.jpeg"
+    },
+    {
+      "name": "Womens Health Australia",
+      "publisherUrl": "https://womenshealth.com.au",
+      "feedUrl": "https://womenshealth.com.au/feed/",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Health",
+      "frequency": "3 hours",
+      "logo": "https://womenshealth.com.au/wp-content/uploads/2021/10/cropped-WH_LOGO_SHORT-32x32.jpg"
+    },
+    {
+      "name": "Health & WellBeing ",
+      "publisherUrl": "https://www.wellbeing.com.au",
+      "feedUrl": "https://www.wellbeing.com.au/body/health/feed",
+      "feedStatus": "active",
+      "feedType": "xml",
+      "primaryTag": "Health",
+      "frequency": "3 hours",
+      "logo": "https://da28rauy2a860.cloudfront.net/wellbeing/wp-content/uploads/2021/11/16150900/Wellbeing_32x32-.png"
+    },
   ];
 
 const interests = [
@@ -857,9 +897,9 @@ const interests = [
     {
       "name": "Entertainment",
     },
-    // {
-    //   "name": "Health",
-    // },
+    {
+      "name": "Health",
+    },
     {
       "name": "Science",
     },
