@@ -133,7 +133,7 @@ async function GetUserFeed(userId: string) {
     return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
   });
 
-  if(userAlgoPreference && userAlgoPreference.length > 0){
+  if(userAlgoPreference && userAlgoPreference.length > 0 && interestsUserFollows && interestsUserFollows.length > 0){
     switch(userAlgoPreference[0].ct.S){
       case 'timeBased': {
         result = await getTimeBasedFeed();
@@ -163,7 +163,6 @@ export const handler = ApiHandler(async (evt) => {
     const token = evt.headers.authorization?.split(" ")[1];
     try {
       const userId = await getUserFromToken(token);
-      console.log("userId: ", userId);
       result = await GetUserFeed(userId);
     }
     catch(err) {

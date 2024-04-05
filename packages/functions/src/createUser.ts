@@ -60,7 +60,6 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   }
 
   try {
-    console.log("user: ", JSON.stringify(user));
     if(user.id){
       const res = await createUser(user.id, user.name, user.email, "google", user.image);
 

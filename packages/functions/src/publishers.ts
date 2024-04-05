@@ -21,7 +21,6 @@ export const handler = ApiHandler(async (evt) => {
 
   if(uniq === "true"){
     const uniqItems = Array.from([...new Set(Items?.map(item => item.publisherName.S))]);
-    // console.log("uniqItems: ", uniqItems);
     return {
           statusCode: 200,
           body: JSON.stringify({ Count: uniqItems.length, Items: uniqItems }),

@@ -36,7 +36,6 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       const res = await dbClient.send(scanCommand);
       if(res.$metadata.httpStatusCode === 200){
         const items = res.Items;
-        console.log("items........", items);
         const articles = items?.map(item => {
           return {
             title: item.title.S,

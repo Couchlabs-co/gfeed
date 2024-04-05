@@ -12,7 +12,6 @@
      const interest = JSON.parse(e.target.value);
      if(e.target.checked) {
          const response = await userAction(userId, interest.tagName, "follow", "interest", "", interest.interestId);
-         console.log('response: ', response);
          if(response.msg === 'Success') {
              dispatch('userInterestEvent', {
                 userInterest: e.target.value,

@@ -39,9 +39,7 @@
     }
 
     function handleInterestChange(eventDetail: Record<string, any>) {
-        console.log('eventDetail: ', eventDetail.detail)
         const { userInterest, action } = eventDetail.detail;
-        console.log('userInterest: ', JSON.parse(userInterest).tagName)
         if(action === 'follow') {
             toast.success(`${JSON.parse(userInterest).tagName} successfully added`);
         } else {
