@@ -235,6 +235,10 @@ function getItemGuid(item: any, publisher: string) {
     case "HuffPost":
     case "luke6xff tech blog":
     case "The Daily WTF":
+    case "Moneycontrol":
+    case "Business Today":
+    case "Capitalmind":
+    case "Mint":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
