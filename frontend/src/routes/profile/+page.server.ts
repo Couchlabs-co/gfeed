@@ -7,7 +7,7 @@ const GetInterests = async () => {
     return res;
 }
 
-const GetUserInterests = async (userId: string) => {
+const GetUserData = async (userId: string) => {
     const { VITE_API_URL } = import.meta.env;
 	const result = await fetch(`${VITE_API_URL}/users/${userId}/profile`);
 
@@ -17,17 +17,6 @@ const GetUserInterests = async (userId: string) => {
         return data;
     }
 };
-
-// const GetUserBookmarks = async (userId: string) => {
-//     const { VITE_API_URL } = import.meta.env;
-// 	const result = await fetch(`${VITE_API_URL}/bookmarks/${userId}`);
-    
-// 	const res = await result.json();
-//     const {message, bookmarks} = res;
-//     if(message === 'Success'){
-//         return bookmarks;
-//     }
-// };
 
 export async function load(event: ServerLoadEvent) {
     const { VITE_API_URL } = import.meta.env;
@@ -41,7 +30,7 @@ export async function load(event: ServerLoadEvent) {
     if(session?.user){
         return {
             interests : await GetInterests(), 
-            userInterests: await GetUserInterests(userId as string),
+            userData: await GetUserData(userId as string),
             // userBookmarks: await GetUserBookmarks(userId as string),
             user: event.locals.user
         };

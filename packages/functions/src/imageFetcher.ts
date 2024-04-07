@@ -29,7 +29,6 @@ export async function main(event: SQSEvent) {
       if(imgSrc) {
         feedItem.img.S = imgSrc.slice(imgSrc.indexOf('src="')+5, imgSrc.indexOf('" class')-1);
       }
-      console.log('feedItem: ', feedItem);
       await SaveItem(tableName, feedItem, publisherId);
       const endTime = Date.now();
       console.log(`total time taken: ${endTime - startTime}`);

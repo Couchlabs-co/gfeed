@@ -18,19 +18,21 @@
 
     const userId = data.user?.id ?? '';
 
-    const { userInterests } = data;
+    const { userData } = data;
 
-    const userLikedPosts = userInterests.interestsByAction && userInterests.interestsByAction.likes ? userInterests.interestsByAction?.likes.filter((item: any) => {
+    const userLikedPosts = userData.interestsByAction && userData.interestsByAction.likes ? userData.interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
     }) : [];
 
-    // const userBookmarkedPosts = userBookmarks.Items;
-
-    const interestsUserFollow = userInterests.interestsByAction && userInterests.interestsByAction.follow ? userInterests.interestsByAction?.follow.filter((item: any) => {
+    const interestsUserFollow = userData.interestsByAction && userData.interestsByAction.follow ? userData.interestsByAction?.follow.filter((item: any) => {
         return item.contentType === 'interest';
     }) : [];
 
-    const feedAlgoSelected = userInterests.interestsByAction && userInterests.interestsByAction.selected ? userInterests.interestsByAction?.selected.filter((item: any) => {
+    const userBookmarks = userData.interestsByAction && userData.interestsByAction.bookmark ? userData.interestsByAction?.bookmark.filter((item: any) => {
+        return item.contentType === 'post';
+    }) : [];
+
+    const feedAlgoSelected = userData.interestsByAction && userData.interestsByAction.selected ? userData.interestsByAction?.selected.filter((item: any) => {
         return item.contentType === 'feedAlgo';
     }) : [];
 
@@ -90,7 +92,7 @@
                             <UserPosts userPosts={userLikedPosts} userId={userId} />
                         {/if}
                         {#if activeTab === 2}
-                            <Bookmarks bookmarks={[]}/>
+                            <Bookmarks bookmarks={userBookmarks}/>
                         {/if}
                         
                     </div>

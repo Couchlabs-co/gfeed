@@ -12,10 +12,10 @@
         </div>
         <div class="stat-title">Total Likes</div>
         <div class="stat-value text-primary">
-          {#if !data.userInterests.interestsByAction?.likes || data.userInterests.interestsByAction?.likes?.length === 0}
+          {#if !data.userData.interestsByAction?.likes || data.userData.interestsByAction?.likes?.length === 0}
               0
           {:else}
-              {data.userInterests.interestsByAction.likes.length}
+              {data.userData.interestsByAction.likes.length}
           {/if}
         </div>
       </div>
@@ -26,10 +26,10 @@
           </div>
           <div class="stat-title">Total Disliked</div>
           <div class="stat-value text-secondary">
-            {#if !data.userInterests.interestsByAction?.dislikes || data.userInterests.interestsByAction?.dislikes.length === 0}
+            {#if !data.userData.interestsByAction?.dislikes || data.userData.interestsByAction?.dislikes.length === 0}
                 0
             {:else}
-                {data.userInterests.interestsByAction.dislikes.length}
+                {data.userData.interestsByAction.dislikes.length}
             {/if}
           </div>
         </div>
@@ -40,10 +40,10 @@
         </div>
         <div class="stat-title">Total Views</div>
         <div class="stat-value text-secondary">
-          {#if !data.userInterests.interestsByAction?.viewed || data.userInterests.interestsByAction?.viewed?.length === 0}
+          {#if !data.userData.interestsByAction?.viewed || data.userData.interestsByAction?.viewed?.length === 0}
               0
           {:else}
-              {data.userInterests.interestsByAction.viewed.length}
+              {data.userData.interestsByAction.viewed.length}
           {/if}
         </div>
       </div>

@@ -70,7 +70,6 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /interests": "packages/functions/src/interests.handler",
       "POST /search": "packages/functions/src/search.handler",
       "GET /posts/{postTitle}": "packages/functions/src/getPost.handler",
-      "POST /bookmarks": "packages/functions/src/saveBookmark.handler",
       "GET /bookmarks/{userId}": "packages/functions/src/getBookmarks.handler",
       "POST /sources": "packages/functions/src/newSource.handler",
       "GET /users/{userId}/profile": "packages/functions/src/userProfile.handler",
