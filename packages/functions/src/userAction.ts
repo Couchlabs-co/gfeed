@@ -32,8 +32,8 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
     const sk = `${formattedContent}#${reaction}`;
     
-    if(['unfollow', 'delBookmark'].includes(reaction)) {
-      const userAction = reaction === 'unfollow' ? 'follow' : 'bookmark';
+    if(['unfollow', 'delBookmark', '!dislikes'].includes(reaction)) {
+      const userAction = reaction === 'unfollow' ? 'follow' : reaction === 'bookmark' ? 'bookmark' : 'dislikes';
       const sk = `${formattedContent}#${userAction}`;
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: BigOneTable,
