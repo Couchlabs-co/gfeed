@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { userAction } from "$lib/userActions";
     import { Ban } from 'lucide-svelte';
     export let bookmarks: any[];
+    export let userId: string;
+
 </script>
 
 <div>
@@ -21,7 +24,7 @@
                                     {bookmark.content}
                                 </a>
                             </article>
-                            <button class="btn btn-square btn-outline bg-danger"><Ban /></button>
+                            <button class="btn btn-square btn-outline bg-danger" on:click={() => userAction(userId, bookmark.content, "delBookmark", "post", bookmark.contentLink, bookmark.contentId)}><Ban /></button>
                         </td>
                     </tr>
                 {/each}

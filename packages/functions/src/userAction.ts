@@ -32,15 +32,19 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
     const sk = `${formattedContent}#${reaction}`;
     
-    if(['unfollow', 'unbookmark'].includes(reaction)) {
+    if(['unfollow', 'delBookmark'].includes(reaction)) {
+      const userAction = reaction === 'unfollow' ? 'follow' : 'bookmark';
+      const sk = `${formattedContent}#${userAction}`;
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: BigOneTable,
         Key: {
           pk: { S: `user#${userId}` },
-          sk: { S: `${formattedContent}#follow` },
+          sk: { S: `${sk}` },
         },
       });
+
       const res = await dbClient.send(command);
+      console.log("res for user action: ", contentId, reaction , res.$metadata.httpStatusCode);
       return {
         statusCode: res.$metadata.httpStatusCode,
         body: JSON.stringify({"msg": "Success"})

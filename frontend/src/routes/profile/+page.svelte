@@ -92,7 +92,7 @@
                             <UserPosts userPosts={userLikedPosts} userId={userId} />
                         {/if}
                         {#if activeTab === 2}
-                            <Bookmarks bookmarks={userBookmarks}/>
+                            <Bookmarks bookmarks={userBookmarks} userId={userId}/>
                         {/if}
                         
                     </div>
