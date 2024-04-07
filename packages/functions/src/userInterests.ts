@@ -3,6 +3,7 @@ import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
+const he = require('he');
 
 enum UserAction {
   likes = "likes",
@@ -43,7 +44,7 @@ export const getInterests = async (userId: string) => {
           continue;
         }
         interests.push({
-          content: item.ct.S as string,
+          content: he.decode(item.ct.S) as string,
           contentId: item.cid.S as string,
           userAction: UserAction[item.ua.S as keyof typeof UserAction],
           contentType: item.ctt.S as string,

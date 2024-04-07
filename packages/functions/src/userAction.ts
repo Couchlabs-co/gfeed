@@ -3,6 +3,7 @@ import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
 import * as uuid from "uuid";
+const he = require('he');
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 
 interface UserAction {
@@ -28,13 +29,25 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     const BigOneTable = Table.bigTable.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId } = body;
 
-    const formattedContent = content.toLowerCase().split(' ').join('-').trim();
-
-    const sk = `${formattedContent}#${reaction}`;
-    
-    if(['unfollow', 'delBookmark', '!dislikes'].includes(reaction)) {
-      const userAction = reaction === 'unfollow' ? 'follow' : reaction === 'bookmark' ? 'bookmark' : 'dislikes';
-      const sk = `${formattedContent}#${userAction}`;
+    let sk = `${contentId}#${reaction}`;
+    switch (reaction) {
+      case '!likes':
+        console.log("!likes");
+        sk = `${contentId}#likes`;
+        break;
+      case 'unfollow':
+        sk = `${contentId}#follow`;
+        break;
+      case '!bookmark':
+        sk = `${contentId}#bookmark`;
+        break;
+      case '!dislikes':
+        sk = `${contentId}#dislikes`;
+        break;
+      default:
+        break;
+    }
+    if(['unfollow', '!bookmark', '!dislikes', '!likes'].includes(reaction)) {
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: BigOneTable,
         Key: {
@@ -55,7 +68,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       pk: { S: `user#${userId}` }, // user#1234
       sk: { S: `${sk}`},
       ua: { S: reaction },
-      ct: { S: content },
+      ct: { S: he.encode(content.trim()) },
       ctt: { S: contentType },
     };
 
@@ -73,12 +86,15 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     Item.cid ={ S: contentId }; // post id | interest id
     Item.cl ={ S: contentLink ?? '' }; // post link | interest link
 
+    console.log("Item: ", Item);
+
     const command: PutItemCommand = new PutItemCommand({
       TableName: BigOneTable,
       Item: Item,
     });
 
     const res = await dbClient.send(command);
+    console.log("res for user action: ", contentId, reaction , res.$metadata.httpStatusCode);
     return {
       statusCode: res.$metadata.httpStatusCode,
       body: JSON.stringify({"msg": "Success"})
