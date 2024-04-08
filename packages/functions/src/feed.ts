@@ -80,8 +80,9 @@ async function getInterestBasedFeed(userInterests: any) {
           ExpressionAttributeValues: {
             ":tag": { S: interest.ct.S },
           },
+          ConsistentRead: true,
           ScanIndexForward: false,
-          Limit: 150,
+          Limit: 200,
         });
         let { Count, Items } = await dbClient.send(command);
         result.Count += Count ?? 0;
@@ -196,9 +197,6 @@ export const handler = ApiHandler(async (evt) => {
     });
   }
 
-  feedItems.sort((a: any, b:any) => {
-    return parseInt(b.pubDate) - parseInt(a.pubDate);
-  });
 
   return {
     statusCode: 200,
@@ -220,4 +218,3 @@ async function getUserFromToken(token: string) {
   const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
   return userId;
 }
-

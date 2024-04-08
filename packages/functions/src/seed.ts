@@ -701,7 +701,7 @@ const publishers = [
     "name": "WIRED",
     "paywall": "false",
     "publisherUrl": "https://www.wired.com",
-    "feedUrl": "https://www.wired.com/feed/tag/business/latest/rss",
+    "feedUrl": "https://www.wired.com/feed/category/business/latest/rss",
     "feedStatus": "active",
     "feedType": "xml",
     "primaryTag": "Business",
@@ -712,7 +712,7 @@ const publishers = [
     "name": "WIRED",
     "paywall": "false",
     "publisherUrl": "https://www.wired.com",
-    "feedUrl": "https://www.wired.com/feed/tag/science/latest/rss",
+    "feedUrl": "https://www.wired.com/feed/category/science/latest/rss",
     "feedStatus": "active",
     "feedType": "xml",
     "primaryTag": "Science",
@@ -723,7 +723,7 @@ const publishers = [
     "name": "WIRED",
     "paywall": "false",
     "publisherUrl": "https://www.wired.com",
-    "feedUrl": "https://www.wired.com/feed/tag/culture/latest/rss",
+    "feedUrl": "https://www.wired.com/feed/category/culture/latest/rss",
     "feedStatus": "active",
     "feedType": "xml",
     "primaryTag": "Culture",
@@ -734,7 +734,7 @@ const publishers = [
     "name": "WIRED",
     "paywall": "false",
     "publisherUrl": "https://www.wired.com",
-    "feedUrl": "https://www.wired.com/feed/tag/security/latest/rss",
+    "feedUrl": "https://www.wired.com/feed/category/security/latest/rss",
     "feedStatus": "active",
     "feedType": "xml",
     "primaryTag": "Tech",
@@ -801,7 +801,7 @@ const publishers = [
     "paywall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/MachineLearning/.rss?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
-    "feedStatus": "active",
+    "feedStatus": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -812,7 +812,7 @@ const publishers = [
     "paywall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/programming.rss",
-    "feedStatus": "active",
+    "feedStatus": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -1113,7 +1113,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "NPR") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "WIRED") {
           const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
               Item: {
