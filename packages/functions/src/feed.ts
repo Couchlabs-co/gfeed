@@ -80,7 +80,6 @@ async function getInterestBasedFeed(userInterests: any) {
           ExpressionAttributeValues: {
             ":tag": { S: interest.ct.S },
           },
-          ConsistentRead: true,
           ScanIndexForward: false,
           Limit: 200,
         });
