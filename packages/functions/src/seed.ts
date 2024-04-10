@@ -1140,7 +1140,7 @@ export async function handler(event: any) {
                 publisherUrl: { S: publisher.publisherUrl ?? "" },
                 logo: { S: publisher.logo ?? "" },
                 primaryTag: { S: publisher.primaryTag ?? "" },
-                payWall: { S: publisher.payWall ?? "false" },
+                payWall: { BOOL: publisher.payWall ?? false },
             },
         })
         await dbClient.send(seedCommand);
