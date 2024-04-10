@@ -36,8 +36,9 @@ export const handler = ApiHandler(async (evt) => {
             feedType: item.feedType.S,
             logo: item.logo?.S,
             tag: item.primaryTag.S,
-            crawled: item.crawledStatus.S,
-            lastCrawled: item.lastCrawled.S,
+            crawled: item.crawledStatus?.S ?? 'Not Crawled',
+            lastCrawled: item.lastCrawled?.S ?? '---',
+            payWalled: item.payWall?.S ?? 'No',
         });
       }
   } else {

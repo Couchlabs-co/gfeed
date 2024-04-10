@@ -6,7 +6,7 @@ import { v4 } from "uuid";
 const publishers = [
   {
     "name": "Overreacted",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://overreacted.io/",
     "feedUrl": "https://overreacted.io/rss.xml",
     "feedStatus": "active",
@@ -16,7 +16,7 @@ const publishers = [
   },
   {
     "name": "A List Apart",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://alistapart.com/",
     "feedUrl": "https://alistapart.com/main/feed/",
     "feedStatus": "inactive-inactive",
@@ -26,7 +26,7 @@ const publishers = [
   },
   {
     "name": "Alice GG",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://alicegg.tech/",
     "feedUrl": "https://alicegg.tech/feed.xml",
     "feedStatus": "active",
@@ -36,7 +36,7 @@ const publishers = [
   },
   {
     "name": "VentureBeat",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://venturebeat.com/",
     "feedUrl": "http://feeds.feedburner.com/venturebeat/SZYF",
     "feedStatus": "active",
@@ -47,7 +47,7 @@ const publishers = [
   },
   {
     "name": "Joel on Software",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.joelonsoftware.com/",
     "feedUrl": "https://www.joelonsoftware.com/feed/",
     "feedStatus": "active",
@@ -58,7 +58,7 @@ const publishers = [
   },
   {
     "name": "Sam Newman",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://samnewman.io/",
     "feedUrl": "https://samnewman.io/blog/feed.xml",
     "feedStatus": "active",
@@ -68,7 +68,7 @@ const publishers = [
   },
   {
     "name": "Mozilla Hacks",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://hacks.mozilla.org/",
     "feedUrl": "https://hacks.mozilla.org/feed/",
     "feedStatus": "active",
@@ -78,7 +78,7 @@ const publishers = [
   },
   {
     "name": "HACKERNOON",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://hackernoon.com/",
     "feedUrl": "https://hackernoon.com/feed",
     "feedStatus": "active",
@@ -89,7 +89,7 @@ const publishers = [
   },
   {
     "name": "TechCrunch",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.techcrunch.com/",
     "feedUrl": "https://www.techcrunch.com/feed",
     "feedStatus": "active",
@@ -100,7 +100,7 @@ const publishers = [
   },
   {
     "name": "Martin Fowler",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://martinfowler.com/",
     "feedUrl": "https://martinfowler.com/feed.atom",
     "feedStatus": "active",
@@ -110,7 +110,7 @@ const publishers = [
   },
   {
     "name": "DAN NORTH",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://dannorth.net/",
     "feedUrl": "https://dannorth.net/blog/index.xml",
     "feedStatus": "active",
@@ -120,7 +120,7 @@ const publishers = [
   },
   {
     "name": "Coding Horror",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://blog.codinghorror.com/",
     "feedUrl": "https://blog.codinghorror.com/rss/",
     "feedStatus": "active",
@@ -131,7 +131,7 @@ const publishers = [
   },
   {
     "name": "Jacob Singh",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://jacobsingh.name/",
     "feedUrl": "https://jacobsingh.name/rss/",
     "feedStatus": "active",
@@ -142,7 +142,7 @@ const publishers = [
   },
   {
     "name": "Game Developer",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.gamedeveloper.com/",
     "feedUrl": "https://www.gamedeveloper.com/rss.xml",
     "feedStatus": "inactive-permanently",
@@ -153,7 +153,7 @@ const publishers = [
   },
   {
     "name": "the HUSTLE",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://thehustle.co/",
     "feedUrl": "https://thehustle.co/feed/",
     "feedStatus": "permanently-Inactive",
@@ -164,7 +164,7 @@ const publishers = [
   },
   {
     "name": "Software Engineering Tidbits",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.softwareengineeringtidbits.com/",
     "feedUrl": "https://www.softwareengineeringtidbits.com/feed",
     "feedStatus": "active",
@@ -174,7 +174,7 @@ const publishers = [
   },
   {
     "name": "The Pragmatic Engineer",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://blog.pragmaticengineer.com/",
     "feedUrl": "https://feeds.feedburner.com/ThePragmaticEngineer",
     "feedStatus": "active",
@@ -185,7 +185,7 @@ const publishers = [
   },
   {
     "name": "Musings Of A Caring Techie",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.thecaringtechie.com/",
     "feedUrl": "https://www.thecaringtechie.com/feed",
     "feedStatus": "active",
@@ -196,7 +196,7 @@ const publishers = [
   },
   {
     "name": "Dev Interrupted",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://devinterrupted.com/",
     "feedUrl": "https://devinterrupted.substack.com/feed",
     "feedStatus": "active",
@@ -207,7 +207,7 @@ const publishers = [
   },
   {
     "name": "The LeadTech Diet",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://leonardoborges.substack.com/",
     "feedUrl": "https://leonardoborges.substack.com/feed",
     "feedStatus": "active",
@@ -218,7 +218,7 @@ const publishers = [
   },
   {
     "name": "The Developing Dev",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.developing.dev/",
     "feedUrl": "https://www.developing.dev/feed",
     "feedStatus": "active",
@@ -229,7 +229,7 @@ const publishers = [
   },
   {
     "name": "Frontend Engineering",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://frontendengineering.substack.com/",
     "feedUrl": "https://frontendengineering.substack.com/feed",
     "feedStatus": "active",
@@ -250,7 +250,7 @@ const publishers = [
   },
   {
     "name": "CoinDesk",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.coindesk.com/",
     "feedUrl": "https://www.coindesk.com/arc/outboundfeeds/rss",
     "feedStatus": "active",
@@ -294,7 +294,7 @@ const publishers = [
   },
   {
     "name": "FAST COMPANY",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.fastcompany.com",
     "feedUrl": "https://www.fastcompany.com/latest/rss?truncated=true",
     "feedStatus": "active",
@@ -305,7 +305,7 @@ const publishers = [
   },
   {
     "name": "FAST COMPANY",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.fastcompany.com",
     "feedUrl": "https://www.fastcompany.com/technology/rss",
     "feedStatus": "active",
@@ -316,7 +316,7 @@ const publishers = [
   },
   {
     "name": "Axios",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.axios.com",
     "feedUrl": "https://www.axios.com/technology",
     "feedStatus": "inactive-inactive",
@@ -326,7 +326,7 @@ const publishers = [
   },
   {
     "name": "The New York Times",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.nytimes.com",
     "feedUrl": "http://rss.nytimes.com/services/xml/rss/nyt/World.xml",
     "feedStatus": "active",
@@ -337,7 +337,7 @@ const publishers = [
   },
   {
     "name": "Washington Post",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.washingtonpost.com",
     "feedUrl": "https://feeds.washingtonpost.com/rss/world",
     "feedStatus": "active",
@@ -347,7 +347,7 @@ const publishers = [
   },
   {
     "name": "The Guardian",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.theguardian.com",
     "feedUrl": "https://www.theguardian.com/world/rss",
     "feedStatus": "active",
@@ -358,7 +358,7 @@ const publishers = [
   },
   {
     "name": "The Information",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.theinformation.com",
     "feedUrl": "https://www.theinformation.com/feed",
     "feedStatus": "permanently-Inactive",
@@ -369,7 +369,7 @@ const publishers = [
   },
   {
     "name": "Hacker News",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://news.ycombinator.com",
     "feedUrl": "https://hnrss.org/frontpage",
     "feedStatus": "active",
@@ -380,7 +380,7 @@ const publishers = [
   },
   {
     "name": "Damien Aicheh",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://damienaicheh.github.io",
     "feedUrl": "https://damienaicheh.github.io/feed.xml",
     "feedStatus": "Inactive",
@@ -391,7 +391,7 @@ const publishers = [
   },
   {
     "name": "Ars Technica",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://arstechnica.com",
     "feedUrl": "https://feeds.arstechnica.com/arstechnica/index",
     "feedStatus": "active",
@@ -402,7 +402,7 @@ const publishers = [
   },
   {
     "name": "TokyoDev",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.tokyodev.com",
     "feedUrl": "https://www.tokyodev.com/atom.xml",
     "feedStatus": "active",
@@ -413,7 +413,7 @@ const publishers = [
   },
   {
     "name": "Mitchell Hashimoto",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://mitchellh.com",
     "feedUrl": "https://mitchellh.com/feed.xml",
     "feedStatus": "active",
@@ -424,7 +424,7 @@ const publishers = [
   },
   {
     "name": "FotMob",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.fotmob.com",
     "feedUrl": "https://pub.fotmob.com/prod/news/api/rss/world",
     "feedStatus": "active",
@@ -435,7 +435,7 @@ const publishers = [
   },
   {
     "name": "CaughtOffside",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.caughtoffside.com",
     "feedUrl": "https://www.caughtoffside.com/feed/",
     "feedStatus": "active",
@@ -446,7 +446,7 @@ const publishers = [
   },
   {
     "name": "Yahoo",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://sports.yahoo.com/",
     "feedUrl": "https://sports.yahoo.com/rss/",
     "feedStatus": "active",
@@ -457,7 +457,7 @@ const publishers = [
   },
   {
     "name": "The New York Times",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://nytimes.com/",
     "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml",
     "feedStatus": "active",
@@ -468,7 +468,7 @@ const publishers = [
   },
   {
     "name": "Washington Post",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.washingtonpost.com",
     "feedUrl": "https://feeds.washingtonpost.com/rss/opinions",
     "feedStatus": "active",
@@ -479,7 +479,7 @@ const publishers = [
   },
   {
     "name": "The New York Times",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.nytimes.com/ca/section/politic",
     "feedUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
     "feedStatus": "active",
@@ -490,7 +490,7 @@ const publishers = [
   },
   {
     "name": "HuffPost",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.huffpost.com/news/politics",
     "feedUrl": "https://www.huffpost.com/section/politics/feed",
     "feedStatus": "active",
@@ -501,7 +501,7 @@ const publishers = [
   },
   {
     "name": "InfoQ",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.infoq.com",
     "feedUrl": "https://feed.infoq.com",
     "feedStatus": "active",
@@ -512,7 +512,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/sportsmoney/feed/",
     "feedStatus": "active",
@@ -523,7 +523,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/business/feed/",
     "feedStatus": "active",
@@ -534,7 +534,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/lifestyle/feed/",
     "feedStatus": "active",
@@ -545,7 +545,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/travel/feed/",
     "feedStatus": "active",
@@ -556,7 +556,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/food-drink/feed/",
     "feedStatus": "active",
@@ -567,7 +567,7 @@ const publishers = [
   },
   {
     "name": "Forbes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.forbes.com",
     "feedUrl": "https://feeds.forbes.com/digital-assets/feed/",
     "feedStatus": "active",
@@ -578,7 +578,7 @@ const publishers = [
   },
   {
     "name": "The New Yorker",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.newyorker.com",
     "feedUrl": "https://www.newyorker.com/feed/culture",
     "feedStatus": "active",
@@ -589,7 +589,7 @@ const publishers = [
   },
   {
     "name": "The New Stack",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.thenewstack.io",
     "feedUrl": "https://www.thenewstack.io/blog/feed",
     "feedStatus": "active",
@@ -600,7 +600,7 @@ const publishers = [
   },
   {
     "name": "formula1.com",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://formula1.com",
     "feedUrl": "https://formula1.com/en/latest/all.xml",
     "feedStatus": "permanently-Inactive",
@@ -611,7 +611,7 @@ const publishers = [
   },
   {
     "name": "Human Who Codes",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://humanwhocodes.com",
     "feedUrl": "https://humanwhocodes.com/feeds/blog.xml",
     "feedStatus": "active",
@@ -622,7 +622,7 @@ const publishers = [
   },
   {
     "name": "The T-Shaped Dev",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://thetshaped.dev",
     "feedUrl": "https://thetshaped.dev/feed",
     "feedStatus": "active",
@@ -633,7 +633,7 @@ const publishers = [
   },
   {
     "name": "Microsoft Security Response Center",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://msrc.microsoft.com",
     "feedUrl": "https://msrc.microsoft.com/blog/feed",
     "feedStatus": "Inactive",
@@ -644,7 +644,7 @@ const publishers = [
   },
   {
     "name": "Uber Blog",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.uber.com",
     "feedUrl": "https://www.uber.com/en-AU/blog/engineering/rss/",
     "feedStatus": "active",
@@ -655,7 +655,7 @@ const publishers = [
   },
   {
     "name": "Zero Day Initiative",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.thezdi.com",
     "feedUrl": "https://www.zerodayinitiative.com/blog?format=rss",
     "feedStatus": "active",
@@ -666,7 +666,7 @@ const publishers = [
   },
   {
     "name": "darkreading",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.darkreading.com",
     "feedUrl": "https://www.darkreading.com/rss.xml",
     "feedStatus": "active",
@@ -677,7 +677,7 @@ const publishers = [
   },
   {
     "name": "The CyberWire",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://thecyberwire.com",
     "feedUrl": "https://thecyberwire.com/feeds/rss.xml",
     "feedStatus": "active",
@@ -688,7 +688,7 @@ const publishers = [
   },
   {
     "name": "WIRED",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wired.com",
     "feedUrl": "https://www.wired.com/feed/tag/ai/latest/rss",
     "feedStatus": "active",
@@ -699,7 +699,7 @@ const publishers = [
   },
   {
     "name": "WIRED",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wired.com",
     "feedUrl": "https://www.wired.com/feed/category/business/latest/rss",
     "feedStatus": "active",
@@ -710,7 +710,7 @@ const publishers = [
   },
   {
     "name": "WIRED",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wired.com",
     "feedUrl": "https://www.wired.com/feed/category/science/latest/rss",
     "feedStatus": "active",
@@ -721,7 +721,7 @@ const publishers = [
   },
   {
     "name": "WIRED",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wired.com",
     "feedUrl": "https://www.wired.com/feed/category/culture/latest/rss",
     "feedStatus": "active",
@@ -732,7 +732,7 @@ const publishers = [
   },
   {
     "name": "WIRED",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wired.com",
     "feedUrl": "https://www.wired.com/feed/category/security/latest/rss",
     "feedStatus": "active",
@@ -743,7 +743,7 @@ const publishers = [
   },
   {
     "name": "luk6xff tech blog",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://luk6xff.github.io",
     "feedUrl": "https://luk6xff.github.io/rss.xml",
     "feedStatus": "Inactive - Inactive",
@@ -754,7 +754,7 @@ const publishers = [
   },
   {
     "name": "Digiday",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://digiday.com",
     "feedUrl": "https://digiday.com/feed/",
     "feedStatus": "active",
@@ -765,7 +765,7 @@ const publishers = [
   },
   {
     "name": "MachineLearningMastery.com",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://machinelearningmastery.com",
     "feedUrl": "https://machinelearningmastery.com/feed/",
     "feedStatus": "active",
@@ -776,7 +776,7 @@ const publishers = [
   },
   {
     "name": "FlowingData",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://flowingdata.com",
     "feedUrl": "https://flowingdata.com/feed",
     "feedStatus": "active",
@@ -787,7 +787,7 @@ const publishers = [
   },
   {
     "name": "Towards Data Science - Medium",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://towardsdatascience.com",
     "feedUrl": "https://towardsdatascience.com/feed?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
     "feedStatus": "active",
@@ -798,7 +798,7 @@ const publishers = [
   },
   {
     "name": "Reddit",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/MachineLearning/.rss?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
     "feedStatus": "perma-Inactive",
@@ -809,7 +809,7 @@ const publishers = [
   },
   {
     "name": "Reddit",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/programming.rss",
     "feedStatus": "perma-Inactive",
@@ -820,7 +820,7 @@ const publishers = [
   },
   {
     "name": "RBloggers",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.r-bloggers.com",
     "feedUrl": "https://feeds.feedburner.com/RBloggers?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
     "feedStatus": "active",
@@ -831,7 +831,7 @@ const publishers = [
   },
   {
     "name": "The Next Web",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://thenextweb.com",
     "feedUrl": "https://thenextweb.com/feed",
     "feedStatus": "active",
@@ -842,7 +842,7 @@ const publishers = [
   },
   {
     "name": "The Daily WTF",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "http://thedailywtf.com/",
     "feedUrl": "https://feeds.feedburner.com/TheDailyWtf?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
     "feedStatus": "active",
@@ -853,7 +853,7 @@ const publishers = [
   },
   {
     "name": "Lambda the Ultimate - Programming Languages Weblog",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "http://lambda-the-ultimate.org",
     "feedUrl": "http://lambda-the-ultimate.org/rss.xml?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
     "feedStatus": "active",
@@ -864,7 +864,7 @@ const publishers = [
   },
   {
     "name": "BBC Sport",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.bbc.co.uk/sport",
     "feedUrl": "https://feeds.bbci.co.uk/sport/rss.xml?path=%2Fdiscover%2Ftopic%2Fsports",
     "feedStatus": "active",
@@ -875,7 +875,7 @@ const publishers = [
   },
   {
     "name": "The Guardian",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.theguardian.com",
     "feedUrl": "https://feeds.theguardian.com/theguardian/football/rss?path=%2Fdiscover%2Ftopic%2Fsports%2Ffootball",
     "feedStatus": "active",
@@ -886,7 +886,7 @@ const publishers = [
   },
   {
     "name": "MarketWatch",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.marketwatch.com",
     "feedUrl": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
     "feedStatus": "active",
@@ -897,7 +897,7 @@ const publishers = [
   },
   {
     "name": "NPR",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://npr.org",
     "feedUrl": "https://feeds.npr.org/15709577/rss.xml",
     "feedStatus": "active",
@@ -908,7 +908,7 @@ const publishers = [
   },
   {
     "name": "Rolling Stone",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.rollingstone.com",
     "feedUrl": "https://www.rollingstone.com/feed",
     "feedStatus": "active",
@@ -919,7 +919,7 @@ const publishers = [
   },
   {
     "name": "Mens Health Australia",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://menshealth.com.au",
     "feedUrl": "https://menshealth.com.au/feed/",
     "feedStatus": "active",
@@ -930,7 +930,7 @@ const publishers = [
   },
   {
     "name": "Womens Health Australia",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://womenshealth.com.au",
     "feedUrl": "https://womenshealth.com.au/feed/",
     "feedStatus": "active",
@@ -941,7 +941,7 @@ const publishers = [
   },
   {
     "name": "Health & WellBeing",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.wellbeing.com.au",
     "feedUrl": "https://www.wellbeing.com.au/body/health/feed",
     "feedStatus": "active",
@@ -952,7 +952,7 @@ const publishers = [
   },
   {
     "name": "Moneycontrol",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.moneycontrol.com",
     "feedUrl": "https://www.moneycontrol.com/rss/MCtopnews.xml",
     "feedStatus": "active",
@@ -963,7 +963,7 @@ const publishers = [
   },
   {
     "name": "Capitalmind",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.capitalmind.in",
     "feedUrl": "https://www.capitalmind.in/rss",
     "feedStatus": "active",
@@ -974,7 +974,7 @@ const publishers = [
   },
   {
     "name": "Business Today",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.businesstoday.in",
     "feedUrl": "https://www.businesstoday.in/rssfeeds/?id=home",
     "feedStatus": "active",
@@ -985,7 +985,7 @@ const publishers = [
   },
   {
     "name": "Mint",
-    "paywall": "false",
+    "payWall": "false",
     "publisherUrl": "https://www.livemint.com",
     "feedUrl": "https://www.livemint.com/rss/money",
     "feedStatus": "active",
@@ -1107,6 +1107,7 @@ export async function handler(event: any) {
                 publisherUrl: { S: publisher.publisherUrl ?? "" },
                 logo: { S: publisher.logo ?? "" },
                 primaryTag: { S: publisher.primaryTag ?? "" },
+                payWall: { S: publisher.payWall ?? "false" },
             },
         })
         await dbClient.send(seedCommand);
@@ -1125,6 +1126,7 @@ export async function handler(event: any) {
                   publisherUrl: { S: publisher.publisherUrl ?? "" },
                   logo: { S: publisher.logo ?? "" },
                   primaryTag: { S: publisher.primaryTag ?? "" },
+                  payWall: { S: publisher.payWall ?? "false" },
               },
           })
           await dbClient.send(seedCommand);
