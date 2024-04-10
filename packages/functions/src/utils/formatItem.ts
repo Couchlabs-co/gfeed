@@ -239,6 +239,8 @@ function getItemGuid(item: any, publisher: string) {
     case "Business Today":
     case "Capitalmind":
     case "Mint":
+    case "NPR":
+    case "Microsoft Security Response Center":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
@@ -249,6 +251,8 @@ function getItemGuid(item: any, publisher: string) {
     case "Uber Blog":
     case "Lambda the Ultimate - Programming Languages Weblog":
       return he.decode(item.link.toLowerCase().trim());
+    case "The LeadTech Diet":
+      return he.decode(item.guid['#text'].trim());
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
         return he.decode(item.guid['#text'].trim());
@@ -338,7 +342,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
   
   }
   catch (error) {
-    console.log('formatItem item', item.title, publisher);
+    console.log('formatItem item error', publisher, item.title);
     console.log('formatItem error', error);
   }
   return {};  

@@ -36,6 +36,8 @@ export const handler = ApiHandler(async (evt) => {
             feedType: item.feedType.S,
             logo: item.logo?.S,
             tag: item.primaryTag.S,
+            crawled: item.crawledStatus.S,
+            lastCrawled: item.lastCrawled.S,
         });
       }
   } else {

@@ -383,7 +383,7 @@ const publishers = [
     "paywall": "false",
     "publisherUrl": "https://damienaicheh.github.io",
     "feedUrl": "https://damienaicheh.github.io/feed.xml",
-    "feedStatus": "active",
+    "feedStatus": "Inactive",
     "feedType": "atom",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -634,9 +634,9 @@ const publishers = [
   {
     "name": "Microsoft Security Response Center",
     "paywall": "false",
-    "publisherUrl": "https://msrc.microsoft.com/blog/feed",
+    "publisherUrl": "https://msrc.microsoft.com",
     "feedUrl": "https://msrc.microsoft.com/blog/feed",
-    "feedStatus": "active",
+    "feedStatus": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -801,7 +801,7 @@ const publishers = [
     "paywall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/MachineLearning/.rss?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
-    "feedStatus": "Inactive",
+    "feedStatus": "perma-Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -812,7 +812,7 @@ const publishers = [
     "paywall": "false",
     "publisherUrl": "https://www.reddit.com",
     "feedUrl": "https://www.reddit.com/r/programming.rss",
-    "feedStatus": "Inactive",
+    "feedStatus": "perma-Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "3 hours",
@@ -1113,7 +1113,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "WIRED") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post") {
           const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
               Item: {

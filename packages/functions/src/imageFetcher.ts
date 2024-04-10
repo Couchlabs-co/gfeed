@@ -25,7 +25,6 @@ export async function main(event: SQSEvent) {
 
       const root = parse(htmlPage);
       const imgSrc = root.querySelector('img')?.rawAttrs;
-      console.log('imgSrc: ', imgSrc);
       if(imgSrc) {
         feedItem.img.S = imgSrc.slice(imgSrc.indexOf('src="')+5, imgSrc.indexOf('" class')-1);
       }

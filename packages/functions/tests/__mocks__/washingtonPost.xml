@@ -1,0 +1,218 @@
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+    <channel>
+        <title>Washington Post</title>
+        <description>Washington Post News Feed</description>
+        <link>https://www.washingtonpost.com</link>
+        <atom:link href="https://www.washingtonpost.com/arcio/rss/" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Tue, 09 Apr 2024 09:30:38 +0000</lastBuildDate>
+        <ttl>1</ttl>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        <item>
+            <title>You are my sunshine</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/eclipse-indianapolis-meaning-family/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/eclipse-indianapolis-meaning-family/</guid>
+            <dc:creator>Alexandra Petri</dc:creator>
+            <pubDate>Tue, 09 Apr 2024 00:08:42 +0000</pubDate>
+            <description>Come back soon, my neighborhood sun.</description>
+        </item>
+        <item>
+            <title>Glide bombs are raining on Ukraine while the House dawdles </title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/speaker-johnson-house-vote-ukraine/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/speaker-johnson-house-vote-ukraine/</guid>
+            <dc:creator>Editorial Board</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 21:54:22 +0000</pubDate>
+            <description>House Speaker Mike Johnson (R-La.) and his Republican majority wrongly delayed aid to Ukraine for six months — now it is time for them to approve it.</description>
+        </item>
+        <item>
+            <title>Oregon walks away from a disastrous drug experiment</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/michael-ramirez-oregon-drug-decriminalization/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/michael-ramirez-oregon-drug-decriminalization/</guid>
+            <dc:creator>Michael Ramirez</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 20:37:48 +0000</pubDate>
+            <description>Michael Ramirez on Oregon drug decriminalization.</description>
+        </item>
+        <item>
+            <title>Wildfire fighters are quitting. Can you blame them?</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/firefighters-quitting-salary-no-labels-biden-polio/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/firefighters-quitting-salary-no-labels-biden-polio/</guid>
+            <dc:creator>Drew Goins</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 20:30:50 +0000</pubDate>
+            <description>Plus: The end of No Labels. The too-slow creep of EV charging stations. Polio. </description>
+        </item>
+        <item>
+            <title>Leaders of Jordan, France and Egypt: Cease fire now in Gaza</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/macron-abdullah-sisi-cease-fire-gaza/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/macron-abdullah-sisi-cease-fire-gaza/</guid>
+            <dc:creator>King Abdullah II, Emmanuel Macron, Abdel Fatah El-Sisi</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 20:00:00 +0000</pubDate>
+            <description>The establishment of an independent, sovereign Palestinian state on the basis of the two-state solution is the only way to achieve true peace.</description>
+        </item>
+        <item>
+            <title>How to build back better in Baltimore, and across the nation</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/rebuild-baltimore-key-bridge-dali/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/rebuild-baltimore-key-bridge-dali/</guid>
+            <dc:creator>Letters to the Editor</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 19:00:07 +0000</pubDate>
+            <description>Break our free shipping addiction. Change traffic patterns. Honor immigrants. And take pity on Baltimore’s historical Liberty ship.</description>
+        </item>
+        <item>
+            <title>Trump’s abortion position just made his 2024 reelection even harder</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/trump-abortion-statement-new-2024/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/trump-abortion-statement-new-2024/</guid>
+            <dc:creator>Eugene Robinson</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 18:57:48 +0000</pubDate>
+            <description>If antiabortion crusaders thought he was genuinely on their side, they should have been paying closer attention.</description>
+        </item>
+        <item>
+            <title>Chat with David Ignatius about the war in Ukraine and foreign affairs</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/david-ignatius-ukraine-live-chat/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/david-ignatius-ukraine-live-chat/</guid>
+            <dc:creator>David Ignatius</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 17:39:15 +0000</pubDate>
+            <description>David’s live chat with readers starts at 12 p.m. ET on Monday. Submit your questions now.
+            </description>
+        </item>
+        <item>
+            <title>When will the Ukraine war end? I answered your questions.</title>
+            <link>https://www.washingtonpost.com/opinions/2024/03/25/david-ignatius-ukraine-live-chat/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/03/25/david-ignatius-ukraine-live-chat/</guid>
+            <dc:creator>David Ignatius</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 16:00:18 +0000</pubDate>
+            <description>David’s live chat with readers starts at 12 p.m. ET on Monday. Read the transcript.</description>
+        </item>
+        <item>
+            <title> Jan. 6 convicts aren’t ‘hostages’: Judge decries gaslighting</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/judge-lamberth-jan6/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/judge-lamberth-jan6/</guid>
+            <dc:creator>Jennifer Rubin</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 11:45:00 +0000</pubDate>
+            <description>D.C. District Judge Royce C. Lamberth lashes out at MAGA deniers.</description>
+        </item>
+        <item>
+            <title>Being ‘tough on crime’ isn’t an appeal to White voters</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/democrats-crime-hochul-2024-biden/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/democrats-crime-hochul-2024-biden/</guid>
+            <dc:creator>Alexi McCammond</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 11:30:21 +0000</pubDate>
+            <description>New York Gov. Kathy Hochul is trying to change the narrative that Democrats don’t take public safety seriously. </description>
+        </item>
+        <item>
+            <title>What Anne Lamott learned about love from becoming a grandparent</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/anne-lamott-interview-book-grandparents-relationships/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/anne-lamott-interview-book-grandparents-relationships/</guid>
+            <dc:creator>Alyssa Rosenberg</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 11:15:52 +0000</pubDate>
+            <description>In a new book, the memoirist reflects on the ties between parents, children and grandchildren.</description>
+        </item>
+        <item>
+            <title>Liberals must answer the right’s attacks on America’s colleges  </title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/liberal-defense-republican-college-university/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/liberal-defense-republican-college-university/</guid>
+            <dc:creator>Perry Bacon</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 11:00:50 +0000</pubDate>
+            <description>Democratic Party officials and the broader left need to forcefully push back against the right’s war on higher education.</description>
+        </item>
+        <item>
+            <title>The economy is strong. Why are our national finances so weak?</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/us-budget-debt-trouble/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/us-budget-debt-trouble/</guid>
+            <dc:creator>Megan McArdle</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 10:45:57 +0000</pubDate>
+            <description>If this is the best Americans can do to manage the federal debt in the best of times, then when things get bad, the future will be much worse.</description>
+        </item>
+        <item>
+            <title>We built 7 EV chargers in 2 years. That’s actually not the problem.</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/green-jobs-climate-transition-infrastructure-messaging/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/green-jobs-climate-transition-infrastructure-messaging/</guid>
+            <dc:creator>Matt Bai</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 10:30:00 +0000</pubDate>
+            <description>The charger program makes a ton of sense. The problem lies in the way the Democrats habitually mislead the public on the near-term impact of public investment.</description>
+        </item>
+        <item>
+            <title>One woman’s story of agony shows why childhood immunizations are so crucial</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/polio-survivor-childhood-vaccines/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/polio-survivor-childhood-vaccines/</guid>
+            <dc:creator>Leana Wen</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 10:15:00 +0000</pubDate>
+            <description>Ina Pinkney explains why childhood immunizations are so crucial.
+            </description>
+        </item>
+        <item>
+            <title> I was a wildfire fighter for six years. The reason they’re quitting is simple.</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/us-forest-service-losing-firefighters/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/us-forest-service-losing-firefighters/</guid>
+            <dc:creator>Christopher Benz</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 10:00:32 +0000</pubDate>
+            <description>The government hasn’t raised pay in decades, and the Forest Service is losing experience.</description>
+        </item>
+        <item>
+            <title>In the shadow war with Iran, Biden just scored an unheralded victory</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/08/iran-united-states-biden-victory/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/08/iran-united-states-biden-victory/</guid>
+            <dc:creator>Max Boot</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 09:45:52 +0000</pubDate>
+            <description>The U.S. military forcefully responded after its outposts in Iran and Syria were attacked. Now, the mullahs in Tehran have backed off. </description>
+        </item>
+        <item>
+            <title>The Caps and Wizards are staying in D.C. Here’s what should happen next.</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/caps-wizards-leonsis-alexandria-chinatown/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/caps-wizards-leonsis-alexandria-chinatown/</guid>
+            <dc:creator>Letters to the Editor</dc:creator>
+            <pubDate>Mon, 08 Apr 2024 02:05:25 +0000</pubDate>
+            <description>Field winning teams. Reduce the volume. Remember that Alexandria has other development options. And listen to what citizens want.</description>
+        </item>
+        <item>
+            <title>Farm girls have been scorching the nets on the prairies for some time now</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/womens-basketball-caitlin-clark-midwest/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/womens-basketball-caitlin-clark-midwest/</guid>
+            <dc:creator>Art Cullen</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 23:30:40 +0000</pubDate>
+            <description>The rest of the country has finally caught up to Midwesterners’ passion for women’s sports.</description>
+        </item>
+        <item>
+            <title>Ahead of state visit, an ‘epic’ shift in Japan’s defense posture</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/japan-kishida-china-ukraine-akiba/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/japan-kishida-china-ukraine-akiba/</guid>
+            <dc:creator>Takeo Akiba</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 12:00:42 +0000</pubDate>
+            <description>On eve of a state visit by the Japanese prime minister, a top Tokyo official sees big changes in Japan’s defense posture.</description>
+        </item>
+        <item>
+            <title>How No Labels was thwarted — and a disaster for democracy was avoided</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/no-labels-third-party-suspend-2024/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/no-labels-third-party-suspend-2024/</guid>
+            <dc:creator>Jennifer Rubin</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 11:45:00 +0000</pubDate>
+            <description>Without a No Labels ticket, Biden and democracy stand a better chance of prevailing in November. That is no small thing.</description>
+        </item>
+        <item>
+            <title>Recriminalizing drugs, Oregon offers a cautionary tale</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/oregon-drugs-decriminalization-failure-lessons/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/oregon-drugs-decriminalization-failure-lessons/</guid>
+            <dc:creator>Editorial Board</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 11:30:02 +0000</pubDate>
+            <description>The lesson from Oregon is that compassion is important for addicts, but so are consequences.</description>
+        </item>
+        <item>
+            <title>Recriminalizing drugs, Oregon offers a cautionary tale</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/oregon-drugs-decriminalization-failure-lessons/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/oregon-drugs-decriminalization-failure-lessons/</guid>
+            <dc:creator>Editorial Board</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 11:30:02 +0000</pubDate>
+            <description>The lesson from Oregon is that compassion is important for addicts, but so are consequences.</description>
+        </item>
+        <item>
+            <title>Joe Biden must go left and right at the same time</title>
+            <link>https://www.washingtonpost.com/opinions/2024/04/07/biden-progressive-conservative-challenge-election/</link>
+            <guid isPermaLink="true">https://www.washingtonpost.com/opinions/2024/04/07/biden-progressive-conservative-challenge-election/</guid>
+            <dc:creator>E.J. Dionne</dc:creator>
+            <pubDate>Sun, 07 Apr 2024 10:30:30 +0000</pubDate>
+            <description>The president’s path to reelection will be a perilous tightrope.</description>
+        </item>
+    </channel>
+</rss>

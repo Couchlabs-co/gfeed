@@ -1,243 +1,284 @@
-import { describe, beforeEach ,afterEach, expect, vi, it } from "vitest";
+import { describe, beforeEach ,afterEach, expect, vi, it, beforeAll, afterAll } from "vitest";
 import { main } from "../src/rssParser";
 import { SQSEvent } from "aws-lambda";
 import sqsEvent from './__mocks__/sqsEvent.json';
 import mockDynamoDBClient from './__mocks__/mockDynamoDBClient'
-import { PutItemCommand } from "@aws-sdk/client-dynamodb";
+import mockSQSClient from "./__mocks__/mockSQSClient";
 import fs from 'fs';
-import { mockFetch } from "./__mocks__/mockFetch";
 import path from "path";
+import {server} from './__mocks__/mswServer';
+import { HttpResponse, http } from "msw";
 
 describe("rssParser", () => {
 
+    beforeAll(() => {
+        server.listen();
+    });
+
     beforeEach(() => {
         mockDynamoDBClient.reset();
+        mockSQSClient.reset();
     })
     
     afterEach(() => {
-        vi.restoreAllMocks()
+        server.resetHandlers();
+        vi.resetAllMocks();
     })
+
+    afterAll(() => {
+        server.close();
+    });
+
+    it("parse washingtonPost rss feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/washingtonPost.xml'), 'utf8');
+        server.use(http.get('https://www.washingtonpost.com/feed/rss', () => {
+            return HttpResponse.text(xmlFile);
+        }));
+        
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Politics', feedType: 'xml', publisher: 'Washington Post', feedUrl: 'https://www.washingtonpost.com/feed/rss' });
+        mockDynamoDBClient.onAnyCommand().resolves({});
+        mockSQSClient.onAnyCommand().resolves({});
+        
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(mockDynamoDBClient.calls()).toHaveLength(2);
+        expect(mockSQSClient.calls()).toHaveLength(0);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
 
     it("parse wired xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/wiredRSS.xml'), 'utf8');
-        const options = {
-            url: 'https://www.wired.com/feed/rss',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://www.wired.com/feed/rss', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Wired', feedUrl: 'https://www.wired.com/feed/rss' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        mockDynamoDBClient.onAnyCommand().resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls()).toHaveLength(3);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+
+    it("parse tokyodev atom feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/tokyodev.atom'), 'utf8');
+        
+        server.use(http.get('https://www.tokyodev.com/atom.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'atom', publisher: 'TokyoDev', feedUrl: 'https://www.tokyodev.com/atom.xml' });
+
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse overreacted xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/overreacted.xml'), 'utf8');
-        const options = {
-            url: 'https://overreacted.io/rss.xml',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://overreacted.io/rss.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Overreacted', feedUrl: 'https://overreacted.io/rss.xml' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse martinfowler atom feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/martinfowler.atom'), 'utf8');
-        const options = {
-            url: 'https://martinfowler.com/feed.atom',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://martinfowler.com/feed.atom', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'atom', publisher: 'Martin Fowler', feedUrl: 'https://martinfowler.com/feed.atom' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse techcrunch xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/techcrunch.xml'), 'utf8');
-        const options = {
-            url: 'https://techcrunch.com/feed',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://techcrunch.com/feed', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'TechCrunch', feedUrl: 'https://techcrunch.com/feed' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse mozilla hacks xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/mozillaHacks.xml'), 'utf8');
-        const options = {
-            url: 'https://hacks.mozilla.org/feed/',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://hacks.mozilla.org/feed/', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Mozilla Hacks', feedUrl: 'https://hacks.mozilla.org/feed/' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
         console.log('response', response);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse a list part xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alistapart.xml'), 'utf8');
-        const options = {
-            url: 'https://alistapart.com/main/feed/',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://alistapart.com/main/feed/', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'A List Apart', feedUrl: 'https://alistapart.com/main/feed/' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse alicegg xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alicegg.xml'), 'utf8');
-        const options = {
-            url: 'https://alicegg.tech/feed.xml',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://alicegg.tech/feed.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Alice GG', feedUrl: 'https://alicegg.tech/feed.xml' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse samnewman xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/samnewman.xml'), 'utf8');
-        const options = {
-            url: 'https://samnewman.io/blog/feed.xml',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://samnewman.io/blog/feed.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Sam Newman', feedUrl: 'https://samnewman.io/blog/feed.xml' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse hackernoon xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/hackernoon.xml'), 'utf8');
-        const options = {
-            url: 'https://hackernoon.com/feed',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://hackernoon.com/feed', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'HACKERNOON', feedUrl: 'https://hackernoon.com/feed' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse jacob singh xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/jacobsingh.xml'), 'utf8');
-        const options = {
-            url: 'https://jacobsingh.name/rss/',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://jacobsingh.name/rss/', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Jacob Singh', feedUrl: 'https://jacobsingh.name/rss/' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
         console.log('response', response);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse dev intruppted xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/devinteruppted.xml'), 'utf8');
-        const options = {
-            url: 'https://devinterrupted.substack.com/feed',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://devinterrupted.substack.com/feed', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'devintruppted', feedUrl: 'https://devinterrupted.substack.com/feed' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse thecyberwire xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/thecyberwire.xml'), 'utf8');
-        const options = {
-            url: 'https://thecyberwire.com/feeds/rss.xml',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://thecyberwire.com/feeds/rss.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'thecyberwire', feedUrl: 'https://thecyberwire.com/feeds/rss.xml' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     it("parse darkreading xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/darkreading.xml'), 'utf8');
-        const options = {
-            url: 'https://www.darkreading.com/rss.xml',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://www.darkreading.com/rss.xml', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'darkreading', feedUrl: 'https://www.darkreading.com/rss.xml' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     it("parse zero day initiative xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/zerodayinitiative.xml'), 'utf8');
-        const options = {
-            url: 'https://www.zerodayinitiative.com/blog?format=rss',
-            response: xmlFile
-        }
-        mockFetch(options)
-        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Zero Day Initiative', feedUrl: 'https://www.zerodayinitiative.com/blog?format=rss' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
+        server.use(http.get('https://www.zerodayinitiative.com/blog', () => {
+            return HttpResponse.text(xmlFile);
+        }));
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Zero Day Initiative', feedUrl: 'https://www.zerodayinitiative.com/blog' });
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     it("parse uber blog xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/uberblog.xml'), 'utf8');
-        const options = {
-            url: 'https://www.uber.com/en-AU/blog/rss/',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://www.uber.com/en-AU/blog/rss/', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Uber Blog', feedUrl: 'https://www.uber.com/en-AU/blog/rss/' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
     it("parse fastcompany xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/fastCompanyTech.xml'), 'utf8');
-        const options = {
-            url: 'https://www.fastcompany.com/technology/rss',
-            response: xmlFile
-        }
-        mockFetch(options)
+        
+        server.use(http.get('https://www.fastcompany.com/technology/rss', () => {
+            return HttpResponse.text(xmlFile);
+        }));
         sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'FAST COMPANY', feedUrl: 'https://www.fastcompany.com/technology/rss' });
-        mockDynamoDBClient.on(PutItemCommand).resolves({});
+        
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
