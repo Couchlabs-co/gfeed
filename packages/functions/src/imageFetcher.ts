@@ -24,9 +24,9 @@ export async function main(event: SQSEvent) {
       const htmlPage = await response.text();
 
       const root = parse(htmlPage);
-      const imgSrc = root.querySelector('img')?.rawAttrs;
+      const imgSrc = root.querySelector('img.article__featured-image')?.rawAttrs.trim();
       if(imgSrc) {
-        feedItem.img.S = imgSrc.slice(imgSrc.indexOf('src="')+5, imgSrc.indexOf('" class')-1);
+        feedItem.img.S = imgSrc.trim().slice(imgSrc.indexOf('src="')+5, imgSrc.indexOf('" class'));
       }
       await SaveItem(tableName, feedItem, publisherId);
       const endTime = Date.now();
