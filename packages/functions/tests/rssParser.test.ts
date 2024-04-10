@@ -282,4 +282,21 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
+    it("parse Economist rss feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/economist.xml'), 'utf8');
+        server.use(http.get('https://www.economist.com/feed/rss', () => {
+            return HttpResponse.text(xmlFile);
+        }));
+        
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Culture', feedType: 'xml', publisher: 'The Economist', feedUrl: 'https://www.economist.com/feed/rss', payWall: true });
+        mockDynamoDBClient.onAnyCommand().resolves({});
+        mockSQSClient.onAnyCommand().resolves({});
+        
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
+        expect(mockDynamoDBClient.calls()).toHaveLength(2);
+        expect(mockSQSClient.calls()).toHaveLength(0);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+
 });

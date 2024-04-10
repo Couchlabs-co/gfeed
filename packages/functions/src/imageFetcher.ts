@@ -59,6 +59,7 @@ export async function main(event: SQSEvent) {
          tag: { S: feedItem.tag.S },
          guid: { S: feedItem.guid.S },
          publishedDate: { S: feedItem.publishedDate.S },
+         payWall: { BOOL: feedItem.payWall.BOOL ?? false },
        },
      });
    await dbClient.send(putQuery);

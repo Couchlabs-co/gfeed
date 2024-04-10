@@ -193,6 +193,7 @@ export const handler = ApiHandler(async (evt) => {
       keywords: item.keywords?.S ?? "",
       tag: item.tag?.S ?? "",
       image: item.imgUrl?.S ?? "",
+      payWall: item.payWall?.BOOL ?? false,
     });
   }
 

@@ -296,7 +296,7 @@ function getItemTitle(item: any, publisher: string): string {
   return he.decode(item.title.trim());
 }
 
-export const formatItem = (item: any, publisher: string, tag: string): Record<any, AttributeValue> => {
+export const formatItem = (item: any, publisher: string, tag: string, payWall: boolean): Record<any, AttributeValue> => {
   let img = "";
 
   try {
@@ -336,6 +336,7 @@ export const formatItem = (item: any, publisher: string, tag: string): Record<an
       publisher: { S: publisher },
       content: { S: getItemDescription(item, publisher) },
       img: { S: img ?? "" },
+      payWall: { BOOL: payWall }
     };
 
     return feedItem;

@@ -59,7 +59,7 @@ export async function main(event: SQSEvent) {
   console.log('length of records from queue: ', records.length);
   for(const record of records){
     const startTime = Date.now();
-    const { id: publisherId, publisher, feedUrl, tag, feedType } = JSON.parse(record.body);
+    const { id: publisherId, publisher, feedUrl, tag, feedType, payWall } = JSON.parse(record.body);
     if(feedType === 'html') {
       console.log(`\n skipping html feed: ${publisher} with url: ${feedUrl}`);
       break;
@@ -70,7 +70,7 @@ export async function main(event: SQSEvent) {
     try {
       const filterByPublisher = filterItems(publisher);
 
-      const parsedItems: Record<string, any>[] = filterByPublisher(rssItems).map((item: any) => formatItem(item, publisher, tag));
+      const parsedItems: Record<string, any>[] = filterByPublisher(rssItems).map((item: any) => formatItem(item, publisher, tag, payWall));
 
       for(const item of parsedItems) {
           itemsMap.set(item.guid.S, item);
@@ -94,6 +94,7 @@ export async function main(event: SQSEvent) {
               tag: { S: `${item.tag.S}` },
               guid: { S: `${item.guid.S}` },
               publishedDate: { S: `${item.publishedDate.S}` },
+              payWall: { BOOL: item.payWall.BOOL ?? payWall },
             }
           }
         };
@@ -125,30 +126,6 @@ export async function main(event: SQSEvent) {
     statusCode: 200,
     body: JSON.stringify({ status: "successful" }),
   };
-}
-async function SaveItem(tableName: string, feedItem: any, publisherId: any) {
-
-   const putQuery = new PutItemCommand({
-      TableName: tableName,
-      Item: {
-        pk: { S: `post#${feedItem.pk.S}` },
-        sk: { S: feedItem.sk.S },
-        id: { S: feedItem.id.S },
-        title: { S: feedItem.title.S },
-        content: { S: feedItem.content.S },
-        author: { S: feedItem.author.S },
-        publisher: { S: feedItem.publisher.S },
-        link: { S: feedItem.link.S },
-        imgUrl: { S: feedItem.img.S },
-        keywords: { S: feedItem.keywords.S },
-        publisherId: { S: publisherId.S },
-        pubDate: { N: feedItem.pubDate.N },
-        tag: { S: feedItem.tag.S },
-        guid: { S: feedItem.guid.S },
-        publishedDate: { S: feedItem.publishedDate.S },
-      },
-    });
-  await dbClient.send(putQuery);
 }
 
 async function ItemToDeadLetterQ(item: any) {

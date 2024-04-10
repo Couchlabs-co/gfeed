@@ -11,7 +11,6 @@ const sqs = new SQSClient({
 export async function main() {
   const scanCommand = new ScanCommand({
     TableName: Table.publisher.tableName,
-    ProjectionExpression: "id, publisherName, feedUrl, feedType, publisherUrl, logo, primaryTag",
     FilterExpression: "feedStatus = :status",
     ExpressionAttributeValues: {
       ":status": { S: "active" },
@@ -32,6 +31,7 @@ export async function main() {
       publisher: publisher.publisherName.S,
       tag: publisher.primaryTag.S,
       feedType: publisher.feedType.S,
+      payWall: publisher.payWall.BOOL,
     };
     const params = {
       MessageBody: JSON.stringify(msgBody),
