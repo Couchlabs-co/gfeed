@@ -179,7 +179,10 @@ export const handler = ApiHandler(async (evt) => {
   }
   const feedItems = <any>[];
 
-  for (const item of result.Items) {
+  //sorting in descending order of pubDate
+  const sortedItems = result.Items.sort(compare);
+
+  for (const item of sortedItems) {
     feedItems.push({
       id: item.id.S,
       publishedDate: item.publishedDate.S,
@@ -217,4 +220,15 @@ async function getUserFromToken(token: string) {
   const sub = payload.sub ?? "";
   const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
   return userId;
+}
+
+//Function to sort array of objects based on pubDate attribute
+function compare(a: any, b: any) {
+  if (a.pubDate.N < b.pubDate.N) {
+    return 1;
+  }
+  if (a.pubDate.N > b.pubDate.N) {
+    return -1;
+  }
+  return 0;
 }
