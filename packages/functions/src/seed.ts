@@ -786,7 +786,7 @@ const publishers = [
     "logo": "https://i0.wp.com/flowingdata.com/wp-content/uploads/2014/10/logo-lone-square-600-5451c585_site_icon.png?fit=32%2C32&#038;ssl=1"
   },
   {
-    "name": "Towards Data Science - Medium",
+    "name": "Towards Data Science",
     "payWall": false,
     "publisherUrl": "https://towardsdatascience.com",
     "feedUrl": "https://towardsdatascience.com/feed?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",

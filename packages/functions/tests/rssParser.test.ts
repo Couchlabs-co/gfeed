@@ -294,6 +294,23 @@ describe("rssParser", () => {
         
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
+        expect(mockDynamoDBClient.calls()).toHaveLength(5);
+        expect(mockSQSClient.calls()).toHaveLength(0);
+        expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
+    });
+
+    it("parse TowardsDataScience rss feed", async () => {
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/towardsdatascience.xml'), 'utf8');
+        server.use(http.get('https://towardsdatascience.com/feed', () => {
+            return HttpResponse.text(xmlFile);
+        }));
+        
+        sqsEvent.Records[0].body = JSON.stringify({ id: 'pubId', tag: 'Tech', feedType: 'xml', publisher: 'Towards Data Science', feedUrl: 'https://towardsdatascience.com/feed', payWall: false });
+        mockDynamoDBClient.onAnyCommand().resolves({});
+        mockSQSClient.onAnyCommand().resolves({});
+        
+        const event = sqsEvent as SQSEvent;
+        const response = await main(event);
         expect(mockDynamoDBClient.calls()).toHaveLength(2);
         expect(mockSQSClient.calls()).toHaveLength(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
