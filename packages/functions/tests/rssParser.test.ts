@@ -1,4 +1,4 @@
-import { describe, beforeEach ,afterEach, expect, vi, it, beforeAll, afterAll } from "vitest";
+import { describe, beforeEach ,afterEach, expect, vi, beforeAll, afterAll, test } from "vitest";
 import { main } from "../src/rssParser";
 import { SQSEvent } from "aws-lambda";
 import sqsEvent from './__mocks__/sqsEvent.json';
@@ -29,7 +29,7 @@ describe("rssParser", () => {
         server.close();
     });
 
-    it("parse washingtonPost rss feed", async () => {
+    test("parse washingtonPost rss feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/washingtonPost.xml'), 'utf8');
         server.use(http.get('https://www.washingtonpost.com/feed/rss', () => {
             return HttpResponse.text(xmlFile);
@@ -46,7 +46,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse wired xml feed", async () => {
+    test("parse wired xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/wiredRSS.xml'), 'utf8');
         
         server.use(http.get('https://www.wired.com/feed/rss', () => {
@@ -60,7 +60,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse tokyodev atom feed", async () => {
+    test("parse tokyodev atom feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/tokyodev.atom'), 'utf8');
         
         server.use(http.get('https://www.tokyodev.com/atom.xml', () => {
@@ -74,7 +74,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse overreacted xml feed", async () => {
+    test("parse overreacted xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/overreacted.xml'), 'utf8');
         
         server.use(http.get('https://overreacted.io/rss.xml', () => {
@@ -87,7 +87,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse martinfowler atom feed", async () => {
+    test("parse martinfowler atom feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/martinfowler.atom'), 'utf8');
         
         server.use(http.get('https://martinfowler.com/feed.atom', () => {
@@ -101,7 +101,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse techcrunch xml feed", async () => {
+    test("parse techcrunch xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/techcrunch.xml'), 'utf8');
         
         server.use(http.get('https://techcrunch.com/feed', () => {
@@ -115,7 +115,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse mozilla hacks xml feed", async () => {
+    test("parse mozilla hacks xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/mozillaHacks.xml'), 'utf8');
         
         server.use(http.get('https://hacks.mozilla.org/feed/', () => {
@@ -130,7 +130,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse a list part xml feed", async () => {
+    test("parse a list part xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alistapart.xml'), 'utf8');
         
         server.use(http.get('https://alistapart.com/main/feed/', () => {
@@ -144,7 +144,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse alicegg xml feed", async () => {
+    test("parse alicegg xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alicegg.xml'), 'utf8');
         
         server.use(http.get('https://alicegg.tech/feed.xml', () => {
@@ -158,7 +158,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse samnewman xml feed", async () => {
+    test("parse samnewman xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/samnewman.xml'), 'utf8');
         
         server.use(http.get('https://samnewman.io/blog/feed.xml', () => {
@@ -172,7 +172,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse hackernoon xml feed", async () => {
+    test("parse hackernoon xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/hackernoon.xml'), 'utf8');
         
         server.use(http.get('https://hackernoon.com/feed', () => {
@@ -186,7 +186,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse jacob singh xml feed", async () => {
+    test("parse jacob singh xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/jacobsingh.xml'), 'utf8');
         
         server.use(http.get('https://jacobsingh.name/rss/', () => {
@@ -201,7 +201,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse dev intruppted xml feed", async () => {
+    test("parse dev intruppted xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/devinteruppted.xml'), 'utf8');
         
         server.use(http.get('https://devinterrupted.substack.com/feed', () => {
@@ -215,7 +215,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse thecyberwire xml feed", async () => {
+    test("parse thecyberwire xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/thecyberwire.xml'), 'utf8');
         
         server.use(http.get('https://thecyberwire.com/feeds/rss.xml', () => {
@@ -228,7 +228,7 @@ describe("rssParser", () => {
         expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
-    it("parse darkreading xml feed", async () => {
+    test("parse darkreading xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/darkreading.xml'), 'utf8');
         
         server.use(http.get('https://www.darkreading.com/rss.xml', () => {
@@ -241,7 +241,7 @@ describe("rssParser", () => {
         expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
-    it("parse zero day initiative xml feed", async () => {
+    test("parse zero day initiative xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/zerodayinitiative.xml'), 'utf8');
         
         server.use(http.get('https://www.zerodayinitiative.com/blog', () => {
@@ -254,7 +254,7 @@ describe("rssParser", () => {
         expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
-    it("parse uber blog xml feed", async () => {
+    test("parse uber blog xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/uberblog.xml'), 'utf8');
         
         server.use(http.get('https://www.uber.com/en-AU/blog/rss/', () => {
@@ -268,7 +268,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse fastcompany xml feed", async () => {
+    test("parse fastcompany xml feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/fastCompanyTech.xml'), 'utf8');
         
         server.use(http.get('https://www.fastcompany.com/technology/rss', () => {
@@ -282,7 +282,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse Economist rss feed", async () => {
+    test("parse Economist rss feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/economist.xml'), 'utf8');
         server.use(http.get('https://www.economist.com/feed/rss', () => {
             return HttpResponse.text(xmlFile);
@@ -299,7 +299,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
 
-    it("parse TowardsDataScience rss feed", async () => {
+    test("parse TowardsDataScience rss feed", async () => {
         const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/towardsdatascience.xml'), 'utf8');
         server.use(http.get('https://towardsdatascience.com/feed', () => {
             return HttpResponse.text(xmlFile);

@@ -36,7 +36,6 @@ export function DbStack({ stack }: StackContext) {
     },
     primaryIndex: { partitionKey: "pk", sortKey: "sk" },
     globalIndexes: { 
-      tagIndex: { partitionKey: "tag", sortKey: "sk" },
       tagPubDateIndex: { partitionKey: "tag", sortKey: "pubDate" },
     },
   });
