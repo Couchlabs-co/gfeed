@@ -1,12 +1,12 @@
 import { describe, beforeEach ,afterEach, expect, vi, beforeAll, afterAll, test } from "vitest";
 import { main } from "../src/rssParser";
 import { SQSEvent } from "aws-lambda";
-import sqsEvent from './__mocks__/sqsEvent.json';
-import mockDynamoDBClient from './__mocks__/mockDynamoDBClient'
-import mockSQSClient from "./__mocks__/mockSQSClient";
+import sqsEvent from '../tests/__mocks__/sqsEvent.json';
+import mockDynamoDBClient from '../tests/__mocks__/mockDynamoDBClient'
+import mockSQSClient from "../tests/__mocks__/mockSQSClient";
 import fs from 'fs';
 import path from "path";
-import {server} from './__mocks__/mswServer';
+import {server} from '../tests/__mocks__/mswServer';
 import { HttpResponse, http } from "msw";
 
 describe("rssParser", () => {

@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "test": "sst bind vitest run",
+    "test": "sst bind vitest run --stage dev",
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
