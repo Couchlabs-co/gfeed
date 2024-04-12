@@ -1,13 +1,13 @@
 import { describe, beforeEach ,afterEach, expect, vi, beforeAll, afterAll, test } from "vitest";
 import { main } from "../src/rssParser";
 import { SQSEvent } from "aws-lambda";
-import sqsEvent from './__mocks__/sqsEvent.json';
-import mockDynamoDBClient from './__mocks__/mockDynamoDBClient'
-import mockSQSClient from "./__mocks__/mockSQSClient";
+import mockDynamoDBClient from './mocks/mockDynamoDBClient'
+import mockSQSClient from "./mocks/mockSQSClient";
 import fs from 'fs';
 import path from "path";
-import {server} from './__mocks__/mswServer';
+import {server} from './mocks/mswServer';
 import { HttpResponse, http } from "msw";
+import { sqsEvent } from "./mocks/sqsEvent";
 
 describe("rssParser", () => {
 
@@ -30,7 +30,7 @@ describe("rssParser", () => {
     });
 
     test("parse washingtonPost rss feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/washingtonPost.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/washingtonPost.xml'), 'utf8');
         server.use(http.get('https://www.washingtonpost.com/feed/rss', () => {
             return HttpResponse.text(xmlFile);
         }));
@@ -47,7 +47,7 @@ describe("rssParser", () => {
     });
 
     test("parse wired xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/wiredRSS.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/wiredRSS.xml'), 'utf8');
         
         server.use(http.get('https://www.wired.com/feed/rss', () => {
             return HttpResponse.text(xmlFile);
@@ -61,7 +61,7 @@ describe("rssParser", () => {
     });
 
     test("parse tokyodev atom feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/tokyodev.atom'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/tokyodev.atom'), 'utf8');
         
         server.use(http.get('https://www.tokyodev.com/atom.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -75,7 +75,7 @@ describe("rssParser", () => {
     });
 
     test("parse overreacted xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/overreacted.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/overreacted.xml'), 'utf8');
         
         server.use(http.get('https://overreacted.io/rss.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -88,7 +88,7 @@ describe("rssParser", () => {
     });
 
     test("parse martinfowler atom feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/martinfowler.atom'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/martinfowler.atom'), 'utf8');
         
         server.use(http.get('https://martinfowler.com/feed.atom', () => {
             return HttpResponse.text(xmlFile);
@@ -102,7 +102,7 @@ describe("rssParser", () => {
     });
 
     test("parse techcrunch xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/techcrunch.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/techcrunch.xml'), 'utf8');
         
         server.use(http.get('https://techcrunch.com/feed', () => {
             return HttpResponse.text(xmlFile);
@@ -116,7 +116,7 @@ describe("rssParser", () => {
     });
 
     test("parse mozilla hacks xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/mozillaHacks.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/mozillaHacks.xml'), 'utf8');
         
         server.use(http.get('https://hacks.mozilla.org/feed/', () => {
             return HttpResponse.text(xmlFile);
@@ -131,7 +131,7 @@ describe("rssParser", () => {
     });
 
     test("parse a list part xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alistapart.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/alistapart.xml'), 'utf8');
         
         server.use(http.get('https://alistapart.com/main/feed/', () => {
             return HttpResponse.text(xmlFile);
@@ -145,7 +145,7 @@ describe("rssParser", () => {
     });
 
     test("parse alicegg xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/alicegg.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/alicegg.xml'), 'utf8');
         
         server.use(http.get('https://alicegg.tech/feed.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -159,7 +159,7 @@ describe("rssParser", () => {
     });
 
     test("parse samnewman xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/samnewman.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/samnewman.xml'), 'utf8');
         
         server.use(http.get('https://samnewman.io/blog/feed.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -173,7 +173,7 @@ describe("rssParser", () => {
     });
 
     test("parse hackernoon xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/hackernoon.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/hackernoon.xml'), 'utf8');
         
         server.use(http.get('https://hackernoon.com/feed', () => {
             return HttpResponse.text(xmlFile);
@@ -187,7 +187,7 @@ describe("rssParser", () => {
     });
 
     test("parse jacob singh xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/jacobsingh.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/jacobsingh.xml'), 'utf8');
         
         server.use(http.get('https://jacobsingh.name/rss/', () => {
             return HttpResponse.text(xmlFile);
@@ -202,7 +202,7 @@ describe("rssParser", () => {
     });
 
     test("parse dev intruppted xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/devinteruppted.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/devinteruppted.xml'), 'utf8');
         
         server.use(http.get('https://devinterrupted.substack.com/feed', () => {
             return HttpResponse.text(xmlFile);
@@ -216,7 +216,7 @@ describe("rssParser", () => {
     });
 
     test("parse thecyberwire xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/thecyberwire.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/thecyberwire.xml'), 'utf8');
         
         server.use(http.get('https://thecyberwire.com/feeds/rss.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -229,7 +229,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     test("parse darkreading xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/darkreading.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/darkreading.xml'), 'utf8');
         
         server.use(http.get('https://www.darkreading.com/rss.xml', () => {
             return HttpResponse.text(xmlFile);
@@ -242,7 +242,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     test("parse zero day initiative xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/zerodayinitiative.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/zerodayinitiative.xml'), 'utf8');
         
         server.use(http.get('https://www.zerodayinitiative.com/blog', () => {
             return HttpResponse.text(xmlFile);
@@ -255,7 +255,7 @@ describe("rssParser", () => {
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
     test("parse uber blog xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/uberblog.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/uberblog.xml'), 'utf8');
         
         server.use(http.get('https://www.uber.com/en-AU/blog/rss/', () => {
             return HttpResponse.text(xmlFile);
@@ -269,7 +269,7 @@ describe("rssParser", () => {
     });
 
     test("parse fastcompany xml feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/fastCompanyTech.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/fastCompanyTech.xml'), 'utf8');
         
         server.use(http.get('https://www.fastcompany.com/technology/rss', () => {
             return HttpResponse.text(xmlFile);
@@ -283,7 +283,7 @@ describe("rssParser", () => {
     });
 
     test("parse Economist rss feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/economist.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/economist.xml'), 'utf8');
         server.use(http.get('https://www.economist.com/feed/rss', () => {
             return HttpResponse.text(xmlFile);
         }));
@@ -300,7 +300,7 @@ describe("rssParser", () => {
     });
 
     test("parse TowardsDataScience rss feed", async () => {
-        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/__mocks__/towardsdatascience.xml'), 'utf8');
+        const xmlFile = fs.readFileSync(path.resolve(__dirname + '/mocks/towardsdatascience.xml'), 'utf8');
         server.use(http.get('https://towardsdatascience.com/feed', () => {
             return HttpResponse.text(xmlFile);
         }));
