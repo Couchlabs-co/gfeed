@@ -1,4 +1,4 @@
-{
+export const sqsEvent = {
     "Records": [
       {
         "messageId" : "MessageID_1",

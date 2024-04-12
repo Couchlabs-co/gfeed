@@ -60,6 +60,7 @@ jobs:
       - name: run tests
         run: |
           cd packages/functions
+          ls -la tests/mocks
           bun run test
       - run: echo "🍏 This job's status is ${{ job.status }} for dev environment."
 
