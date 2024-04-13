@@ -1071,6 +1071,39 @@ const publishers = [
     "frequency": "3 hours",
     "logo": "https://www.economist.com/sites/all/themes/econfinal/images/svg/logo.svg"
   },
+  {
+    "name": "GeekWire",
+    "payWall": false,
+    "publisherUrl": "https://www.geekwire.com",
+    "feedUrl": "https://www.geekwire.com/startups/feed/",
+    "feedStatus": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "3 hours",
+    "logo": "https://www.geekwire.com/wp-content/themes/geekwire/dist/images/geekwire-logo-rss.png"
+  },
+  {
+    "name": "GeekWire",
+    "payWall": false,
+    "publisherUrl": "https://www.geekwire.com",
+    "feedUrl": "https://www.geekwire.com/sports/feed/",
+    "feedStatus": "active",
+    "feedType": "xml",
+    "primaryTag": "Sports",
+    "frequency": "3 hours",
+    "logo": "https://www.geekwire.com/wp-content/themes/geekwire/dist/images/geekwire-logo-rss.png"
+  },
+  {
+    "name": "GeekWire",
+    "payWall": false,
+    "publisherUrl": "https://www.geekwire.com",
+    "feedUrl": "https://www.geekwire.com/science/feed/",
+    "feedStatus": "active",
+    "feedType": "xml",
+    "primaryTag": "Science",
+    "frequency": "3 hours",
+    "logo": "https://www.geekwire.com/wp-content/themes/geekwire/dist/images/geekwire-logo-rss.png"
+  },
 ];
 
 const interests = [
