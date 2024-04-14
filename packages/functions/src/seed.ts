@@ -1181,7 +1181,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        // if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist") {
           // if(publisher.name === "The Economist") {
             const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
@@ -1199,7 +1199,7 @@ export async function handler(event: any) {
               },
           })
           await dbClient.send(seedCommand);
-        // }
+        }
       }
     }
 
