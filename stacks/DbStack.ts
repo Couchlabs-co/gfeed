@@ -6,8 +6,13 @@ export function DbStack({ stack }: StackContext) {
     fields: {
       publisherName: "string",
       feedUrl: "string",
+      isActive: "string"
     },
-    primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" }
+    primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" },
+    globalIndexes: {
+      feedStatusIndex: { partitionKey: "isActive" },
+      // isActiveIndex: { partitionKey: "isActive" },
+    },
   });
 
   const InterestsTable = new Table(stack, "interests", {

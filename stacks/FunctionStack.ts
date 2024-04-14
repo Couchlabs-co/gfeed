@@ -14,15 +14,32 @@ export function FunctionStack({ stack }: StackContext) {
       }
     }
   });
+
   
   const FeedQueue = new Queue(stack, "Queue", {
-    consumer: "packages/functions/src/rssParser.main",
+    consumer: {
+      function: {
+        handler: "packages/functions/src/rssParser.main",
+        description: "Function to parse RSS feed",
+        functionName: `RssParser-${stack.stage}`,
+        bind: [PostDeadLetterQueue, BigTable, PublisherTable],
+        logRetention: "three_days",
+        tracing: "active",
+      },
+      cdk: {
+        eventSource: {
+          batchSize: 1,
+        
+        }
+      }
+    },//"packages/functions/src/rssParser.main",
     cdk: {
       queue: {
         queueName: `FeedQueue-${stack.stage}`,
-        visibilityTimeout: Duration.seconds(10),
+        // visibilityTimeout: Duration.seconds(10),
         deliveryDelay: Duration.seconds(1),
-      }
+        receiveMessageWaitTime: Duration.seconds(20),
+      },
     }
   });
 
@@ -51,15 +68,10 @@ export function FunctionStack({ stack }: StackContext) {
     schedule: "cron(0 */3 * * ? *)",
     job: "packages/functions/src/rssPublishers.main",
   }).bind([PublisherTable, FeedQueue, BigTable]);
-
-  const RssParser = new Function(stack, "RssParser", {
-    handler: "packages/functions/src/rssParser.main",
-    bind: [FeedQueue, PostQueue, BigTable, PublisherTable, ImageQueue],
-    logRetention: "three_days",
-  });
-
+  
   const ImageFetcher = new Function(stack, "ImageFetcher", {
     handler: "packages/functions/src/imageFetcher.main",
+    functionName: `ImageFetcher-${stack.stage}`,
     bind: [ImageQueue, BigTable],
     logRetention: "three_days",
   });
@@ -71,7 +83,6 @@ export function FunctionStack({ stack }: StackContext) {
   return {
     FeedQueue,
     RssCron,
-    RssParser,
     ImageQueue,
     ImageFetcher
   };
