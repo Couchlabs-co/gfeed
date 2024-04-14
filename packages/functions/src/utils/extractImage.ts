@@ -24,8 +24,6 @@ export default function getImage(item: any, publisher: string) {
               imgSrc = root.querySelector('img')?.getAttribute('src') ?? "";
             }
             break;
-        case "Financial Times":
-            return item.mediaThumbnail.$.url;
         case "Martin Fowler":
             root = parse(he.decode(item.content["#text"]));
             return root.querySelector('img')?.getAttribute('src') ?? "";
@@ -71,58 +69,5 @@ export default function getImage(item: any, publisher: string) {
     }
 
     return imgSrc;
-  
-    // if(publisher === "luk6xff tech blog") {
-    //   return '';
-    // }
-  
 
-  
-    // if(publisher === "The New Stack" && item["content:encoded"]){
-    //     const match = item["content:encoded"][0].match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    //     return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
-    // }
-  
-    // if (item["content:encoded"] && item["content:encoded"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    //   const match = he.decode(item["content:encoded"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    //   return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
-    // }
-  
-    // if (item.content && item.content["#text"].match(/(<img.*)src\s*=\s*'(.+?)'/g) && publisher === "Martin Fowler") {
-    //   const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
-    //   return getImageUrl(match.slice(match.indexOf("https"),match.length-1));
-    // }
-  
-    // if (item.content && item.content["#text"] && publisher === "Sam Newman") {
-    //   const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*"(.+?)"/g);
-    //   if(match){
-    //     const imgPath = match[0].slice(match[0].indexOf('src="')+5, match[0].length-1);
-    //     return `https://samnewman.io${imgPath}`;
-    //   }
-    //   return '';
-    // }
-  
-    // if (item.content && item.content["#text"].match(/(<img.*)src\s*=\s*'(.+?)'/g)) {
-    //   const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*'(.+?)'/g)[0];
-    //   return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
-    // }
-  
-    // if (item.content && item.content["#text"] && item.content["#text"].match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    //   const match = he.decode(item.content["#text"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    //   return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
-    // }
-  
-    // if (item.description && item.description.match(/(<img.*)src\s*=\s*"(.+?)"/g) && publisher === "Alice GG") {
-    //   const match = he.decode(item["description"]).match(/(<img.*)src\s*=\s*"(.+?)"/g);
-    //   if(match){
-    //     const imgPath = match[0].slice(match[0].indexOf('src="')+5, match[0].length-1);
-    //     return `https://alicegg.tech${imgPath}`;
-    //   }
-    //   return '';
-    // }
-  
-    // if (item.description && item.description.match(/(<img.*)src\s*=\s*"(.+?)"/g)) {
-    //   const match = he.decode(item["description"]).match(/(<img.*)src\s*=\s*"(.+?)"/g)[0];
-    //   return getImageUrl(match.slice(match.indexOf('src="')+5, match.length-1));
-    // }
   }

@@ -1,6 +1,6 @@
 import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
 import { dbClient } from "./utils/dbClient";
-import { ScanCommand } from "@aws-sdk/client-dynamodb";
+import { QueryCommand } from "@aws-sdk/client-dynamodb";
 import { Table } from "sst/node/table";
 import { Queue } from "sst/node/queue";
 
@@ -9,9 +9,10 @@ const sqs = new SQSClient({
 });
 
 export async function main() {
-  const scanCommand = new ScanCommand({
+  const scanCommand = new QueryCommand({
     TableName: Table.publisher.tableName,
-    FilterExpression: "feedStatus = :status",
+    IndexName: "feedStatusIndex",
+    KeyConditionExpression: "isActive = :status",
     ExpressionAttributeValues: {
       ":status": { S: "active" },
     },

@@ -48,6 +48,7 @@ function getItemGuid(item: any, publisher: string) {
     case "Mint":
     case "NPR":
     case "Microsoft Security Response Center":
+    case "Overreacted":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
@@ -56,10 +57,10 @@ function getItemGuid(item: any, publisher: string) {
     case "Reddit":
       return he.decode(item.id.trim()).toString();
     case "Uber Blog":
-    case "Lambda the Ultimate - Programming Languages Weblog":
+    case "Lambda the Ultimate":
       return he.decode(item.link.toLowerCase().trim());
     case "The LeadTech Diet":
-    case "Overreacted":
+    case "Health & WellBeing":
       return he.decode(item.guid['#text'].trim());
     default:
       if(item.guid && typeof item.guid['#text'] === "string"){
@@ -104,7 +105,7 @@ function getItemTitle(item: any, publisher: string): string {
   return he.decode(item.title.trim());
 }
 
-export const formatItem = (item: any, publisher: string, tag: string, payWall: boolean): Record<any, AttributeValue> => {
+export const formatItem = (item: any, publisher: string, tag: string, payWall: boolean, feedUrl: string): Record<any, AttributeValue> => {
   let img = "";
 
   try {
@@ -153,7 +154,7 @@ export const formatItem = (item: any, publisher: string, tag: string, payWall: b
   
   }
   catch (error) {
-    console.log('formatItem item error', publisher, item.title);
+    console.log('formatItem item error', publisher, feedUrl, item.title);
     console.log('formatItem error', error);
   }
   return {};  

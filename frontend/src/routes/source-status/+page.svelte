@@ -1,19 +1,10 @@
 <script lang="ts">
     import Heading from '../../lib/components/Heading.svelte';
-    import { Toaster, toast } from 'svelte-french-toast';
+    import { toDate } from 'date-fns';
 
 	export let data;
 
-    /** @type {import('./$types').ActionData} */
-    export let form;
-    
     const { Items } = data.data;
-
-    if (form?.msg === "Success") {
-        toast.success("Source added successfully");
-    } else if(form !== null){
-        toast.error("Error adding source");
-    }
 
 </script>
 <div class="relative isolate overflow-hidden py-4 sm:py-4">
@@ -34,11 +25,11 @@
               <tbody>
                 <!-- row 1 -->
                 {#each Items as item, i}
-                    <tr>
-                    <th>{i}</th>
+                    <tr class="{item.crawled === 'success' ? 'bg-green-200' : 'bg-red-200'}">
+                    <th>{i+1}</th>
                     <td>{item.name}</td>
                     <td>{item.crawled}</td>
-                    <td>{item.lastCrawled}</td>
+                    <td>{toDate(Date.parse(item.lastCrawled)).toLocaleString()}</td>
                     </tr>
                 {/each}
               </tbody>

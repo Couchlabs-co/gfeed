@@ -13,7 +13,7 @@ export default function extractKeywords(item: any, publisher: string) {
       case "The New York Times":
       case "Forbes":
       case "The Guardian":
-      case "Lambda the Ultimate - Programming Languages Weblog": 
+      case "Lambda the Ultimate": 
         if(item.category && item.category.length > 1){
           keywords = item.category.map((cat: any) => cat["#text"]).join(',');
         }

@@ -64,13 +64,14 @@ export async function main(event: SQSEvent) {
       console.log(`\n skipping html feed: ${publisher} with url: ${feedUrl}`);
       break;
     }
-    console.log(`\n starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
-    const rssItems = await fetchRSSFeed(publisher, feedUrl, feedType);
-    let itemsMap = new Map<string, any>();
     try {
+      console.log(`\n starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
+      const rssItems = await fetchRSSFeed(publisher, feedUrl, feedType);
+      // console.log(`\n fetched feed: ${publisher} with url: ${feedUrl} --- ${rssItems.length}`);
+      let itemsMap = new Map<string, any>();
       const filterByPublisher = filterItems(publisher);
 
-      const parsedItems: Record<string, any>[] = filterByPublisher(rssItems).map((item: any) => formatItem(item, publisher, tag, payWall));
+      const parsedItems: Record<string, any>[] = filterByPublisher(rssItems).map((item: any) => formatItem(item, publisher, tag, payWall, feedUrl));
 
       for(const item of parsedItems) {
           itemsMap.set(item.guid.S, item);
@@ -128,14 +129,14 @@ export async function main(event: SQSEvent) {
   };
 }
 
-async function ItemToDeadLetterQ(item: any) {
-  const params = {
-    MessageBody: JSON.stringify(item),
-    QueueUrl: Queue.PostDLQ.queueUrl,
-  };
-  await sqs.send(new SendMessageCommand(params));
-  console.log("Sent message to queue", params);
-}
+// async function ItemToDeadLetterQ(item: any) {
+//   const params = {
+//     MessageBody: JSON.stringify(item),
+//     QueueUrl: Queue.PostDLQ.queueUrl,
+//   };
+//   await sqs.send(new SendMessageCommand(params));
+//   console.log("Sent message to queue", params);
+// }
 
 // function to update lastPulled time and time take for the feed
 async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, timeTaken: number, status: String) {
