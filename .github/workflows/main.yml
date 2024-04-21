@@ -14,7 +14,7 @@ jobs:
   test-front-end:
     runs-on: ubuntu-latest
     env:
-        APP_ENV: ${{ inputs.APP_ENV }}
+        APP_ENV: ${{ vars.APP_ENV }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -77,6 +77,9 @@ jobs:
       KINDE_CLIENT_SECRET: ${{ secrets.KINDE_CLIENT_SECRET }}
       KINDE_AUDIENCE: ${{ secrets.KINDE_AUDIENCE }}
       KINDE_ISSUER_URL: ${{ secrets.KINDE_ISSUER_URL }}
+      KINDE_REDIRECT_URL: ${{ vars.KINDE_REDIRECT_URL }}
+      KINDE_POST_LOGOUT_REDIRECT_URL: ${{ vars.KINDE_POST_LOGOUT_REDIRECT_URL }}
+      KINDE_POST_LOGIN_REDIRECT_URL: ${{ vars.KINDE_POST_LOGIN_REDIRECT_URL }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
