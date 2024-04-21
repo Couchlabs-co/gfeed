@@ -5,12 +5,12 @@ import { SsrDomainProps } from "sst/constructs/SsrSite";
 export function ApiStack({ stack, app }: StackContext) {
   let customDomain: SsrDomainProps | undefined;  
 
-  const Auth0APIAudience = new Config.Parameter(stack, "AUTH0_API_AUDIENCE", {
-    value: process.env.AUTH0_API_AUDIENCE ?? '',
+  const KindeAudience = new Config.Parameter(stack, "KINDE_AUDIENCE", {
+    value: process.env.KINDE_AUDIENCE ?? '',
   });
 
-  const Auth0Issuer = new Config.Parameter(stack, "AUTH0_ISSUER", {
-    value: process.env.AUTH0_ISSUER ?? '',
+  const KindeIssuer = new Config.Parameter(stack, "KINDE_ISSUER_URL", {
+    value: process.env.KINDE_ISSUER_URL ?? '',
   });
 
   const UserAPIKey = new Config.Parameter(stack, "USER_API_KEY", {
@@ -51,9 +51,9 @@ export function ApiStack({ stack, app }: StackContext) {
       function: {
         bind: [PublisherTable, InterestsTable, NewSources, BigTable],
         environment: {
-          AUTH0_API_AUDIENCE: Auth0APIAudience.value,
-          AUTH0_ISSUER: Auth0Issuer.value,
-          USER_API_KEY: UserAPIKey.value
+          USER_API_KEY: UserAPIKey.value,
+          KINDE_ISSUER_URL: KindeIssuer.value ?? '',
+          KINDE_AUDIENCE: KindeAudience.value ?? '',
         }
       },
     },
@@ -70,9 +70,8 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /interests": "packages/functions/src/interests.handler",
       "POST /search": "packages/functions/src/search.handler",
       "GET /posts/{postTitle}": "packages/functions/src/getPost.handler",
-      "GET /bookmarks/{userId}": "packages/functions/src/getBookmarks.handler",
       "POST /sources": "packages/functions/src/newSource.handler",
-      "GET /users/{userId}/profile": "packages/functions/src/userProfile.handler",
+      "POST /users/profile": "packages/functions/src/userProfile.handler",
     },
   });
 
@@ -82,6 +81,6 @@ export function ApiStack({ stack, app }: StackContext) {
 
   return {
     GFeedAPI,
-    Auth0APIAudience
+    // Auth0APIAudience
   }
 }
