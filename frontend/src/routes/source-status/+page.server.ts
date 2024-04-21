@@ -2,7 +2,6 @@ import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async (event) => {
 	try {
-		const session = await event.locals.getSession();
 	
 		const { VITE_API_URL } = import.meta.env;
 		if(!VITE_API_URL){
@@ -12,7 +11,7 @@ export const load: PageServerLoad = async (event) => {
 	
 		const data = await result.json();
 	
-		return { session, data };
+		return { data };
 	} catch(err) {
 		console.error(err);
 		return { session: {}, data: [] };

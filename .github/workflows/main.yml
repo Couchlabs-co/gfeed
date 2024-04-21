@@ -71,13 +71,18 @@ jobs:
     environment: staging
     env:
       NODE_ENV: staging
-      APP_ENV: ${{ inputs.APP_ENV }}
+      APP_ENV: ${{ vars.APP_ENV }}
       AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
       AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
       AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
       AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
       AUTH0_API_AUDIENCE: ${{ vars.AUTH0_API_AUDIENCE }}
       AUTH0_ISSUER: ${{ vars.AUTH0_ISSUER }}
+      KINDE_DOMAIN: ${{ secrets.KINDE_DOMAIN }}
+      KINDE_CLIENT_ID: ${{ secrets.KINDE_CLIENT_ID }}
+      KINDE_CLIENT_SECRET: ${{ secrets.KINDE_CLIENT_SECRET }}
+      KINDE_AUDIENCE: ${{ secrets.KINDE_API_AUDIENCE }}
+      KINDE_ISSUER_URL: ${{ secrets.KINDE_ISSUER_URL }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -124,13 +129,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
-      APP_ENV: ${{ inputs.APP_ENV }}
-      AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
-      AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-      AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
-      AUTH0_API_AUDIENCE: ${{ vars.AUTH0_API_AUDIENCE }}
-      AUTH0_ISSUER: ${{ vars.AUTH0_ISSUER }}
+      APP_ENV: ${{ vars.APP_ENV }}
+      KINDE_DOMAIN: ${{ secrets.KINDE_DOMAIN }}
+      KINDE_CLIENT_ID: ${{ secrets.KINDE_CLIENT_ID }}
+      KINDE_CLIENT_SECRET: ${{ secrets.KINDE_CLIENT_SECRET }}
+      KINDE_AUDIENCE: ${{ secrets.KINDE_API_AUDIENCE }}
+      KINDE_ISSUER_URL: ${{ secrets.KINDE_ISSUER_URL }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}

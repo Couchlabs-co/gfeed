@@ -4,31 +4,28 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Session {
-			access_token: string;
-    		id_token: string;
+			token: string;
+			idToken: string;
 			user: {
-				id: string,
-				name: string,
-				email: string,
-				image: string,
-				emailVerified: boolean,
-				login_count: number,
-				sub: string,
+				given_name: string;
+				name: string;
+				id: string;
+				family_name: string;
+				email: string;
+				picture: string | null;
 			  } & AuthSession['user'],
 			  expires: string,
 		};
 		interface Locals {
+			isAuthenticated: boolean;
 			token: string;
+			idToken: string;
 			user: {
-				id: string;
-				name: string;
+				picture: null | string;
+				family_name: string;
+				given_name: string;
 				email: string;
-				image: string;
-				emailVerified: boolean;
-				token: string;
-				login_count: number;
-				createdAt: string;
-				channel: string;
+				id: string;
 			}
 		}
 		// interface PageData {}

@@ -1,16 +1,15 @@
 <script lang="ts">
     import { format } from 'date-fns';
 
-    export let userPic: string;
+    export let userPic: string | null;
     export let userName: string;
-    export let memberSince: string;
+    // export let memberSince: string;
 
     function formatDate(date: string) {
         return format(date, "dd MMM yyyy");
     }
 </script>
 <div class="container w-4/5 rounded-md">
-    <!-- <div class="bg-white p-3 "> -->
         <div class="image overflow-hidden rounded-md">
             <img class="h-auto w-full mx-auto"
                 src={userPic}
@@ -25,12 +24,11 @@
                 <span class="ml-auto"><span
                         class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
             </li>
-            <li class="flex items-center py-3">
+            <!-- <li class="flex items-center py-3">
                 <span>Member since</span>
                 <span class="ml-auto">{memberSince ? formatDate(memberSince) :  ''}</span>
-            </li>
+            </li> -->
         </ul>
         </div>
         
-    <!-- </div> -->
 </div>

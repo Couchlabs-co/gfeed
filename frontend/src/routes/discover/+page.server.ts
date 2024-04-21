@@ -31,8 +31,12 @@ const fetchPublishers = async () => {
 	return res;
 }
 
-export const load: PageServerLoad = async (event) => {
-	const session = await event.locals.getSession();	
-	return {session, feed: await fetchFeed(session?.access_token), publishers: await fetchPublishers()};
+export const load: PageServerLoad = async ({parent}) => {
+	const {token, user} = await parent();
 
+	return {
+		feed: await fetchFeed(token), 
+		publishers: await fetchPublishers(),
+		user
+	};
 }
