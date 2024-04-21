@@ -44,7 +44,7 @@ export function WebStack({ stack, app }: StackContext) {
     customDomain,
     runtime: "nodejs18.x",
     path: "./frontend",
-    buildCommand: "pnpm run build",
+    buildCommand: "bun run build",
     environment: {
       // Pass in the API endpoint to our app
       VITE_API_URL: apiUrl,
@@ -53,7 +53,7 @@ export function WebStack({ stack, app }: StackContext) {
       VITE_WEB_API_KEY: WebAPIKey.value,
       KINDE_CLIENT_ID: process.env.KINDE_CLIENT_ID ?? '',
       KINDE_CLIENT_SECRET: process.env.KINDE_CLIENT_SECRET ?? '',
-      KINDE_ISSUER: process.env.KINDE_ISSUER ?? '',
+      KINDE_ISSUER_URL: process.env.KINDE_ISSUER_URL ?? '',
       KINDE_REDIRECT_URL: process.env.KINDE_REDIRECT_URL ?? '',
       KINDE_POST_LOGOUT_REDIRECT_URL: process.env.KINDE_POST_LOGOUT_REDIRECT_URL ?? '',
       KINDE_POST_LOGIN_REDIRECT_URL: process.env.KINDE_POST_LOGIN_REDIRECT_URL ?? '',

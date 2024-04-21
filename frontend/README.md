@@ -6,11 +6,11 @@
 ```bash
 cd frontend
 # build the project
-pnpm run build
+bun run build
 
 # test the application
-pnpm run test:coverage
+bun run test:coverage
 
 # Start the application
-pnpm run start
+bun run start
 ```
