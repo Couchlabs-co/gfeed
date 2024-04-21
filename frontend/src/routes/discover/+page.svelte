@@ -4,11 +4,9 @@
 	import ListItem from '../../lib/components/feed/ListItem.svelte';
 
 	export let data;
-	const { publishers, feed, session } = data;
+	const { publishers, feed, user } = data;
 
 	let gFeed: any = feed.Items;
-
-	const user_id = session ? session.user.id.indexOf('|') > 0 ? session.user?.id.split('|')[1] : session.user?.id : 0;
 
 	if(feed.count){
 		$gFeedStore.articles = feed.Items;
@@ -42,7 +40,7 @@
 	{#if feed.Count > 0 && listView}
 		<div class="flex flex-col w-10/12">
 			{#each gFeed as Item}
-				<ListItem Item ={Item} userId={user_id} key={Item.id}/>
+				<ListItem Item ={Item} userId={user.id} key={Item.id}/>
 			{/each}
 		</div>
 		<div class="sidePanel">
@@ -60,7 +58,7 @@
 		<div class="flex flex-col w-10/12">
 			<div class="grid grid-cols-3 gap-4">
 				{#each gFeed as Item}
-					<ColumnList Item ={Item} userId={user_id} key={Item.id}/>
+					<ColumnList Item ={Item} userId={user.id} key={Item.id}/>
 				{/each}
 
 			</div>

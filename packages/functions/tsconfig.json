@@ -3,7 +3,6 @@
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "node",
-    "baseUrl": ".",
     "paths": {
       "@cron-job/core/*": ["../core/src/*"]
     },

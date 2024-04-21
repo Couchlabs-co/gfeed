@@ -14,7 +14,7 @@
     "aws-sdk-client-mock": "^4.0.0",
     "msw": "^2.2.13",
     "sst": "2.37.0",
-    "vitest": "^0.34.4"
+    "vitest": "^1.5.0"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.395.0",

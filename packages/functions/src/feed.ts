@@ -6,6 +6,7 @@ import {jwtDecode} from "jwt-decode";
 import * as jose from 'jose';
 const he = require('he');
 import { getMonth, getYear, sub } from 'date-fns';
+import { validateToken } from "./utils/validateToken";
 
 async function getTimeBasedFeed() {
   console.log("getting time based feed");
@@ -161,6 +162,13 @@ export const handler = ApiHandler(async (evt) => {
 
   if(evt.headers.authorization) {
     const token = evt.headers.authorization?.split(" ")[1];
+    const validToken = token && await validateToken(token);
+    if(!validToken) {
+      return {
+        statusCode: 401,
+        body: JSON.stringify({ error: "Unauthorized" }),
+      }
+    }
     try {
       const userId = await getUserFromToken(token);
       result = await GetUserFeed(userId);
@@ -208,17 +216,17 @@ export const handler = ApiHandler(async (evt) => {
 });
 async function getUserFromToken(token: string) {
   const tokenHeader = await jwtDecode(token, { header: true });
-  const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.AUTH0_ISSUER}.well-known/jwks.json`));
+  const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.KINDE_ISSUER_URL}/.well-known/jwks.json`));
 
   const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
-    issuer: process.env.AUTH0_ISSUER ?? '',
-    audience: process.env.AUTH0_API_AUDIENCE ?? '',
+    issuer: process.env.KINDE_ISSUER_URL ?? '',
+    audience: process.env.KINDE_AUDIENCE ?? '',
   })
   if(tokenHeader.kid !== protectedHeader.kid) {
     throw new Error('Unforbidden');
   }
   const sub = payload.sub ?? "";
-  const userId = sub.split("|").length > 1 ? sub?.split("|")[1] : sub;
+  const userId = sub;
   return userId;
 }
 

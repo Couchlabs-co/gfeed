@@ -34,7 +34,7 @@
 
     const feedAlgoSelected = userData.interestsByAction && userData.interestsByAction.selected ? userData.interestsByAction?.selected.filter((item: any) => {
         return item.contentType === 'feedAlgo';
-    }) : [];
+    }) : [{content: 'timeBased'}];
 
     function handleAlgoChange(eventDetail: Record<string, string>) {
         toast.success('Feed algorithm saved successfully');
@@ -56,29 +56,16 @@
         <a href="/login" class="btn btn-primary">Login</a>
     </div>
 {:else}
-    <!-- <div class="grid grid-col-2 gap-1 h-auto border border-black content-start">
-        <div class="col-span-3 my-auto">
-            <Heading heading={data.user?.name} />
-        </div>
-        <div class="row-span-2 my-auto">
-            <ProfileCard userName={data.user?.name} userPic={data.user?.image} memberSince={data.user?.createdAt} />
-        </div>
-        <div class="col-span-2 my-auto place-items-start">
-            <UserStats data={data} />
-        </div>
-        <div class="col-span-2 border border-black">
-            <FeedAlgoOptions />
-        </div> -->
         <div class="relative isolate overflow-hidden py-4 sm:py-4">
-            <Heading heading={data.user?.name} />
+            <Heading heading={data.user?.given_name} />
             <Toaster />
             <div class="grid grid-flow-row-dense grid-cols-4 grid-rows-1 m-2">
                 <div class="rounded-md w-auto">
-                    <ProfileCard userName={data.user?.name} userPic={data.user?.image} memberSince={data.user?.createdAt} />
+                    <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} />
                 </div>
                 <div class="col-span-2 w-full rounded-md ">
                     <UserStats data={data} />
-                    <FeedAlgoOptions selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
+                    <FeedAlgoOptions userId={userId} selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
                     <div class="grid grid-cols-1 m-4 w-full">
                         <div class="tabs">
                             {#each tabs as tab, i}
@@ -99,5 +86,4 @@
                 </div>
             </div>
         </div>
-    <!-- </div> -->
 {/if}

@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { signIn, signOut } from '@auth/sveltekit/client';
+
 	import { page } from "$app/stores";
 	import ProfilePic from '../components/ProfileHeader.svelte';
-	import SearchBox from '../components/Search/SearchBox.svelte';
 
 	const navLinks = [
 		{ name: 'Discover', href: '/discover' },
@@ -12,11 +11,6 @@
 		{ name: 'Profile', href: '/profile' },
 	];
 
-	const SignOut = () => {
-		signOut({
-			callbackUrl: `${$page.url.origin}`,
-		});
-	};
 
 </script>
 
@@ -49,32 +43,19 @@
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 		<ul class="menu menu-horizontal px-1">
-		{#if Object.keys($page.data.session || {}).length}
-			{#if $page.data.session?.user}
+		{#if $page.data.user}
 				<li>
-					<button type="button" on:click={SignOut} class="text-sm font-semibold leading-6 text-gray-900">
-						Log Out
-					</button>
+					<a href="/api/auth/logout" class="text-sm font-semibold leading-6 text-gray-900" aria-current="page" data-sveltekit-preload-data="off">Log Out</a>
 				</li>
-			{/if}
 		{:else}
 			<li>
-				<button type="button" on:click={() => signIn(
-					'auth0', {
-						redirect: false,
-						callbackUrl: `${$page.url.origin}`,
-					},
-					{
-						scope: 'api openid profile email offline_access'
-					}
-				)} class="text-sm font-semibold leading-6 text-gray-900">
-					Log In
-				</button>
+
+				<a href='/api/auth/login' class="text-sm font-semibold leading-6 text-gray-900" aria-current="page" data-sveltekit-preload-data="off">Sign In</a>
 			</li>
 		{/if}
 		</ul>
-		{#if $page.data.session?.user?.name}
-			<ProfilePic pic={$page.data.session?.user?.image ?? ''}/>
+		{#if $page.data.user?.picture}
+			<ProfilePic pic={$page.data.user?.picture ?? ''}/>
 		{/if}
 		  </div>
 	</nav>
