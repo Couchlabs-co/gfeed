@@ -58,7 +58,7 @@
 		<div class="flex flex-col w-10/12">
 			<div class="grid grid-cols-3 gap-4">
 				{#each gFeed as Item}
-					<ColumnList Item ={Item} userId={user.id} key={Item.id}/>
+					<ColumnList Item ={Item} userId={user?.id} key={Item.id}/>
 				{/each}
 
 			</div>
