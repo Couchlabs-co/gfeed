@@ -42,6 +42,7 @@ export function DbStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "pk", sortKey: "sk" },
     globalIndexes: { 
       tagPubDateIndex: { partitionKey: "tag", sortKey: "pubDate" },
+      timeIndex: { partitionKey: "pk", sortKey: "pubDate" },
     },
   });
   
