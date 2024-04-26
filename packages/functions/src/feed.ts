@@ -37,12 +37,13 @@ async function getTimeBasedFeed() {
     feedRange.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
         TableName: Table.bigTable.tableName,
+        IndexName: 'timeIndex',
         KeyConditionExpression: "pk = :pk",
         ExpressionAttributeValues: {
           ":pk": { S: `${key}` },
         },
-        Limit: 150,
-        ConsistentRead: true,
+        Limit: 300,
+        ScanIndexForward: false,
       });
       let { Count, Items } = await dbClient.send(command);
       result.Count += Count ?? 0;
