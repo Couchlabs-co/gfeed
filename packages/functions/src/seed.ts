@@ -1104,6 +1104,193 @@ const publishers = [
     "frequency": "3 hours",
     "logo": "https://www.geekwire.com/wp-content/themes/geekwire/dist/images/geekwire-logo-rss.png"
   },
+  {
+    "name": "Ed Zitron's Where's Your Ed At",
+    "payWall": false,
+    "publisherUrl": "https://www.wheresyoured.at",
+    "feedUrl": "https://www.wheresyoured.at/rss/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "24 hours",
+    "logo": "https://www.wheresyoured.at/favicon.png"
+  },
+  {
+    "name": "Verve Magazine",
+    "payWall": false,
+    "publisherUrl": "https://www.vervemagazine.in",
+    "feedUrl": "https://feeds.feedburner.com/vervemagazine/ilGx",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Entertainment",
+    "frequency": "6 hours",
+    "logo": "https://www.vervemagazine.in/wp-content/uploads/2014/01/cropped-Untitled-1-32x32.png"
+  },
+  {
+    "name": "CineBlitz",
+    "payWall": false,
+    "publisherUrl": "https://cineblitz.in/",
+    "feedUrl": "https://cineblitz.in/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Entertainment",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Netflix Technology Blog",
+    "payWall": true,
+    "publisherUrl": "https://medium.com/@netflixtechblog?source=rss-c3aeaf49d8a4------2",
+    "feedUrl": "https://medium.com/feed/@netflixtechblog",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Entertainment",
+    "frequency": "24 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*BJWRqfSMf9Da9vsXG9EBRQ.jpeg"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/technology",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/artificial-intelligence",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/machine-learning",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/ai",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/programming",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/devops",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/culture",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Culture",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/society",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Culture",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/politics",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Politics",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/travel",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Travel",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/nature",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Travel",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/world",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "World",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Medium",
+    "payWall": true,
+    "publisherUrl": "https://medium.com",
+    "feedUrl": "https://medium.com/feed/tag/entertainment",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Entertainment",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
 ];
 
 const interests = [
@@ -1181,7 +1368,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "CineBlitz") {
           // if(publisher.name === "The Economist") {
             const seedCommand = new PutItemCommand({
               TableName: Table.publisher.tableName,
