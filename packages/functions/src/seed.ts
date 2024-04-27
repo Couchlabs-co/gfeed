@@ -379,6 +379,17 @@ const publishers = [
     "logo": "https://news.ycombinator.com/y18.svg"
   },
   {
+    "name": "Hacker News",
+    "payWall": false,
+    "publisherUrl": "https://news.ycombinator.com",
+    "feedUrl": "https://hnrss.org/newest",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "3 hours",
+    "logo": "https://news.ycombinator.com/y18.svg"
+  },
+  {
     "name": "Damien Aicheh",
     "payWall": false,
     "publisherUrl": "https://damienaicheh.github.io",
