@@ -15,6 +15,17 @@ export function DbStack({ stack }: StackContext) {
     },
   });
 
+  const FeedbackTable = new Table(stack, "feedback", {
+    fields: {
+      fullName: "string",
+      email: "string",
+      topic: "string",
+      feedback: "string",
+      created: "number",
+    },
+    primaryIndex: { partitionKey: "email", sortKey: "created" },
+  });
+
   const InterestsTable = new Table(stack, "interests", {
     fields: {
       id: "string",
@@ -61,6 +72,7 @@ export function DbStack({ stack }: StackContext) {
 
   return {
     PublisherTable,
+    FeedbackTable,
     InterestsTable,
     NewSources,
     BigTable,

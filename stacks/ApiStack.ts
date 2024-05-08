@@ -43,13 +43,13 @@ export function ApiStack({ stack, app }: StackContext) {
       customDomain =  undefined;
   };
   
-  const { PublisherTable, InterestsTable, NewSources, BigTable } = use(DbStack);
+  const { PublisherTable, FeedbackTable, InterestsTable, NewSources, BigTable } = use(DbStack);
 
   const GFeedAPI = new Api(stack, "GFeedAPI", {
     customDomain,
     defaults: {
       function: {
-        bind: [PublisherTable, InterestsTable, NewSources, BigTable],
+        bind: [PublisherTable, InterestsTable, NewSources, BigTable, FeedbackTable],
         environment: {
           USER_API_KEY: UserAPIKey.value,
           KINDE_ISSUER_URL: KindeIssuer.value ?? '',
@@ -65,13 +65,13 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /users/{userId}": "packages/functions/src/getUser.handler",
       "GET /users/{userId}/interests": "packages/functions/src/userInterests.handler",
       "POST /users/action": "packages/functions/src/userAction.handler",
-      "POST /users/action/dislike": "packages/functions/src/userAction.handler",
       "GET /publishers": "packages/functions/src/publishers.handler",
       "GET /interests": "packages/functions/src/interests.handler",
       "POST /search": "packages/functions/src/search.handler",
       "GET /posts/{postTitle}": "packages/functions/src/getPost.handler",
       "POST /sources": "packages/functions/src/newSource.handler",
       "POST /users/profile": "packages/functions/src/userProfile.handler",
+      "POST /feedback": "packages/functions/src/feedback.handler",
     },
   });
 

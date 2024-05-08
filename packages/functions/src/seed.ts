@@ -1164,7 +1164,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/technology",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "6 hours",
@@ -1175,7 +1175,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/artificial-intelligence",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "6 hours",
@@ -1186,7 +1186,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/machine-learning",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "6 hours",
@@ -1197,18 +1197,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/ai",
-    "isActive": "active",
-    "feedType": "xml",
-    "primaryTag": "Tech",
-    "frequency": "6 hours",
-    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
-  },
-  {
-    "name": "Medium",
-    "payWall": true,
-    "publisherUrl": "https://medium.com",
-    "feedUrl": "https://medium.com/feed/tag/programming",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "6 hours",
@@ -1219,7 +1208,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/devops",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Tech",
     "frequency": "6 hours",
@@ -1230,7 +1219,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/culture",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Culture",
     "frequency": "6 hours",
@@ -1241,7 +1230,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/society",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Culture",
     "frequency": "6 hours",
@@ -1251,19 +1240,8 @@ const publishers = [
     "name": "Medium",
     "payWall": true,
     "publisherUrl": "https://medium.com",
-    "feedUrl": "https://medium.com/feed/tag/politics",
-    "isActive": "active",
-    "feedType": "xml",
-    "primaryTag": "Politics",
-    "frequency": "6 hours",
-    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
-  },
-  {
-    "name": "Medium",
-    "payWall": true,
-    "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/travel",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Travel",
     "frequency": "6 hours",
@@ -1274,7 +1252,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/nature",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Travel",
     "frequency": "6 hours",
@@ -1285,7 +1263,7 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/world",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "World",
     "frequency": "6 hours",
@@ -1296,11 +1274,66 @@ const publishers = [
     "payWall": true,
     "publisherUrl": "https://medium.com",
     "feedUrl": "https://medium.com/feed/tag/entertainment",
-    "isActive": "active",
+    "isActive": "Inactive",
     "feedType": "xml",
     "primaryTag": "Entertainment",
     "frequency": "6 hours",
     "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Swiftjective-C",
+    "payWall": false,
+    "publisherUrl": "https://swiftjectivec.com/",
+    "feedUrl": "https://swiftjectivec.com/feed.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Deku",
+    "payWall": false,
+    "publisherUrl": "https://deku.posstree.com/en/",
+    "feedUrl": "https://deku.posstree.com/en/feed.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "CodingWithTashi",
+    "payWall": false,
+    "publisherUrl": "https://codingwithtashi.medium.com",
+    "feedUrl": "https://codingwithtashi.medium.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*E0snBlET16d0i5aSY9H8Gw.jpeg"
+  },
+  {
+    "name": "ITNEXT",
+    "payWall": false,
+    "publisherUrl": "https://itnext.io",
+    "feedUrl": "https://itnext.io/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/proxy/1*TGH72Nnw24QL3iV9IOm4VA.png"
+  },
+  {
+    "name": "Ximya",
+    "payWall": false,
+    "publisherUrl": "https://medium.com/@ximya",
+    "feedUrl": "https://medium.com/@ximya/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*Iq4-bb159lSKVrb_exoOPw.png"
   },
 ];
 
@@ -1380,23 +1413,42 @@ export async function handler(event: any) {
     } else {
       for (const publisher of publishers) {
         if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "CineBlitz") {
-          // if(publisher.name === "The Economist") {
-            const seedCommand = new PutItemCommand({
-              TableName: Table.publisher.tableName,
-              Item: {
-                  id: { S: v4() },
-                  publisherName: { S: publisher.name },
-                  feedUrl: { S: publisher.feedUrl },
-                  feedType: { S: publisher.feedType },
-                  isActive: { S: publisher.isActive },
-                  feedStatus: { S: publisher.isActive },
-                  publisherUrl: { S: publisher.publisherUrl ?? "" },
-                  logo: { S: publisher.logo ?? "" },
-                  primaryTag: { S: publisher.primaryTag ?? "" },
-                  payWall: { BOOL: publisher.payWall ?? false },
-              },
-          })
-          await dbClient.send(seedCommand);
+        // if(publisher.name === "TechCrunch") {
+          const updateCommand = new UpdateItemCommand({
+            TableName: Table.publisher.tableName,
+            Key: {
+              publisherName: { S: publisher.name },
+              feedUrl: { S: publisher.feedUrl}
+            },
+            UpdateExpression: "SET isActive = :isActive, feedType = :feedType, logo = :logo, primaryTag = :primaryTag, payWall = :payWall, id = if_not_exists(id, :id)",
+            // ExpressionAttributeNames: { "#isActive": "isActive", "#feedType": "feedType", "#logo": "logo", "#primaryTag": "primaryTag", "#payWall": "payWall", "#id": "id" },
+            ExpressionAttributeValues: {
+                ":isActive": { S: publisher.isActive },
+                ":feedType": { S: publisher.feedType },
+                ":logo": { S: publisher.logo ?? '' },
+                ":primaryTag": { S: publisher.primaryTag ?? '' },
+                ":payWall": { BOOL: publisher.payWall ?? false },
+                ":id": { S: v4() },
+            },
+            // ConditionExpression: "attribute_not_exists(feedUrl) AND attribute_not_exists(publisherName)",
+            // ReturnValuesOnConditionCheckFailure: "ALL_OLD"
+          });
+            // const seedCommand = new PutItemCommand({
+            //   TableName: Table.publisher.tableName,
+            //   Item: {
+            //       id: { S: v4() },
+            //       publisherName: { S: publisher.name },
+            //       feedUrl: { S: publisher.feedUrl },
+            //       feedType: { S: publisher.feedType },
+            //       isActive: { S: publisher.isActive },
+            //       // feedStatus: { S: publisher.isActive },
+            //       publisherUrl: { S: publisher.publisherUrl ?? "" },
+            //       logo: { S: publisher.logo ?? "" },
+            //       primaryTag: { S: publisher.primaryTag ?? "" },
+            //       payWall: { BOOL: publisher.payWall ?? false },
+            //   },
+          // })
+          await dbClient.send(updateCommand);
         }
       }
     }
