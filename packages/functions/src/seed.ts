@@ -1410,19 +1410,10 @@ export async function handler(event: any) {
           },
         });
         await dbClient.send(updateCommand);
-        const deleteCommand = new UpdateItemCommand({
-          TableName: Table.publisher.tableName,
-          Key: {
-            publisherName: { S: publisher.name },
-            feedUrl: { S: publisher.feedUrl}
-          },
-          UpdateExpression: "REMOVE feedStatus",
-        });
-        await dbClient.send(deleteCommand);
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "CineBlitz") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {
