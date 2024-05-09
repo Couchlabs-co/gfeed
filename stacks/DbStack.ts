@@ -9,10 +9,10 @@ export function DbStack({ stack }: StackContext) {
       isActive: "string"
     },
     primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" },
-    globalIndexes: {
-      feedStatusIndex: { partitionKey: "isActive" },
+    // globalIndexes: {
+      // feedStatusIndex: { partitionKey: "isActive" },
       // isActiveIndex: { partitionKey: "isActive" },
-    },
+    // },
   });
 
   const FeedbackTable = new Table(stack, "feedback", {

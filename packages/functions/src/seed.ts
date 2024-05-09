@@ -1393,21 +1393,6 @@ export async function handler(event: any) {
 
     if (env === "production") {
       for (const publisher of publishers) {
-        // const seedCommand = new PutItemCommand({
-        //     TableName: Table.publisher.tableName,
-        //     Item: {
-        //         id: { S: v4() },
-        //         publisherName: { S: publisher.name },
-        //         feedUrl: { S: publisher.feedUrl },
-        //         feedType: { S: publisher.feedType },
-        //         isActive: { S: publisher.isActive },
-        //         feedStatus: { S: publisher.isActive },
-        //         publisherUrl: { S: publisher.publisherUrl ?? "" },
-        //         logo: { S: publisher.logo ?? "" },
-        //         primaryTag: { S: publisher.primaryTag ?? "" },
-        //         payWall: { BOOL: publisher.payWall ?? false },
-        //     },
-        // })
         const updateCommand = new UpdateItemCommand({
           TableName: Table.publisher.tableName,
           Key: {
@@ -1425,11 +1410,19 @@ export async function handler(event: any) {
           },
         });
         await dbClient.send(updateCommand);
+        const deleteCommand = new UpdateItemCommand({
+          TableName: Table.publisher.tableName,
+          Key: {
+            publisherName: { S: publisher.name },
+            feedUrl: { S: publisher.feedUrl}
+          },
+          UpdateExpression: "REMOVE feedStatus",
+        });
+        await dbClient.send(deleteCommand);
       }
     } else {
       for (const publisher of publishers) {
         if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "CineBlitz") {
-        // if(publisher.name === "TechCrunch") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {
@@ -1437,7 +1430,6 @@ export async function handler(event: any) {
               feedUrl: { S: publisher.feedUrl}
             },
             UpdateExpression: "SET isActive = :isActive, feedType = :feedType, logo = :logo, primaryTag = :primaryTag, payWall = :payWall, id = if_not_exists(id, :id)",
-            // ExpressionAttributeNames: { "#isActive": "isActive", "#feedType": "feedType", "#logo": "logo", "#primaryTag": "primaryTag", "#payWall": "payWall", "#id": "id" },
             ExpressionAttributeValues: {
                 ":isActive": { S: publisher.isActive },
                 ":feedType": { S: publisher.feedType },
@@ -1446,24 +1438,8 @@ export async function handler(event: any) {
                 ":payWall": { BOOL: publisher.payWall ?? false },
                 ":id": { S: v4() },
             },
-            // ConditionExpression: "attribute_not_exists(feedUrl) AND attribute_not_exists(publisherName)",
-            // ReturnValuesOnConditionCheckFailure: "ALL_OLD"
           });
-            // const seedCommand = new PutItemCommand({
-            //   TableName: Table.publisher.tableName,
-            //   Item: {
-            //       id: { S: v4() },
-            //       publisherName: { S: publisher.name },
-            //       feedUrl: { S: publisher.feedUrl },
-            //       feedType: { S: publisher.feedType },
-            //       isActive: { S: publisher.isActive },
-            //       // feedStatus: { S: publisher.isActive },
-            //       publisherUrl: { S: publisher.publisherUrl ?? "" },
-            //       logo: { S: publisher.logo ?? "" },
-            //       primaryTag: { S: publisher.primaryTag ?? "" },
-            //       payWall: { BOOL: publisher.payWall ?? false },
-            //   },
-          // })
+
           await dbClient.send(updateCommand);
         }
       }
