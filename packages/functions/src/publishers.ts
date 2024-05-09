@@ -10,9 +10,9 @@ export const handler = ApiHandler(async (evt) => {
   const scanCommand: ScanCommand = new ScanCommand({
     TableName: Table.publisher.tableName,
     IndexName: "isActiveIndex", 
-    FilterExpression: "feedStatus = :feedStatus",
+    FilterExpression: "isActive = :isActive",
     ExpressionAttributeValues: {
-        ":feedStatus": { S: 'active' },
+        ":isActive": { S: 'active' },
     },
   });
 
