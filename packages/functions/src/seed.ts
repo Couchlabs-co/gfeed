@@ -1393,22 +1393,38 @@ export async function handler(event: any) {
 
     if (env === "production") {
       for (const publisher of publishers) {
-        const seedCommand = new PutItemCommand({
-            TableName: Table.publisher.tableName,
-            Item: {
-                id: { S: v4() },
-                publisherName: { S: publisher.name },
-                feedUrl: { S: publisher.feedUrl },
-                feedType: { S: publisher.feedType },
-                isActive: { S: publisher.isActive },
-                feedStatus: { S: publisher.isActive },
-                publisherUrl: { S: publisher.publisherUrl ?? "" },
-                logo: { S: publisher.logo ?? "" },
-                primaryTag: { S: publisher.primaryTag ?? "" },
-                payWall: { BOOL: publisher.payWall ?? false },
-            },
-        })
-        await dbClient.send(seedCommand);
+        // const seedCommand = new PutItemCommand({
+        //     TableName: Table.publisher.tableName,
+        //     Item: {
+        //         id: { S: v4() },
+        //         publisherName: { S: publisher.name },
+        //         feedUrl: { S: publisher.feedUrl },
+        //         feedType: { S: publisher.feedType },
+        //         isActive: { S: publisher.isActive },
+        //         feedStatus: { S: publisher.isActive },
+        //         publisherUrl: { S: publisher.publisherUrl ?? "" },
+        //         logo: { S: publisher.logo ?? "" },
+        //         primaryTag: { S: publisher.primaryTag ?? "" },
+        //         payWall: { BOOL: publisher.payWall ?? false },
+        //     },
+        // })
+        const updateCommand = new UpdateItemCommand({
+          TableName: Table.publisher.tableName,
+          Key: {
+            publisherName: { S: publisher.name },
+            feedUrl: { S: publisher.feedUrl}
+          },
+          UpdateExpression: "SET isActive = :isActive, feedType = :feedType, logo = :logo, primaryTag = :primaryTag, payWall = :payWall, id = if_not_exists(id, :id)",
+          ExpressionAttributeValues: {
+              ":isActive": { S: publisher.isActive },
+              ":feedType": { S: publisher.feedType },
+              ":logo": { S: publisher.logo ?? '' },
+              ":primaryTag": { S: publisher.primaryTag ?? '' },
+              ":payWall": { BOOL: publisher.payWall ?? false },
+              ":id": { S: v4() },
+          },
+        });
+        await dbClient.send(updateCommand);
       }
     } else {
       for (const publisher of publishers) {
