@@ -1413,7 +1413,8 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
+        // if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
+          if(publisher.name === "Deku" || publisher.name === "Swiftjective-C") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {
