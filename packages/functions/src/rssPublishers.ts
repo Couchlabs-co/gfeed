@@ -11,7 +11,7 @@ const sqs = new SQSClient({
 export async function main() {
   const scanCommand = new QueryCommand({
     TableName: Table.publisher.tableName,
-    IndexName: "feedStatusIndex",
+    IndexName: "isActiveIndex",
     KeyConditionExpression: "isActive = :status",
     ExpressionAttributeValues: {
       ":status": { S: "active" },

@@ -1,4 +1,4 @@
-import { ScanCommand, ScanCommandOutput } from "@aws-sdk/client-dynamodb";
+import { QueryCommand, QueryCommandOutput } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
@@ -7,16 +7,16 @@ export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
   const uniq = evt.queryStringParameters?.uniq;
   
-  const scanCommand: ScanCommand = new ScanCommand({
+  const queryCommand: QueryCommand = new QueryCommand({
     TableName: Table.publisher.tableName,
-    IndexName: "isActiveIndex", 
-    FilterExpression: "isActive = :isActive",
+    IndexName: "isActiveIndex",
+    KeyConditionExpression: "isActive = :status",
     ExpressionAttributeValues: {
-        ":isActive": { S: 'active' },
+      ":status": { S: "active" },
     },
   });
 
-  const {Count, Items}: ScanCommandOutput = await dbClient.send(scanCommand);
+  const {Count, Items}: QueryCommandOutput = await dbClient.send(queryCommand);
 
   const publishers = <any>[];
 
@@ -38,7 +38,7 @@ export const handler = ApiHandler(async (evt) => {
             logo: item.logo?.S,
             tag: item.primaryTag.S,
             crawled: item.crawledStatus?.S ?? 'Not Crawled',
-            lastCrawled: item.lastCrawled?.S ?? '---',
+            lastCrawled: item.lastCrawled?.S ?? '',
             payWalled: item.payWall?.S ?? 'No',
         });
       }
