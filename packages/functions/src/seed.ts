@@ -1335,6 +1335,17 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*Iq4-bb159lSKVrb_exoOPw.png"
   },
+  {
+    "name": "footballlondon",
+    "payWall": false,
+    "publisherUrl": "https://www.football.london",
+    "feedUrl": "https://www.football.london/?service=rss",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Sports",
+    "frequency": "6 hours",
+    "logo": ""
+  },
 ];
 
 const interests = [
@@ -1438,11 +1449,14 @@ export async function handler(event: any) {
     }
 
     for (const interest of interests) {
-      const seedCommand = new PutItemCommand({
+      const seedCommand = new UpdateItemCommand({
           TableName: Table.interests.tableName,
-          Item: {
-              id: { S: v4() },
+          Key: {
               interestName: { S: interest.name },
+          },
+          UpdateExpression: "SET id = if_not_exists(id, :id)",
+          ExpressionAttributeValues: {
+              ":id": { S: v4() },
           },
       })
       await dbClient.send(seedCommand);
