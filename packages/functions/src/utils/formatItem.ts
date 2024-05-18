@@ -96,7 +96,7 @@ function getItemDescription(item: any, publisher: string) {
   }
   if(item.description && item.description['#text']){
     return he.decode(item.description['#text'].trim());
-  } else {
+  } else if(item.description){
     return he.decode(item.description.trim());
   }
   return '';
