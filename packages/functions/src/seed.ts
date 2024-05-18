@@ -293,6 +293,17 @@ const publishers = [
     "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
   },
   {
+    "name": "The Wall Street Journal",
+    "payWall": true,
+    "publisherUrl": "https://www.wsj.com",
+    "feedUrl": "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Business",
+    "frequency": "3 hours",
+    "logo":"http://online.wsj.com/img/wsj_sm_logo.gif"
+  },
+  {
     "name": "FAST COMPANY",
     "payWall": false,
     "publisherUrl": "https://www.fastcompany.com",
@@ -374,7 +385,7 @@ const publishers = [
     "feedUrl": "https://hnrss.org/frontpage",
     "isActive": "active",
     "feedType": "xml",
-    "primaryTag": "Tech",
+    "primaryTag": "Misc",
     "frequency": "3 hours",
     "logo": "https://news.ycombinator.com/y18.svg"
   },
@@ -385,7 +396,7 @@ const publishers = [
     "feedUrl": "https://hnrss.org/newest",
     "isActive": "active",
     "feedType": "xml",
-    "primaryTag": "Tech",
+    "primaryTag": "Misc",
     "frequency": "3 hours",
     "logo": "https://news.ycombinator.com/y18.svg"
   },
@@ -1346,6 +1357,369 @@ const publishers = [
     "frequency": "6 hours",
     "logo": ""
   },
+  {
+    "name": "Business Insider",
+    "payWall": false,
+    "publisherUrl": "https://www.businessinsider.com",
+    "feedUrl": "https://feeds.businessinsider.com/custom/all",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Inc. Australia",
+    "payWall": false,
+    "publisherUrl": "https://www.inc-aus.com/",
+    "feedUrl": "https://www.inc-aus.com/startup/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Startup",
+    "frequency": "6 hours",
+    "logo": "https://www.inc-aus.com/wp-content/uploads/sites/2/2023/06/cropped-android-chrome-512x512-1.png?w=32"
+  },
+  {
+    "name": "Inc. Australia",
+    "payWall": false,
+    "publisherUrl": "https://www.inc-aus.com/",
+    "feedUrl": "https://www.inc-aus.com/technology/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://www.inc-aus.com/wp-content/uploads/sites/2/2023/06/cropped-android-chrome-512x512-1.png?w=32"
+  },
+  {
+    "name": "Inc. Australia",
+    "payWall": false,
+    "publisherUrl": "https://www.inc-aus.com/",
+    "feedUrl": "https://www.inc-aus.com/money/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://www.inc-aus.com/wp-content/uploads/sites/2/2023/06/cropped-android-chrome-512x512-1.png?w=32"
+  },
+  {
+    "name": "Inc. Australia",
+    "payWall": false,
+    "publisherUrl": "https://www.inc-aus.com/",
+    "feedUrl": "https://www.inc-aus.com/grow/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://www.inc-aus.com/wp-content/uploads/sites/2/2023/06/cropped-android-chrome-512x512-1.png?w=32"
+  },
+  {
+    "name": "The Verge",
+    "payWall": false,
+    "publisherUrl": "https://www.theverge.com/",
+    "feedUrl": "https://www.theverge.com/tech/rss/index.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "The Verge",
+    "payWall": false,
+    "publisherUrl": "https://www.theverge.com/",
+    "feedUrl": "https://www.theverge.com/science/rss/index.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Science",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "House Inhabit",
+    "payWall": false,
+    "publisherUrl": "https://jessicareedkraus.substack.com/",
+    "feedUrl": "https://jessicareedkraus.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Misc",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Konstantin Fedorov",
+    "payWall": true,
+    "publisherUrl": "https://medium.com/@kmorpex",
+    "feedUrl": "https://medium.com/@kmorpex/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*C5qV532IaRbrpUpBiaRo_g.jpeg"
+  },
+  {
+    "name": "Dr Milan Milanović",
+    "payWall": true,
+    "publisherUrl": "https://medium.com/@techworldwithmilan/",
+    "feedUrl": "https://medium.com/@techworldwithmilan/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*wZUTkEo2bOKA8xyaQI8Bcg.png"
+  },
+  {
+    "name": "chubernetes",
+    "payWall": true,
+    "publisherUrl": "https://medium.com/@chubernetes",
+    "feedUrl": "https://medium.com/@chubernetes/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*P_haSJGjDsF632omCaKe7g.jpeg"
+  },
+  {
+    "name": "Tutorials Dojo",
+    "payWall": false,
+    "publisherUrl": "https://tutorialsdojo.com",
+    "feedUrl": "https://tutorialsdojo.com/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://tutorialsdojo.com/wp-content/uploads/2018/09/cropped-tutorialsdojo_logo.008-1-32x32.png"
+  },
+  {
+    "name": "AppleInsider News",
+    "payWall": false,
+    "publisherUrl": "https://appleinsider.com",
+    "feedUrl": "https://appleinsider.com/rss/news",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Engadget",
+    "payWall": false,
+    "publisherUrl": "https://www.engadget.com",
+    "feedUrl": "https://www.engadget.com/rss.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "SemiAnalysis",
+    "payWall": true,
+    "publisherUrl": "https://www.semianalysis.com",
+    "feedUrl": "https://www.semianalysis.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F0150776c-9bf2-4bea-a9c2-41b24b7a0f15_1280x1280.png"
+  },
+  {
+    "name": "ByteByteGo",
+    "payWall": true,
+    "publisherUrl": "https://blog.bytebytego.com",
+    "feedUrl": "https://blog.bytebytego.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F8a5609ae-1239-4400-9491-6010a15c4d60_504x504.png"
+  },
+  {
+    "name": "Chamath Palihapitiya",
+    "payWall": true,
+    "publisherUrl": "https://chamath.substack.com",
+    "feedUrl": "https://chamath.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4c2e90df-6f98-44ee-8091-3e7df4079133_1280x1280.png"
+  },
+  {
+    "name": "Refactoring",
+    "payWall": true,
+    "publisherUrl": "https://refactoring.fm",
+    "feedUrl": "https://refactoring.fm/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe57a54d5-269e-4c2e-9e54-10a1e9e92821_1000x1000.png"
+  },
+  {
+    "name": "TheSequence",
+    "payWall": true,
+    "publisherUrl": "https://thesequence.substack.com",
+    "feedUrl": "https://thesequence.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F7c763928-9762-43a0-a55f-9ee9040fa6e1_210x210.png"
+  },
+  {
+    "name": "Uncharted Territories",
+    "payWall": true,
+    "publisherUrl": "https://unchartedterritories.tomaspueyo.com",
+    "feedUrl": "https://unchartedterritories.tomaspueyo.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Misc",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc92decb6-7c5c-4053-bc05-651e5548e9b3_1280x1280.png"
+  },
+  {
+    "name": "Product Growth",
+    "payWall": true,
+    "publisherUrl": "https://www.news.aakashg.com",
+    "feedUrl": "https://www.news.aakashg.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F266f66c3-ca9f-4c0b-93a7-b1dc6ed89901_512x512.png"
+  },
+  {
+    "name": "Computer, Enhance!",
+    "payWall": true,
+    "publisherUrl": "https://www.computerenhance.com",
+    "feedUrl": "https://www.computerenhance.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe4c646b6-92ad-4e9d-95da-e629e19689f4_800x800.png"
+  },
+  {
+    "name": "Newcomer",
+    "payWall": true,
+    "publisherUrl": "https://www.newcomer.co",
+    "feedUrl": "https://www.newcomer.co/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F501f7a60-67b4-4c7f-90b9-a6737a9585e2_256x256.png"
+  },
+  {
+    "name": "Vittles",
+    "payWall": true,
+    "publisherUrl": "https://www.vittlesmagazine.com",
+    "feedUrl": "https://www.vittlesmagazine.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Food",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F22483f4a-7bc4-4df5-ac59-788909dd6d12_256x256.png"
+  },
+  {
+    "name": "Caroline Chambers",
+    "payWall": true,
+    "publisherUrl": "https://whattocook.substack.com",
+    "feedUrl": "https://whattocook.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Food",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc2b7842f-cbce-4832-a087-6c20a1ff83f8_1024x1024.png"
+  },
+  {
+    "name": "Alison Roman",
+    "payWall": true,
+    "publisherUrl": "https://anewsletter.alisoneroman.com",
+    "feedUrl": "https://anewsletter.alisoneroman.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Food",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F2a9a324c-bd6b-42b1-8f9f-64909f1cac85_1006x1006.png"
+  },
+  {
+    "name": "David Lebovitz",
+    "payWall": true,
+    "publisherUrl": "https://davidlebovitz.substack.com",
+    "feedUrl": "https://davidlebovitz.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Food",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F5949c044-cea6-4bfc-a0c1-f18d437198f4_1280x1280.png"
+  },
+  {
+    "name": "Lenny Rachitsky",
+    "payWall": true,
+    "publisherUrl": "https://www.lennysnewsletter.com",
+    "feedUrl": "https://www.lennysnewsletter.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F40b73d36-7447-4f52-83b5-4bbf44b9324a_1200x1200.png"
+  },
+  {
+    "name": "Citrini Research",
+    "payWall": true,
+    "publisherUrl": "https://www.citriniresearch.com",
+    "feedUrl": "https://www.citriniresearch.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe98eec22-b2ef-40af-a4f4-ace1f627fad5_1280x1280.png"
+  },
+  {
+    "name": "Doomberg",
+    "payWall": true,
+    "publisherUrl": "https://newsletter.doomberg.com",
+    "feedUrl": "https://newsletter.doomberg.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F3b872b29-0394-495a-b836-ea86ed8a958e_400x400.png"
+  },
+  {
+    "name": "The Quiet Life with Susan Cain",
+    "payWall": true,
+    "publisherUrl": "https://thequietlife.net",
+    "feedUrl": "https://thequietlife.net/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Health",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdfd5532d-af18-4e13-a6ae-5d849bf3d039_600x600.png"
+  },
+  {
+    "name": "The Vajenda",
+    "payWall": true,
+    "publisherUrl": "https://vajenda.substack.com",
+    "feedUrl": "https://vajenda.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Health",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F024df2c9-602b-451e-b48d-955e19952365_256x256.png"
+  },
+  {
+    "name": "Burnt Toast by Virginia Sole-Smith",
+    "payWall": true,
+    "publisherUrl": "https://virginiasolesmith.substack.com",
+    "feedUrl": "https://virginiasolesmith.substack.com/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Health",
+    "frequency": "6 hours",
+    "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F29cd18cc-a50f-4b06-8690-3939d0c6a581_600x600.png"
+  },
 ];
 
 const interests = [
@@ -1424,8 +1798,8 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        // if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
-          if(publisher.name === "Deku" || publisher.name === "Swiftjective-C") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
+          // if(publisher.name === "Burnt Toast by Virginia Sole-Smith") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {

@@ -57,6 +57,8 @@ function getItemGuid(item: any, publisher: string) {
     case "Reddit":
     case "Deku":
     case "Swiftjective-C":
+    case "Business Insider":
+    case "The Verge":
       return he.decode(item.id.trim()).toString();
     case "Uber Blog":
     case "Lambda the Ultimate":
