@@ -20,6 +20,8 @@ const filterItems = (publisher: string) => (arr: any[]) => arr.filter((item: any
       return !(item.title?.includes('Show HN') || item.title?.includes('Ask HN'));
     case 'TokyoDev':
       return !item.link['@_href'].includes('story-ja');
+    case 'Martin Fowler':
+      return !item.title.includes('photostream ');
     default:
       return item;
   }

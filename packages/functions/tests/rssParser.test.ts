@@ -125,7 +125,6 @@ describe("rssParser", () => {
         
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
         expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });
@@ -196,7 +195,6 @@ describe("rssParser", () => {
         
         const event = sqsEvent as SQSEvent;
         const response = await main(event);
-        console.log('response', response);
         expect(mockDynamoDBClient.calls().length).toBeGreaterThan(0);
         expect(response).toEqual({ statusCode: 200, body: '{"status":"successful"}' });
     });

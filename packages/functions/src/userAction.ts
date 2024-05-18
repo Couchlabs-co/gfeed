@@ -32,7 +32,6 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     let sk = `${contentId}#${reaction}`;
     switch (reaction) {
       case '!likes':
-        console.log("!likes");
         sk = `${contentId}#likes`;
         break;
       case 'unfollow':
@@ -85,8 +84,6 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     Item.id ={ S: uuid.v4() };
     Item.cid ={ S: contentId }; // post id | interest id
     Item.cl ={ S: contentLink ?? '' }; // post link | interest link
-
-    console.log("Item: ", Item);
 
     const command: PutItemCommand = new PutItemCommand({
       TableName: BigOneTable,

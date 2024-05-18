@@ -25,8 +25,12 @@ export default function getImage(item: any, publisher: string) {
             }
             break;
         case "Martin Fowler":
-            root = parse(he.decode(item.content["#text"]));
-            return root.querySelector('img')?.getAttribute('src') ?? "";
+            if(item.content && item.content["#text"]){
+              root = parse(he.decode(item.content["#text"]));
+              return root.querySelector('img')?.getAttribute('src') ?? "";
+            } else {
+              return "";
+            }
         case "Sam Newman":
             root = parse(he.decode(item.content["#text"]));
             return `https://samnewman.io${root.querySelector('img')?.getAttribute('src') ?? ""}`;

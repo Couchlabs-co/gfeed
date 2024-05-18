@@ -33,6 +33,8 @@ function getItemGuid(item: any, publisher: string) {
     case "InfoQ": {
       return he.decode(item.guid.trim().slice(0, item.guid.indexOf('utm_')));
     }
+    case "footballlondon":
+      return he.decode(item.guid.trim());
     case "BBC Sport":
       return he.decode(item.link.trim());
     case "Mitchell Hashimoto":

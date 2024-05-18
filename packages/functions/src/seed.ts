@@ -1720,6 +1720,17 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F29cd18cc-a50f-4b06-8690-3939d0c6a581_600x600.png"
   },
+  {
+    "name": "What the Flutter",
+    "payWall": false,
+    "publisherUrl": "https://medium.com/@flutterwtf",
+    "feedUrl": "https://medium.com/@flutterwtf/feed",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*-5worGi8D0Pls2QRioUzUQ.png"
+  },
 ];
 
 const interests = [
@@ -1798,7 +1809,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Medium" || publisher.name === "Deku") {
+        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Deku") {
           // if(publisher.name === "Burnt Toast by Virginia Sole-Smith") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
