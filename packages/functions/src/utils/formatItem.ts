@@ -33,8 +33,6 @@ function getItemGuid(item: any, publisher: string) {
     case "InfoQ": {
       return he.decode(item.guid.trim().slice(0, item.guid.indexOf('utm_')));
     }
-    case "footballlondon":
-      return he.decode(item.guid.trim());
     case "BBC Sport":
       return he.decode(item.link.trim());
     case "Mitchell Hashimoto":
@@ -51,6 +49,8 @@ function getItemGuid(item: any, publisher: string) {
     case "NPR":
     case "Microsoft Security Response Center":
     case "Overreacted":
+    case "footballlondon":
+    case "AppleInsider News":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
@@ -94,7 +94,9 @@ function getItemDescription(item: any, publisher: string) {
   if(item.content){
     return he.decode(item.content['#text'].trim());
   }
-  if(item.description){
+  if(item.description && item.description['#text']){
+    return he.decode(item.description['#text'].trim());
+  } else {
     return he.decode(item.description.trim());
   }
   return '';
@@ -153,8 +155,6 @@ export const formatItem = (item: any, publisher: string, tag: string, payWall: b
       img: { S: img ?? "" },
       payWall: { BOOL: payWall }
     };
-
-    // console.log('formatItem item', feedItem);
 
     return feedItem;
   
