@@ -25,6 +25,16 @@ export function DbStack({ stack }: StackContext) {
     primaryIndex: { partitionKey: "email", sortKey: "created" },
   });
 
+  const UserDeleteTable = new Table(stack, "userDelete", {
+    fields: {
+      userId: "string",
+      reason: "string",
+      longReason: "string",
+      created: "number",
+    },
+    primaryIndex: { partitionKey: "userId", sortKey: "created" },
+  });
+
   const InterestsTable = new Table(stack, "interests", {
     fields: {
       id: "string",
@@ -72,6 +82,7 @@ export function DbStack({ stack }: StackContext) {
   return {
     PublisherTable,
     FeedbackTable,
+    UserDeleteTable,
     InterestsTable,
     NewSources,
     BigTable,

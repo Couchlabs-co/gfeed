@@ -2,11 +2,10 @@ import { QueryCommand, QueryCommandOutput } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
-import {jwtDecode} from "jwt-decode";
-import * as jose from 'jose';
 const he = require('he');
 import { getMonth, getYear, sub } from 'date-fns';
 import { validateToken } from "./utils/validateToken";
+import { getUserFromToken } from "./utils/getUserFromToken";
 
 async function getTimeBasedFeed() {
   console.log("getting time based feed");
@@ -172,6 +171,12 @@ export const handler = ApiHandler(async (evt) => {
     }
     try {
       const userId = await getUserFromToken(token);
+      if(!userId) {
+        return {
+          statusCode: 401,
+          body: JSON.stringify({ error: "Unauthorized" }),
+        }
+      }
       result = await GetUserFeed(userId);
     }
     catch(err) {
@@ -215,21 +220,21 @@ export const handler = ApiHandler(async (evt) => {
     body: JSON.stringify({ Count: feedItems.length, Items: feedItems }),
   };
 });
-async function getUserFromToken(token: string) {
-  const tokenHeader = await jwtDecode(token, { header: true });
-  const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.KINDE_ISSUER_URL}/.well-known/jwks.json`));
+// async function getUserFromToken(token: string) {
+//   const tokenHeader = await jwtDecode(token, { header: true });
+//   const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.KINDE_ISSUER_URL}/.well-known/jwks.json`));
 
-  const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
-    issuer: process.env.KINDE_ISSUER_URL ?? '',
-    audience: process.env.KINDE_AUDIENCE ?? '',
-  })
-  if(tokenHeader.kid !== protectedHeader.kid) {
-    throw new Error('Unforbidden');
-  }
-  const sub = payload.sub ?? "";
-  const userId = sub;
-  return userId;
-}
+//   const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
+//     issuer: process.env.KINDE_ISSUER_URL ?? '',
+//     audience: process.env.KINDE_AUDIENCE ?? '',
+//   })
+//   if(tokenHeader.kid !== protectedHeader.kid) {
+//     throw new Error('Unforbidden');
+//   }
+//   const sub = payload.sub ?? "";
+//   const userId = sub;
+//   return userId;
+// }
 
 //Function to sort array of objects based on pubDate attribute
 function compare(a: any, b: any) {

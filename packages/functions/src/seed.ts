@@ -1731,6 +1731,17 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://cdn-images-1.medium.com/fit/c/150/150/1*-5worGi8D0Pls2QRioUzUQ.png"
   },
+  {
+    "name": "Analytics Vidhya",
+    "payWall": false,
+    "publisherUrl": "https://www.analyticsvidhya.com",
+    "feedUrl": "https://www.analyticsvidhya.com/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://www.analyticsvidhya.com/wp-content/plugins/powerpress/rss_default.jpg"
+  },
 ];
 
 const interests = [
