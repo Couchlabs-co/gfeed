@@ -84,6 +84,10 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       USER_API_KEY: ${{ secrets.USER_API_KEY }}
+      M2M_URL: ${{ vars.M2M_URL }}
+      M2M_CLIENT_ID: ${{ vars.M2M_CLIENT_ID }}
+      M2M_CLIENT_SECRET: ${{ vars.M2M_CLIENT_SECRET }}
+      M2M_AUDIENCE: ${{ vars.M2M_AUDIENCE }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -137,6 +141,10 @@ jobs:
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       USER_API_KEY: ${{ secrets.USER_API_KEY }}
       NODE_ENV: production
+      M2M_URL: ${{ vars.M2M_URL }}
+      M2M_CLIENT_ID: ${{ vars.M2M_CLIENT_ID }}
+      M2M_CLIENT_SECRET: ${{ vars.M2M_CLIENT_SECRET }}
+      M2M_AUDIENCE: ${{ vars.M2M_AUDIENCE }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
