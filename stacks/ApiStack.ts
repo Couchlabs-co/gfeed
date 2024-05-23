@@ -17,6 +17,22 @@ export function ApiStack({ stack, app }: StackContext) {
     value: process.env.USER_API_KEY ?? '',
   })
 
+  const M2M_CLIENT_ID = new Config.Parameter(stack, "M2M_CLIENT_ID", {
+    value: process.env.M2M_CLIENT_ID ?? '',
+  });
+
+  const M2M_CLIENT_SECRET = new Config.Parameter(stack, "M2M_CLIENT_SECRET", {
+    value: process.env.M2M_CLIENT_SECRET ?? '',
+  });
+
+  const M2M_AUDIENCE = new Config.Parameter(stack, "M2M_AUDIENCE", {
+    value: process.env.M2M_AUDIENCE ?? '',
+  });
+
+  const M2M_URL = new Config.Parameter(stack, "M2M_URL", {
+    value: process.env.M2M_URL ?? '',
+  });
+
   switch(stack.stage) {
     case "production": {
       customDomain = {
@@ -54,6 +70,10 @@ export function ApiStack({ stack, app }: StackContext) {
           USER_API_KEY: UserAPIKey.value,
           KINDE_ISSUER_URL: KindeIssuer.value ?? '',
           KINDE_AUDIENCE: KindeAudience.value ?? '',
+          M2M_CLIENT_ID: M2M_CLIENT_ID.value,
+          M2M_CLIENT_SECRET: M2M_CLIENT_SECRET.value,
+          M2M_AUDIENCE: M2M_AUDIENCE.value,
+          M2M_URL: M2M_URL.value,
         }
       },
     },
