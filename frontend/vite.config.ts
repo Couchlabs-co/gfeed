@@ -7,7 +7,6 @@ export default defineConfig({
 	plugins: [
 		sentrySvelteKit({
 				sourceMapsUploadOptions: {
-				org: "couchlabs",
 				project: "gfeed",
 				authToken: process.env.SENTRY_AUTH_TOKEN,
       },
