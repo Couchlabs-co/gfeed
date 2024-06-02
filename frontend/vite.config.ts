@@ -7,10 +7,11 @@ export default defineConfig({
 	plugins: [
 		sentrySvelteKit({
 				sourceMapsUploadOptions: {
-				project: "gfeed",
-				authToken: process.env.SENTRY_AUTH_TOKEN,
-      },
-    }), sveltekit()],
+					org: "jasdeep",
+					project: "gfeed",
+					authToken: process.env.SENTRY_AUTH_TOKEN,
+      			},
+    	}), sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}

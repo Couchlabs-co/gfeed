@@ -1,5 +1,6 @@
 [defaults]
 url=https://sentry.io/
+org=jasdeep
 project=gfeed
 
 [auth]
