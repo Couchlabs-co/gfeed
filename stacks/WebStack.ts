@@ -35,6 +35,10 @@ export function WebStack({ stack, app }: StackContext) {
   const SentryDSN = new Config.Parameter(stack, "SENTRY_DSN", {
     value: process.env.SENTRY_DSN ?? '',
   });
+  
+  const SentryAuthToken = new Config.Parameter(stack, "SENTRY_AUTH_TOKEN", {
+    value: process.env.SENTRY_AUTH_TOKEN ?? '',
+  });
 
   const WebAPIKey = new Config.Parameter(stack, "WEB_API_KEY", {
     value: process.env.USER_API_KEY ?? '',
@@ -49,6 +53,7 @@ export function WebStack({ stack, app }: StackContext) {
       // Pass in the API endpoint to our app
       VITE_API_URL: apiUrl,
       VITE_SENTRY_DSN: SentryDSN.value,
+      VITE_SENTRY_AUTH_TOKEN: SentryAuthToken.value,
       VITE_NODE_ENV: stack.stage,
       VITE_WEB_API_KEY: WebAPIKey.value,
       KINDE_CLIENT_ID: process.env.KINDE_CLIENT_ID ?? '',
