@@ -6,11 +6,15 @@ console.log(process.env.SENTRY_AUTH_TOKEN);
 export default defineConfig({
 	plugins: [
 		sentrySvelteKit({
-				sourceMapsUploadOptions: {
-					org: "couchlabs",
-					project: "gfeed",
-					authToken: process.env.SENTRY_AUTH_TOKEN,
-      			},
+			autoInstrument: {
+				load: true,
+				serverLoad: false,
+			},
+			sourceMapsUploadOptions: {
+				org: "couchlabs",
+				project: "gfeed",
+				authToken: process.env.SENTRY_AUTH_TOKEN,
+      		},
     	}), sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
