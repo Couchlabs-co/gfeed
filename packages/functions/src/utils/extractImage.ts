@@ -13,6 +13,7 @@ export default function getImage(item: any, publisher: string) {
     switch(publisher){
         case "Towards Data Science":
         case "The New Stack":
+        case "Longreads":
             root = parse(item.description ?? item["content:encoded"]);
             imgSrc = root.querySelector('img')?.getAttribute('src') ?? "";
             break;

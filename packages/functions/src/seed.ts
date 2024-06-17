@@ -1742,6 +1742,17 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://www.analyticsvidhya.com/wp-content/plugins/powerpress/rss_default.jpg"
   },
+  {
+    "name": "Longreads",
+    "payWall": false,
+    "publisherUrl": "https://longreads.com",
+    "feedUrl": "https://longreads.com/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Misc",
+    "frequency": "6 hours",
+    "logo": "https://longreads.com/wp-content/uploads/2017/01/longreads-logo-sm-rgb-150x150.png"
+  },
 ];
 
 const interests = [
@@ -1821,7 +1832,6 @@ export async function handler(event: any) {
     } else {
       for (const publisher of publishers) {
         if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Deku") {
-          // if(publisher.name === "Burnt Toast by Virginia Sole-Smith") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {
