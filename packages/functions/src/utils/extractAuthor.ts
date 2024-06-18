@@ -21,6 +21,8 @@ export default function extractAuthor(item: any, publisher: string) {
         return "Paul McMahon"
       case "Mitchell Hashimoto":
         return "Mitchell Hashimoto";
+      case "Stackademic":
+        return "Stackademic";
       case "Bloomberg Politics":
         if(item["dc:creator"]) {
           return item["dc:creator"];

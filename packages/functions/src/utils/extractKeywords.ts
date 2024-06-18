@@ -1,6 +1,9 @@
 export default function extractKeywords(item: any, publisher: string) {
     let keywords = null;
     switch(publisher) {
+      case "InfoWorld":
+        keywords = item.categories.category;
+        break;
       case "CoinDesk":
         keywords = Array.from(new Set(item.category.map((cat: any) => cat['#text']))).join(',');
         break;

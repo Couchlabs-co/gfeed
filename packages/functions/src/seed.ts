@@ -1753,6 +1753,94 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://longreads.com/wp-content/uploads/2017/01/longreads-logo-sm-rgb-150x150.png"
   },
+  {
+    "name": "InfoWorld",
+    "payWall": false,
+    "publisherUrl": "http://www.infoworld.com",
+    "feedUrl": "http://www.infoworld.com/index.rss",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://idge.staticworld.net/ifw/infoworld510x510.png"
+  },
+  {
+    "name": "Stackademic",
+    "payWall": false,
+    "publisherUrl": "https://stackademic.com",
+    "feedUrl": "https://stackademic.com/feed.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://idge.staticworld.net/ifw/infoworld510x510.png"
+  },
+  {
+    "name": "BleepingComputer",
+    "payWall": false,
+    "publisherUrl": "https://www.bleepingcomputer.com",
+    "feedUrl": "https://www.bleepingcomputer.com/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "Hackaday",
+    "payWall": false,
+    "publisherUrl": "https://hackaday.com",
+    "feedUrl": "https://hackaday.com/blog/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "MacRumors",
+    "payWall": false,
+    "publisherUrl": "https://www.macrumors.com",
+    "feedUrl": "https://feeds.macrumors.com/MacRumors-All",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "TechRadar",
+    "payWall": false,
+    "publisherUrl": "https://www.techradar.com",
+    "feedUrl": "https://www.techradar.com/au/feeds/tag/home",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "The Motley Fool Australia",
+    "payWall": false,
+    "publisherUrl": "https://www.fool.com.au",
+    "feedUrl": "https://www.fool.com.au/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Business",
+    "frequency": "6 hours",
+    "logo": "https://www.fool.com.au/wp-content/uploads/2020/06/cropped-cap-icon-freesite-96x96.png"
+  },
+  {
+    "name": "ScienceAlert",
+    "payWall": false,
+    "publisherUrl": "https://www.sciencealert.com",
+    "feedUrl": "https://www.sciencealert.com/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Science",
+    "frequency": "6 hours",
+    "logo": "https://www.sciencealert.com/images/2022/08/cropped-sa-rounded-favicon-32x32.png"
+  },
 ];
 
 const interests = [
@@ -1831,7 +1919,7 @@ export async function handler(event: any) {
       }
     } else {
       for (const publisher of publishers) {
-        if(publisher.name === "MarketWatch" || publisher.name === "TechCrunch" || publisher.name === "Hacker News" || publisher.name === "Washington Post" || publisher.name === "The Economist" || publisher.name === "Deku") {
+        if(publisher.name === "InfoWorld" || publisher.name === "BleepingComputer" || publisher.name === "Hackday" || publisher.name === "ScienceAlert" || publisher.name === "The Motley Fool Australia" || publisher.name === "Stackademic") {
           const updateCommand = new UpdateItemCommand({
             TableName: Table.publisher.tableName,
             Key: {
