@@ -1841,6 +1841,50 @@ const publishers = [
     "frequency": "6 hours",
     "logo": "https://www.sciencealert.com/images/2022/08/cropped-sa-rounded-favicon-32x32.png"
   },
+  {
+    "name": "DEVCLASS",
+    "payWall": false,
+    "publisherUrl": "https://devclass.com",
+    "feedUrl": "https://devclass.com/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://devclass.com/wp-content/uploads/2018/08/cropped-favicon-32x32.png"
+  },
+  {
+    "name": "Decoder&#039;s Blog",
+    "payWall": false,
+    "publisherUrl": "https://decoder.cloud",
+    "feedUrl": "https://decoder.cloud/feed/",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "KDNuggets",
+    "payWall": false,
+    "publisherUrl": "https://www.kdnuggets.com",
+    "feedUrl": "https://www.kdnuggets.com/feed",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": "https://www.kdnuggets.com/wp-content/themes/kdn17/images/logo.svg"
+  },
+  {
+    "name": "Random experiments in software engineering",
+    "payWall": false,
+    "publisherUrl": "https://teemukanstren.com",
+    "feedUrl": "https://teemukanstren.com/feed/",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
 ];
 
 const interests = [
