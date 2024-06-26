@@ -50,28 +50,18 @@
       <table class="table-sm">
         <tr>
           <th>1</th>
-          <td>Mobile app (IOS and Android) to use GFeed on the go</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>On Demand delete your complete data stored in our system</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>3</th>
           <td>Ability to follow creators of the articles</td>
         </tr>
         <tr>
-          <th>4</th>
+          <th>2</th>
           <td>Ability to read articles behind paywall</td>
         </tr>
         <tr>
-          <th>5</th>
+          <th>3</th>
           <td>AI based feed algorithm</td>
         </tr>
         <tr>
-          <th>6</th>
+          <th>4</th>
           <td>Contextual Search</td>
         </tr>
       </table>

@@ -1885,6 +1885,17 @@ const publishers = [
     "frequency": "6 hours",
     "logo": ""
   },
+  {
+    "name": "LeadDev",
+    "payWall": false,
+    "publisherUrl": "https://leaddev.com",
+    "feedUrl": "https://leaddev.com/content-piece-and-series/rss.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Tech",
+    "frequency": "6 hours",
+    "logo": ""
+  },
 ];
 
 const interests = [

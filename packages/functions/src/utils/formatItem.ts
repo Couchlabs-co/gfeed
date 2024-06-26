@@ -34,7 +34,10 @@ function getItemGuid(item: any, publisher: string) {
       return he.decode(item.guid.trim().slice(0, item.guid.indexOf('utm_')));
     }
     case "BBC Sport":
-      return he.decode(item.link.trim());
+    case "LeadDev":
+    case "Uber Blog":
+    case "Lambda the Ultimate":
+          return he.decode(item.link.toLowerCase().trim());
     case "Mitchell Hashimoto":
     case "The Guardian":
     case "DAN NORTH":
@@ -64,9 +67,6 @@ function getItemGuid(item: any, publisher: string) {
     case "Business Insider":
     case "The Verge":
       return he.decode(item.id.trim()).toString();
-    case "Uber Blog":
-    case "Lambda the Ultimate":
-      return he.decode(item.link.toLowerCase().trim());
     case "The LeadTech Diet":
     case "Health & WellBeing":
       return he.decode(item.guid['#text'].trim());
