@@ -58,11 +58,13 @@ export function DbStack({ stack }: StackContext) {
       sk: "string",
       tag: "string",
       pubDate: "number",
+      publisher: "string",
     },
     primaryIndex: { partitionKey: "pk", sortKey: "sk" },
     globalIndexes: { 
       tagPubDateIndex: { partitionKey: "tag", sortKey: "pubDate" },
       timeIndex: { partitionKey: "pk", sortKey: "pubDate" },
+      publisherIndex: { partitionKey: "publisher", sortKey: "pubDate" },
     },
   });
   
