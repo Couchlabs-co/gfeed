@@ -1896,6 +1896,39 @@ const publishers = [
     "frequency": "6 hours",
     "logo": ""
   },
+  {
+    "name": "90min",
+    "payWall": false,
+    "publisherUrl": "https://www.90min.com",
+    "feedUrl": "https://www.90min.com/posts.rss",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Sports",
+    "frequency": "6 hours",
+    "logo": ""
+  },
+  {
+    "name": "espncricinfo",
+    "payWall": false,
+    "publisherUrl": "https://www.espncricinfo.com",
+    "feedUrl": "https://www.espncricinfo.com/rss/content/story/feeds/0.xml",
+    "isActive": "active",
+    "feedType": "xml",
+    "primaryTag": "Sports",
+    "frequency": "6 hours",
+    "logo": "https://i.imgci.com/espncricinfo/espncinew.png"
+  },
+  {
+    "name": "FootballTalk.org",
+    "payWall": false,
+    "publisherUrl": "https://www.footballtalk.org",
+    "feedUrl": "https://www.footballtalk.org/feed/",
+    "isActive": "active",
+    "feedType": "atom",
+    "primaryTag": "Sports",
+    "frequency": "6 hours",
+    "logo": ""
+  },
 ];
 
 const interests = [

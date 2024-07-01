@@ -56,6 +56,7 @@ function getItemGuid(item: any, publisher: string) {
     case "AppleInsider News":
     case "Stackademic":
     case "BleepingComputer":
+    case "espncricinfo":
       return he.decode(item.guid.trim());
     case "Martin Fowler":
     case "The Information":
