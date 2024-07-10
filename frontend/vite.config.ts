@@ -1,10 +1,12 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { sentrySvelteKit } from "@sentry/sveltekit";
+import {svelteTesting} from '@testing-library/svelte/vite'
 import { defineConfig } from 'vitest/config';
+import TurboConsole from 'unplugin-turbo-console/vite';
 
-console.log(process.env.SENTRY_AUTH_TOKEN);
 export default defineConfig({
 	plugins: [
+		TurboConsole(),
 		sentrySvelteKit({
 			autoInstrument: {
 				load: true,
@@ -15,8 +17,10 @@ export default defineConfig({
 				project: "gfeed",
 				authToken: process.env.SENTRY_AUTH_TOKEN,
       		},
-    	}), sveltekit()],
+    	}), sveltekit(), svelteTesting()],
 	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
+		environment: 'jsdom',
+		include: ['src/**/*.{test,spec}.{js,ts}'],
+		setupFiles: ['./vite-setup.ts'],
 	}
 });

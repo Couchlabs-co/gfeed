@@ -7,13 +7,12 @@
 </script>
 
 <div>
-    <div class="p-3 shadow-sm rounded-sm">
-        <h2>Library</h2>
-        <div class="mt-4">
+    <div class="flex p-3 rounded-sm">
+        <div class="flex-1 mt-4">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-lg text-black">My saved pieces</th>
+                    <th class="text-lg text-black bg-slate-100">My bookmarks</th>
                 </tr>
             </thead>
                 {#each bookmarks as bookmark }

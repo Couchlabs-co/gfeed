@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { userAction } from "../../userActions";
     import { createEventDispatcher } from 'svelte';
+    import { Check } from 'lucide-svelte';
 
     const dispatch = createEventDispatcher();
     export let selectedAlgo: 'timeBased' | 'interestBased' = 'timeBased';
@@ -19,7 +20,26 @@
     }
 
 </script>
-<div class="bg-slate-100 shadow rounded-lg my-6 p-4 w-1/2">
+<div class="flex flex-row my-4 justify-center">
+    <div class="flex-auto bg-slate-100 shadow rounded-lg p-4">
+        <p class="m-2 text-left text-lg font-medium">Configure Feed</p>
+        <div class="join">
+            <button class={selectedAlgo === 'timeBased' ? 'btn btn-outline btn-block btn-active join-item' : 'btn btn-outline btn-block join-item'} on:click={handleChange} value='timeBased'>
+                {#if selectedAlgo === 'timeBased'}
+                    <Check />
+                {/if}
+                Show me everything
+            </button>
+            <button class={selectedAlgo === 'interestBased' ? 'btn btn-outline btn-block btn-active join-item' : 'btn btn-outline btn-block join-item'} on:click={handleChange} value='interestBased'>
+                {#if selectedAlgo === 'interestBased'}
+                    <Check />
+                {/if}
+                Based on my Interests
+            </button>
+        </div>
+    </div>
+</div>
+<!-- <div class="bg-slate-100 shadow rounded-lg my-6 p-4 w-1/2">
     <p class="text-left text-lg font-medium">Configure Feed</p>
     <div class="w-auto">
         <div class="form-control">
@@ -35,4 +55,4 @@
             </label>
         </div>
     </div>
-</div>
+</div> -->

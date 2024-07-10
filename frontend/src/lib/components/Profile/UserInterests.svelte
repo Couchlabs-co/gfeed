@@ -44,15 +44,13 @@
 
 </script>
 
-<div class="w-auto justify-left">
-    <div class="p-3 shadow-sm rounded-sm">
-        <h2 class="text-md">Personalize your feed by selecting what you are interested in</h2>
+<div class="flex">
+    <div class="flex-1 p-3 rounded-sm">
         <div class="mt-4 justify-left">
-            <table class="table-sm w-2/3">
+            <table class="table-sm w-full">
                 <thead>
-                    <tr class="bg-slate-100">
-                        <th colspan="2" class="text-lg text-black text-left">Interests</th>
-                        <!-- <th class="text-lg text-black text-left">Interested/Not Interested</th> -->
+                    <tr class="bg-slate-100 m-2">
+                        <th colspan="2" class="text-lg text-black text-left">Personalize your feed by selecting what you are interested in</th>
                     </tr>
                     {#each interests as interest}
                     <tr>

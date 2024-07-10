@@ -10,6 +10,7 @@
 
 	export let data;
     let activeTab = 0;
+    let activeComponent = 'Interests';
     let tabs = [
         'Interests',
         'I like what I read',
@@ -36,7 +37,7 @@
         return item.contentType === 'feedAlgo';
     }) : [{content: 'timeBased'}];
 
-    function handleAlgoChange(eventDetail: Record<string, string>) {
+    function handleAlgoChange(eventDetail: CustomEvent<any>) {
         toast.success('Feed algorithm saved successfully');
     }
 
@@ -49,6 +50,10 @@
         }
     }
 
+    function handleSideNavClick(item: string) {
+        activeComponent = item;
+    }
+
 </script>
 {#if !data.user?.id}
     <div class="flex flex-col items-center justify-center">
@@ -56,34 +61,29 @@
         <a href="/login" class="btn btn-primary">Login</a>
     </div>
 {:else}
-        <div class="relative isolate overflow-hidden py-4 sm:py-4">
-            <Heading heading={data.user?.given_name} />
-            <Toaster />
-            <div class="grid grid-flow-row-dense grid-cols-4 grid-rows-1 m-2">
-                <div class="rounded-md w-auto">
-                    <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} />
-                </div>
-                <div class="col-span-2 w-full rounded-md ">
-                    <UserStats data={data} />
-                    <FeedAlgoOptions userId={userId} selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
-                    <div class="grid grid-cols-1 m-4 w-full">
-                        <div class="tabs">
-                            {#each tabs as tab, i}
-                                <button class="tab tab-lg tab-lifted" class:tab-active={activeTab === i} on:click={()=> {activeTab = i}}>{tab}</button> 
-                            {/each}
-                        </div>
-                        {#if activeTab === 0}
-                            <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} on:userInterestEvent={handleInterestChange}/>
-                        {/if}
-                        {#if activeTab === 1}
-                            <UserPosts userPosts={userLikedPosts} userId={userId} />
-                        {/if}
-                        {#if activeTab === 2}
-                            <Bookmarks bookmarks={userBookmarks} userId={userId}/>
-                        {/if}
-                        
-                    </div>
+    <div class="flex flex-col justify-start">
+        <Heading heading={data.user?.given_name} />
+        <Toaster />
+        <div class="flex flex-row">
+            <div class="rounded-md w-1/3">
+                <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} handleChange={handleSideNavClick}/>
+            </div>
+            <div class="rounded-md w-2/3">
+                <UserStats data={data} />
+                <FeedAlgoOptions userId={userId} selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
+                <div class="w-full">
+                    {#if activeComponent === 'Interests'}
+                        <UserInterests interests={data.interests.Items} userId={userId} interestsUserFollow={interestsUserFollow} on:userInterestEvent={handleInterestChange}/>
+                    {/if}
+                    {#if activeComponent === 'LikeThese'}
+                        <UserPosts userPosts={userLikedPosts} userId={userId} />
+                    {/if}
+                    {#if activeComponent === 'ReadLater'}
+                        <Bookmarks bookmarks={userBookmarks} userId={userId}/>
+                    {/if}
+                    
                 </div>
             </div>
         </div>
+    </div>
 {/if}

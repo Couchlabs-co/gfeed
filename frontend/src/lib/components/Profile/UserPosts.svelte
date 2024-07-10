@@ -6,15 +6,20 @@
 </script>
 
 <div>
-    <div class="p-3 shadow-sm rounded-sm">
+    <div class="flex p-3 rounded-sm">
         <!-- <h2>I Liked these</h2> -->
-        <div class="mt-4">
+        <div class="flex-1 mt-4">
         <table class="table">
             <thead>
                 <tr>
-                    <th class="text-lg text-black">Articles liked</th>
+                    <th class="text-lg text-black bg-slate-100">I like these</th>
                 </tr>
             </thead>
+                {#if userPosts.length === 0}
+                    <tr>
+                        <td class="text-base text-black">No posts liked yet</td>
+                    </tr>
+                {/if}
                 {#each userPosts as item}
                     <tr>
                         <td class="text-base text-black">
