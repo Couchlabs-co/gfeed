@@ -1962,9 +1962,6 @@ const interests = [
     {
       "name": "World",
     },
-    // {
-    //   "name": "Weather",
-    // },
     {
       "name": "Food",
     },
@@ -1974,9 +1971,6 @@ const interests = [
     {
       "name": "LifeStyle",
     },
-    // {
-    //   "name": "News",
-    // },
     {
       "name": "Misc",
     }
