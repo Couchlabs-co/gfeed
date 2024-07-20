@@ -20,39 +20,23 @@
     }
 
 </script>
-<div class="flex flex-row my-4 justify-center">
+<div class="flex my-4 justify-center">
     <div class="flex-auto bg-slate-100 shadow rounded-lg p-4">
         <p class="m-2 text-left text-lg font-medium">Configure Feed</p>
-        <div class="join">
-            <button class={selectedAlgo === 'timeBased' ? 'btn btn-outline btn-block btn-active join-item' : 'btn btn-outline btn-block join-item'} on:click={handleChange} value='timeBased'>
+
+        <div class="inline-flex rounded-md" role="group">
+            <button type="button" on:click={handleChange} value='timeBased' class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-400 rounded-s-lg hover:bg-gray-900 hover:text-white dark:border-gray-800 focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:hover:text-white dark:focus:bg-gray-700 {selectedAlgo === 'timeBased' ? 'bg-gray-900 text-white dark:bg-gray-900 dark:text-white dark:hover:bg-gray-700': 'dark:text-black dark:hover:bg-gray-700'}">
                 {#if selectedAlgo === 'timeBased'}
-                    <Check />
+                    <Check class="m-2"/>
                 {/if}
-                Show me everything
+                Show me Everything...
             </button>
-            <button class={selectedAlgo === 'interestBased' ? 'btn btn-outline btn-block btn-active join-item' : 'btn btn-outline btn-block join-item'} on:click={handleChange} value='interestBased'>
+            <button type="button" on:click={handleChange} value='interestBased' class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-black rounded-e-lg hover:bg-gray-900 hover:text-white  dark:border-gray-800 focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:hover:text-white dark:focus:bg-gray-700 {selectedAlgo === 'interestBased' ? 'bg-gray-900 text-white dark:bg-gray-900 dark:text-white dark:hover:bg-gray-700': 'dark:text-black dark:hover:bg-gray-700'}">
                 {#if selectedAlgo === 'interestBased'}
-                    <Check />
+                    <Check class="m-2" />
                 {/if}
                 Based on my Interests
             </button>
         </div>
     </div>
 </div>
-<!-- <div class="bg-slate-100 shadow rounded-lg my-6 p-4 w-1/2">
-    <p class="text-left text-lg font-medium">Configure Feed</p>
-    <div class="w-auto">
-        <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">Show me everything</span> 
-              <input type="radio" bind:group={selectedAlgo} class={selectedAlgo === 'timeBased' ? 'radio checked:bg-green-500' : 'radio'} on:change={handleChange} value='timeBased'/>
-            </label>
-        </div>
-        <div class="form-control">
-            <label class="label cursor-pointer">
-                <span class="label-text">Only my interests</span>
-                <input type="radio" bind:group={selectedAlgo} class={selectedAlgo === 'interestBased' ? 'radio checked:bg-green-500' : 'radio'} checked on:change={handleChange} value='interestBased'/>
-            </label>
-        </div>
-    </div>
-</div> -->
