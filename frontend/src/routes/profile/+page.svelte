@@ -7,6 +7,7 @@
     import FeedAlgoOptions from '../../lib/components/Profile/FeedAlgoOptions.svelte';
     import Heading from '../../lib/components/Heading.svelte';
     import toast, { Toaster } from 'svelte-french-toast';
+	import LeftNavigation from '$lib/components/Profile/LeftNavigation.svelte';
 
 	export let data;
     let activeTab = 0;
@@ -61,14 +62,15 @@
         <a href="/login" class="btn btn-primary">Login</a>
     </div>
 {:else}
-    <div class="flex flex-col justify-start">
+    <div class="flex flex-col w-full">
         <Heading heading={data.user?.given_name} />
         <Toaster />
-        <div class="flex flex-row">
+        <div class="flex w-full">
             <div class="rounded-md w-1/3">
-                <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} handleChange={handleSideNavClick}/>
+                <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} />
+                <LeftNavigation handleChange={handleSideNavClick}/>
             </div>
-            <div class="rounded-md w-2/3">
+            <div class="rounded-md w-full">
                 <UserStats data={data} />
                 <FeedAlgoOptions userId={userId} selectedAlgo={feedAlgoSelected.length? feedAlgoSelected[0].content: ''} on:feedAlgoChanged={handleAlgoChange}/>
                 <div class="w-full">

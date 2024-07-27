@@ -15,7 +15,7 @@
 </script>
 
 <header class="bg-white">
-	<nav class="my-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+	<nav class="my-auto flex max-w-full items-center p-2 lg:px-8" aria-label="Global">
 		<div class="flex lg:flex-1">
 			<a href="/" class="btn btn-ghost normal-case text-xl sm:text-2xl md:text-3xl">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree"><path d="M21 12h-8"/><path d="M21 6H8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/></svg>
@@ -42,21 +42,20 @@
 				{/each}
 		</div>
 		<div class="hidden lg:flex lg:flex-1 lg:justify-end">
-		<ul class="menu menu-horizontal px-1">
-		{#if $page.data.user}
+			<ul class="menu menu-horizontal px-1">
+			{#if $page.data.user}
 				<li>
 					<a href="/api/auth/logout" class="text-sm font-semibold leading-6 text-gray-900" aria-current="page" data-sveltekit-preload-data="off">Log Out</a>
 				</li>
-		{:else}
-			<li>
-
-				<a href='/api/auth/login' class="text-sm font-semibold leading-6 text-gray-900" aria-current="page" data-sveltekit-preload-data="off">Sign In</a>
-			</li>
-		{/if}
-		</ul>
-		{#if $page.data.user?.picture}
-			<ProfilePic pic={$page.data.user?.picture ?? ''}/>
-		{/if}
-		  </div>
+			{:else}
+				<li>
+					<a href='/api/auth/login' class="text-sm font-semibold leading-6 text-gray-900" aria-current="page" data-sveltekit-preload-data="off">Sign In</a>
+				</li>
+			{/if}
+			</ul>
+			{#if $page.data.user?.picture}
+				<ProfilePic pic={$page.data.user?.picture ?? ''}/>
+			{/if}
+		</div>
 	</nav>
 </header>
