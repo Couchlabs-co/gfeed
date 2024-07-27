@@ -1,6 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { sentrySvelteKit } from "@sentry/sveltekit";
-import {svelteTesting} from '@testing-library/svelte/vite'
+import { svelteTesting } from '@testing-library/svelte/vite';
 import { defineConfig } from 'vitest/config';
 import TurboConsole from 'unplugin-turbo-console/vite';
 
@@ -17,7 +17,7 @@ export default defineConfig({
 				project: "gfeed",
 				authToken: process.env.SENTRY_AUTH_TOKEN,
       		},
-    	}), sveltekit(), svelteTesting()],
+    	}), sveltekit(), svelteTesting()], //, svelteTesting()],
 	test: {
 		environment: 'jsdom',
 		include: ['src/**/*.{test,spec}.{js,ts}'],

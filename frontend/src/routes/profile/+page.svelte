@@ -67,7 +67,7 @@
         <Toaster />
         <div class="flex w-full">
             <div class="rounded-md w-1/3">
-                <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} handleChange={handleSideNavClick}/>
+                <ProfileCard userName={data.user?.given_name} userPic={data.user?.picture} />
                 <LeftNavigation handleChange={handleSideNavClick}/>
             </div>
             <div class="rounded-md w-full">

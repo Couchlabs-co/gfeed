@@ -6,7 +6,7 @@
     "dev": "vite dev",
     "start": "sst bind vite dev",
     "prepare": "svelte-kit sync",
-    "build": "vite build",
+    "build": "sst bind vite build",
     "preview": "vite preview",
     "test": "bun run test:integration && bun run test:unit",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
