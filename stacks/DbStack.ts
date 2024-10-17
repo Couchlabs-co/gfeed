@@ -1,12 +1,11 @@
 import { Script, StackContext, Table } from "sst/constructs";
 
 export function DbStack({ stack }: StackContext) {
-
   const PublisherTable = new Table(stack, "publisher", {
     fields: {
       publisherName: "string",
       feedUrl: "string",
-      isActive: "string"
+      isActive: "string",
     },
     primaryIndex: { partitionKey: "publisherName", sortKey: "feedUrl" },
     globalIndexes: {
@@ -61,15 +60,15 @@ export function DbStack({ stack }: StackContext) {
       publisher: "string",
     },
     primaryIndex: { partitionKey: "pk", sortKey: "sk" },
-    globalIndexes: { 
+    globalIndexes: {
       tagPubDateIndex: { partitionKey: "tag", sortKey: "pubDate" },
       timeIndex: { partitionKey: "pk", sortKey: "pubDate" },
       publisherIndex: { partitionKey: "publisher", sortKey: "pubDate" },
     },
   });
-  
+
   new Script(stack, "Script", {
-    params:{
+    params: {
       env: stack.stage,
     },
     defaults: {
