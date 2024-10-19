@@ -811,8 +811,7 @@ const publishers = [
     name: "Towards Data Science",
     payWall: false,
     publisherUrl: "https://towardsdatascience.com",
-    feedUrl:
-      "https://towardsdatascience.com/feed?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
+    feedUrl: "https://towardsdatascience.com/feed?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Tech",
@@ -846,8 +845,7 @@ const publishers = [
     name: "RBloggers",
     payWall: false,
     publisherUrl: "https://www.r-bloggers.com",
-    feedUrl:
-      "https://feeds.feedburner.com/RBloggers?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
+    feedUrl: "https://feeds.feedburner.com/RBloggers?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fdata-science-ml",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Tech",
@@ -869,8 +867,7 @@ const publishers = [
     name: "The Daily WTF",
     payWall: false,
     publisherUrl: "http://thedailywtf.com/",
-    feedUrl:
-      "https://feeds.feedburner.com/TheDailyWtf?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
+    feedUrl: "https://feeds.feedburner.com/TheDailyWtf?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Tech",
@@ -881,8 +878,7 @@ const publishers = [
     name: "Lambda the Ultimate",
     payWall: false,
     publisherUrl: "http://lambda-the-ultimate.org",
-    feedUrl:
-      "http://lambda-the-ultimate.org/rss.xml?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
+    feedUrl: "http://lambda-the-ultimate.org/rss.xml?path=%2Fdiscover%2Ftopic%2Ftech-news-trends%2Fprogramming",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Tech",
@@ -893,8 +889,7 @@ const publishers = [
     name: "BBC Sport",
     payWall: false,
     publisherUrl: "https://www.bbc.co.uk/sport",
-    feedUrl:
-      "https://feeds.bbci.co.uk/sport/rss.xml?path=%2Fdiscover%2Ftopic%2Fsports",
+    feedUrl: "https://feeds.bbci.co.uk/sport/rss.xml?path=%2Fdiscover%2Ftopic%2Fsports",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Sports",
@@ -905,8 +900,7 @@ const publishers = [
     name: "The Guardian",
     payWall: false,
     publisherUrl: "https://www.theguardian.com",
-    feedUrl:
-      "https://feeds.theguardian.com/theguardian/football/rss?path=%2Fdiscover%2Ftopic%2Fsports%2Ffootball",
+    feedUrl: "https://feeds.theguardian.com/theguardian/football/rss?path=%2Fdiscover%2Ftopic%2Fsports%2Ffootball",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Sports",
@@ -1060,8 +1054,7 @@ const publishers = [
     name: "Bloomberg",
     payWall: true,
     publisherUrl: "https://www.bloomberg.com",
-    feedUrl:
-      "https://www.bloomberg.com/authors/AU41Fx3I-rM/bloomberg-opinion.rss",
+    feedUrl: "https://www.bloomberg.com/authors/AU41Fx3I-rM/bloomberg-opinion.rss",
     isActive: "active",
     feedType: "xml",
     primaryTag: "Misc",
@@ -1170,8 +1163,7 @@ const publishers = [
   {
     name: "Netflix Technology Blog",
     payWall: true,
-    publisherUrl:
-      "https://medium.com/@netflixtechblog?source=rss-c3aeaf49d8a4------2",
+    publisherUrl: "https://medium.com/@netflixtechblog?source=rss-c3aeaf49d8a4------2",
     feedUrl: "https://medium.com/feed/@netflixtechblog",
     isActive: "active",
     feedType: "xml",
@@ -1767,7 +1759,7 @@ const publishers = [
     payWall: false,
     publisherUrl: "http://www.infoworld.com",
     feedUrl: "http://www.infoworld.com/index.rss",
-    isActive: "active",
+    isActive: "Inactive",
     feedType: "xml",
     primaryTag: "Tech",
     frequency: "6 hours",
@@ -1960,6 +1952,17 @@ const publishers = [
     frequency: "6 hours",
     logo: "",
   },
+  {
+    name: "thoughts - theden.sh",
+    payWall: false,
+    publisherUrl: "https://thoughts.theden.sh",
+    feedUrl: "https://thoughts.theden.sh/atom.xml",
+    isActive: "active",
+    feedType: "atom",
+    primaryTag: "Tech",
+    frequency: "6 hours",
+    logo: "",
+  },
 ];
 
 const interests = [
@@ -2033,7 +2036,7 @@ export async function handler(event: any) {
   } else {
     for (const publisher of publishers) {
       if (
-        publisher.name === "InfoWorld" ||
+        publisher.name === "thoughts - theden.sh" ||
         publisher.name === "BleepingComputer" ||
         publisher.name === "Hackday" ||
         publisher.name === "ScienceAlert" ||

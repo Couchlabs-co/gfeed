@@ -2,8 +2,8 @@ import { QueryCommand, QueryCommandOutput } from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { ApiHandler } from "sst/node/api";
 import { Table } from "sst/node/table";
-const he = require('he');
-import { getMonth, getYear, sub } from 'date-fns';
+const he = require("he");
+import { getMonth, getYear, sub } from "date-fns";
 import { validateToken } from "./utils/validateToken";
 import { getUserFromToken } from "./utils/getUserFromToken";
 
@@ -14,13 +14,13 @@ async function getTimeBasedFeed() {
   const currentYear = getYear(today);
   const pk = `post#${currentYear}${currentMonth}`;
 
-  const rangeStart = sub(today, {days: 7});
+  const rangeStart = sub(today, { days: 7 });
   const prevMonth = ("0" + (getMonth(rangeStart) + 1)).slice(-2);
   const prevYear = getYear(rangeStart);
 
   const feedRange = [];
 
-  if(pk === `post#${prevYear}${prevMonth}`) {
+  if (pk === `post#${prevYear}${prevMonth}`) {
     feedRange.push(pk);
   } else {
     feedRange.push(pk);
@@ -28,7 +28,7 @@ async function getTimeBasedFeed() {
   }
 
   const result = {
-    Count: 0,    
+    Count: 0,
     Items: <any>[],
   };
 
@@ -36,7 +36,7 @@ async function getTimeBasedFeed() {
     feedRange.map(async (key) => {
       const command: QueryCommand = new QueryCommand({
         TableName: Table.bigTable.tableName,
-        IndexName: 'timeIndex',
+        IndexName: "timeIndex",
         KeyConditionExpression: "pk = :pk",
         ExpressionAttributeValues: {
           ":pk": { S: `${key}` },
@@ -49,34 +49,24 @@ async function getTimeBasedFeed() {
       result.Items = result.Items.concat(Items);
     })
   );
-  
+
   return result;
 }
 
-async function getInterestBasedFeed(userInterests: any) {
-
+async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: any) {
   console.log("getting interest based feed");
-  
+
   const result = {
-    Count: 0,    
+    Count: 0,
     Items: <any>[],
   };
 
-  // removing serendipity of Misc tag. Need a better way to surface Hacker News
-  // if(userInterests && userInterests.length >= 0){
-  //   userInterests.push({
-  //     ct: {
-  //       S: 'Misc'
-  //     },
-  //   })
-  // }
-
-  if(userInterests && userInterests.length > 0){
+  if (userInterests && userInterests.length > 0) {
     await Promise.all(
       userInterests.map(async (interest: any) => {
         const command: QueryCommand = new QueryCommand({
           TableName: Table.bigTable.tableName,
-          IndexName: 'tagPubDateIndex',
+          IndexName: "tagPubDateIndex",
           KeyConditionExpression: "tag = :tag",
           ExpressionAttributeValues: {
             ":tag": { S: interest.ct.S },
@@ -91,20 +81,10 @@ async function getInterestBasedFeed(userInterests: any) {
     );
   }
 
-  // const publishersUserLikes = userInterests.Items?.filter((item: any) => {
-  //   return item.userAction.S === "likes" && item.contentType.S === "publisher";
-  // });
-  const publishersUserDislikes = userInterests.Items?.filter((item: any) => {
-    return item.userAction.S === "dislikes" && item.contentType.S === "publisher";
-  });
-
-  if(publishersUserDislikes && publishersUserDislikes?.length !== 0) {
-    for(const publisher of publishersUserDislikes) {
-      result.Items = result.Items.filter((item: any) => {
-        return item.publisher?.S !== publisher.content.S;
-      });
-    }
-  }
+  const dislikedKeywords = userDislikedKeywords.map((item: any) => item.keywords.S.toLowerCase()).join(",");
+  result.Items = result.Items.filter((item: any) =>
+    item.keywords.S.split(",").some((keyword: string) => !dislikedKeywords.includes(keyword))
+  );
   return result;
 }
 
@@ -114,34 +94,43 @@ async function GetUserFeed(userId: string) {
     Items: <any>[],
   };
 
-  console.log('getting user feed for user: ', userId);
+  console.log("getting user feed for user: ", userId);
 
-  const userInterests: QueryCommandOutput = await dbClient.send(new QueryCommand({
-    TableName: Table.bigTable.tableName,
-    KeyConditionExpression: "pk = :pk",
-    FilterExpression: "attribute_exists(ctt)",
-    ExpressionAttributeValues: {
-      ":pk": { S: `user#${userId}` },
-    },
-    ConsistentRead: true,
-  }));
+  const userInterests: QueryCommandOutput = await dbClient.send(
+    new QueryCommand({
+      TableName: Table.bigTable.tableName,
+      KeyConditionExpression: "pk = :pk",
+      FilterExpression: "attribute_exists(ctt)",
+      ExpressionAttributeValues: {
+        ":pk": { S: `user#${userId}` },
+      },
+      ConsistentRead: true,
+    })
+  );
 
   const interestsUserFollows = userInterests.Items?.filter((item: any) => {
     return item.ua.S === "follow" && item.ctt.S === "interest";
+  });
+
+  console.log("interestsUserFollows", JSON.stringify(interestsUserFollows));
+
+  const userDislikedKeywords = userInterests.Items?.filter((item: any) => {
+    return item.ua.S === "dislikes" && item.ctt.S === "post";
   });
 
   const userAlgoPreference = userInterests.Items?.filter((item: any) => {
     return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
   });
 
-  if(userAlgoPreference && userAlgoPreference.length > 0 && interestsUserFollows && interestsUserFollows.length > 0){
-    switch(userAlgoPreference[0].ct.S){
-      case 'timeBased': {
+  console.log(userAlgoPreference[0].ct.S);
+  if (userAlgoPreference && userAlgoPreference.length > 0 && interestsUserFollows && interestsUserFollows.length > 0) {
+    switch (userAlgoPreference[0].ct.S) {
+      case "timeBased": {
         result = await getTimeBasedFeed();
-        break
+        break;
       }
-      case 'interestBased': {
-        result = await getInterestBasedFeed(interestsUserFollows);
+      case "interestBased": {
+        result = await getInterestBasedFeed(interestsUserFollows, userDislikedKeywords);
         break;
       }
     }
@@ -154,38 +143,37 @@ async function GetUserFeed(userId: string) {
 
 export const handler = ApiHandler(async (evt) => {
   console.log("evt time: ", evt.requestContext.time);
-  
+
   let result = {
     Count: 0,
     Items: <any>[],
   };
 
-  if(evt.headers.authorization) {
+  if (evt.headers.authorization) {
     const token = evt.headers.authorization?.split(" ")[1];
-    const validToken = token && await validateToken(token);
-    if(!validToken) {
+    const validToken = token && (await validateToken(token));
+    if (!validToken) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: "Unauthorized" }),
-      }
+      };
     }
     try {
       const userId = await getUserFromToken(token);
-      if(!userId) {
+      if (!userId) {
         return {
           statusCode: 401,
           body: JSON.stringify({ error: "Unauthorized" }),
-        }
+        };
       }
       result = await GetUserFeed(userId);
-    }
-    catch(err) {
+    } catch (err) {
       console.log("err: ", err);
-      if((err as Error).name === 'JWTExpired') {
+      if ((err as Error).name === "JWTExpired") {
         return {
           statusCode: 401,
           body: JSON.stringify({ error: "Unauthorized" }),
-        }
+        };
       }
     }
   } else {
@@ -214,27 +202,11 @@ export const handler = ApiHandler(async (evt) => {
     });
   }
 
-
   return {
     statusCode: 200,
     body: JSON.stringify({ Count: feedItems.length, Items: feedItems }),
   };
 });
-// async function getUserFromToken(token: string) {
-//   const tokenHeader = await jwtDecode(token, { header: true });
-//   const JWKS = jose.createRemoteJWKSet(new URL(`${process.env.KINDE_ISSUER_URL}/.well-known/jwks.json`));
-
-//   const { payload, protectedHeader } = await jose.jwtVerify(token, JWKS, {
-//     issuer: process.env.KINDE_ISSUER_URL ?? '',
-//     audience: process.env.KINDE_AUDIENCE ?? '',
-//   })
-//   if(tokenHeader.kid !== protectedHeader.kid) {
-//     throw new Error('Unforbidden');
-//   }
-//   const sub = payload.sub ?? "";
-//   const userId = sub;
-//   return userId;
-// }
 
 //Function to sort array of objects based on pubDate attribute
 function compare(a: any, b: any) {
