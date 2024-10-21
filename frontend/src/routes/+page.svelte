@@ -3,18 +3,17 @@
 </script>
 
 <section class="bg-white">
-	<div class="flex flex-col place-content-center">
-		<h1 class="mt-10 ml-10 mb-6 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl">Place to find what really matters to you</h1>
-		<p class="mt-2 ml-12 mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">GFeed changes the way you consume information. Your time is precious, and that's why GFeed puts you in control.</p>
-		<div class="m-6 flex gap-4 justify-center">
+	<div class="flex flex-col place-content-center m-4">
+		<h1 class="mt-10 mb-6 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl">Place to find what really matters to you</h1>
+		<p class="mt-2 mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">GFeed changes the way you consume information. Your time is precious, and that's why GFeed puts you in control.</p>
+		<p class="m-auto font-bold md:text-lg lg:text-xl">Download from app stores</p>
+		<div class="flex flex-row justify-evenly m-4">
 			<a href="https://apps.apple.com/au/app/gfeed/id6478862655" target="_blank">
-				<img src="/imgs/logo-app-store-apple.avif" alt="Download on the App Store" class="h-16"/>
+				<img src="/imgs/logo-app-store-apple.avif" alt="Download on the App Store" width="250"/>
 			</a>
-		</div>
-		<div class="flex place-content-center mt-10 mb-10">
 			<p>
 				<a href="https://tinyurl.com/3uj7utbv" target="_blank">
-					Be part of android <img src="/imgs/android.svg" alt="Android Closed testing" class="h-10 inline"/> beta testers group
+					 <img src="/imgs/playstore-badge.png" alt="Android App" width="250"/>
 				</a>
 			</p>
 		</div>

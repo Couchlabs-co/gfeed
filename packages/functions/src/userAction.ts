@@ -13,7 +13,9 @@ interface UserAction {
   userId: string;
   contentLink: string;
   contentId: string;
+  keywords?: string;
 }
+
 export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   console.log("evt time: ", evt.requestContext.time);
   const body: UserAction = JSON.parse(evt.body ?? "");
@@ -27,7 +29,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
 
   try {
     const BigOneTable = Table.bigTable.tableName;
-    const { userId, content, contentType, reaction, contentLink, contentId } = body;
+    const { userId, content, contentType, reaction, contentLink, contentId, keywords = "" } = body;
 
     let sk = `${contentId}#${reaction}`;
     switch (reaction) {
@@ -84,6 +86,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     Item.id = { S: uuid.v4() };
     Item.cid = { S: contentId }; // post id | interest id
     Item.cl = { S: contentLink ?? "" }; // post link | interest link
+    Item.keywords = { S: keywords ?? Item.tag };
 
     const command: PutItemCommand = new PutItemCommand({
       TableName: BigOneTable,
