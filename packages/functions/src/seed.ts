@@ -1963,6 +1963,17 @@ const publishers = [
     frequency: "6 hours",
     logo: "",
   },
+  {
+    name: "Ranjan Sakalley",
+    payWall: false,
+    publisherUrl: "https://rnjn.substack.com",
+    feedUrl: "https://rnjn.substack.com/feed",
+    isActive: "active",
+    feedType: "xml",
+    primaryTag: "Tech",
+    frequency: "6 hours",
+    logo: "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fba9e9d1c-7362-46b3-9f55-7987e1d8358d_512x512.png",
+  },
 ];
 
 const interests = [
@@ -2037,6 +2048,7 @@ export async function handler(event: any) {
     for (const publisher of publishers) {
       if (
         publisher.name === "thoughts - theden.sh" ||
+        publisher.name === "Ranjan Sakalley" ||
         publisher.name === "BleepingComputer" ||
         publisher.name === "Hackday" ||
         publisher.name === "ScienceAlert" ||
