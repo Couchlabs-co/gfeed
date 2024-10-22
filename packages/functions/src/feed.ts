@@ -53,7 +53,7 @@ async function getTimeBasedFeed() {
   return result;
 }
 
-async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: any) {
+async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: (string | undefined)[]) {
   console.log("getting interest based feed");
 
   const result = {
@@ -81,10 +81,17 @@ async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: an
     );
   }
 
-  const dislikedKeywords = userDislikedKeywords.map((item: any) => item.keywords.S.toLowerCase()).join(",");
-  result.Items = result.Items.filter((item: any) =>
-    item.keywords.S.split(",").some((keyword: string) => !dislikedKeywords.includes(keyword))
-  );
+  if (!userDislikedKeywords || userDislikedKeywords.length == 0) {
+    return result;
+  }
+  const dislikedKeywords: string = userDislikedKeywords.map((item: any) => item.toLowerCase()).join(",");
+
+  result.Items = result.Items.filter((item: any) => {
+    if (dislikedKeywords.includes(item.tag)) {
+      return item;
+    }
+    return item.keywords.S.split(",").some((keyword: string) => !dislikedKeywords.includes(keyword));
+  });
   return result;
 }
 
@@ -108,21 +115,23 @@ async function GetUserFeed(userId: string) {
     })
   );
 
-  const interestsUserFollows = userInterests.Items?.filter((item: any) => {
-    return item.ua.S === "follow" && item.ctt.S === "interest";
-  });
+  const interestsUserFollows =
+    userInterests.Items?.filter((item: any) => {
+      return item.ua.S === "follow" && item.ctt.S === "interest";
+    }) ?? [];
 
-  console.log("interestsUserFollows", JSON.stringify(interestsUserFollows));
+  const userDislikedKeywords =
+    userInterests.Items?.filter((item: any) => {
+      return item.ua.S === "dislikes" && item.ctt.S === "post";
+    })
+      .map((item) => item && item.keywords.S)
+      .filter((str) => str) ?? [];
 
-  const userDislikedKeywords = userInterests.Items?.filter((item: any) => {
-    return item.ua.S === "dislikes" && item.ctt.S === "post";
-  });
+  const userAlgoPreference =
+    userInterests.Items?.filter((item: any) => {
+      return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
+    }) ?? [];
 
-  const userAlgoPreference = userInterests.Items?.filter((item: any) => {
-    return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
-  });
-
-  console.log(userAlgoPreference[0].ct.S);
   if (userAlgoPreference && userAlgoPreference.length > 0 && interestsUserFollows && interestsUserFollows.length > 0) {
     switch (userAlgoPreference[0].ct.S) {
       case "timeBased": {
