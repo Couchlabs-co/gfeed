@@ -5,7 +5,7 @@ export async function userAction(
 	contentType: string,
 	contentLink: string,
 	contentId: string,
-	keywords: string
+	keywords?: string
 ) {
 	if (!userId) {
 		return null;

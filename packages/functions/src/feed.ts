@@ -124,7 +124,11 @@ async function GetUserFeed(userId: string) {
     userInterests.Items?.filter((item: any) => {
       return item.ua.S === "dislikes" && item.ctt.S === "post";
     })
-      .map((item) => item && item.keywords.S)
+      .map((item) => {
+        if (item && item.keywords) {
+          return item.keywords.S;
+        }
+      })
       .filter((str) => str) ?? [];
 
   const userAlgoPreference =
@@ -139,7 +143,7 @@ async function GetUserFeed(userId: string) {
         break;
       }
       case "interestBased": {
-        result = await getInterestBasedFeed(interestsUserFollows, userDislikedKeywords);
+        result = await getInterestBasedFeed(interestsUserFollows, []);
         break;
       }
     }

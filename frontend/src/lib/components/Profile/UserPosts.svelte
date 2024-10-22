@@ -24,7 +24,7 @@
                     <tr>
                         <td class="text-base text-black">
                             <article>
-                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(userId, item.title, "viewed", "post", item.link, item.id)}>
+                                <a href={item.contentLink} class="link link-hover" target="_blank" on:click={()=> userAction(userId, item.title, "viewed", "post", item.link, item.id, item.keywords)}>
                                     {item.content}
                                 </a>
                             </article>
