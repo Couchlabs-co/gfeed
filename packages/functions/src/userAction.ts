@@ -30,6 +30,13 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
   try {
     const BigOneTable = Table.bigTable.tableName;
     const { userId, content, contentType, reaction, contentLink, contentId, keywords = "" } = body;
+    console.log(`userId: ${userId}`);
+    console.log(`content: ${content}`);
+    console.log(`contentType: ${contentType}`);
+    console.log(`reaction: ${reaction}`);
+    console.log(`contentLink: ${contentLink}`);
+    console.log(`contentId: ${contentId}`);
+    console.log(`keywords: ${keywords}`);
 
     let sk = `${contentId}#${reaction}`;
     switch (reaction) {
@@ -86,7 +93,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     Item.id = { S: uuid.v4() };
     Item.cid = { S: contentId }; // post id | interest id
     Item.cl = { S: contentLink ?? "" }; // post link | interest link
-    Item.keywords = { S: keywords ?? Item.tag };
+    Item.keywords = { S: keywords ?? "" };
 
     const command: PutItemCommand = new PutItemCommand({
       TableName: BigOneTable,
