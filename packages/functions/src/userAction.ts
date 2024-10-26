@@ -55,6 +55,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       default:
         break;
     }
+    console.log("step 1 ---------");
     if (["unfollow", "!bookmark", "!dislikes", "!likes"].includes(reaction)) {
       const command: DeleteItemCommand = new DeleteItemCommand({
         TableName: BigOneTable,
@@ -72,6 +73,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       };
     }
 
+    console.log("step 2 ---------");
     let Item: Record<string, AttributeValue> = {
       pk: { S: `user#${userId}` }, // user#1234
       sk: { S: `${sk}` },
@@ -85,15 +87,20 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
       Item.cid = { S: contentId }; // post id | interest id
     }
 
+    console.log("step 3 ---------");
+
     if (contentType === "feedAlgo") {
       Item.sk = { S: `feedAlgo#${reaction}` };
       Item.cid = { S: uuid.v4() };
     }
 
+    console.log("step 4 ---------");
     Item.id = { S: uuid.v4() };
     Item.cid = { S: contentId }; // post id | interest id
     Item.cl = { S: contentLink ?? "" }; // post link | interest link
     Item.keywords = { S: keywords ?? "" };
+
+    console.log("step 5 ---------");
 
     const command: PutItemCommand = new PutItemCommand({
       TableName: BigOneTable,
