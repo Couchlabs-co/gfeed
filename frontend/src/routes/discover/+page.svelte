@@ -63,17 +63,20 @@
 
 			</div>
 		</div>
-		<div class="sidePanel">
-			<h2 class="sidePanelHeading">Filters</h2>
-				<div class="flex flex-row m-4">
-					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
-						<option selected>Publishers</option>
-						{#each publishers.Items as publisher}
-							<option value={publisher.name}>{publisher.name} - {publisher.tag}</option>
-						{/each}
-					</select>
-				</div>
-		</div>
+		{#if (!user)}
+			<div class="sidePanel">
+				<h2 class="sidePanelHeading">Filters</h2>
+					<div class="flex flex-row m-4">
+						<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
+							<option selected>Publishers</option>
+							{#each publishers.Items as publisher}
+								<option value={publisher.name}>{publisher.name} - {publisher.tag}</option>
+							{/each}
+						</select>
+					</div>
+			</div>
+		{/if}
+		
 	{/if}
 </div>
 
