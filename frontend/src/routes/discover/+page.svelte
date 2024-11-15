@@ -55,16 +55,17 @@
 				</div>
 		</div>
 	{:else}
-		<div class="flex flex-col w-10/12">
-			<div class="grid grid-cols-3 gap-4">
-				{#each gFeed as Item}
-					<ColumnList Item ={Item} userId={user?.id} key={Item.id}/>
-				{/each}
+		{#if (!user)}
+			<div class="flex flex-col w-10/12">
+				<div class="grid grid-cols-3 gap-4">
+					{#each gFeed as Item}
+						<ColumnList Item ={Item} userId={user?.id} key={Item.id}/>
+					{/each}
 
+				</div>
 			</div>
-		</div>
-		<div class="sidePanel">
-			<h2 class="sidePanelHeading">Filters</h2>
+			<div class="sidePanel">
+				<h2 class="sidePanelHeading">Filters</h2>
 				<div class="flex flex-row m-4">
 					<select class="select select-bordered w-full max-w-xs" on:change={filterFeed}>
 						<option selected>Publishers</option>
@@ -73,7 +74,17 @@
 						{/each}
 					</select>
 				</div>
-		</div>
+			</div>
+		{:else}
+			<div class="flex flex-col">
+				<div class="grid grid-cols-4 gap-2">
+					{#each gFeed as Item}
+						<ColumnList Item ={Item} userId={user?.id} key={Item.id}/>
+					{/each}
+				</div>
+			</div>
+		{/if}
+		
 	{/if}
 </div>
 
