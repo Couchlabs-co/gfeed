@@ -76,8 +76,8 @@
 				</div>
 			</div>
 		{:else}
-			<div class="flex flex-col w-10/12">
-				<div class="grid grid-cols-4 gap-4">
+			<div class="flex flex-col">
+				<div class="grid grid-cols-4 gap-2">
 					{#each gFeed as Item}
 						<ColumnList Item ={Item} userId={user?.id} key={Item.id}/>
 					{/each}
