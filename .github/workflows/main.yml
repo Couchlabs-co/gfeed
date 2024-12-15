@@ -3,6 +3,7 @@ run-name: gfeed.app
 
 on:
   - push
+  - workflow_dispatch
 
 concurrency: merge-${{ github.ref }}
 
