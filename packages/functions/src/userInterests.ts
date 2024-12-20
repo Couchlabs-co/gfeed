@@ -38,6 +38,7 @@ export const getInterests = async (userId: string) => {
 
     const interests: Array<Interest> =[];
     
+    console.log(`res Items: -> ${JSON.stringify(res.Items)}`);
     if(res.Items){
       for(const item of res.Items){
         if(item.sk.S === 'info') {
