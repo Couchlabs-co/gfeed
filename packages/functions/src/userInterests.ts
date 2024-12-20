@@ -38,19 +38,20 @@ export const getInterests = async (userId: string) => {
 
     const interests: Array<Interest> =[];
     
-    console.log(`res Items: -> ${JSON.stringify(res.Items)}`);
     if(res.Items){
       for(const item of res.Items){
         if(item.sk.S === 'info') {
           continue;
         }
-        interests.push({
-          content: he.decode(item.ct.S) as string,
-          contentId: item.cid.S as string,
-          userAction: UserAction[item.ua.S as keyof typeof UserAction],
-          contentType: item.ctt.S as string,
-          contentLink: item.cl?.S as string
-        })
+        if(item.ctt.S !== undefined || item.ua.S !== undefined) {
+          interests.push({
+            content: he.decode(item.ct.S) as string,
+            contentId: item.cid.S as string,
+            userAction: UserAction[item.ua.S as keyof typeof UserAction],
+            contentType: item.ctt.S as string,
+            contentLink: item.cl?.S as string
+          })
+        }
       }
       
       const interestsByType = interests.reduce((acc, item) => {
@@ -68,7 +69,7 @@ export const getInterests = async (userId: string) => {
           acc[interestAction] = [];
         }
         acc[interestAction].push(item)
-        return acc; 
+        return acc;
       }, {});
 
       return {

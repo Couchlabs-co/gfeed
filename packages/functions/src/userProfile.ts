@@ -8,13 +8,14 @@ enum UserAction {
     likes = "likes",
     dislikes = "dislikes",
     viewed = "viewed",
-    bookmark = "bookmark"
+    bookmark = "bookmark",
+    delBookmark = "delBookmark"
 }
 
 interface Interest {
     content: string;
     contentType: string;
-    userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark' | 'follow' | 'selected';
+    userAction: 'likes' | 'dislikes' | 'viewed' | 'bookmark' | 'follow' | 'selected' | 'delBookmark';
     contentLink?: string;
 }
 
@@ -58,6 +59,7 @@ export const handler = ApiHandler(async (evt: APIGatewayProxyEventV2) => {
     }
 
     const { interestsByAction, interestsByType } = await getInterests(user_id);
+    
     const userLikedPostsCount = interestsByAction && interestsByAction.likes ? interestsByAction?.likes.filter((item: any) => {
         return item.contentType === 'post';
     }).length : 0;
