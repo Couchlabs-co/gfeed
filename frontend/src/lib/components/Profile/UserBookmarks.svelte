@@ -23,7 +23,7 @@
                                     {bookmark.content}
                                 </a>
                             </article>
-                            <button class="btn btn-square btn-outline bg-danger" on:click={() => userAction(userId, bookmark.content, "delBookmark", "post", bookmark.contentLink, bookmark.contentId)}><Ban /></button>
+                            <button class="btn btn-square btn-outline bg-danger" on:click={() => userAction(userId, bookmark.content, "!bookmark", "post", bookmark.contentLink, bookmark.contentId)}><Ban /></button>
                         </td>
                     </tr>
                 {/each}
