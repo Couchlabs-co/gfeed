@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "workspaces": ["frontend/*", "packages/*"],
   "scripts": {
-    "dev": "AWS_PROFILE=couchlabs-production sst dev",
+    "dev": "sst dev",
     "build": "sst build",
     "deploy": "sst deploy",
     "remove": "sst remove",

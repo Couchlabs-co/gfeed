@@ -65,7 +65,7 @@ export function FunctionStack({ stack }: StackContext) {
   });
 
   const RssCron = new Cron(stack, "RssCron", {
-    schedule: "cron(0 */3 * * ? *)",
+    schedule: stack.stage === "production" ? "cron(0 */12 * * ? *)" : "cron(0 */3 * * ? *)",
     job: "packages/functions/src/rssPublishers.main",
   }).bind([PublisherTable, FeedQueue, BigTable]);
   
