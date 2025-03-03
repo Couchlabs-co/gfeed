@@ -1974,6 +1974,17 @@ const publishers = [
     frequency: "6 hours",
     logo: "https://substackcdn.com/image/fetch/w_256,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fba9e9d1c-7362-46b3-9f55-7987e1d8358d_512x512.png",
   },
+  {
+    name: "Musings on Markets",
+    payWall: false,
+    publisherUrl: "https://aswathdamodaran.blogspot.com",
+    feedUrl: "https://aswathdamodaran.blogspot.com/feeds/posts/default?alt=rss",
+    isActive: "active",
+    feedType: "xml",
+    primaryTag: "Business",
+    frequency: "6 hours",
+    logo: "",
+  },
 ];
 
 const interests = [
@@ -2053,7 +2064,8 @@ export async function handler(event: any) {
         publisher.name === "Hackday" ||
         publisher.name === "ScienceAlert" ||
         publisher.name === "The Motley Fool Australia" ||
-        publisher.name === "Stackademic"
+        publisher.name === "Stackademic" ||
+        publisher.name === "Musings on Markets"
       ) {
         const updateCommand = new UpdateItemCommand({
           TableName: Table.publisher.tableName,
