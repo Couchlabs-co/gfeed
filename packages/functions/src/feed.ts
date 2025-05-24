@@ -53,7 +53,10 @@ async function getTimeBasedFeed() {
   return result;
 }
 
-async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: (string | undefined)[]) {
+async function getInterestBasedFeed(
+  userInterests: any,
+  userDislikedKeywords: (string | undefined)[]
+) {
   console.log("getting interest based feed");
 
   const result = {
@@ -84,13 +87,17 @@ async function getInterestBasedFeed(userInterests: any, userDislikedKeywords: (s
   if (!userDislikedKeywords || userDislikedKeywords.length == 0) {
     return result;
   }
-  const dislikedKeywords: string = userDislikedKeywords.map((item: any) => item.toLowerCase()).join(",");
+  const dislikedKeywords: string = userDislikedKeywords
+    .map((item: any) => item.toLowerCase())
+    .join(",");
 
   result.Items = result.Items.filter((item: any) => {
     if (dislikedKeywords.includes(item.tag)) {
       return item;
     }
-    return item.keywords.S.split(",").some((keyword: string) => !dislikedKeywords.includes(keyword));
+    return item.keywords.S.split(",").some(
+      (keyword: string) => !dislikedKeywords.includes(keyword)
+    );
   });
   return result;
 }
@@ -136,7 +143,12 @@ async function GetUserFeed(userId: string) {
       return item.ua.S === "selected" && item.ctt.S === "feedAlgo";
     }) ?? [];
 
-  if (userAlgoPreference && userAlgoPreference.length > 0 && interestsUserFollows && interestsUserFollows.length > 0) {
+  if (
+    userAlgoPreference &&
+    userAlgoPreference.length > 0 &&
+    interestsUserFollows &&
+    interestsUserFollows.length > 0
+  ) {
     switch (userAlgoPreference[0].ct.S) {
       case "timeBased": {
         result = await getTimeBasedFeed();
@@ -198,6 +210,11 @@ export const handler = ApiHandler(async (evt) => {
   const sortedItems = result.Items.sort(compare);
 
   for (const item of sortedItems) {
+    if (!item || !item.id || !item.publishedDate || !item.title || !item.link) {
+      console.warn("Skipping item due to missing required fields:", item);
+      continue;
+    }
+
     feedItems.push({
       id: item.id.S,
       publishedDate: item.publishedDate.S,
