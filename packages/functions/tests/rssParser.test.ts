@@ -604,7 +604,7 @@ describe("rssParser", () => {
     });
   });
 
-  test.only("parse BusinessToday rss feed", async () => {
+  test("parse BusinessToday rss feed", async () => {
     const xmlFile = fs.readFileSync(
       path.resolve(__dirname + "/mocks/BusinessToday.xml"),
       "utf8"
