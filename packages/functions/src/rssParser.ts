@@ -1,6 +1,11 @@
 import { SQSEvent, SQSRecord } from "aws-lambda";
 import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
-import { BatchWriteItemCommand, PutItemCommand, UpdateItemCommand, WriteRequest } from "@aws-sdk/client-dynamodb";
+import {
+  BatchWriteItemCommand,
+  PutItemCommand,
+  UpdateItemCommand,
+  WriteRequest,
+} from "@aws-sdk/client-dynamodb";
 import { dbClient } from "./utils/dbClient";
 import { Table } from "sst/node/table";
 import fetchRSSFeed from "./utils/fetchRssFeed";
@@ -12,75 +17,100 @@ const sqs = new SQSClient({
   region: "ap-southeast-2",
 });
 
-const filterItems = (publisher: string) => (arr: any[]) => arr.filter((item: any) => {
-  switch(publisher) {
-    case 'Damien Aicheh':
-      return !item.link["@_href"].includes('-fr');
-    case 'Hacker News':
-      return !(item.title?.includes('Show HN') || item.title?.includes('Ask HN'));
-    case 'TokyoDev':
-      return !item.link['@_href'].includes('story-ja');
-    case 'Martin Fowler':
-      return !item.title.includes('photostream ');
-    default:
-      return item;
-  }
-});
-
+const filterItems = (publisher: string) => (arr: any[]) =>
+  arr.filter((item: any) => {
+    switch (publisher) {
+      case "Damien Aicheh":
+        return !item.link["@_href"].includes("-fr");
+      case "Hacker News":
+        return !(
+          item.title?.includes("Show HN") || item.title?.includes("Ask HN")
+        );
+      case "TokyoDev":
+        return !item.link["@_href"].includes("story-ja");
+      case "Martin Fowler":
+        return !item.title.includes("photostream ");
+      case "Business Today":
+        return !item.link.includes("issue");
+      default:
+        return item;
+    }
+  });
 
 // function to create array of array of 25 items for a given array of items
-async function saveBatchedItems (items: any[]) {
+async function saveBatchedItems(items: any[]) {
   let tempItems = [];
   const tableName = Table.bigTable.tableName;
-  for(const item of items) {
+  for (const item of items) {
     tempItems.push(item);
-    if(tempItems.length === 25) {
-      await dbClient.send(new BatchWriteItemCommand({
-        RequestItems: {
-          [tableName]: tempItems,
-        },
-      }));
+    if (tempItems.length === 25) {
+      await dbClient.send(
+        new BatchWriteItemCommand({
+          RequestItems: {
+            [tableName]: tempItems,
+          },
+        })
+      );
       tempItems = [];
     }
   }
-  if(tempItems.length > 0) {
-    await dbClient.send(new BatchWriteItemCommand({
-      RequestItems: {
-        [tableName]: tempItems,
-      },
-    }));
+  if (tempItems.length > 0) {
+    await dbClient.send(
+      new BatchWriteItemCommand({
+        RequestItems: {
+          [tableName]: tempItems,
+        },
+      })
+    );
     tempItems = [];
   }
   return;
 }
 
-
 export async function main(event: SQSEvent) {
   const records: SQSRecord[] = event.Records;
   let feedRssStatus = "success";
-  console.log('length of records from queue: ', records.length);
-  for(const record of records){
+  console.log("length of records from queue: ", records.length);
+  for (const record of records) {
     const startTime = Date.now();
-    const { id: publisherId, publisher, feedUrl, tag, feedType, payWall } = JSON.parse(record.body);
-    if(feedType === 'html') {
+    const {
+      id: publisherId,
+      publisher,
+      feedUrl,
+      tag,
+      feedType,
+      payWall,
+    } = JSON.parse(record.body);
+    if (feedType === "html") {
       console.log(`\n skipping html feed: ${publisher} with url: ${feedUrl}`);
       break;
     }
     try {
-      console.log(`\n starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`);
+      console.log(
+        `\n starting to process feed: ${publisher} with url: ${feedUrl} --- ${feedType}`
+      );
       const rssItems = await fetchRSSFeed(publisher, feedUrl, feedType);
       // console.log(`\n fetched feed: ${publisher} with url: ${feedUrl} --- ${rssItems.length}`);
       let itemsMap = new Map<string, any>();
       const filterByPublisher = filterItems(publisher);
 
-      const parsedItems: Record<string, any>[] = filterByPublisher(rssItems).map((item: any) => formatItem(item, publisher, tag, payWall, feedUrl));
+      const parsedItems: Record<string, any>[] = filterByPublisher(
+        rssItems
+      ).map((item: any) => formatItem(item, publisher, tag, payWall, feedUrl));
 
-      for(const item of parsedItems) {
-          itemsMap.set(item.guid.S, item);
-      };
+      for (const item of parsedItems) {
+        if (!item || (!item.title && !item.description)) {
+          console.log(
+            `Skipping item with missing guid: ${JSON.stringify(item)}`
+          );
+          continue;
+        }
+        itemsMap.set(item.guid.S, item);
+      }
+
       const batchedItems = Array.from(itemsMap.values()).map((item: any) => {
         return {
-          PutRequest:{
+          PutRequest: {
             Item: {
               pk: { S: `post#${item.pk.S}` },
               sk: { S: `${item.sk.S}` },
@@ -98,8 +128,8 @@ export async function main(event: SQSEvent) {
               guid: { S: `${item.guid.S}` },
               publishedDate: { S: `${item.publishedDate.S}` },
               payWall: { BOOL: item.payWall.BOOL ?? payWall },
-            }
-          }
+            },
+          },
         };
       });
 
@@ -107,12 +137,17 @@ export async function main(event: SQSEvent) {
       console.log(`Message processed: ${publisher} with url: ${feedUrl}`);
       const endTime = Date.now();
       const timeTaken = endTime - startTime;
-      console.log(`total time taken: ${timeTaken}`)
-      await updateRSSPublisherPulledTime(publisher, feedUrl, timeTaken, "success");
+      console.log(`total time taken: ${timeTaken}`);
+      await updateRSSPublisherPulledTime(
+        publisher,
+        feedUrl,
+        timeTaken,
+        "success"
+      );
 
       //if publisher is TechCrunch and image is not present, add to media queue
-      for(const item of parsedItems) {
-        if(item.publisher.S === "TechCrunch" && item.img.S === "") {
+      for (const item of parsedItems) {
+        if (item.publisher.S === "TechCrunch" && item.img.S === "") {
           await addToMediaQueue(item, publisherId);
         }
       }
@@ -124,7 +159,7 @@ export async function main(event: SQSEvent) {
       break;
     }
   }
-    
+
   return {
     statusCode: 200,
     body: JSON.stringify({ status: "successful" }),
@@ -141,14 +176,20 @@ export async function main(event: SQSEvent) {
 // }
 
 // function to update lastPulled time and time take for the feed
-async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, timeTaken: number, status: String) {
+async function updateRSSPublisherPulledTime(
+  publisher: String,
+  feedUrl: String,
+  timeTaken: number,
+  status: String
+) {
   const updateQuery = new UpdateItemCommand({
     TableName: Table.publisher.tableName,
     Key: {
       publisherName: { S: `${publisher}` },
       feedUrl: { S: `${feedUrl}` },
     },
-    UpdateExpression: "set lastCrawled = :t, timeTaken = :tt, crawledStatus = :s",
+    UpdateExpression:
+      "set lastCrawled = :t, timeTaken = :tt, crawledStatus = :s",
     ExpressionAttributeValues: {
       ":t": { S: new Date().toISOString() },
       ":tt": { N: `${timeTaken}` },
@@ -159,12 +200,14 @@ async function updateRSSPublisherPulledTime(publisher: String, feedUrl: String, 
   console.log("updated lastCrawled time for publisher: ", publisher);
 }
 
-async function addToMediaQueue(feedItem: Record<any, import("@aws-sdk/client-dynamodb").AttributeValue>, publisherId: String) {
+async function addToMediaQueue(
+  feedItem: Record<any, import("@aws-sdk/client-dynamodb").AttributeValue>,
+  publisherId: String
+) {
   const params = {
-    MessageBody: JSON.stringify({feedItem, publisherId}),
+    MessageBody: JSON.stringify({ feedItem, publisherId }),
     QueueUrl: Queue.ImageQueue.queueUrl,
   };
   await sqs.send(new SendMessageCommand(params));
   console.log("Sent message to image queue", feedItem.link.S);
 }
-
