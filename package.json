@@ -1,26 +1,29 @@
 {
   "name": "sst-gfeed",
   "version": "2.0.0",
-  "workspaces": ["frontend/*", "packages/*"],
+  "workspaces": [
+    "frontend/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "sst dev",
-    "build": "sst build",
-    "deploy": "sst deploy",
-    "remove": "sst remove",
-    "types": "sst types",
     "console": "sst console",
+    "deploy": "sst deploy",
+    "dev": "sst dev",
+    "init": "sst init",
+    "remove": "sst remove",
     "typecheck": "tsc --noEmit",
+    "types": "sst types",
     "update": "sst update"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",
+    "@types/aws-lambda": "8.10.152",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.192.0",
     "constructs": "10.3.0",
     "fast-xml-parser": "^4.5.3",
-    "sst": "^2.48.5"
+    "sst": "3.17.10"
   },
   "type": "module"
 }
