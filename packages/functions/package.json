@@ -14,12 +14,12 @@
     "aws-sdk-client-mock": "^4.0.1",
     "msw": "^2.3.1",
     "sst": "3.17.10",
-    "vitest": "^1.6.0"
+    "vitest": "^2.1.8"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.613.0",
-    "@aws-sdk/client-sqs": "^3.613.0",
-    "date-fns": "^3.6.0",
+    "@aws-sdk/client-dynamodb": "^3.686.0",
+    "@aws-sdk/client-sqs": "^3.686.0",
+    "date-fns": "^4.1.0",
     "fast-xml-parser": "^4.4.0",
     "he": "^1.2.0",
     "jose": "^5.6.3",

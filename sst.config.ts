@@ -1,33 +1,21 @@
-import { SSTConfig } from "sst";
-import { ApiStack } from "./stacks/ApiStack";
-import { DbStack } from "./stacks/DbStack";
-import { WebStack } from "./stacks/WebStack";
-import { FunctionStack } from "./stacks/FunctionStack";
+/// <reference path="./.sst/platform/config.d.ts" />
 
-export default {
-  config  (input) {
+export default $config({
+  app(input) {
     return {
       name: "gfeed",
+      removal: input?.stage === "production" ? "retain" : "remove",
+      protect: ["production"].includes(input?.stage),
+      home: "aws",
+      // profile: "couchlabs-dev",
       region: "ap-southeast-2",
-      stage: input.stage,
+      stage: input?.stage || "dev",
     };
   },
-  stacks(app) {
-    app
-      .stack(DbStack, {
-        stackName: `${app.stage}-db`,
-      })
-      .stack(ApiStack, {
-        stackName: `${app.stage}-api`,
-      })
-      .stack(FunctionStack, {
-        stackName: `${app.stage}-functions`,
-      })
-      .stack(WebStack, {
-        stackName: `${app.stage}-web`,
-      });
-    if (app.stage !== "prod") {
-      app.setDefaultRemovalPolicy("destroy");
-    }
+  async run() {
+    await import("./stacks/Database");
+    await import("./stacks/Api");
+    await import("./stacks/Functions");
+    await import("./stacks/Web");
   },
-} satisfies SSTConfig;
+});
